@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="382px" preserveAspectRatio="none" style="width:396px;height:382px;" version="1.1" viewBox="0 0 396 382" width="396px" zoomAndPan="magnify">
+    <defs>
+        <filter height="300%" id="f162qritjtrmcl" width="300%" x="-1" y="-1">
+            <feGaussianBlur result="blurOut" stdDeviation="2.0"/>
+            <feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/>
+            <feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/>
+            <feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/>
+        </filter>
+    </defs>
+    <g>
+        <rect fill="#FFFFFF" filter="url(#f162qritjtrmcl)" height="182.8633" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="56" y="96.4883"/>
+        <rect fill="#FFFFFF" filter="url(#f162qritjtrmcl)" height="44.3105" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="349" y="117.4883"/>
+        <rect fill="#FFFFFF" filter="url(#f162qritjtrmcl)" height="29.3105" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="349" y="191.4199"/>
+        <rect fill="#FFFFFF" filter="url(#f162qritjtrmcl)" height="29.3105" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="349" y="250.041"/>
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="61" x2="61" y1="86.4883" y2="297.6621"/>
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="353.5" x2="353.5" y1="86.4883" y2="297.6621"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="100" x="8" y="83.5352">Administrativo</text>
+        <ellipse cx="61" cy="13" fill="#FEFECE" filter="url(#f162qritjtrmcl)" rx="8" ry="8" style="stroke: #A80036; stroke-width: 2.0;"/>
+        <path d="M61,21 L61,48 M48,29 L74,29 M61,48 L48,63 M61,48 L74,63 " fill="#FEFECE" filter="url(#f162qritjtrmcl)" style="stroke: #A80036; stroke-width: 2.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="100" x="8" y="310.1973">Administrativo</text>
+        <ellipse cx="61" cy="323.1504" fill="#FEFECE" filter="url(#f162qritjtrmcl)" rx="8" ry="8" style="stroke: #A80036; stroke-width: 2.0;"/>
+        <path d="M61,331.1504 L61,358.1504 M48,339.1504 L74,339.1504 M61,358.1504 L48,373.1504 M61,358.1504 L74,373.1504 " fill="#FEFECE" filter="url(#f162qritjtrmcl)" style="stroke: #A80036; stroke-width: 2.0;"/>
+        <rect fill="#FEFECE" filter="url(#f162qritjtrmcl)" height="30.4883" style="stroke: #A80036; stroke-width: 1.5;" width="71" x="316.5" y="51"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="57" x="323.5" y="71.5352">:Sistema</text>
+        <rect fill="#FEFECE" filter="url(#f162qritjtrmcl)" height="30.4883" style="stroke: #A80036; stroke-width: 1.5;" width="71" x="316.5" y="296.6621"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="57" x="323.5" y="317.1973">:Sistema</text>
+        <rect fill="#FFFFFF" filter="url(#f162qritjtrmcl)" height="182.8633" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="56" y="96.4883"/>
+        <rect fill="#FFFFFF" filter="url(#f162qritjtrmcl)" height="44.3105" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="349" y="117.4883"/>
+        <rect fill="#FFFFFF" filter="url(#f162qritjtrmcl)" height="29.3105" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="349" y="191.4199"/>
+        <rect fill="#FFFFFF" filter="url(#f162qritjtrmcl)" height="29.3105" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="349" y="250.041"/>
+        <polygon fill="#A80036" points="337,113.4883,347,117.4883,337,121.4883,341,117.4883" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="66" x2="343" y1="117.4883" y2="117.4883"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="9" x="73" y="113.0566">1</text>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="140" x="86" y="113.0566">nova área de atividade</text>
+        <polygon fill="#A80036" points="77,157.7988,67,161.7988,77,165.7988,73,161.7988" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="71" x2="353" y1="161.7988" y2="161.7988"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="9" x="83" y="150.0225">2</text>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="88" x="96" y="142.3672">solicita dados</text>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="233" x="96" y="157.6777">(código, descrição breve e detalhada)</text>
+        <polygon fill="#A80036" points="337,187.4199,347,191.4199,337,195.4199,341,191.4199" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="66" x2="343" y1="191.4199" y2="191.4199"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="9" x="73" y="186.9883">3</text>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="187" x="86" y="186.9883">introduz os dados solicitados</text>
+        <polygon fill="#A80036" points="77,216.7305,67,220.7305,77,224.7305,73,220.7305" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="71" x2="353" y1="220.7305" y2="220.7305"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="9" x="83" y="216.2988">4</text>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="246" x="96" y="216.2988">apresenta dados e solicita confirmação</text>
+        <polygon fill="#A80036" points="337,246.041,347,250.041,337,254.041,341,250.041" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="66" x2="343" y1="250.041" y2="250.041"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="9" x="73" y="245.6094">5</text>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="56" x="86" y="245.6094">confirma</text>
+        <polygon fill="#A80036" points="72,275.3516,62,279.3516,72,283.3516,68,279.3516" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="66" x2="353" y1="279.3516" y2="279.3516"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="9" x="78" y="274.9199">6</text>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="148" x="91" y="274.9199">operação bem sucedida</text>
+        <!--
+@startuml
+autonumber
+actor "Administrativo" as ADM
+
+activate ADM
+ADM -> ":Sistema" : nova área de atividade
+activate ":Sistema"
+":Sistema" - -> ADM : solicita dados \n(código, descrição breve e detalhada)
+deactivate ":Sistema"
+
+ADM -> ":Sistema" : introduz os dados solicitados
+activate ":Sistema"
+":Sistema" - -> ADM : apresenta dados e solicita confirmação
+deactivate ":Sistema"
+
+ADM -> ":Sistema" : confirma
+activate ":Sistema"
+":Sistema" - -> ADM : operação bem sucedida
+deactivate ":Sistema"
+
+deactivate ADM
+
+@enduml
+
+PlantUML version 2017.11(Wed Apr 19 17:18:59 WEST 2017)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Java Version: 1.8.0_112-b16
+Operating System: Mac OS X
+OS Version: 10.13.6
+Default Encoding: UTF-8
+Language: en
+Country: US
+-->
+    </g>
+</svg>

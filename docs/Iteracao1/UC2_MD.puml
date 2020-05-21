@@ -1,0 +1,17 @@
+@startuml
+hide methods
+left to right direction
+
+class AreaAtividade {
+  -String codigo
+  -String descBreve
+  -String descDetalhada
+ 
+}
+
+class Plataforma {
+  -String designacao
+}
+
+Plataforma "1" -- "*" AreaAtividade : possui >
+@enduml

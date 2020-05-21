@@ -1,0 +1,32 @@
+@startuml
+
+usecase UC1 as "UC1 - Registar Organização"
+usecase UC2 as "UC2 - Definir Área de Atividade"
+usecase UC3 as "UC3 - Definir Categoria (de Tarefa)"
+usecase UC4 as "UC4 - Especificar Competência Técnica"
+usecase UC5 as "UC5 - Especificar Colaborador de Organização"
+usecase UC6 as "UC6 - Especificar Tarefa"
+
+actor "Utilizador Não Registado" as UNR
+actor "Administrativo" as ADM
+actor "Gestor de Organização" as GO
+actor "Colaborador de Organização" as CO
+actor "Freelancer" as FRL
+
+left to right direction
+UNR -->(UC1)
+
+ADM -->(UC2)
+ADM -->(UC3)
+ADM -->(UC4)
+
+GO -->(UC5)
+
+CO --> (UC6)
+
+note right of (FRL)
+  Ator identificado mas ainda
+  sem casos de uso concretos
+end note
+
+@enduml

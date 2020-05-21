@@ -1,0 +1,34 @@
+@startuml
+
+class AreaAtividade {
+  -String codigo
+  -String descBreve
+  -String descDetalhada
+  AreaAtividade(String cod, String dsBreve, String dsDet)
+}
+
+class Plataforma {
+  -String designacao
+  
+  AreaAtividade novaAreaAtividade(String cod, String dsBreve, String dsDet)
+  validaAreaAtividade(AreaAtividade area)
+  registaAreaAtividade(AreaAtividade area) 
+  - addAreaAtividade(AreaAtividade area) 
+}
+
+class DefinirAreaController {
+  novaAreaAtividade(String cod, String dsBreve, String dsDet)
+  registaAreaAtividade() 
+}
+
+class DefinirAreaUI {
+  
+}
+
+DefinirAreaUI ..> DefinirAreaController
+DefinirAreaController ..> Plataforma
+DefinirAreaController ..> AreaAtividade
+Plataforma "1" --> "*" AreaAtividade : possui
+
+
+@enduml
