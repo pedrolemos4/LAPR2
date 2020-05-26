@@ -10,3 +10,25 @@ The manager of organization starts to define when all the tasks/transactions, th
 
 ![UC5_SSD.png](UC5_SSD.png)
 
+### Full Format
+
+#### Main Actor
+
+* Manager of Organization
+
+#### Interested parties and their interests
+
+* **Manager of organization:** pretends the system to be able to generate the payment to the freelancers.
+* **Freelancer:** pretends to be paid by their work.
+
+
+#### Pre-Conditions
+
+
+
+#### Post-Conditions
+
+The payments will be made automatically by the system.
+
+
+#### Main success scenario
