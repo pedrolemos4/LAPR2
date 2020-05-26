@@ -1,0 +1,23 @@
+@startuml
+autonumber
+actor "Organization's Collaborator" as OC
+actor "System" as S
+
+activate OC
+OC -> S : creation of a payment transaction of a finished/executed task
+activate S
+S --> OC : requests the necessary data on the payment transaction\na brief description of the task (id, brief description, time duration (in hours), cost per hour (in euros) and task category), \ndetails about the execution of the task (end date, delay, brief description of the quality of the work)\nand information about the freelancer that worked on the task \n(id, name, level of expertise, e-mail, NIF, bank account (IBAN), address and country)
+deactivate S
+
+OC -> S : enters the requested data
+activate S
+S --> OC : displays the payment transaction data and also the amount to pay to each freelancer, asking for confirmation
+deactivate S
+
+OC -> S : confirms
+activate S
+S --> OC : records the payment transaction data and informs of the success of the operation
+deactivate S
+
+deactivate OC
+@enduml
