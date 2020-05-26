@@ -1,0 +1,32 @@
+@startuml
+
+autonumber
+actor "Manager of Organization" as MAN
+
+participant ":System" as SIST
+
+activate MAN
+
+    MAN -> SIST : starts to define when all the tasks/transactions (that exist in the system and that have not been paid yet) will be paid
+
+    activate SIST
+    SIST --> MAN : requests the manager of organization to introduce the data (day of the month and time of the day)
+    deactivate SIST
+
+    MAN -> SIST: introduces the data
+
+    activate SIST
+        SIST --> MAN : validates, presents the data to the manager of organization and asks for his confirmation
+    deactivate SIST
+
+    MAN -> SIST : confirms the data
+
+    activate SIST
+        SIST --> MAN: regists the data and informs the manager of organization of the success of the operation
+    deactivate SIST
+
+
+deactivate MAN
+
+@enduml
+
