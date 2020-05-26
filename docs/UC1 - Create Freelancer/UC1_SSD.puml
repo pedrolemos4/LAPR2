@@ -1,0 +1,23 @@
+@startuml
+autonumber
+actor "Collaborator" as ADM
+
+activate ADM
+ADM -> ":System" : starts to create a new Freelancer.
+activate ":System"
+":System" --> ADM : asks needed information (i.e. id, name, level of expertise, e-mail, NIF, bank account (IBAN), address and country).
+deactivate ":System"
+
+ADM -> ":System" : introduces the information.
+activate ":System"
+":System" --> ADM : validates and apresents the information to the collaborater, asking for confirmation. 
+deactivate ":System"
+
+ADM -> ":System" : confirms
+activate ":System"
+":System" --> ADM : regists the information and informs the collaborator about the sucess of the operation.
+deactivate ":System"
+
+deactivate ADM
+
+@enduml
