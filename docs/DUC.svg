@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="362px" preserveAspectRatio="none" style="width:448px;height:362px;" version="1.1" viewBox="0 0 448 362" width="448px" zoomAndPan="magnify"><defs><filter height="300%" id="f10z77m0lmt9ik" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><ellipse cx="339.711" cy="179.9422" fill="#FEFECE" filter="url(#f10z77m0lmt9ik)" rx="97.711" ry="21.9422" style="stroke: #A80036; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="171" x="254.211" y="184.5906">UC1 - Create Freelancer</text><ellipse cx="339.4151" cy="256.183" fill="#FEFECE" filter="url(#f10z77m0lmt9ik)" rx="81.4151" ry="18.683" style="stroke: #A80036; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="134" x="272.4151" y="260.8315">UC2 - Create Tasks</text><ellipse cx="339.3318" cy="330.8664" fill="#FEFECE" filter="url(#f10z77m0lmt9ik)" rx="92.3318" ry="20.8664" style="stroke: #A80036; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="159" x="259.8318" y="335.5148">UC3 - Create Payment</text><ellipse cx="339.6122" cy="25.9224" fill="#FEFECE" filter="url(#f10z77m0lmt9ik)" rx="75.1122" ry="17.4224" style="stroke: #A80036; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="119" x="280.1122" y="30.5709">UC4 - Upload File</text><ellipse cx="339.2599" cy="100.852" fill="#FEFECE" filter="url(#f10z77m0lmt9ik)" rx="97.2599" ry="21.852" style="stroke: #A80036; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="170" x="254.2599" y="105.5004">UC5 - Pay Automatically</text><!--MD5=[b5af4e906b5608882632c7d969b5b8a1]
+entity CO--><ellipse cx="94" cy="225" fill="#FEFECE" filter="url(#f10z77m0lmt9ik)" rx="8" ry="8" style="stroke: #A80036; stroke-width: 1.5;"/><path d="M94,233 L94,260 M81,241 L107,241 M94,260 L81,275 M94,260 L107,275 " fill="none" filter="url(#f10z77m0lmt9ik)" style="stroke: #A80036; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="90" x="49" y="293.4951">Collaborator</text><!--MD5=[9ee20cf1442da920ef26173f9536f24b]
+entity MO--><ellipse cx="94" cy="33" fill="#FEFECE" filter="url(#f10z77m0lmt9ik)" rx="8" ry="8" style="stroke: #A80036; stroke-width: 1.5;"/><path d="M94,41 L94,68 M81,49 L107,49 M94,68 L81,83 M94,68 L107,83 " fill="none" filter="url(#f10z77m0lmt9ik)" style="stroke: #A80036; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="176" x="6" y="101.4951">Manager of Organization</text><!--MD5=[7e4ada8a3fe975da46de4a13aace18a1]
+link CO to UC1--><path d="M139.096,242.237 C177.498,230.251 233.589,212.744 276.507,199.349 " fill="none" id="CO-&gt;UC1" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="281.409,197.819,271.6262,196.6801,276.6358,199.3077,274.0081,204.3172,281.409,197.819" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[1daee0bcf4ccf6c23f0ab9fefca03a09]
+link CO to UC2--><path d="M139.096,256 C170.706,256 214.302,256 252.67,256 " fill="none" id="CO-&gt;UC2" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="257.805,256,248.805,252,252.805,256,248.805,260,257.805,256" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[aa9ed468fefaecbd5ead34843360b309]
+link CO to UC3--><path d="M139.096,269.5819 C178.158,281.6132 235.522,299.282 278.708,312.5835 " fill="none" id="CO-&gt;UC3" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="283.636,314.1013,276.2117,307.6298,278.8574,312.6298,273.8574,315.2755,283.636,314.1013" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[c8d84bddc2ea60b326b2381322c98436]
+link MO to UC4--><path d="M182.221,50.388 C211.641,45.797 243.992,40.749 271.591,36.442 " fill="none" id="MO-&gt;UC4" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="276.687,35.646,267.1776,33.0825,271.7469,36.4174,268.4119,40.9867,276.687,35.646" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[6a7b948e7905be66f9591621c2d53b6d]
+link MO to UC5--><path d="M182.221,77.253 C205.185,80.743 229.934,84.503 252.816,87.98 " fill="none" id="MO-&gt;UC5" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="257.974,88.764,249.6774,83.4568,253.0308,88.0125,248.475,91.3659,257.974,88.764" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[9436249b7246d16493acd61b27e64e26]
+@startuml
+usecase UC1 as "UC1 - Create Freelancer"
+usecase UC2 as "UC2 - Create Tasks"
+usecase UC3 as "UC3 - Create Payment"
+usecase UC4 as "UC4 - Upload File"
+usecase UC5 as "UC5 - Pay Automatically"
+
+
+actor "Collaborator" as CO
+actor "Manager of Organization" as MO
+
+left to right direction
+CO - -> (UC1)
+CO - -> (UC2)
+CO - -> (UC3)
+MO - -> (UC4)
+
+MO - ->(UC5)
+@enduml
+
+PlantUML version 1.2020.10(Sun May 17 09:48:49 UTC 2020)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Operating System: Linux
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
