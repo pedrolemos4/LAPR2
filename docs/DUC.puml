@@ -4,7 +4,7 @@ usecase UC1 as "UC1 - Create Freelancer"
 usecase UC2 as "UC2 - Create Tasks"
 usecase UC3 as "UC3 - Create Payment"
 usecase UC4 as "UC4 - Upload File"
-usecase UC5 as "UC5 - Pay Automatically"
+usecase UC5 as "UC5 - Set Day of Payment"
 
 
 actor "Collaborator" as CO
