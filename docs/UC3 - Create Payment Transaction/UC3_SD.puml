@@ -1,0 +1,106 @@
+@startuml
+autonumber
+
+actor "Organization's Collaborator" as CO
+participant ":CreatePaymentTransactionUI" as UI
+participant ":CreatePaymentTransactionController" as CTRL
+participant "AplicacaoPOT" as _APP
+participant "app\n:AplicacaoPOT" as APP
+participant "sessao\n:SessaoUtilizador" as SESSAO
+participant ":Platform" as PLAT
+participant "orgR:\nOrganizationRecord" as ORGR
+participant "org:\nOrganization" as ORG
+participant "tLst:\nTaskList" as TL
+participant "task:\nTask" as TA
+participant ":rfr\nFreelancerRecord" as FR
+participant "payT:\nPaymentTransaction" as PA
+
+activate CO
+CO -> UI : starts the creation of a payment transaction of a finished/executed task
+activate UI
+
+UI --> CO : requests the necessary data on the payment transaction\na brief description of the task (id, brief description, time duration (in hours), cost per hour (in euros) and task category), \ndetails about the execution of the task (end date, delay, brief description of the quality of the work)\nand information about the freelancer that worked on the task \n(id, name, level of expertise, e-mail, NIF, bank account (IBAN), address and country)
+deactivate UI
+
+CO -> UI : enters the requested data
+activate UI
+
+UI -> CTRL : newPaymentTransaction(taskId, briefDescription, timeDuration, costPerHour, taskCategory, \nendDate, delay, workQualityDescription, \nfrlId, name, expertiseLevel, email, NIF, IBAN, address, country)
+activate CTRL
+
+CTRL -> _APP: app = getInstance()
+activate _APP
+deactivate _APP
+
+CTRL -> APP: sessao = getCurrentSession()
+activate APP
+deactivate APP
+
+CTRL -> SESSAO: email = getUserEmail()
+activate SESSAO
+deactivate SESSAO
+
+CTRL -> PLAT: orgR = getOrganizationRecord()
+activate PLAT
+deactivate PLAT
+
+CTRL -> ORGR: org = getOrganizationByUserEmail(email)
+activate ORGR
+deactivate ORGR
+
+CTRL -> ORG: lstT=getTasksList()
+activate ORG
+deactivate ORG
+
+CTRL -> TL: task = taskExists(taskId)
+activate TL
+deactivate TL
+
+CTRL -> TA : taskExec = getTaskExecData(task)
+activate TA
+deactivate TA
+
+CTRL -> PLAT: frlR = getFreelancerRecord()
+activate PLAT
+deactivate PLAT
+
+CTRL -> FR: free = freelancerExists(frlId)
+activate FR
+deactivate FR
+
+CTRL --> ORG: payAmount = generatePayAmount(task, free)
+activate ORG
+deactivate ORG
+
+CTRL -> ORG : payT = newPaymentTransaction(task, taskExec, free)
+activate ORG
+ORG --> PA**: create(task, taskExec, free)
+
+ORG -> ORG : validatePaymentTransaction(payT)
+|||
+deactivate ORG
+
+UI -> CO : validates and displays the payment transaction data and also the amount to pay to each freelancer, asking for confirmation
+deactivate PA
+deactivate CTRL
+deactivate UI
+
+CO -> UI : confirms
+activate UI
+
+UI -> CTRL : paymentTransactionRegister()
+activate CTRL
+
+CTRL -> ORG : paymentTransactionRegister(payT)
+activate ORG 
+
+ORG -> ORG : validatesPaymentTransaction(payT)
+ORG -> ORG : addPaymentTransaction(payT)
+
+UI -> CO : records the payment transaction data and informs the organization's collaborator of the success of the operation
+deactivate ORG
+deactivate CTRL
+deactivate UI
+deactivate CO
+
+@enduml

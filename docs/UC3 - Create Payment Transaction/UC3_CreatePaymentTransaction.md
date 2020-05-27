@@ -4,7 +4,7 @@
 
 ### Brief Format
 
-The organization's collaborator starts the creation of a payment transaction of a finished/executed task. The system requests the necessary data on the payment transaction, that is, a brief description of the task (id, brief description, time duration (in hours), cost per hour (in euros) and task category), details about the execution of the task (end date, delay, brief description of the quality of the work) and information about the freelancer that worked on the task (id, name, level of expertise, e-mail, NIF, bank account (IBAN), address and country). The organization's collaborator enters the requested data. The system validates and displays the payment transaction data and also the amount to pay to each freelancer, asking for confirmation. The organization's collaborator confirms. The system records the payment transaction data and informs the organization's collaborator of the success of the operation.
+The organization's collaborator starts the creation of a payment transaction of a finished/executed task. The system requests the necessary data on the payment transaction, that is, a brief description of the task (taskId, brief description, time duration (in hours), cost per hour (in euros) and task category), details about the execution of the task (end date, delay, brief description of the quality of the work) and information about the freelancer that worked on the task (frlId, name, level of expertise, e-mail, NIF, bank account (IBAN), address and country). The organization's collaborator enters the requested data. The system validates and displays the payment transaction data and also the amount to pay to each freelancer, asking for confirmation. The organization's collaborator confirms. The system records the payment transaction data and informs the organization's collaborator of the success of the operation.
 
 ### SSD
 ![UC3_SSD.svg](UC3_SSD.svg)
@@ -31,7 +31,7 @@ The information about the payment transaction is saved in the system.
 #### Main success scenario (or basic flow)
 
 1. The organization's collaborator starts the creation of a payment transaction of a finished/executed task. 
-2. The system requests the necessary data on the payment transaction, that is, a brief description of the task (id, brief description, time duration (in hours), cost per hour (in euros) and task category), details about the execution of the task (end date, delay, brief description of the quality of the work) and information about the freelancer that worked on the task (id, name, level of expertise, e-mail, NIF, bank account (IBAN), address and country). 
+2. The system requests the necessary data on the payment transaction, that is, a brief description of the task (taskId, brief description, time duration (in hours), cost per hour (in euros) and task category), details about the execution of the task (end date, delay, brief description of the quality of the work) and information about the freelancer that worked on the task (frlId, name, level of expertise, e-mail, NIF, bank account (IBAN), address and country). 
 3. The organization's collaborator enters the requested data.
 4. The system validates and displays the payment transaction data and also the amount to pay to each freelancer, asking for confirmation.
 5. The organization's collaborator confirms.
@@ -110,7 +110,7 @@ The information about the payment transaction is saved in the system.
 ||... know which organization the user/collaborator belongs to?|OrganizationRecord|IE: knows all organizations.|
 |||Organization|IE: knows their collaborators.|
 |||Collaborator|IE: knows his data (e.g. email). |
-|2. The system requests the necessary data on the payment transaction, that is, a brief description of the task (id, brief description, time duration (in hours), cost per hour (in euros) and task category), details about the execution of the task (end date, delay, brief description of the quality of the work) and information about the freelancer that worked on the task (id, name, level of expertise, e-mail, NIF, bank account (IBAN), address and country).||||
+|2. The system requests the necessary data on the payment transaction, that is, a brief description of the task (taskId, brief description, time duration (in hours), cost per hour (in euros) and task category), details about the execution of the task (end date, delay, brief description of the quality of the work) and information about the freelancer that worked on the task (frlId, name, level of expertise, e-mail, NIF, bank account (IBAN), address and country).||||
 |3. The organization's collaborator enters the requested data. |... save the data entered?|PaymentTransaction|IE: instance created in step 1|
 |4. The system validates and displays the payment transaction data and also the amount to pay to each freelancer, asking for confirmation. |... checks if the data of the entered task exist?|Organization|IE: In MD, Organization has Task.|
 |||TasksList|IE: In MD, Organization has Task. By application of HC+LC delegates the TasksList.|
@@ -121,8 +121,7 @@ The information about the payment transaction is saved in the system.
 |5. The organization's collaborator confirms. ||||
 |6. The system records the payment transaction data and informs the organization's collaborator of the success of the operation. |... saves the PaymentTransaction created?|Platform|IE: In MD, the Platform has PaymentTransaction.|
 ||informs the collaborator?|CreatePaymentTransactionUI||
-
-             
+         
 
 ### Systematization ##
 
@@ -141,8 +140,8 @@ Other software classes (e.g. Pure Fabrication) identified:
  * CreatePaymentTransactionUI  
  * CreatePaymentTransactionController
  * OrganizationRecord 
- * TaskList
  * FreelancerRecord
+ * TasksList
 
 Other classes of external systems/components:
 
@@ -151,7 +150,6 @@ Other classes of external systems/components:
 ###	Sequence Diagram
 
 ![UC3_SD.svg](UC3_SD.svg)
-
 
 
 ###	Class Diagram

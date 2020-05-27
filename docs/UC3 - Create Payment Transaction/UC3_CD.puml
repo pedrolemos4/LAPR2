@@ -1,0 +1,104 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class AplicacaoPOT
+{
+  +static getInstance()
+  +getCurrentSession()
+}
+
+class SessaoUtilizador
+{
+  +getUserEmail()
+}
+
+class Tarefa {
+  -String id
+  -String briefDescription
+  -Integer timeDuration
+  -Double costPerHour
+  -String taskCategory
+  +getTaskExecData(task)
+}
+
+class Freelancer {
+  -String id
+  -String name
+  -String expertiseLevel
+  -String email
+  -String NIF
+  -String IBAN
+  -String address
+  -String country
+}
+
+class Organization {
+  -String name
+  +getTasksList()
+  +generatePayAmount(task, free)
+  +newPaymentTransaction(task, taskExec, free)
+  +validatePaymentTransaction(payT)
+  +paymentTransactionRegister(payT)
+  +addPaymentTransaction(payT)
+}
+
+class TaskList {
+  +taskExists(taskId)
+}
+
+class Platform {
+  -String designation
+  +OrganizationRecord getOrganizationRecord()
+  +FreelancerRecord getFreelancerRecord()
+}
+
+class FreelancerRecord {
+  +freelancerExists(frlId)
+}
+
+class OrganizationRecord  {
+  +getOrganizationByUserEmail(email)
+}
+
+class CreatePaymentTransactionController {
+  +newPaymentTransaction(taskId, briefDescription, timeDuration, costPerHour, taskCategory, \nendDate, delay, workQualityDescription, \nfrlId, name, expertiseLevel, email, NIF, IBAN, address, country)
+  +paymentTransactionRegister()
+}
+
+class CreatePaymentTransactionUI {
+}
+
+class PaymentTransaction{
+  +PaymentTransaction(task, taskExec, free)
+}
+
+class TaskExecution {
+ -Date endDate
+ -Double delay
+ -String workQualityDescription
+}
+
+CreatePaymentTransactionUI ..> CreatePaymentTransactionController
+CreatePaymentTransactionController ..> Platform
+CreatePaymentTransactionController ..> Tarefa
+CreatePaymentTransactionController ..> Organization
+CreatePaymentTransactionController ..> AplicacaoPOT
+CreatePaymentTransactionController ..> SessaoUtilizador
+CreatePaymentTransactionController ..> TaskList
+CreatePaymentTransactionController ..> FreelancerRecord
+CreatePaymentTransactionController ..> OrganizationRecord
+Platform "1" --> "1" FreelancerRecord : has
+Platform "1" --> "1" OrganizationRecord : has
+
+FreelancerRecord "1" --> "*" Freelancer : has
+OrganizationRecord "1" --> "*" Organization : has
+Organization "1" --> "1" TaskList : has
+Organization "1" --> "*" PaymentTransaction : has
+TaskList "1" --> "*" Tarefa : has
+Tarefa "1" --> "1" TaskExecution : has
+
+PaymentTransaction "1" --> "1" Freelancer : related to
+PaymentTransaction "1" --> "1" Tarefa : related to
+PaymentTransaction "1" --> "1" TaskExecution : related to
+
+@enduml
