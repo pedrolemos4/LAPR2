@@ -1,0 +1,23 @@
+@startuml
+autonumber
+actor "Manager of Organization" as ADM
+
+activate ADM
+ADM -> ":System" : begins to load a file (txt or csv).
+activate ":System"
+":System" --> ADM : requests the file that registers a set of transitions.
+deactivate ":System"
+
+ADM -> ":System" : enters the requested file.
+activate ":System"
+":System" --> ADM : displays the file, asking for confirmation. 
+deactivate ":System"
+
+ADM -> ":System" : confirms
+activate ":System"
+":System" --> ADM : successful operation.
+deactivate ":System"
+
+deactivate ADM
+
+@enduml
