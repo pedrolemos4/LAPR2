@@ -1,0 +1,30 @@
+@startuml
+skinparam classAttributeIconSize 0
+hide methods
+left to right direction
+
+class Platform {
+  -String designation
+}
+
+class ManagerOfOrganization {
+  -String name
+  -String email
+}
+
+class Organization {
+  -String name
+}
+
+class AutomaticPay {
+  -Date timeOfDay
+  -Date dayOfMonth
+}
+
+Platform "1" -- "*" Organization : has registered >
+Organization "1" -- "1" ManagerOfOrganization : has >
+ManagerOfOrganization "1" -- "*" AutomaticPay : sets >
+@enduml
+
+
+

@@ -1,4 +1,4 @@
-# UC 5 - Pay Automatically
+# UC 5 - Set Day of Payment
 
 ## 1. Requirements Engineering
 
