@@ -97,26 +97,32 @@ The freelancer stays in the system.
 
 | Main Flow | Question: Which class... | Answer | Justification |
 |:--------------  |:---------------------- |:----------|:---------------------------- |
-| 1. The collaborator starts to create a new Freelancer. |  |  |  | 
+| 1. The collaborator starts to create a new Freelancer. | ...interacts with the user? | CreateFreelancerUI | Pure Fabrication: does not justify gice this responsability in any class that exists in the MD | 
+|                                                        | ...coordinates the UC? | CreateFreelancerController | Controller |
+|                                                        | ...creates the instance Freelancer? | RegisterFreelancer | HC+LC + Creator |
+|                                                        | ...knows RegisterFreelancer? | Plataform | HC+LC |
 | 2. The system asks needed information (i.e. id, name, level of expertise, e-mail, NIF, bank account (IBAN), address and country). |  |  |  |  
-| 3. The collaborator introduces the information. |  |  |  | 
-| 4.The system validates and apresents the information to the collaborater, asking for confirmation. |  |  |  |  
+| 3. The collaborator introduces the information. | ...keeps the information? | Freelancer | IE: Knows his own information | 
+| 4.The system validates and apresents the information to the collaborater, asking for confirmation. | ...validates the information?(local)? | Freelancer  | IE: Knows his own information |  
+|                                                                                                    | ...validates the information(global)? | RegisterFreelancer | HC+LC |                                        
 | 5. The collaborator confirms. |  |  |  | 
-| 6. The system regists the information and informs the collaborator about the sucess of the operation. |  |  |  | 
+| 6. The system regists the information and informs the collaborator about the sucess of the operation. | ...keeps the freelancer created? | RegisterFreelancer | HC+LC: Plataform delegated functions  |
+|                                                                                                       | ...informs the collaborator? | CreaterFreelancerUI | Pure Fabrication |
 
 
 ### Systematization ##
 
  From the racional results the conceptual classes promoted to software classes are : 
  
- * Plataforma
- * CategoriaTarefa
+ * Plataform
+ * Freelancer
 
 
  The other software classes (i.e. Pure Fabrication) identify:
 
- * DefinirCategoriaUI
- * DefinirCategoriaTarefaController  
+ * CreateFreelancerUI
+ * CreateFreelancerController 
+ * RegisterFreelancer 
 
 
 ###     Sequence Diagram
