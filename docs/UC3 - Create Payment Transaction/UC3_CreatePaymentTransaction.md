@@ -93,7 +93,7 @@ The information about the payment transaction is saved in the system.
 
 ### Excerpt from the Relevant Domain Model for UC
 
-![UC3_MD.svg](UC3_MD.svg)
+![UC3_MD.png](UC3_MD.png)
 
 
 ## 3. Design - Use Case Realization
