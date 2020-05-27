@@ -25,7 +25,7 @@ CTRL -> PLAT: rfrl=getRegistoFreelancers()
 activate PLAT
 deactivate PLAT
 
-CTRL -> RFR : novoFreelancer(nome, nif, endpost, tele, email)
+CTRL -> RFR : newFreelancer(id, name, lvlExp, email, nif, iban, adress, country)
 activate RFR
 RFR --> FREEL**: create(id, name, lvlExp, email, nif, iban, adress, country)
 activate FREEL

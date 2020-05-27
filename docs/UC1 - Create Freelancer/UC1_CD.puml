@@ -1,0 +1,67 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+left to right direction
+
+class CreateFreelancerUI {
+    
+}
+
+class CreateFreelancerController {
+  +Freelancer newFreelancer(id, name, lvlExp, email, nif, iban, adress, country)
+  +registerFreelancer(freel) 
+}
+
+class Plataform {
+  -String designacao
+  +ResgisterFreelancer getRegisterFreelancer()
+}
+
+class RegisterFreelancer {
+  +Freelancer newFreelancer(id, name, lvlExp, email, nif, iban, adress, country)
+  +registerFreelancer(freel)
+  +validatesFreelancer(freel)
+  +addFreelancer(freel)
+  
+}
+
+class Freelancer {
+  -String id
+  -String name
+  -String level of expertise
+  -String email
+  -int nif
+  -int iban
+  -String country
+  -String adress
+  +validatesFreelancer(freel)
+}
+
+class Collaborator {
+  -String nome
+  -String email
+}
+
+class Organization {
+  -String nome 
+}
+
+
+
+Organization "1" -- "*" Collaborator : possui >
+
+Collaborator "1" -- "0..1" Freelancer : cria >
+
+Plataform "1" -- "1..*" Collaborator : possui >
+Plataform "1" -- "1..*" Organization : possui >
+Plataform "1" -- "1" RegisterFreelancer : possui >
+
+CreateFreelancerUI ..> CreateFreelancerController
+CreateFreelancerController ..> Plataform
+CreateFreelancerController ..> RegisterFreelancer
+CreateFreelancerController ..> Freelancer
+
+RegisterFreelancer "1" -- "*" Freelancer : tem registados >
+
+
+@enduml
