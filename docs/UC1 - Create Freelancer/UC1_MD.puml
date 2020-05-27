@@ -1,0 +1,38 @@
+@startuml
+hide methods
+left to right direction
+
+class Plataform {
+  -String designacao
+}
+
+class Freelancer {
+  -String id
+  -String name
+  -String level of expertise
+  -String email
+  -int nif
+  -int iban
+  -String country
+  -String adress
+}  
+
+class Collaborator {
+  -String nome
+  -String email
+}
+
+class Organization {
+  -String nome 
+}
+
+
+Plataform "1" -- "1..*" Collaborator : possui >
+Plataform "1" -- "1..*" Organization : possui >
+
+Organization "1" -- "*" Collaborator : possui >
+
+Collaborator "1" -- "0..1" Freelancer : cria >
+
+
+@enduml
