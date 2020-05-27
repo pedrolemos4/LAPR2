@@ -103,7 +103,7 @@ The freelancer stays in the system.
 |                                                        | ...knows RegisterFreelancer? | Plataform | HC+LC |
 | 2. The system asks needed information (i.e. id, name, level of expertise, e-mail, NIF, bank account (IBAN), address and country). |  |  |  |  
 | 3. The collaborator introduces the information. | ...keeps the information? | Freelancer | IE: Knows his own information | 
-| 4.The system validates and apresents the information to the collaborater, asking for confirmation. | ...validates the information?(local)? | Freelancer  | IE: Knows his own information |  
+| 4. The system validates and apresents the information to the collaborater, asking for confirmation. | ...validates the information?(local)? | Freelancer  | IE: Knows his own information |  
 |                                                                                                    | ...validates the information(global)? | RegisterFreelancer | HC+LC |                                        
 | 5. The collaborator confirms. |  |  |  | 
 | 6. The system regists the information and informs the collaborator about the sucess of the operation. | ...keeps the freelancer created? | RegisterFreelancer | HC+LC: Plataform delegated functions  |
