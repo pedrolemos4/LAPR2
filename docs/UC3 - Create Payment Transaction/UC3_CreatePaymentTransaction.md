@@ -1,4 +1,4 @@
-# UC4 - Create Payment Transaction
+# UC3 - Create Payment Transaction
 
 ## 1. Requirements Engineering
 
@@ -85,7 +85,8 @@ The information about the payment transaction is saved in the system.
 
 #### Open questions
 
-* Are there any other mandatory data in addition to those already known?
+* Are there other data that are needed?
+* Is all data mandatory?
 * How often does this use case occur?
 
 
@@ -93,7 +94,7 @@ The information about the payment transaction is saved in the system.
 
 ### Excerpt from the Relevant Domain Model for UC
 
-![UC3_MD.png](UC3_MD.png)
+![UC3_MD.svg](UC3_MD.svg)
 
 
 ## 3. Design - Use Case Realization
@@ -103,19 +104,23 @@ The information about the payment transaction is saved in the system.
 | Main Flow | Question: What Class ... | Answer  | Justification  |
 |:--------------  |:---------------------- |:----------|:---------------------------- |
 |1. The organization's collaborator starts the creation of a payment transaction of a finished/executed task.|... interact with the user?| CreatePaymentTransactionUI |Pure Fabrication|
-| |... coordinates the UC?| CreatePaymentTransactionController |Controller|
-| |... create payment transaction instances?|Plataforma|Creator(regra1)|
+| |... coordinates the UC?| CreatePaymentTransactionController|Controller|
+| |... create payment transaction instances?|Organization|Creator(rule 1)|
+||... knows the user/collaborator using the system?|UserSession|IE: cf. user management component documentation.|
+||... know which organization the user/collaborator belongs to?|OrganizationRecord|IE: knows all organizations.|
+|||Organization|IE: knows their collaborators.|
+|||Collaborator|IE: knows his data (e.g. email). |
 |2. The system requests the necessary data on the payment transaction, that is, a brief description of the task (id, brief description, time duration (in hours), cost per hour (in euros) and task category), details about the execution of the task (end date, delay, brief description of the quality of the work) and information about the freelancer that worked on the task (id, name, level of expertise, e-mail, NIF, bank account (IBAN), address and country).||||
-|3. The organization's collaborator enters the requested data. |... guarda os dados introduzidos?|Organizacao, EnderecoPostal, Colaborador|IE: instância criada no passo 1|
-| |... cria instâncias de EnderecoPostal?|Organizacao|creator(regra1)|
-| |... cria instâncias de Colaborador?|Organizacao|creator(regra1)|
-|4. The system validates and displays the payment transaction data and also the amount to pay to each freelancer, asking for confirmation. |... valida os dados da Organizacao (validação local)|Organizacao|IE: possui os seus próprios dados|
-| |... valida os dados da Organizacao (validação local)|EnderecoPostal|IE: possui os seus próprios dados|
-| |... valida os dados da Organizacao (validação local)|Colaborador|IE: possui os seus próprios dados|
-| |... valida os dados da Organizacao (validação global)|Plataforma|IE: A Plataforma tem registadas Organizacao|
+|3. The organization's collaborator enters the requested data. |... save the data entered?|PaymentTransaction|IE: instance created in step 1|
+|4. The system validates and displays the payment transaction data and also the amount to pay to each freelancer, asking for confirmation. |... checks if the data of the entered task exist?|Organization|IE: In MD, Organization has Task.|
+|||TasksList|IE: In MD, Organization has Task. By application of HC+LC delegates the TasksList.|
+||... checks if the data of the entered freelancer exist?|Platform|IE: In MD, Platform has/uses Freelancer.|
+|||FreelancerRecord|IE: In MD, Platform has/uses Freelancer. By application of HC+LC delegates the FreelancerRecord.|
+| |... validates payment transaction data (local validation)?|PaymentTransaction|IE: has its own data.|
+| |... validates payment transaction data (global validation)?|Organization|IE: In MD, Organization has PaymentTransaction|
 |5. The organization's collaborator confirms. ||||
-|6. The system records the payment transaction data and informs the organization's collaborator of the success of the operation. |... guarda a Organizacao criada?| Plataforma |IE: No MD a Plataforma tem  Organizacao|
-| |... regista/guarda o Utilizador referente ao Colaborador da Organizacao?|AutorizacaoFacade|IE. A gestão de utilizadores é responsabilidade do componente externo respetivo cujo ponto de interação é através da classe "AutorizacaoFacade"|
+|6. The system records the payment transaction data and informs the organization's collaborator of the success of the operation. |... saves the PaymentTransaction created?|Platform|IE: In MD, the Platform has PaymentTransaction.|
+||informs the collaborator?|CreatePaymentTransactionUI||
 
              
 
@@ -123,17 +128,25 @@ The information about the payment transaction is saved in the system.
 
 It follows from the rational that the conceptual classes promoted to software classes are:
 
- * Plataforma
- * Organizacao
- * Colaborador
- * EnderecoPostal
+ * Platform
+ * Organization
+ * Collaborator
+ * Task
+ * Freelancer
+ * PaymentTransaction
 
 
-Other software classes (i.e. Pure Fabrication) identified:
+Other software classes (e.g. Pure Fabrication) identified:
 
  * CreatePaymentTransactionUI  
  * CreatePaymentTransactionController
+ * OrganizationRecord 
+ * TaskList
+ * FreelancerRecord
 
+Other classes of external systems/components:
+
+ * UserSession
 
 ###	Sequence Diagram
 
