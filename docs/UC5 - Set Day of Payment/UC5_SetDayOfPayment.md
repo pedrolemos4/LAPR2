@@ -75,4 +75,24 @@ The payments will be made automatically by the system whenever we arrive to the 
 
 ### Excerpt from the Domain Model relevant to the use case
 
+![UC5_MD.png](UC5_MD.png)
+
+
+## 3. Design - Use Case Realization
+
+### Rational
+
+| Main Flow | Question: What Class ... | Answer  | Justification  |
+|:--------------  |:---------------------- |:----------|:---------------------------- |
+|1. The manager of organization starts defining when he wants all tasks/transactions to be paid automatically by the system.|... interacts with the user?| SetDayOfPaymentUI |Pure Fabrication|
+| |... coordinates the UC?| SetDayOfPaymentController |Controller|
+| |... creates automatic payment instances?|Organization|Creator(regra1)|
+||... knows the manager of organization using the system?|UserSession|IE: cf. user management component documentation.|
+||... knows which organization the manager belongs to?|OrganizationRecord|IE: knows all organizations.|
+|2. The system requests the necessary data (day of the month and time of the day).||||
+|3. The manager of organization introduces the required data. |... saves the introduced data?|AutomaticPayment|IE: instance created in step 1|
+|4. The system validates, presents the data to the manager of organization and asks for his confirmation. ||||
+|5. The manager of organization confirms the data.||||
+|6. The system regists the data and informs the manager of the success of the operation.|... saves the AutomaticPayment created?
+
 

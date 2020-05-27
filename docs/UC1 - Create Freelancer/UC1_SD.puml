@@ -1,0 +1,61 @@
+@startuml
+autonumber
+
+actor "Collaborator" as CO
+participant ":CreateFreelancerUI" as UI
+participant ":CreateFreelancerController" as CTRL
+participant ":Plataforma" as PLAT
+participant ":rfr\nRegisterFreelancer" as RFR
+participant "freel:\nFreelancer" as FREEL
+
+activate CO
+CO -> UI : starts creating a freelancer
+activate UI
+
+UI --> CO : asks for the information about the freelancer \n(id, name, level of expertise, e-mail, NIF, bank account (IBAN), address and country)
+deactivate UI
+
+CO -> UI : introduces the information
+activate UI
+
+UI -> CTRL : newFreelancer(id, name, lvlExp, email, nif, iban, adress, country)
+activate CTRL
+
+CTRL -> PLAT: rfrl=getRegistoFreelancers()
+activate PLAT
+deactivate PLAT
+
+CTRL -> RFR : newFreelancer(id, name, lvlExp, email, nif, iban, adress, country)
+activate RFR
+RFR --> FREEL**: create(id, name, lvlExp, email, nif, iban, adress, country)
+activate FREEL
+
+FREEL -> FREEL : validatesFreelancer(freel)
+deactivate RFR
+
+UI -> CO : validates and apresents the information to the collaborater, asking for confirmation.
+deactivate FREEL
+deactivate CTRL
+deactivate UI
+
+CO -> UI : confirms
+activate UI
+
+UI -> CTRL : registerFreelancer(freel)
+activate CTRL
+
+CTRL -> RFR : registrerFreelancer(freel)
+activate RFR 
+
+RFR -> RFR : validatesFreelancer(freel)
+RFR -> RFR : addFreelancer(freel)
+
+UI -> CO : regists the information and informs the collaborator about the sucess of the operation
+deactivate RFR
+deactivate CTRL
+deactivate UI
+
+deactivate CO
+
+
+@enduml
