@@ -23,7 +23,7 @@ A distribuição de tarefas ao longo do período de desenvolvimento do projeto p
 
 | Tarefa                      | [Sprint 1] | [Sprint 2] | [Sprint 3] |
 |-----------------------------|------------|------------|------------|
-| Diagrama Casos de Uso (DUC) |  [todos](docs/DUC.md)   |   [todos](docs/DUC.md)  |   [todos](docs/DUC.md)  |
+| Diagrama Casos de Uso (DUC) |  [todos](DUC.md)   |   [todos](docs/DUC.md)  |   [todos](docs/DUC.md)  |
 | Glossário  |  [todos](Iteracao1/Glossario.md)   |   [todos](Iteracao2/Glossario.md)  |   [todos](Iteracao3/Glossario.md)  |
 | Especificação Suplementar   |   (n/a)    |   [todos](Iteracao2/FURPS.md)  |   [todos](Iteracao3/FURPS.md)  |
 | Modelo de Domínio           |  [todos](docs/MD.md)   |   [todos](docs/MD.md)  |   [todos](docs/MD.md)  |
