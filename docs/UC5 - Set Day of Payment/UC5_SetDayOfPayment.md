@@ -18,8 +18,8 @@ The manager of organization starts to define when all the tasks/transactions, th
 
 #### Interested parties and their interests
 
-* **Manager of organization:** pretends the system to be able to generate the payment to the freelancers.
-* **Freelancer:** pretends to be paid by their work.
+* **Manager of organization:** wants the system to be able to generate the payment to the freelancers.
+* **Freelancer:** wants to be paid by their work.
 
 
 #### Pre-Conditions

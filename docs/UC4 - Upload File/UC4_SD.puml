@@ -1,0 +1,80 @@
+@startuml
+autonumber
+
+actor "Collaborator" as CO
+participant ":UploadFileUI" as UI
+participant ":UploadFileController" as CTRL
+participant "AplicacaoPOT" as _APP
+participant "app\n:AplicacaoPOT" as APP
+participant "sessao\n:SessaoUtilizador" as SESSAO
+participant ":Platform" as PLAT
+participant "orgR:\nOrganizationRecord" as ORGR
+participant "org:\nOrganization" as ORG
+participant "par:\nPaymentTransactionRecord" as PAR
+
+activate CO
+CO -> UI : begins to load a file (txt or csv)
+activate UI
+
+UI --> CO : requests the file that registers a set of transitions (filename)
+deactivate UI
+
+CO -> UI : enters the name of the file
+activate UI
+
+UI -> CTRL : readFile(filename)
+activate CTRL
+
+CTRL -> _APP: app = getInstance()
+activate _APP
+deactivate _APP
+
+CTRL -> APP: sessao = getCurrentSession()
+activate APP
+deactivate APP
+
+CTRL -> SESSAO: email = getUserEmail()
+activate SESSAO
+deactivate SESSAO
+
+CTRL -> PLAT: orgR = getOrganizationRecord()
+activate PLAT
+deactivate PLAT
+
+CTRL -> ORGR: org = getOrganizationByUserEmail(email)
+activate ORGR
+deactivate ORGR
+
+CTRL -> ORG: par = getPaymentTransactionRecord()
+activate ORG
+deactivate ORG
+
+CTRL -> PAR: par = readFile(filename)
+activate PAR
+deactivate PAR
+
+
+
+UI -> CO : displays the file, asking for confirmation
+deactivate CTRL
+deactivate UI
+
+CO -> UI : confirms
+activate UI
+
+UI -> CTRL : uploadFileRegister()
+activate CTRL
+
+CTRL -> PAR : uploadFileRegister(par)
+activate PAR 
+
+PAR -> PAR : validatesUploadFile(par)
+deactivate PAR
+
+UI -> CO : success of the operation
+deactivate ORG
+deactivate CTRL
+deactivate UI
+deactivate CO
+
+@enduml
