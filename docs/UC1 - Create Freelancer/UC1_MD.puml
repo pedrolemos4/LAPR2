@@ -27,7 +27,6 @@ class Organization {
 }
 
 
-Plataform "1" -- "1..*" Collaborator : possui >
 Plataform "1" -- "1..*" Organization : possui >
 
 Organization "1" -- "*" Collaborator : possui >

@@ -52,7 +52,6 @@ Organization "1" -- "*" Collaborator : possui >
 
 Collaborator "1" -- "0..1" Freelancer : cria >
 
-Plataform "1" -- "1..*" Collaborator : possui >
 Plataform "1" -- "1..*" Organization : possui >
 Plataform "1" -- "1" RegisterFreelancer : possui >
 
