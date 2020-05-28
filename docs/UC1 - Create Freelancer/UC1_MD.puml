@@ -31,7 +31,7 @@ Plataform "1" -- "1..*" Organization : possui >
 
 Organization "1" -- "*" Collaborator : possui >
 
-Collaborator "1" -- "0..1" Freelancer : cria >
+Collaborator "1" -- "0..*" Freelancer : cria >
 
 
 @enduml
