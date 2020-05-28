@@ -119,7 +119,7 @@ The information about the payment transaction is saved in the system.
 | |... validates payment transaction data (local validation)?|PaymentTransaction|IE: has its own data.|
 | |... validates payment transaction data (global validation)?|Organization|IE: In MD, Organization has PaymentTransaction|
 |5. The organization's collaborator confirms. ||||
-|6. The system records the payment transaction data and informs the organization's collaborator of the success of the operation. |... saves the PaymentTransaction created?|Platform|IE: In MD, the Platform has PaymentTransaction.|
+|6. The system records the payment transaction data and informs the organization's collaborator of the success of the operation. |... saves the PaymentTransaction created?|Organization|IE: In MD, the Organization has PaymentTransaction.|
 ||informs the collaborator?|CreatePaymentTransactionUI||
          
 
