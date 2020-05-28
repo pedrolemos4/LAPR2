@@ -16,14 +16,14 @@ class Organization {
   -String name
 }
 
-class AutomaticPayment {
+class PaymentDay {
   -Date timeOfDay
   -Date dayOfMonth
 }
 
 Platform "1" -- "*" Organization : has registered >
 Organization "1" -- "1" ManagerOfOrganization : has >
-ManagerOfOrganization "1" -- "*" AutomaticPayment : sets >
+ManagerOfOrganization "1" -- "*" PaymentDay : sets >
 @enduml
 
 

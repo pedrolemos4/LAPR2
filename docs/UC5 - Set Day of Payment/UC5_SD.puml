@@ -1,0 +1,77 @@
+@startuml
+autonumber
+
+actor "Manager of\nOrganization" as MAN
+
+participant ":SetDayofPaymentUI" as UI
+participant ":SetDayofPaymentController" as CTRL
+participant "AplicacaoPOT" as POT
+participant "app\n:AplicacaoPOT" as APP
+participant "sessao\n:SessaoUtilizador" as SESS
+participant ":Platforma" as PLAT
+participant "or:OrganizationRecord" as OR
+participant "org:Organization" as ORG
+participant "pd:PaymentDay" as PD
+
+
+
+activate MAN
+MAN -> UI : starts setting the day of payment
+activate UI
+UI --> MAN : requests the introduction of the necessary data (day of the month and time of the day).
+deactivate UI
+
+MAN -> UI : introduces the required data
+activate UI
+
+UI -> CTRL : newPaymentDay(dayOfMonth, timeOfDay)
+activate CTRL
+
+CTRL -> POT: app = getInstance()
+activate POT
+deactivate POT
+
+CTRL -> APP: sessao = getCurrentSession()
+activate APP
+deactivate APP
+
+CTRL -> SESS: email = getUserEmail()
+activate SESS
+deactivate SESS
+
+CTRL -> PLAT : or = getOrganizationRecord() 
+activate PLAT
+deactivate PLAT
+
+CTRL -> OR : org = getOrganizationByUserEmail(email)
+activate OR
+deactivate OR
+
+CTRL -> ORG : pd = newPaymentDay(dayOfMonth,timeOfDay)
+activate ORG
+
+ORG -> PD** : create (dayOfMonth,timeOfDay)
+ORG -> ORG : validatePaymentDay(pd)
+deactivate ORG
+deactivate CTRL
+
+UI --> MAN : presents the data to the manager of organization and asks for his confirmation.
+deactivate UI
+
+MAN -> UI : confirms
+activate UI
+
+UI -> CTRL: recordDate()
+activate CTRL
+CTRL -> OR: recordDate(pd)
+activate OR
+
+OR -> OR: validateDate(pd)
+deactivate OR
+deactivate CTRL
+UI --> MAN : operação bem sucedida
+deactivate UI
+
+deactivate MAN
+@enduml
+
