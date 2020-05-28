@@ -29,6 +29,11 @@ A distribuição de tarefas ao longo do período de desenvolvimento do projeto p
 | Modelo de Domínio           |  [todos](docs/MD.md)   |   [todos](docs/MD.md)  |   [todos](docs/MD.md)  |
 | UC 1 (Requisitos + Design)  |  [1190974](UC1%20-%20Create%20Freelancer/UC1%20-%20Create%20Freelancer.md)   |  |            |
 | UC 2 (Requisitos + Design)  |  [1151352](UC2 - Create Tasks/UC2_CreateTasks.md)   |            |            |
-| UC 3 (Requisitos + Design)  |  [1190785](UC3 - Create Payment Transaction/UC3_CreatePaymentTransaction.md)   |           |            |
-| UC 4 (Requisitos + Design)  |  [1190429](UC4 - Register Information/UC4_RegisterInformation.md)   |         |            |
+| UC 3 (Requisitos + Design)  |  [1190785](UC3%20-%20Create%20Payment%20Transaction/UC3_CreatePaymentTransaction.md)   |           |            |
+| UC 4 (Requisitos + Design)  |  [1190429](UC4%20-%20Upload%20File/UC4_UploadFile.md)   |         |            |
 | UC 5 (Requisitos + Design)  |  [1191098](UC5%20-%20Pay%20Automatically/UC5_PayAutomatically.md)   |            |            |
+| UC 6 (Requisitos + Design)  |     | [1190429]    |     |
+| UC 7 (Requisitos + Design)  |     | [1190785]    |     |
+| UC 8 (Requisitos + Design)  |     | [1191098]    |     |
+| UC 9 (Requisitos + Design)  |     | [1151352]    |     |
+| UC 10 (Requisitos + Design) |     | [1190974]    |     |
