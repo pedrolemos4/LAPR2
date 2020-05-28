@@ -1,0 +1,89 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class AplicacaoPOT{
+  +static getInstance()
+  +getCurrentSession()
+}
+
+class SessaoUtilizador{
+  +getUserEmail()
+}
+
+class Task {
+  -String id
+  -String briefDescription
+  -Integer timeDuration
+  -Double costPerHour
+  -String taskCategory
+}
+
+class Freelancer {
+  -String id
+  -String name
+  -String expertiseLevel
+  -String email
+  -String NIF
+  -String IBAN
+  -String address
+  -String country
+}
+
+class Organization {
+  -String name
+  +PaymentTransactionRecord getPaymentTransactionRecord()
+}
+
+
+class Platform {
+  -String designation
+  +OrganizationRecord getOrganizationRecord()
+}
+
+
+class OrganizationRecord  {
+  +getOrganizationByUserEmail(email)
+}
+
+class UploadFileController {
+  +readFile(filename)
+  +uploadFileRegister()
+}
+
+class UploadFileUI {
+}
+
+class PaymentTransaction{
+}
+
+class PaymentTransactionRecord{
+    +readFile(filename)
+    +uploadFileRegister(par)
+    +validateUploadFile(par)
+}
+
+class TaskExecution {
+ -Date endDate
+ -Double delay
+ -String workQualityDescription
+}
+
+UploadFileUI ..> UploadFileController
+UploadFileController ..> Platform
+UploadFileController ..> Organization
+UploadFileController ..> AplicacaoPOT
+UploadFileController ..> SessaoUtilizador
+UploadFileController ..> PaymentTransactionRecord
+UploadFileController ..> OrganizationRecord
+Platform "1" --> "1" OrganizationRecord : has
+
+OrganizationRecord "1" --> "*" Organization : has
+Organization "1" --> "*" PaymentTransactionRecord : has
+PaymentTransactionRecord "1" --> "*" PaymentTransaction : has
+Task "1" --> "1" TaskExecution : has
+
+PaymentTransaction "1" --> "1" Freelancer : related to
+PaymentTransaction "1" --> "1" Task : related to
+PaymentTransaction "1" --> "1" TaskExecution : related to
+
+@enduml
