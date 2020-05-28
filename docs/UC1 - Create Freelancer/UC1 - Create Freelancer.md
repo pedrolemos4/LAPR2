@@ -8,28 +8,28 @@ UC1 - Create Freelancer
 The collaborator starts to create a new Freelancer. The system asks needed information (i.e. id, name, level of expertise, e-mail, NIF, bank account (IBAN), address and country). The collaborator introduces the information. The system validates and apresents the information to the collaborater, asking for confirmation. The collaborator confirms. The system regists the information and informs the collaborator about the sucess of the operation.
 
 ### SSD
-![UC1_SSD.jpg](UC1_SSD.jpg)
+![UC1_SSD.png](UC1_SSD.png)
 
 
 ### Full Format
 
-#### Ator principal
+#### Main Actor
 
-Administrativo
+* Collaborator
 
 #### Partes interessadas e seus interesses
-* **Collaborator:** pretends to create a new freelancer for a task.
-* **T4J:** pretends the collaborator associats a new freelancer to a task.
-* **Freelancer:** pretends to be registed in the system.
+* **Collaborator:** wants to create a new freelancer for a task.
+* **T4J:** wants the collaborator associats a new freelancer to a task.
+* **Freelancer:** wants to be registed in the system.
 
 
-#### Pré-condições
+#### Conditions before
 /-
 
-#### Pós-condições
+#### Conditions after
 The freelancer stays in the system.
 
-### Cenário de sucesso principal (ou fluxo básico)
+### Main sucess scene (Basic flux)
 
 1. The collaborator starts to create a new Freelancer. 
 2. The system asks needed information (i.e. id, name, level of expertise, e-mail, NIF, bank account (IBAN), address and country). 
@@ -38,10 +38,6 @@ The freelancer stays in the system.
 5. The collaborator confirms. 
 6. The system regists the information and informs the collaborator about the sucess of the operation.
 
-
-
-#### SSD
-![UC3_SSD2.png](UC3_SSD2.png)
 
 
 #### Extensions (or alternative fluxes)
