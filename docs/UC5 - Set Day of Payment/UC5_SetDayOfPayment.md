@@ -86,13 +86,40 @@ The payments will be made automatically by the system whenever we arrive to the 
 |:--------------  |:---------------------- |:----------|:---------------------------- |
 |1. The manager of organization starts defining when he wants all tasks/transactions to be paid automatically by the system.|... interacts with the user?| SetDayOfPaymentUI |Pure Fabrication|
 | |... coordinates the UC?| SetDayOfPaymentController |Controller|
-| |... creates automatic payment instances?|Organization|Creator(regra1)|
+| |... creates payment day instances?|Manager of organization|Creator(regra1)|
 ||... knows the manager of organization using the system?|UserSession|IE: cf. user management component documentation.|
 ||... knows which organization the manager belongs to?|OrganizationRecord|IE: knows all organizations.|
 |2. The system requests the necessary data (day of the month and time of the day).||||
-|3. The manager of organization introduces the required data. |... saves the introduced data?|AutomaticPayment|IE: instance created in step 1|
+|3. The manager of organization introduces the required data. |... saves the introduced data?|PaymentDay|IE: instance created in step 1|
 |4. The system validates, presents the data to the manager of organization and asks for his confirmation. ||||
 |5. The manager of organization confirms the data.||||
-|6. The system regists the data and informs the manager of the success of the operation.|... saves the AutomaticPayment created?
+|6. The system regists the data and informs the manager of the success of the operation.|... saves the AutomaticPayment created?| | |
+| |... informs the manager of organization?|SetDayOfPaymentController||
+
+
+### Systematization ##
+
+It follows from the rational that the conceptual classes promoted to software classes are:
+
+ * Platform
+ * Organization
+ * Manager of organization
+ * PaymentDay
+
+
+Other software classes (e.g. Pure Fabrication) identified:
+
+ * SetDayOfPaymentUI
+ * SetDayOfPaymentController
+ * Organization record
+ 
+Other classes of external systems/components:
+
+  * UserSession
+
+###	Sequence Diagram
+
+![UC5_SD.png](UC5_SD.png)
+
 
 
