@@ -33,7 +33,7 @@ activate FREEL
 FREEL -> FREEL : validatesFreelancer(freel)
 deactivate RFR
 
-UI -> CO : validates and apresents the information to the collaborater, asking for confirmation.
+UI -> CO : apresents the information to the collaborater, asking for confirmation.
 deactivate FREEL
 deactivate CTRL
 deactivate UI
