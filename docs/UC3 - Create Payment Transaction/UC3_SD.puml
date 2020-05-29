@@ -4,15 +4,15 @@ autonumber
 actor "Organization's Collaborator" as CO
 participant ":CreatePaymentTransactionUI" as UI
 participant ":CreatePaymentTransactionController" as CTRL
-participant "AplicacaoPOT" as _APP
-participant "app\n:AplicacaoPOT" as APP
-participant "sessao\n:SessaoUtilizador" as SESSAO
+participant "POTApplication" as _APP
+participant "app\n:POTApplication" as APP
+participant "session\n:UserSession" as SESSAO
 participant ":Platform" as PLAT
-participant "orgR:\nOrganizationRecord" as ORGR
+participant "orgR:\nOrganizationsRecord" as ORGR
 participant "org:\nOrganization" as ORG
-participant "tLst:\nTaskList" as TL
+participant "tLst:\nTasksList" as TL
 participant "task:\nTask" as TA
-participant ":rfr\nFreelancerRecord" as FR
+participant ":frlR\nFreelancersRecord" as FR
 participant "payT:\nPaymentTransaction" as PA
 
 activate CO
@@ -32,7 +32,7 @@ CTRL -> _APP: app = getInstance()
 activate _APP
 deactivate _APP
 
-CTRL -> APP: sessao = getCurrentSession()
+CTRL -> APP: session = getCurrentSession()
 activate APP
 deactivate APP
 
@@ -40,7 +40,7 @@ CTRL -> SESSAO: email = getUserEmail()
 activate SESSAO
 deactivate SESSAO
 
-CTRL -> PLAT: orgR = getOrganizationRecord()
+CTRL -> PLAT: orgR = getOrganizationsRecord()
 activate PLAT
 deactivate PLAT
 
@@ -48,7 +48,7 @@ CTRL -> ORGR: org = getOrganizationByUserEmail(email)
 activate ORGR
 deactivate ORGR
 
-CTRL -> ORG: lstT=getTasksList()
+CTRL -> ORG: tLst = getTasksList()
 activate ORG
 deactivate ORG
 
@@ -60,7 +60,7 @@ CTRL -> TA : taskExec = getTaskExecData(task)
 activate TA
 deactivate TA
 
-CTRL -> PLAT: frlR = getFreelancerRecord()
+CTRL -> PLAT: frlR = getFreelancersRecord()
 activate PLAT
 deactivate PLAT
 

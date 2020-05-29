@@ -1,0 +1,22 @@
+@startuml
+autonumber
+actor "T4J Administrator" as ADM
+
+activate ADM
+ADM -> ":Sistema" : starts registering an organization
+activate ":Sistema"
+":Sistema" --> ADM : requests the necessary data about the organization (i.e. name of the organization), \nabout the manager (i.e. name and email of the manager) \nand about the collaborator (i.e. name and email)
+deactivate ":Sistema"
+
+ADM -> ":Sistema" : enters the requested data
+activate ":Sistema"
+":Sistema" --> ADM : displays the data of the organization, its manager and its collaborator, \nasking for confirmation
+deactivate ":Sistema"
+
+ADM -> ":Sistema" : confirms
+activate ":Sistema"
+":Sistema" --> ADM : records the data of the organization, its manager and its collaborator\n and informs of the success of the operation
+deactivate ":Sistema"
+
+deactivate ADM
+@enduml

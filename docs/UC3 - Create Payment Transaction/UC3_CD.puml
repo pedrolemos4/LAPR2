@@ -1,13 +1,13 @@
 @startuml
 skinparam classAttributeIconSize 0
 
-class AplicacaoPOT
+class POTApplication
 {
   +static getInstance()
   +getCurrentSession()
 }
 
-class SessaoUtilizador
+class UserSession
 {
   +getUserEmail()
 }
@@ -42,21 +42,21 @@ class Organization {
   +addPaymentTransaction(payT)
 }
 
-class TaskList {
+class TasksList {
   +taskExists(taskId)
 }
 
 class Platform {
   -String designation
-  +OrganizationRecord getOrganizationRecord()
-  +FreelancerRecord getFreelancerRecord()
+  +OrganizationsRecord getOrganizationsRecord()
+  +FreelancersRecord getFreelancersRecord()
 }
 
-class FreelancerRecord {
+class FreelancersRecord {
   +freelancerExists(frlId)
 }
 
-class OrganizationRecord  {
+class OrganizationsRecord  {
   +getOrganizationByUserEmail(email)
 }
 
@@ -82,19 +82,19 @@ CreatePaymentTransactionUI ..> CreatePaymentTransactionController
 CreatePaymentTransactionController ..> Platform
 CreatePaymentTransactionController ..> Tarefa
 CreatePaymentTransactionController ..> Organization
-CreatePaymentTransactionController ..> AplicacaoPOT
-CreatePaymentTransactionController ..> SessaoUtilizador
-CreatePaymentTransactionController ..> TaskList
-CreatePaymentTransactionController ..> FreelancerRecord
-CreatePaymentTransactionController ..> OrganizationRecord
-Platform "1" --> "1" FreelancerRecord : has
-Platform "1" --> "1" OrganizationRecord : has
+CreatePaymentTransactionController ..> POTApplication
+CreatePaymentTransactionController ..> UserSession
+CreatePaymentTransactionController ..> TasksList
+CreatePaymentTransactionController ..> FreelancersRecord
+CreatePaymentTransactionController ..> OrganizationsRecord
+Platform "1" --> "1" FreelancersRecord : has
+Platform "1" --> "1" OrganizationsRecord : has
 
-FreelancerRecord "1" --> "*" Freelancer : has
-OrganizationRecord "1" --> "*" Organization : has
-Organization "1" --> "1" TaskList : has
+FreelancersRecord "1" --> "*" Freelancer : has
+OrganizationsRecord "1" --> "*" Organization : has
+Organization "1" --> "1" TasksList : has
 Organization "1" --> "*" PaymentTransaction : has
-TaskList "1" --> "*" Tarefa : has
+TasksList "1" --> "*" Tarefa : has
 Tarefa "1" --> "1" TaskExecution : has
 
 PaymentTransaction "1" --> "1" Freelancer : related to

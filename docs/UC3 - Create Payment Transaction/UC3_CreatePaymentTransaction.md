@@ -105,9 +105,9 @@ The information about the payment transaction is saved in the system.
 |:--------------  |:---------------------- |:----------|:---------------------------- |
 |1. The organization's collaborator starts the creation of a payment transaction of a finished/executed task.|... interact with the user?| CreatePaymentTransactionUI |Pure Fabrication|
 | |... coordinates the UC?| CreatePaymentTransactionController|Controller|
-| |... create payment transaction instances?|Organization|Creator(rule 1)|
+| |... create PaymentTransaction instances?|Organization|Creator(rule 1)|
 ||... knows the user/collaborator using the system?|UserSession|IE: cf. user management component documentation.|
-||... know which organization the user/collaborator belongs to?|OrganizationRecord|IE: knows all organizations.|
+||... know which organization the user/collaborator belongs to?|OrganizationsRecord|IE: knows all organizations.|
 |||Organization|IE: knows their collaborators.|
 |||Collaborator|IE: knows his data (e.g. email). |
 |2. The system requests the necessary data on the payment transaction, that is, a brief description of the task (taskId, brief description, time duration (in hours), cost per hour (in euros) and task category), details about the execution of the task (end date, delay, brief description of the quality of the work) and information about the freelancer that worked on the task (frlId, name, level of expertise, e-mail, NIF, bank account (IBAN), address and country).||||
@@ -115,7 +115,7 @@ The information about the payment transaction is saved in the system.
 |4. The system validates and displays the payment transaction data and also the amount to pay to each freelancer, asking for confirmation. |... checks if the data of the entered task exist?|Organization|IE: In MD, Organization has Task.|
 |||TasksList|IE: In MD, Organization has Task. By application of HC+LC delegates the TasksList.|
 ||... checks if the data of the entered freelancer exist?|Platform|IE: In MD, Platform has/uses Freelancer.|
-|||FreelancerRecord|IE: In MD, Platform has/uses Freelancer. By application of HC+LC delegates the FreelancerRecord.|
+|||FreelancerRecord|IE: In MD, Platform has/uses Freelancer. By application of HC+LC delegates the FreelancersRecord.|
 | |... validates payment transaction data (local validation)?|PaymentTransaction|IE: has its own data.|
 | |... validates payment transaction data (global validation)?|Organization|IE: In MD, Organization has PaymentTransaction|
 |5. The organization's collaborator confirms. ||||
@@ -139,8 +139,8 @@ Other software classes (e.g. Pure Fabrication) identified:
 
  * CreatePaymentTransactionUI  
  * CreatePaymentTransactionController
- * OrganizationRecord 
- * FreelancerRecord
+ * OrganizationsRecord 
+ * FreelancersRecord
  * TasksList
 
 Other classes of external systems/components:
