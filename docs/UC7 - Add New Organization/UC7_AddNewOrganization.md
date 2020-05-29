@@ -101,7 +101,7 @@ n/a
 | |... validates Organization data (global validation)?|OrganizationsRecord|IE: OrganizationsRecord has all organizations.|
 |5. The T4J administrator confirms. ||||
 |6. The system records the data of the organization, its manager and its collaborator, generating passwords for the latter and sending them by email, making them registered users and informs the T4J administrator of the success of the operation.|... saves the Organization created?| OrganizationsRecord |IE: By applying HC + LC to the Platform.|
-| |... generates the password?|PassworddGeneratorAlgorithm|Protected Variation + Adapter|
+| |... generates the password?|PasswordGeneratorAlgorithm|Protected Variation + Adapter|
 | |... registers/keep the User related to the organization's manager and collaborator?|FacadeAuthorization|IE: User management is the responsibility of the respective external component whose point of interaction is through the class "FacadeAuthorization".|
 | |...envia o email do gestor|OrganizationsRecord|IE: detem a informação necessária.|
 ||informs the T4J administrator?|OrganizationRecordUI||         
@@ -114,7 +114,7 @@ It follows from the rational that the conceptual classes promoted to software cl
  * Platform
  * Organization
  * Collaborator
- * PwdGeneratorAlgorithm
+ * PasswordGeneratorAlgorithm
 
 
 Other software classes (e.g. Pure Fabrication) identified:
