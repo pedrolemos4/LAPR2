@@ -36,7 +36,7 @@ class Organization {
   -String name
   +getTasksList()
   +generatePayAmount(task, free)
-  +newPaymentTransaction(task, taskExec, free)
+  +newPaymentTransaction(task, taskExec, free, payAmount)
   +validatePaymentTransaction(payT)
   +paymentTransactionRegister(payT)
   +addPaymentTransaction(payT)
@@ -69,7 +69,7 @@ class CreatePaymentTransactionUI {
 }
 
 class PaymentTransaction{
-  +PaymentTransaction(task, taskExec, free)
+  +PaymentTransaction(task, taskExec, free, payAmount)
 }
 
 class TaskExecution {
@@ -97,8 +97,8 @@ Organization "1" --> "*" PaymentTransaction : has
 TasksList "1" --> "*" Tarefa : has
 Tarefa "1" --> "1" TaskExecution : has
 
-PaymentTransaction "1" --> "1" Freelancer : related to
-PaymentTransaction "1" --> "1" Tarefa : related to
-PaymentTransaction "1" --> "1" TaskExecution : related to
+PaymentTransaction "1" --> "1" Freelancer : relates to
+PaymentTransaction "1" --> "1" Tarefa : relates to
+PaymentTransaction "1" --> "1" TaskExecution : relates to
 
 @enduml

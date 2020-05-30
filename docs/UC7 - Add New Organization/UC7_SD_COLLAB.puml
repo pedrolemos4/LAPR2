@@ -1,0 +1,47 @@
+@startuml
+title UC1_SD_RegistesCollaboratorAsUser
+autonumber
+
+participant "or:OrganizationsRecord" as ORGS
+participant "collab:Collaborator" as COLLAB
+participant ":Platform" as PLAT
+participant "alg:PasswordGeneratorAlgorithm" as ALG << interface >>
+participant "aut:FacadeAuthorization" as AUT
+
+note over of ALG
+It is an instance of any class 
+that implements this interface.
+end note
+
+ORGS -> ORGS: registesCollaboratorAsUser(collab)
+activate ORGS
+
+ORGS -> COLLAB: nameC = getName()
+activate COLLAB
+deactivate COLLAB
+ORGS -> COLLAB: emailC = getEmail()
+activate COLLAB
+deactivate COLLAB
+
+ORGS -> PLAT : alg = getPwdGeneratorAlgorithm()
+activate PLAT
+deactivate PLAT
+
+ORGS -> ALG: pwd = generatePassword(nameC, emailC)
+activate ALG
+deactivate ALG
+
+ORGS -> PLAT : aut = getFacadeAuthorization()
+activate PLAT
+deactivate PLAT
+
+ORGS -> AUT: registesUserWithRoles(nameC, emailC, pwd, "COLLABORATOR")
+activate AUT
+deactivate AUT
+
+
+ORGS -> ORGS: sendPwd(emailC, pwd)
+deactivate ORGS
+
+deactivate ORGS
+@enduml

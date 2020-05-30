@@ -75,9 +75,10 @@ deactivate ORG
 CTRL -> ORG : payT = newPaymentTransaction(task, taskExec, free)
 activate ORG
 ORG --> PA**: create(task, taskExec, free)
+deactivate ORG
 
-ORG -> ORG : validatePaymentTransaction(payT)
-|||
+CTRL -> ORG : validatePaymentTransaction(payT)
+activate ORG
 deactivate ORG
 
 UI -> CO : validates and displays the payment transaction data and also the amount to pay to each freelancer, asking for confirmation

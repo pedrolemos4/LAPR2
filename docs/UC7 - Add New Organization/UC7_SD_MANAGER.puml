@@ -1,0 +1,47 @@
+@startuml
+title UC1_SD_RegistesManagerAsUser
+autonumber
+
+participant "or:OrganizationsRecord" as ORGS
+participant "manager:Collaborator" as MANAGER
+participant ":Platform" as PLAT
+participant "alg:PasswordGeneratorAlgorithm" as ALG << interface >>
+participant "aut:FacadeAuthorization" as AUT
+
+note over of ALG
+It is an instance of any class 
+that implements this interface.
+end note
+
+ORGS -> ORGS: registesManagerAsUser(manager)
+activate ORGS
+
+ORGS -> MANAGER: nameM = getName()
+activate MANAGER
+deactivate MANAGER
+ORGS -> MANAGER: emailM = getEmail()
+activate MANAGER
+deactivate MANAGER
+
+ORGS -> PLAT : alg = getPwdGeneratorAlgorithm()
+activate PLAT
+deactivate PLAT
+
+ORGS -> ALG: pwd = generatePassword(nameM, emailM)
+activate ALG
+deactivate ALG
+
+ORGS -> PLAT : aut = getFacadeAuthorization()
+activate PLAT
+deactivate PLAT
+
+ORGS -> AUT: registesUserWithRoles(nameM, emailM, pwd, ["MANAGER", "COLLABORATOR"])
+activate AUT
+deactivate AUT
+
+
+ORGS -> ORGS: sendPwd(emailM, pwd)
+deactivate ORGS
+
+deactivate ORGS
+@enduml

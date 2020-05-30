@@ -127,9 +127,12 @@ Other software classes (e.g. Pure Fabrication) identified:
 ###	Sequence Diagram
 
 ![UC7_SD.svg](UC7_SD.svg)
+![UC7_SD_MANAGER.svg](UC7_SD_MANAGER.svg)
+![UC7_SD_COLLAB.svg](UC7_SD_COLLAB.svg)
 
 
 ###	Class Diagram
 
 ![UC7_CD.svg](UC7_CD.svg)
+![UC7_CD_PWD.svg](UC7_CD_PWD.svg)
 

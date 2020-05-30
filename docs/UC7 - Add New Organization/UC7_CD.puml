@@ -1,0 +1,68 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Collaborator {
+  -String name
+  -String email
+  +Colaborador(nameM, emailM)
+  +Colaborador(nameC, emailC)
+  +String getNome()
+  +String getEmail()
+}
+
+class Organization {
+  -String name
+  +{static} Colaborador newCollaborator(nameM, emailM)
+  +{static} Colaborador newCollaborator(nameC, emailC)
+  +Organizacao(name, manager, collab)
+}
+
+class Platform {
+  -String designation
+  +OrganizationsRecord getOrganizationsRecord()
+  +FacadeAuthorization getFacadeAuthorization()
+  +PasswordGeneratorAlgorithm getPwdGeneratorAlgorithm()
+}
+
+class OrganizationsRecord {
+  +Organization newOrganization(name, nameM, emailM, nameC, emailC)
+  +validateOrganization(Organization org)
+  +organizationRegister(Organization org)
+  -addOrganization(Organization org)
+  -RegistesManagerAsUser(Collaborator manager)
+  -enviaPwd(String emailM, String pwd)
+  -RegistesCollaboratorAsUser(Collaborator collab)
+  -enviaPwd(String emailC, String pwd)
+}
+
+class FacadeAuthorization {
+  +registesUserWithRoles(nameM, emailM, pwd, ["MANAGER", "COLLABORATOR"])
+  +registesUserWithRoles(nameC, emailC, pwd, "COLLABORATOR")
+}
+
+interface PasswordGeneratorAlgorithm <<interface>>{
+   +String generatePassword(String nameM, String emailM)
+   +String generatePassword(String nameC, String emailC)
+}
+
+class OrganizationRecordController {
+    +newOrganization(name, nameM, emailM, nameC, emailC)
+    +organizationRegister()
+}
+
+class OrganizationRecordUI {
+}
+
+OrganizationRecordUI ..> OrganizationRecordController
+OrganizationRecordController ..> Platform
+OrganizationRecordController ..> OrganizationsRecord
+OrganizationRecordController ..> Organization
+
+OrganizationsRecord "1" --> "*" Organization : has registered
+OrganizationsRecord ..> Collaborator
+OrganizationsRecord ..> FacadeAuthorization
+OrganizationsRecord ..> PasswordGeneratorAlgorithm
+Organization "1" --> "1" Collaborator: has
+Organization "1" --> "1" Collaborator: has manager
+
+@enduml

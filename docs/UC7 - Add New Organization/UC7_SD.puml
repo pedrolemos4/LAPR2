@@ -1,0 +1,80 @@
+@startuml
+autonumber
+
+actor "T4J administrator" as ADM
+participant ":OrganizationRecordUI" as UI
+participant ":OrganizationRecordController" as CTRL
+participant ":Platform" as PLAT
+participant "or:OrganizationsRecord" as ORGS
+participant "Organization" as _ORG
+participant "org:Organization" as ORG
+participant "manager:Collaborator" as MANAGER
+participant "collab:Collaborator" as COLLAB
+
+activate ADM
+ADM -> UI : starts registering an organization
+activate UI
+UI --> ADM : requests the necessary data about the organization (i.e. name of the organization), \nabout the manager (i.e. name and email of the manager) \nand about the collaborator (i.e. name and email).
+deactivate UI
+
+ADM -> UI : enters the requested data
+activate UI
+
+UI -> CTRL : newOrganization(name, nameM, emailM, nameC, emailC)
+activate CTRL
+
+CTRL -> PLAT: or = getOrganizationsRecord()
+activate PLAT
+deactivate PLAT
+
+CTRL -> ORGS: org = newOrganization(name, nameM, emailM, nameC, emailC)
+activate ORGS
+
+ORGS -> _ORG: manager = newCollaborator(nameM, emailM)
+activate _ORG
+_ORG -> MANAGER** : create(nameM, emailM)
+deactivate _ORG
+
+ORGS -> _ORG: collab = newCollaborator(nameC, emailC)
+activate _ORG
+_ORG -> COLLAB** : create(nameC, emailC)
+deactivate _ORG
+
+ORGS -> ORG ** : create(name, manager, collab)
+deactivate ORGS
+
+CTRL -> ORGS : validateOrganization(org)
+activate ORGS
+deactivate ORGS
+
+deactivate CTRL
+UI --> ADM : displays the data of the organization, its manager and its collaborator, \nasking for confirmation
+deactivate UI
+
+ADM -> UI : confirms
+activate UI
+
+UI -> CTRL: organizationRegister()
+activate CTRL
+CTRL -> ORGS: organizationRegister(org)
+activate ORGS
+
+ORGS -> ORGS: validateOrganization(org)
+
+ref over ORGS, MANAGER, PLAT
+  UC1_SD_RegistesManagerAsUser
+end ref
+
+ref over ORGS, COLLAB, PLAT
+  UC1_SD_RegistesCollaboratorAsUser
+end ref
+
+ORGS -> ORGS: addOrganizao(org)
+deactivate ORGS
+
+deactivate CTRL
+UI --> ADM :  records the data of the organization, its manager and its collaborator \nand informs the T4J administrator of the success of the operation
+deactivate UI
+
+deactivate ADM
+@enduml
