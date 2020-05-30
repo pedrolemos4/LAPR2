@@ -21,10 +21,12 @@ class PaymentDay {
   -Date dayOfMonth
 }
 
+class PaymentTransaction {
+}  
+
 Platform "1" -- "*" Organization : has registered >
 Organization "1" -- "1" ManagerOfOrganization : has >
-ManagerOfOrganization "1" -- "*" PaymentDay : sets >
+ManagerOfOrganization "1" -- "1" PaymentDay : sets >
+PaymentDay "1" -- "0..*" PaymentTransaction : is related to >
+
 @enduml
-
-
-
