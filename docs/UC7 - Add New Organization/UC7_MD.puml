@@ -16,6 +16,11 @@ class Collaborator {
   -String email
 }
 
+class Manager {
+  -String name
+  -String email
+}
+
 class User {
   -String email
   -String password
@@ -28,9 +33,10 @@ Platform "1" -- "*" Organization : has registered >
 Platform "1" -- "1" ExternalPwdGeneratorAlgorithm : resort to >
 
 Organization "1" -- "1" Collaborator: has >
-Organization "1" -- "1" Collaborator: has manager >
+Organization "1" -- "1" Manager: has >
 
 Collaborator "0..1" -- "1" User: acts like >
+Manager "0..1" -- "1" User: acts like >
 
 ExternalPwdGeneratorAlgorithm "1" -- "*" User : generate password >
 
