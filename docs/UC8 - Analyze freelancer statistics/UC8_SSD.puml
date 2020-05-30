@@ -1,0 +1,33 @@
+@startuml
+
+autonumber
+actor "Manager of Organization or \nCollaborator" as MAN
+
+participant ":System" as SIST
+
+activate MAN
+
+    MAN -> SIST : starts to analyze the freelancer's statistics
+
+    activate SIST
+    SIST --> MAN : presents the statistics about task execution times and about the freelancer's payments \nand ask the manager of organization or the collaborator whether he wants to sort the freelancers by name or by payment value
+    deactivate SIST
+
+    MAN -> SIST: chooses one option
+
+    activate SIST
+        SIST --> MAN : sorts the data concerning the choosen option and asks for confirmation
+    deactivate SIST
+
+    MAN -> SIST : confirms the data
+
+    activate SIST
+        SIST --> MAN: informs the manager of organization or the collaborator of the success of the operation
+    deactivate SIST
+
+
+deactivate MAN
+
+@enduml
+
+
