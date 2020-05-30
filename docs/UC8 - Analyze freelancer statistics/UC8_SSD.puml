@@ -7,10 +7,10 @@ participant ":System" as SIST
 
 activate MAN
 
-    MAN -> SIST : starts to analyze the freelancer's statistics
+    MAN -> SIST : starts to analyze the freelancers' statistics
 
     activate SIST
-    SIST --> MAN : presents the statistics about task execution times and about the freelancer's payments \nand ask the manager of organization or the collaborator whether he wants to sort the freelancers by name or by payment value
+    SIST --> MAN : presents the statistics about task execution times and about the freelancers' payments \nand ask the manager of organization or the collaborator whether he wants to sort the freelancers by name or by payment value
     deactivate SIST
 
     MAN -> SIST: chooses one option
@@ -29,5 +29,3 @@ activate MAN
 deactivate MAN
 
 @enduml
-
-
