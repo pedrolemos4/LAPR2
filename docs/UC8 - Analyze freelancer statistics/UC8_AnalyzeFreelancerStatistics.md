@@ -78,6 +78,21 @@ or
 ![UC8_MD.png](UC8_MD.png)
 
 
+## 3. Design - Use Case Realization
+
+### Rational
+
+| Main Flow | Question: What Class ... | Answer  | Justification  |
+|:--------------  |:---------------------- |:----------|:---------------------------- |
+|1. Either the manager of organization or the collaborator starts to analyze the freelancer's statistics.|... interacts with the user?| AnalyzeFreelancerStatisticsUI |Pure Fabrication|
+| |... coordinates the UC?| AnalyzeFreelancerStatisticsController |Controller|
+||... knows the manager of organization/collaborator using the system?|UserSession|IE: cf. user management component documentation.|
+||... knows which organization the manager/collaborator belongs to?|OrganizationRecord|IE: knows all organizations.|
+
+
+### Systematization ##
+
+
 
 
 
