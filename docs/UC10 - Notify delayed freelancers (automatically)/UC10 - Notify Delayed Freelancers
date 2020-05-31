@@ -1,6 +1,6 @@
 UC10 - Notify Delayed Freelancers (automatically)
 
-## 1. Requirements engineering
+## 1. Requirements Engineering
 
 ### Breef Format
 
@@ -74,10 +74,11 @@ The freelancer stays informed.
 
 | Main Flow | Question: Which class... | Answer | Justification |
 |:--------------  |:---------------------- |:----------|:---------------------------- |
-| 1. The collaborator starts to create a new Freelancer. | ...coordinates the UC? |  |  |
+| 1. The collaborator starts to create a new Freelancer. | ...coordinates the UC? | NotifyFreelancersTask | Task |
+|                                                        | ...starts the process of notification? | Timer | Timer |
 |                                                        | ...creates the instance Timer? | Plataform | Creator: Plataform as knowledge of the time to start the notifications. |
-| 2. The system identifies the freelancers that have mean task delay higher than 3 hours and have a percentage of delays higher than the overall percentage of delays. After that, starts the notification of the freelancers. |  |  |  |  
-
+| 2. The system identifies the freelancers that have mean task delay higher than 3 hours and have a percentage of delays higher than the overall percentage of delays. After that, starts the notification of the freelancers. | ...knows the task delay? | ExecutionOfTheTask | IE: Knows its own information |  
+|  | ...knows the percentage of delays | ExecutionOfTheTask | IE: knows its own information  |
 
 
 ### Systematization ##
