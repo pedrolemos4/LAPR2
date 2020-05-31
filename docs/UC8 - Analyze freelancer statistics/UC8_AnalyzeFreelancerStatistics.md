@@ -48,4 +48,37 @@ or
 
 #### Extensions (or alternative flows)
 
+*a. The manager of organization or the collaboratior asks to cancel viewing the data.
+
+> The use case ends.
+
+
+
+
+
+
+
+
+#### Special Requirements
+
+
+#### List of Technologies and Data Variations
+\-
+
+####Frequency of Occurrence
+\-
+
+#### Open questions
+
+
+## 2. OO Analysis
+
+### Excerpt from the Domain Model relevant to the use case
+
+![UC8_MD.png](UC8_MD.png)
+
+
+
+
+
 
