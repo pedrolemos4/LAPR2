@@ -1,4 +1,4 @@
-UC1 - Create Task
+UC2 - Create Task
 
 ## 1. Requirements engineering
 
@@ -24,8 +24,8 @@ Collaborator
 
 #### Interested Parts and their intentions
 * **Collaborator:** wants to create a new task.
-* **T4J:** pretends the associate a task to freelancer.
-* **Freelancer:** pretends to be assigned a task.
+* **T4J:** wants to associate a task to a freelancer.
+* **Freelancer:** wants to be assigned a task.
 
 
 #### Pre conditions
@@ -44,9 +44,6 @@ The tasks stays in the system.
 6. The system regists the information and informs the collaborator about the success of the operation.
 
 
-
-#### SD
-![UC2_SD.png](UC2_SD.png)
 
 
 #### Extensions (or alternative fluxes)
@@ -86,7 +83,7 @@ The tasks stays in the system.
 #### Open Questions
 
 * Exists other data needed?
-* Are all data mandatory?
+* Is all data mandatory?
 * How frequently this use case occurs?
 
 ## 2. OO Analysis
