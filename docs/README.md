@@ -32,7 +32,7 @@ A distribuição de tarefas ao longo do período de desenvolvimento do projeto p
 | UC 3 (Requisitos + Design)  |  [1190785](UC3%20-%20Create%20Payment%20Transaction/UC3_CreatePaymentTransaction.md)   |           |            |
 | UC 4 (Requisitos + Design)  |  [1190429](UC4%20-%20Upload%20File/UC4_UploadFile.md)   |         |            |
 | UC 5 (Requisitos + Design)  |  [1191098](UC5%20-%20Pay%20Automatically/UC5_PayAutomatically.md)   |            |            |
-| UC 6 (Requisitos + Design)  |     | [1190429]    |     |
+| UC 6 (Requisitos + Design)  |     | [1190429](UC6%20-%20Check%20performance%20indicators/UC6_CheckPerformanceIndicators.md)    |     |
 | UC 7 (Requisitos + Design)  |     | [1190785](UC7%20-%20Add%20New%20Organization/UC7_AddNewOrganization.md)    |     |
 | UC 8 (Requisitos + Design)  |     | [1191098](UC8%20-%20Analyze%20freelancer%20statistics/UC8_AnalyzeFreelancerStatistics.md)    |     |
 | UC 9 (Requisitos + Design)  |     | [1151352]    |     |
