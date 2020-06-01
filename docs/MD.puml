@@ -9,6 +9,7 @@ class Platform {
 
 class Organization {
   -String name
+  -String NIF
 }
 
 class Collaborator {
@@ -76,6 +77,7 @@ PaymentTransaction "1" -- "1" Freelancer: related to >
 PaymentTransaction "1" -- "1" Task: relates to >
 PaymentTransaction "1" -- "1" TaskExecution: related to >
 Task "1" -- "1" TaskExecution: has >
+Task "1..*" -- "1" Freelancer: is assigned to >
 PaymentDay "1" -- "0..*" PaymentTransaction : is related to
 
 @enduml
