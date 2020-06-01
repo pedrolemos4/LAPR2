@@ -9,6 +9,7 @@ class Platform {
 
 class Organization {
   -String name
+  -String NIF
 }
 
 class Collaborator {

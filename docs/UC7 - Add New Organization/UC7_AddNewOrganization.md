@@ -4,7 +4,7 @@
 
 ### Brief Format
 
-The T4J administrator starts registering an organization. The system requests the necessary data about the organization (i.e. name of the organization), about the manager (i.e. name and email of the manager) and about the collaborator (i.e. name and email). The T4J administrator enters the requested data. The system validates and displays the data of the organization, its manager and its collaborator, asking for confirmation. The T4J administrator confirms. The system records the data of the organization, its manager and its collaborator, generating passwords for the latter and sending them by email, making them registered users and informs the T4J administrator of the success of the operation.
+The T4J administrator starts registering an organization. The system requests the necessary data about the organization (i.e. name and NIF of the organization), about the manager (i.e. name and email of the manager) and about the collaborator (i.e. name and email). The T4J administrator enters the requested data. The system validates and displays the data of the organization, its manager and its collaborator, asking for confirmation. The T4J administrator confirms. The system records the data of the organization, its manager and its collaborator, generating passwords for the latter and sending them by email, making them registered users and informs the T4J administrator of the success of the operation.
 
 ### SSD
 ![UC7_SSD.svg](UC7_SSD.svg)
@@ -36,7 +36,7 @@ n/a
 #### Main success scenario (or basic flow)
 
 1. The T4J administrator starts registering an organization. 
-2. The system requests the necessary data about the organization (i.e. name of the organization), about the manager (i.e. name and email of the manager) and about the collaborator (i.e. name and email). 
+2. The system requests the necessary data about the organization (i.e. name and NIF of the organization), about the manager (i.e. name and email of the manager) and about the collaborator (i.e. name and email). 
 3. The T4J administrator enters the requested data.
 4. The system validates and displays the data of the organization, its manager and its collaborator, asking for confirmation.
 5. The T4J administrator confirms.
@@ -93,7 +93,7 @@ n/a
 |1. The T4J administrator starts registering an organization. |... interact with the user?| OrganizationRecordUI |Pure Fabrication|
 | |... coordinates the UC?| OrganizationRecordController |Controller|
 | |... create Organization instances?|OrganizationsRecord|By the application of the Creator pattern (rule 1) it would be the "Platform". But, by applying HC + LC to the "Platform", this delegates that responsibility to the "OrganizationsRecord".|
-|2. The system requests the necessary data about the organization (i.e. name of the organization), about the manager (i.e. name and email of the manager) and about the collaborator (i.e. name and email).||||
+|2. The system requests the necessary data about the organization (i.e. name and NIF of the organization), about the manager (i.e. name and email of the manager) and about the collaborator (i.e. name and email).||||
 |3. The T4J administrator enters the requested data. |... save the data entered?|Organization,Collaborator|IE: instance created in step 1|
 | |... create Collaborator instances?|Organization|creator(rule 1)|
 |4. The system validates and displays the data of the organization, its manager and its collaborator, asking for confirmation. |... validates Organization data (local validation)?|Organization|IE: has its own data.|

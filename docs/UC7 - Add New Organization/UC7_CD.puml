@@ -12,9 +12,10 @@ class Collaborator {
 
 class Organization {
   -String name
+  -String NIF
   +{static} Colaborador newCollaborator(nameM, emailM)
   +{static} Colaborador newCollaborator(nameC, emailC)
-  +Organizacao(name, manager, collab)
+  +Organizacao(name, NIF, manager, collab)
 }
 
 class Platform {
@@ -25,7 +26,7 @@ class Platform {
 }
 
 class OrganizationsRecord {
-  +Organization newOrganization(name, nameM, emailM, nameC, emailC)
+  +Organization newOrganization(name, NIF, nameM, emailM, nameC, emailC)
   +validateOrganization(Organization org)
   +organizationRegister(Organization org)
   -addOrganization(Organization org)
@@ -46,7 +47,7 @@ interface PasswordGeneratorAlgorithm <<interface>>{
 }
 
 class OrganizationRecordController {
-    +newOrganization(name, nameM, emailM, nameC, emailC)
+    +newOrganization(name, NIF, nameM, emailM, nameC, emailC)
     +organizationRegister()
 }
 
