@@ -90,9 +90,8 @@ The freelancer stays informed.
 
  The other software classes (i.e. Pure Fabrication) identify:
 
- * CreateFreelancerUI
- * CreateFreelancerController 
- * RegisterFreelancer 
+* NotifyFreelancersTask
+* Timer
 
 
 ###     Sequence Diagram
