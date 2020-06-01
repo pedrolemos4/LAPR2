@@ -1,0 +1,18 @@
+@startuml
+autonumber
+actor "Administrator" as ADM
+
+activate ADM
+ADM -> ":System" : begins to analyze the statistics describing the performance of all freelancers.
+activate ":System"
+":System" --> ADM : presents the statistics and the probability that the sample mean is higher than 3 hours and asks for confirmation.
+deactivate ":System"
+
+ADM -> ":System" : confirms
+activate ":System"
+":System" --> ADM : successful operation.
+deactivate ":System"
+
+deactivate ADM
+
+@enduml
