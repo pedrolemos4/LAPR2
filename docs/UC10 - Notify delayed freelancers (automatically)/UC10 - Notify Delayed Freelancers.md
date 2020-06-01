@@ -1,4 +1,4 @@
-UC10 - Notify Delayed Freelancers (automatically)
+# UC10 - Notify Delayed Freelancers (automatically)
 
 ## 1. Requirements Engineering
 
@@ -77,8 +77,12 @@ The freelancer stays informed.
 | 1. The collaborator starts to create a new Freelancer. | ...coordinates the UC? | NotifyFreelancersTask | Task |
 |                                                        | ...starts the process of notification? | Timer | Timer |
 |                                                        | ...creates the instance Timer? | Plataform | Creator: Plataform as knowledge of the time to start the notifications. |
-| 2. The system identifies the freelancers that have mean task delay higher than 3 hours and have a percentage of delays higher than the overall percentage of delays. After that, starts the notification of the freelancers. | ...knows the task delay? | ExecutionOfTheTask | IE: Knows its own information |  
-|  | ...knows the percentage of delays | ExecutionOfTheTask | IE: knows its own information  |
+| 2. The system identifies the freelancers that have mean task delay higher than 3 hours and have a percentage of delays higher than the overall percentage of delays. After that, starts the notification of the freelancers. | ...knows the task delay? | TaskExecution | IE: Knows its own information |  
+|  | ...knows the percentage of delays? | TaskExecution | IE: knows its own information  |
+|  | ...knows the class TaskExecution? | RegisterTaskExecution | IE: Owns the class TaskExecution (HC + LC) |
+|  | ...know the freelancers? | ListFreelancers | IE: Owns the class ListFreelancers (HC + LC) |
+|  | ...applys the requirements to know the right freelancers? | TaskExecution | IE: Knows its own information. |
+|  | ...saves the fit freelancers according with the requirements? | ListFreelancers | IE: Owns the class ListFreelancers (HC + LC) |
 
 
 ### Systematization ##
@@ -86,12 +90,14 @@ The freelancer stays informed.
  From the racional results the conceptual classes promoted to software classes are : 
  
  * Plataform
-
+ * TaskExecution
 
  The other software classes (i.e. Pure Fabrication) identify:
 
-* NotifyFreelancersTask
-* Timer
+ * NotifyFreelancersTask
+ * Timer
+ * ListFreelancers
+ * RegisterTaskExecution
 
 
 ###     Sequence Diagram
