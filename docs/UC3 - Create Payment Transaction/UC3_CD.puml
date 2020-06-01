@@ -12,7 +12,7 @@ class UserSession
   +getUserEmail()
 }
 
-class Tarefa {
+class Task {
   -String id
   -String briefDescription
   -Integer timeDuration
@@ -80,7 +80,7 @@ class TaskExecution {
 
 CreatePaymentTransactionUI ..> CreatePaymentTransactionController
 CreatePaymentTransactionController ..> Platform
-CreatePaymentTransactionController ..> Tarefa
+CreatePaymentTransactionController ..> Task
 CreatePaymentTransactionController ..> Organization
 CreatePaymentTransactionController ..> POTApplication
 CreatePaymentTransactionController ..> UserSession
@@ -94,11 +94,12 @@ FreelancersRecord "1" --> "*" Freelancer : has
 OrganizationsRecord "1" --> "*" Organization : has
 Organization "1" --> "1" TasksList : has
 Organization "1" --> "*" PaymentTransaction : has
-TasksList "1" --> "*" Tarefa : has
-Tarefa "1" --> "1" TaskExecution : has
+TasksList "1" --> "*" Task : has
+Task "1" --> "1" TaskExecution : has
+Task "1..*" --> "1" Freelancer : is assigned to
 
 PaymentTransaction "1" --> "1" Freelancer : relates to
-PaymentTransaction "1" --> "1" Tarefa : relates to
+PaymentTransaction "1" --> "1" Task : relates to
 PaymentTransaction "1" --> "1" TaskExecution : relates to
 
 @enduml

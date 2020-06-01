@@ -36,6 +36,11 @@ The information about the payment transaction is saved in the system.
 4. The system validates and displays the payment transaction data and also the amount to pay to each freelancer, asking for confirmation.
 5. The organization's collaborator confirms.
 6. The system records the payment transaction data and informs the organization's collaborator of the success of the operation. 
+7. Steps 2 to 6 are repeated until the employee of the organization does not want to create more payment transactions.
+
+#### Full format SSD
+![UC3_SSD1.svg](UC3_SSD1.svg)
+
 
 #### Extensions (or alternative flows)
 
@@ -121,6 +126,7 @@ The information about the payment transaction is saved in the system.
 |5. The organization's collaborator confirms. ||||
 |6. The system records the payment transaction data and informs the organization's collaborator of the success of the operation. |... saves the PaymentTransaction created?|Organization|IE: In MD, the Organization has PaymentTransaction.|
 ||informs the collaborator?|CreatePaymentTransactionUI||
+|7. Steps 2 to 6 are repeated until the employee of the organization does not want to create more payment transactions.||||
          
 
 ### Systematization ##

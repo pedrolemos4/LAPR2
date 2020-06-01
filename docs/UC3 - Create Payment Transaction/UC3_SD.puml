@@ -18,7 +18,7 @@ participant "payT:\nPaymentTransaction" as PA
 activate CO
 CO -> UI : starts the creation of a payment transaction of a finished/executed task
 activate UI
-
+loop
 UI --> CO : requests the necessary data on the payment transaction\na brief description of the task (id, brief description, time duration (in hours), cost per hour (in euros) and task category), \ndetails about the execution of the task (end date, delay, brief description of the quality of the work)\nand information about the freelancer that worked on the task \n(id, name, level of expertise, e-mail, NIF, bank account (IBAN), address and country)
 deactivate UI
 
@@ -72,9 +72,9 @@ CTRL --> ORG: payAmount = generatePayAmount(task, free)
 activate ORG
 deactivate ORG
 
-CTRL -> ORG : payT = newPaymentTransaction(task, taskExec, free)
+CTRL -> ORG : payT = newPaymentTransaction(task, taskExec, free, payAmount)
 activate ORG
-ORG --> PA**: create(task, taskExec, free)
+ORG --> PA**: create(task, taskExec, free, payAmount)
 deactivate ORG
 
 CTRL -> ORG : validatePaymentTransaction(payT)
@@ -99,6 +99,7 @@ ORG -> ORG : validatesPaymentTransaction(payT)
 ORG -> ORG : addPaymentTransaction(payT)
 
 UI -> CO : records the payment transaction data and informs the organization's collaborator of the success of the operation
+end loop
 deactivate ORG
 deactivate CTRL
 deactivate UI

@@ -64,5 +64,6 @@ PaymentTransaction "1" -- "1" Freelancer: relates to >
 PaymentTransaction "1" -- "1" Task: relates to >
 PaymentTransaction "1" -- "1" TaskExecution: relates to >
 Task "1" -- "1" TaskExecution: has >
+Task "1..*" -- "1" Freelancer: is assigned to >
 
 @enduml
