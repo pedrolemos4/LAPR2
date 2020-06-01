@@ -39,7 +39,7 @@ or
 
 1. Either the manager of organization or the collaborator starts to analyze the freelancer's statistics.
 2. The system presents overall statistics about task execution times (the mean and the standard deviation of the delays, of each one and of all freelancers, a histogram to analyze the delays of each one and all the freelancers working to the organization) and freelancer payments (the mean and the standard deviation of the payments made to each one of the freelancers).
-3(?). O sistema apresenta as hipóteses?
+3. The system presents the ordering hypotheses.
 4. The manager of organization or the collaborator chooses how do he want to sort the freelancers' data (either by name or by payment value).
 5. The system sorts the data according the option chosen, presents it and asks for confirmation.
 6. Either the manager of organization or the collaborator confirms.
@@ -48,16 +48,13 @@ or
 
 #### Extensions (or alternative flows)
 
-*a. The manager of organization or the collaboratior asks to cancel viewing the data.
+*a. The manager of organization or the collaborator asks to cancel viewing the data.
 
 > The use case ends.
 
+4a. The manager of organization or the collaborator does not want to sort the data.
 
-
-
-
-
-
+> The use case ends.
 
 #### Special Requirements
 
@@ -88,9 +85,33 @@ or
 | |... coordinates the UC?| AnalyzeFreelancerStatisticsController |Controller|
 ||... knows the manager of organization/collaborator using the system?|UserSession|IE: cf. user management component documentation.|
 ||... knows which organization the manager/collaborator belongs to?|OrganizationRecord|IE: knows all organizations.|
+|2. The system presents the statistics.|...knows the statistics about task execution times ?|TaskExecution|InformationExpert:has it own data|
+||... knows the statistics about the freelancer payments?| | |
+|3. The system asks the manager of organization or the collaborator how does he want to sort the data.||||
+|4. Either the manager of organization or the collaborator chooses one option.|||
+|5. The system presents the data.||||
+|6. Either the manager of organization or the collaborator confirms the data.||||
+|7. The system informs the manager or the collaborator of the success of the operation.||||
+
 
 
 ### Systematization ##
+
+It follows from the rational that the conceptual classes promoted to software classes are:
+
+
+
+Other software classes (e.g. Pure Fabrication) identified:
+
+ * AnalyzeFreelancerStatisticsUI
+ * AnalyzeFreelancerStatisticsController
+ * OrganizationRecord
+
+Other classes of external systems/components:
+
+   * UserSession
+
+###	Sequence Diagram
 
 
 
