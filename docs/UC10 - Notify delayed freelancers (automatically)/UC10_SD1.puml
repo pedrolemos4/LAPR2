@@ -1,0 +1,46 @@
+@startuml
+autonumber
+
+actor "Time" as TEMPO
+
+participant ":Plataform" as PLAT
+participant "task:NotifyFreelancersTask" as SCAT
+participant "t: Timer" as TIMER
+participant "te: TaskExecution" as RA
+
+
+ TEMPO -> PLAT : agendNotification()
+ activate TEMPO
+
+activate PLAT
+PLAT -> SCAT** : create()
+PLAT -> PLAT : delay = getDelay()
+PLAT -> PLAT : intervalo =getIntervalo()
+SCAT -> PLAT : getRegistoFreelancers()
+PLAT -> TIMER** : create()
+PLAT -> TIMER : schedule(freel, delay, intervalo)
+activate TIMER
+deactivate TIMER
+deactivate PLAT
+
+note over SCAT
+While the time specify by "delay" and/or "intervalo"
+end note
+
+TIMER -> SCAT : run()
+activate TIMER
+activate SCAT
+SCAT -> RA :listaFN = getListaFreelancersToNotify()
+activate RA
+REF over RA
+SD_getListaFreelancersToNotify
+end REF
+deactivate RA
+
+deactivate TIMER
+deactivate SCAT
+
+deactivate TEMPO
+
+
+@enduml

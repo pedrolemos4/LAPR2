@@ -77,7 +77,8 @@ The freelancer stays informed.
 | 1. The collaborator starts to create a new Freelancer. | ...coordinates the UC? | NotifyFreelancersTask | Task |
 |                                                        | ...starts the process of notification? | Timer | Timer |
 |                                                        | ...creates the instance Timer? | Plataform | Creator: Plataform as knowledge of the time to start the notifications. |
-| 2. The system identifies the freelancers that have mean task delay higher than 3 hours and have a percentage of delays higher than the overall percentage of delays. After that, starts the notification of the freelancers. | ...knows the task delay? | TaskExecution | IE: Knows its own information |  
+| 2. The system identifies the freelancers that have mean task delay higher than 3 hours and have a percentage of delays higher than the overall percentage of delays. After that, starts the notification of the freelancers. | ...knows RegisterFreelancers? | Plataform | IE: Plataform contains RegisterFreelancer (HC + LC) |
+|  | ...knows the task delay? | TaskExecution | IE: Knows its own information |  
 |  | ...knows the percentage of delays? | TaskExecution | IE: knows its own information  |
 |  | ...knows the class TaskExecution? | RegisterTaskExecution | IE: Owns the class TaskExecution (HC + LC) |
 |  | ...know the freelancers? | ListFreelancers | IE: Owns the class ListFreelancers (HC + LC) |
@@ -103,7 +104,9 @@ The freelancer stays informed.
 
 ###     Sequence Diagram
  
-![UC10_SD.png](UC10_SD.png)
+![UC10_SD1.png](UC10_SD1.png)
+
+![UC10_SD2.png](UC10_SD2.png)
 
 
 ###     Class Diagram
