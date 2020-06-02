@@ -1,0 +1,95 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+
+class POTApplication {
+  +static getInstance()
+  +getCurrentSession()
+}
+
+class UserSession {
+  +getUserEmail()
+}
+
+class OrganizationsRecord{
+  +Organization getOrganizationByUserEmail(String email)
+}
+
+class Organization {
+   +List<Task> getTaskList()
+}
+
+class Freelancer {
+   +DelayList newDelayList()
+   +Task getTask()
+   +void addDelay(delay)
+   +Double getMeanDelay(DelayList dl, Integer size)
+}
+
+class Platform {
+  -String designacao
+  +OrganizationsRecord getOrganizationsRecord()
+  +FreelancersRecord getFreelancersRecord()
+}
+
+class FreelancersRecord {
+   +Freelancer freelancerExists(String frlID)
+   +DelayList newDelayList()
+   +Task getTask()
+   +void addDelay(String delay)
+   +Integer getDelayListSize()
+}
+
+class AnalyzeFreelancerStatisticsController {
+    +getTaskList()
+    +getStatistics(frlID)
+}
+
+class AnalyzeFreelancerStatisticsUI {
+}
+
+class DelayList {
+   +DelayList dl()
+   +void addDelay(delay)
+   +Integer getDelayListSize()
+}  
+
+class TaskExecution {
+   +Integer getDelay(task)
+}  
+
+class Task {
+  -String id
+  -String briefDescription
+  -Integer timeDuration
+  -Double costPerHour
+  -String taskCategory
+}
+
+AnalyzeFreelancerStatisticsUI ..> AnalyzeFreelancerStatisticsController 
+
+AnalyzeFreelancerStatisticsController ..> Platform
+AnalyzeFreelancerStatisticsController ..> FreelancersRecord
+AnalyzeFreelancerStatisticsController ..> OrganizationsRecord
+AnalyzeFreelancerStatisticsController ..> POTApplication
+AnalyzeFreelancerStatisticsController ..> UserSession
+AnalyzeFreelancerStatisticsController ..> Organization
+AnalyzeFreelancerStatisticsController ..> TaskExecution
+
+
+Platform "1" --> "1" FreelancersRecord : has >
+Platform "1" -> "1" OrganizationsRecord : has >
+
+OrganizationsRecord "1" -> "*" Organization : has >
+
+Organization "1" -> "1" TaskList : has >
+
+FreelancersRecord "1" -> "*" Freelancer : has >
+
+Freelancer "1" -> "1" DelayList: has >
+
+TaskList "1" -> "*" Task : has >
+
+@enduml
+
+
