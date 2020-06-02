@@ -1,0 +1,72 @@
+@startuml
+autonumber
+
+title sd_getListaFreelancersToNotify
+participant "ra:RegisterFreelancer" as RA
+participant "freel\n:Freelancer" as FREEL
+participant "task\n:Task" as TASK
+participant "taskExe:TaskExecution" as TE
+participant "lstDelay\n:List<Freelancer>" as LDL
+participant "lstFreelancersToNotify : List <Freelancer>" as LFRE
+[o-> RA : listaFN = getListaFreelancersToNotify()
+activate RA
+RA-> LFRE** : create()
+LOOP for each freelancer
+  
+RA -> FREEL : email = getEmailByFreelancer()
+activate FREEL
+deactivate FREEL
+  
+RA -> FREEL : newDelayList()
+activate FREEL
+FREEL -> LDL** : create()
+deactivate FREEL
+  
+LOOP for each task
+
+RA -> TASK : taskDelay = getTaskDelay()
+activate TASK
+  
+TASK -> TE : getDelay()
+activate TE
+  
+deactivate TE
+deactivate TASK
+  
+RA -> FREEL : addDelay(taskDelay)
+activate FREEL
+FREEL -> LDL: addDelay(taskDelay)
+activate LDL
+deactivate LDL
+deactivate FREEL
+    
+end LOOP
+  
+RA -> LDL : size = getDelayLstSize()
+activate LDL
+deactivate LDL
+
+RA -> FREEL : taskDelayOverall = getOverallDelay(lstDelay,size)
+activate FREEL
+deactivate FREEL
+  
+RA -> FREEL : taskLstSize = getTaskLstSize()
+activate FREEL
+deactivate FREEL
+
+RA -> FREEL : delayPerc = calculatePerc(size,taskLstSize)
+activate FREEL
+deactivate FREEL
+  
+end LOOP
+  
+ALT if taskDelayOverall > 3 && taskLstSize > delayPerc
+  
+RA -> LFRE : addFreelancer(email)
+activate LFRE
+deactivate LFRE
+end ALT
+deactivate RA
+  
+  
+@enduml
