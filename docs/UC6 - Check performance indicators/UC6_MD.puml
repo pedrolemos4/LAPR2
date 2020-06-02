@@ -1,0 +1,54 @@
+@startuml
+skinparam classAttributeIconSize 0
+hide methods
+left to right direction
+
+class Platform {
+  -String designation
+}
+
+
+class Freelancer {
+  -String id
+  -String name
+  -String expertiseLevel
+  -String email
+  -String NIF
+  -String IBAN
+  -String address
+  -String country
+  }
+  
+class Organization {
+  -String name
+  -String NIF
+}
+
+class Task {
+ -String id
+ -String briefDescription
+ -Integer timeDuration
+ -Double costPerHour
+ -String taskCategory
+}
+
+class TaskExecution {
+ -Date endDate
+ -Double delay
+ -String workQualityDescription
+}
+
+class PaymentTransaction{
+}
+
+
+Platform "1" -- "*" Freelancer : has/uses >
+PaymentTransaction "1" -- "1" Freelancer: related to >
+PaymentTransaction "1" -- "1" Task: relates to >
+PaymentTransaction "1" -- "1" TaskExecution: related to >
+Task "1" -- "1" TaskExecution: has >
+Task "1..*" -- "1" Freelancer: is assigned to >
+Organization "1" -- "*" Task: has >
+Platform "1" -- "*" Organization : has registered >
+
+@enduml
