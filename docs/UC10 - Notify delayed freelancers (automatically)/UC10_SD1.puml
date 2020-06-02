@@ -6,7 +6,7 @@ actor "Time" as TEMPO
 participant ":Plataform" as PLAT
 participant "task:NotifyFreelancersTask" as SCAT
 participant "t: Timer" as TIMER
-participant "te: TaskExecution" as RA
+participant "rf: RegisterFreelancer" as RA
 
 
  TEMPO -> PLAT : agendNotification()
