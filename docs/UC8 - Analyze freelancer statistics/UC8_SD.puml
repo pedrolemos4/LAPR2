@@ -1,0 +1,130 @@
+@startuml
+autonumber
+
+actor "Manager or Collaborator" as CO
+participant ":AnalyzeFreelancerStatisticsUI" as UI
+participant ":AnalyzeFreelancerStatisticsController" as CTRL
+participant "POTApplication" as _APP
+participant "app\n:POTApplication" as APP
+participant "session\n:UserSession" as SESSAO
+participant ":Platform" as PLAT
+participant "orgR:\nOrganizationsRecord" as ORGR
+participant "org:\nOrganization" as ORG
+participant "frlR:\nFreelancersRecord" as FR
+participant "free:\nFreelancer" as FRL
+participant "dl:\nDelayList" as DL
+participant "taskexec:\nTaskExecution" as TEXEC
+participant "tLst:\nTasksList" as TL
+participant "task:\nTask" as TA
+
+
+opt
+activate CO
+CO -> UI : starts to analyze the overall statistics about task execution times of one freelancer
+
+activate UI
+UI -> CTRL: getTaskList()
+
+activate CTRL 
+
+CTRL -> _APP: app = getInstance()
+activate _APP
+deactivate _APP
+
+CTRL -> APP: session = getCurrentSession()
+activate APP
+deactivate APP
+
+CTRL -> SESSAO: email = getUserEmail()
+activate SESSAO
+deactivate SESSAO
+
+CTRL -> PLAT: orgR = getOrganizationsRecord()
+activate PLAT
+deactivate PLAT
+
+CTRL -> ORGR: org = getOrganizationByUserEmail(email)
+activate ORGR
+deactivate ORGR
+
+CTRL -> ORG: tLst = getTaskList()
+activate ORG
+deactivate ORG
+
+deactivate CTRL 
+UI --> CO : presents the organization's task list and asks for the freelancer's ID
+deactivate UI
+
+CO -> UI : enters the requested data
+
+activate UI
+UI -> CTRL : getStatistics(frlID)
+
+
+activate CTRL
+CTRL -> PLAT: frlR = getFreelancersRecord()
+activate PLAT
+deactivate PLAT
+
+CTRL -> FR: free = freelancerExists(frlID)
+activate FR
+deactivate FR
+
+CTRL -> FR : newDelayList()
+activate FR
+
+FR -> FRL : dl = newDelayList()
+activate FRL
+FRL --> DL**: create()
+deactivate FRL
+deactivate FR
+
+loop for each freelancer's task
+CTRL -> FR :task = getTask()
+activate FR
+
+FR -> FRL : getTask()
+activate FRL
+deactivate FR
+deactivate FRL
+
+CTRL -> TEXEC: delay = getDelay(task)
+activate TEXEC
+deactivate TEXEC
+
+CTRL -> FR : addDelay(delay)
+activate FR 
+
+FR -> FRL : addDelay(delay)
+activate FRL
+
+FRL -> DL : addDelay(delay)
+activate DL
+deactivate DL
+deactivate FRL
+deactivate FR
+
+end 
+
+CTRL -> FR : getDelayListSize()
+
+activate FR
+FR -> DL : size = getDelayListSize()
+activate DL
+deactivate DL
+
+FR -> FRL : meanDelay=getMeanDelay(dl,size)
+activate FRL
+deactivate FRL
+deactivate FR
+
+deactivate CTRL
+
+
+UI --> CO : presents the statistics about task execution times of the chosen freelancer
+deactivate UI
+
+end
+
+deactivate CO
+@enduml

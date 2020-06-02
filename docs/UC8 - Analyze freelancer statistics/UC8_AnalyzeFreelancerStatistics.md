@@ -113,6 +113,13 @@ Other classes of external systems/components:
 
 ###	Sequence Diagram
 
+![UC8_SD.png](UC8_SD.png)
+
+
+###	Class Diagram
+
+![UC8_CD.png](UC8_CD.png)
+
 
 
 
