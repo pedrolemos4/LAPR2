@@ -122,4 +122,9 @@ Other classes of external systems/components:
 ![UC5_SD.png](UC5_SD.png)
 
 
+###	Class Diagram
+
+![UC5_CD.png](UC5_CD.png)
+
+
 
