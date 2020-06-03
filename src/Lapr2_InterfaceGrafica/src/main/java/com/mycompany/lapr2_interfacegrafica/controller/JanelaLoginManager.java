@@ -5,7 +5,9 @@
  */
 package com.mycompany.lapr2_interfacegrafica.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
@@ -19,9 +21,11 @@ public class JanelaLoginManager {
     private TextField usernameBox;
     @FXML
     private TextField passwordBox;
+    @FXML
+    private Button bottonLogin;
 
     @FXML
-    private void loginMethod(MouseEvent event) {
+    private void btnLogin(ActionEvent event) {
     }
     
 }

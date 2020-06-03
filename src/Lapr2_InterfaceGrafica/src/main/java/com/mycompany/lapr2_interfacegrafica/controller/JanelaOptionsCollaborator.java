@@ -5,7 +5,9 @@
  */
 package com.mycompany.lapr2_interfacegrafica.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -15,27 +17,40 @@ import javafx.scene.input.MouseEvent;
 public class JanelaOptionsCollaborator {
 
     @FXML
-    private void selectFreelancer(MouseEvent event) {
+    private Button createFreelancer;
+    @FXML
+    private Button createTask;
+    @FXML
+    private Button createPayment;
+    @FXML
+    private Button uploadFile;
+    @FXML
+    private Button back;
+    @FXML
+    private Button checkStatistics;
+
+    @FXML
+    private void btnCreateFreel(ActionEvent event) {
     }
 
     @FXML
-    private void createTask(MouseEvent event) {
+    private void btnCreateTask(ActionEvent event) {
     }
 
     @FXML
-    private void createPayment(MouseEvent event) {
+    private void btnCreatePayment(ActionEvent event) {
     }
 
     @FXML
-    private void uploadFile(MouseEvent event) {
+    private void btnUploadFile(ActionEvent event) {
     }
 
     @FXML
-    private void back(MouseEvent event) {
+    private void btnBack(ActionEvent event) {
     }
 
     @FXML
-    private void checkStatistics(MouseEvent event) {
+    private void btnCheckStatistics(ActionEvent event) {
     }
     
 }

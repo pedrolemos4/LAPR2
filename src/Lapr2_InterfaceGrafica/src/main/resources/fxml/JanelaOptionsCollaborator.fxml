@@ -22,10 +22,10 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#selectFreelancer" text="Create Freelancer" translateX="85.0" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" onMouseClicked="#createTask" text="Create Task" translateX="400.0" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" onMouseClicked="#createPayment" text="Create Payment" translateX="85.0" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" onMouseClicked="#uploadFile" text="Upload File" translateX="400.0" GridPane.rowIndex="2">
+            <Button fx:id="createFreelancer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnCreateFreel" text="Create Freelancer" translateX="85.0" GridPane.rowIndex="1" />
+            <Button fx:id="createTask" mnemonicParsing="false" onAction="#btnCreateTask" text="Create Task" translateX="400.0" GridPane.rowIndex="1" />
+            <Button fx:id="createPayment" mnemonicParsing="false" onAction="#btnCreatePayment" text="Create Payment" translateX="85.0" GridPane.rowIndex="2" />
+            <Button fx:id="uploadFile" mnemonicParsing="false" onAction="#btnUploadFile" text="Upload File" translateX="400.0" GridPane.rowIndex="2">
                <rotationAxis>
                   <Point3D />
                </rotationAxis></Button>
@@ -34,8 +34,8 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button blendMode="MULTIPLY" mnemonicParsing="false" onMouseClicked="#back" text="Back" translateX="280.0" GridPane.rowIndex="4" />
-            <Button mnemonicParsing="false" onMouseClicked="#checkStatistics" text="Check Statistics" translateX="243.0" GridPane.rowIndex="3" />
+            <Button fx:id="back" blendMode="MULTIPLY" mnemonicParsing="false" onAction="#btnBack" text="Back" translateX="280.0" GridPane.rowIndex="4" />
+            <Button fx:id="checkStatistics" mnemonicParsing="false" onAction="#btnCheckStatistics" text="Check Statistics" translateX="243.0" GridPane.rowIndex="3" />
          </children>
       </GridPane>
    </center>
