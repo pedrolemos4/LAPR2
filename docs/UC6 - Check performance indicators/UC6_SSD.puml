@@ -4,28 +4,10 @@ actor "Administrator" as ADM
 
 activate ADM
 ADM -> ":System" : begins to analyze the statistics describing the performance of all freelancers.
-activate ":System"
-":System" --> ADM : aks for one option (see the statistics of one freelancer or of all freelancers) 
-deactivate ":System"
 
-ADM -> ":System" : chooses one option
 activate ":System"
-
-alt [ flag == true ]
-":System" --> ADM : presents list of freelancers and requests the selection of one
-deactivate ":System"
-ADM -> ":System" : selects the freelancer
-activate ":System"
-":System" --> ADM : calculates and presents the statistics describing the performance of the freelancer.
-deactivate ":System"
-end alt
-
-alt [ flag == false ]
-loop [ for each freelancer ]
 ":System" --> ADM : calculates and presents the statistics describing the performance of all freelancers.
 deactivate ":System"
-end loop
-end alt
 
 ADM -> ":System" : confirms
 activate ":System"
