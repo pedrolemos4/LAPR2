@@ -13,6 +13,7 @@ participant "org:\nOrganization" as ORG
 participant "tLst:\nTasksList" as TL
 participant "task:\nTask" as TA
 participant ":frlR\nFreelancersRecord" as FR
+participant "ptL:\nPaymentTransactionList" as ptL
 participant "payT:\nPaymentTransaction" as PA
 
 activate CO
@@ -68,18 +69,23 @@ CTRL -> FR: free = freelancerExists(frlId)
 activate FR
 deactivate FR
 
-CTRL --> ORG: payAmount = generatePayAmount(task, free)
+
+CTRL -> ORG: payAmount = generatePayAmount(task,free)
 activate ORG
 deactivate ORG
 
-CTRL -> ORG : payT = newPaymentTransaction(task, taskExec, free, payAmount)
+CTRL -> ORG: ptL = getPaymentTransactionList()
 activate ORG
-ORG --> PA**: create(task, taskExec, free, payAmount)
 deactivate ORG
 
-CTRL -> ORG : validatePaymentTransaction(payT)
-activate ORG
-deactivate ORG
+CTRL -> ptL : payT = newPaymentTransaction(task, taskExec, free, payAmount)
+activate ptL
+ptL --> PA**: create(task, taskExec, free, payAmount)
+deactivate ptL
+
+CTRL -> ptL : validatePaymentTransaction(payT)
+activate ptL
+deactivate ptL
 
 UI -> CO : validates and displays the payment transaction data and also the amount to pay to each freelancer, asking for confirmation
 deactivate PA
@@ -92,15 +98,15 @@ activate UI
 UI -> CTRL : paymentTransactionRegister()
 activate CTRL
 
-CTRL -> ORG : paymentTransactionRegister(payT)
-activate ORG 
+CTRL -> ptL : paymentTransactionRegister(payT)
+activate ptL 
 
-ORG -> ORG : validatesPaymentTransaction(payT)
-ORG -> ORG : addPaymentTransaction(payT)
+ptL -> ptL : validatesPaymentTransaction(payT)
+ptL -> ptL : addPaymentTransaction(payT)
+deactivate ptL
 
 UI -> CO : records the payment transaction data and informs the organization's collaborator of the success of the operation
 end loop
-deactivate ORG
 deactivate CTRL
 deactivate UI
 deactivate CO

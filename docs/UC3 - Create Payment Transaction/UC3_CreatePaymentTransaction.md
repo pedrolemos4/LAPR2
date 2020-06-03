@@ -110,7 +110,7 @@ The information about the payment transaction is saved in the system.
 |:--------------  |:---------------------- |:----------|:---------------------------- |
 |1. The organization's collaborator starts the creation of a payment transaction of a finished/executed task.|... interact with the user?| CreatePaymentTransactionUI |Pure Fabrication|
 | |... coordinates the UC?| CreatePaymentTransactionController|Controller|
-| |... create PaymentTransaction instances?|Organization|Creator(rule 1)|
+| |... create PaymentTransaction instances?|PaymentTransactionList|Creator (Rule 1) combined with HC+LC on Organization.|
 ||... knows the user/collaborator using the system?|UserSession|IE: cf. user management component documentation.|
 ||... know which organization the user/collaborator belongs to?|OrganizationsRecord|IE: knows all organizations.|
 |||Organization|IE: knows their collaborators.|
@@ -124,7 +124,7 @@ The information about the payment transaction is saved in the system.
 | |... validates payment transaction data (local validation)?|PaymentTransaction|IE: has its own data.|
 | |... validates payment transaction data (global validation)?|Organization|IE: In MD, Organization has PaymentTransaction|
 |5. The organization's collaborator confirms. ||||
-|6. The system records the payment transaction data and informs the organization's collaborator of the success of the operation. |... saves the PaymentTransaction created?|Organization|IE: In MD, the Organization has PaymentTransaction.|
+|6. The system records the payment transaction data and informs the organization's collaborator of the success of the operation. |... saves the PaymentTransaction created?|PaymentTransactionList|IE: In MD, the Organization has PaymentTransaction. By application of HC+LC delegates the PaymentTransactionList.|
 ||informs the collaborator?|CreatePaymentTransactionUI||
 |7. Steps 2 to 6 are repeated until the employee of the organization does not want to create more payment transactions.||||
          
@@ -147,6 +147,7 @@ Other software classes (e.g. Pure Fabrication) identified:
  * CreatePaymentTransactionController
  * OrganizationsRecord 
  * FreelancersRecord
+ * PaymentTransactionList
  * TasksList
 
 Other classes of external systems/components:

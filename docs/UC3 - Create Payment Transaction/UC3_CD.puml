@@ -37,10 +37,8 @@ class Organization {
   -String NIF
   +getTasksList()
   +generatePayAmount(task, free)
-  +newPaymentTransaction(task, taskExec, free, payAmount)
-  +validatePaymentTransaction(payT)
-  +paymentTransactionRegister(payT)
-  +addPaymentTransaction(payT)
+  +getPaymentTransactionList()
+  
 }
 
 class TasksList {
@@ -79,6 +77,13 @@ class TaskExecution {
  -String workQualityDescription
 }
 
+class PaymentTransactionList{
+  +newPaymentTransaction(task, taskExec, free, payAmount)
+  +validatePaymentTransaction(payT)
+  +paymentTransactionRegister(payT)
+  +addPaymentTransaction(payT)
+}
+
 CreatePaymentTransactionUI ..> CreatePaymentTransactionController
 CreatePaymentTransactionController ..> Platform
 CreatePaymentTransactionController ..> Task
@@ -88,13 +93,15 @@ CreatePaymentTransactionController ..> UserSession
 CreatePaymentTransactionController ..> TasksList
 CreatePaymentTransactionController ..> FreelancersRecord
 CreatePaymentTransactionController ..> OrganizationsRecord
+CreatePaymentTransactionController ..> PaymentTransactionList
 Platform "1" --> "1" FreelancersRecord : has
 Platform "1" --> "1" OrganizationsRecord : has
 
 FreelancersRecord "1" --> "*" Freelancer : has
 OrganizationsRecord "1" --> "*" Organization : has
 Organization "1" --> "1" TasksList : has
-Organization "1" --> "*" PaymentTransaction : has
+Organization "1" --> "1" PaymentTransactionList : has
+PaymentTransactionList "1" --> "*" PaymentTransaction : has
 TasksList "1" --> "*" Task : has
 Task "1" --> "1" TaskExecution : has
 Task "1..*" --> "1" Freelancer : is assigned to

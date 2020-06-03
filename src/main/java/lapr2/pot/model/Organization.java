@@ -1,5 +1,7 @@
 package lapr2.pot.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Organization {
@@ -8,6 +10,7 @@ public class Organization {
     private String m_strNIF;
     private Collaborator m_oManager;
     private Collaborator m_oCollaborator;
+    private List<PaymentTransaction> m_lstPaymentTransactions = new ArrayList<PaymentTransaction>();
 
     public Organization(String name, String NIF, Collaborator manager, Collaborator collaborator) {
         if ((name == null) || (NIF == null) || (manager == null) || (collaborator == null)
@@ -66,5 +69,22 @@ public class Organization {
 
     public static Collaborator newCollaborator(String name, String email) {
         return new Collaborator(name, email);
+    }
+
+    public double generatePayAmount(Task task, Freelancer free) {
+        return 0;
+    }
+
+    public boolean validatePaymentTransaction(PaymentTransaction payT) {
+        for (int i = 0; i < m_lstPaymentTransactions.size(); i++) {
+            if (m_lstPaymentTransactions.get(i).equals(payT)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean addPaymentTransaction(PaymentTransaction payT) {
+        return m_lstPaymentTransactions.add(payT);
     }
 }
