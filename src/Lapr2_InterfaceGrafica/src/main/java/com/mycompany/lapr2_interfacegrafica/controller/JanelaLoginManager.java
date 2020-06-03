@@ -13,7 +13,7 @@ import javafx.scene.input.MouseEvent;
  *
  * @author pedro
  */
-public class JanelaLoginController {
+public class JanelaLoginManager {
 
     @FXML
     private TextField usernameBox;
