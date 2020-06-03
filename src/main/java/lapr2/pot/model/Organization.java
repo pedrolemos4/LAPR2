@@ -74,17 +74,4 @@ public class Organization {
     public double generatePayAmount(Task task, Freelancer free) {
         return 0;
     }
-
-    public boolean validatePaymentTransaction(PaymentTransaction payT) {
-        for (int i = 0; i < m_lstPaymentTransactions.size(); i++) {
-            if (m_lstPaymentTransactions.get(i).equals(payT)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public boolean addPaymentTransaction(PaymentTransaction payT) {
-        return m_lstPaymentTransactions.add(payT);
-    }
 }

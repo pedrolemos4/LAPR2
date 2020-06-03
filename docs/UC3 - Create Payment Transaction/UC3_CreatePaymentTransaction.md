@@ -125,7 +125,7 @@ The information about the payment transaction is saved in the system.
 | |... validates payment transaction data (global validation)?|Organization|IE: In MD, Organization has PaymentTransaction|
 |5. The organization's collaborator confirms. ||||
 |6. The system records the payment transaction data and informs the organization's collaborator of the success of the operation. |... saves the PaymentTransaction created?|PaymentTransactionList|IE: In MD, the Organization has PaymentTransaction. By application of HC+LC delegates the PaymentTransactionList.|
-||informs the collaborator?|CreatePaymentTransactionUI||
+||... informs the collaborator?|CreatePaymentTransactionUI||
 |7. Steps 2 to 6 are repeated until the employee of the organization does not want to create more payment transactions.||||
          
 

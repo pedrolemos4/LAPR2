@@ -56,4 +56,13 @@ public class OrganizationsRecord {
         }
         return false;
     }
+
+    public Organization getOrganizationByUserEmail(String email) {
+        for (int i = 0; i < m_lstOrganizations.size(); i++) {
+            if (m_lstOrganizations.get(i).getManager().getEmail().equals(email) || m_lstOrganizations.get(i).getCollaborator().getEmail().equals(email)) {
+                return m_lstOrganizations.get(i);
+            }
+        }
+        return null;
+    }
 }
