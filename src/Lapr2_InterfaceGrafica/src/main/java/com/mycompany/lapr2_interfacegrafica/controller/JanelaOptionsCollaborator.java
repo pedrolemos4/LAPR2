@@ -33,5 +33,9 @@ public class JanelaOptionsCollaborator {
     @FXML
     private void back(MouseEvent event) {
     }
+
+    @FXML
+    private void checkStatistics(MouseEvent event) {
+    }
     
 }
