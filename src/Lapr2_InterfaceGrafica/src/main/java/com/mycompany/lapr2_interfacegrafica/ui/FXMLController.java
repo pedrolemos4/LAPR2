@@ -1,4 +1,4 @@
-package com.mycompany.lapr2_interface;
+package com.mycompany.lapr2_interfacegrafica.ui;
 
 import java.net.URL;
 import java.util.ResourceBundle;

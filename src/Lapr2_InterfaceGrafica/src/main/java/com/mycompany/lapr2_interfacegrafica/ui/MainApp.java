@@ -1,4 +1,4 @@
-package com.mycompany.lapr2_interface;
+package com.mycompany.lapr2_interfacegrafica.ui;
 
 import javafx.application.Application;
 import static javafx.application.Application.launch;
