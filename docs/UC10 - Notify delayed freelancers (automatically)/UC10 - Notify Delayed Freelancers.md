@@ -83,8 +83,7 @@ The freelancer stays informed.
 |  | ...knows the class TaskExecution? | RegisterTaskExecution | IE: Owns the class TaskExecution (HC + LC) |
 |  | ...know the freelancers? | ListFreelancers | IE: Owns the class ListFreelancers (HC + LC) |
 |  | ...applys the requirements to know the right freelancers? | TaskExecution | IE: Knows its own information. |
-|  | ...saves the fit freelancers according with the requirements? | ListFreelancers | IE: Owns the class ListFreelancers (HC + LC) |
-|  | ...sends the notification to the freelancer? | RegisterFreelancer |  |
+|  | ...saves the fit freelancers according with the requirements? | ListFreelancersToNotify | IE: Owns the class ListFreelancersToNotify (HC + LC) |
 
 
 ### Systematization ##
@@ -99,6 +98,7 @@ The freelancer stays informed.
  * NotifyFreelancersTask
  * Timer
  * ListFreelancers
+ * ListFreelancersToNotify
  * RegisterTaskExecution
 
 
