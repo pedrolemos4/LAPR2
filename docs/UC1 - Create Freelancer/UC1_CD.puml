@@ -30,8 +30,8 @@ class Freelancer {
   -String name
   -String level of expertise
   -String email
-  -int nif
-  -int iban
+  -String nif
+  -String iban
   -String country
   -String adress
   +validatesFreelancer(freel)
