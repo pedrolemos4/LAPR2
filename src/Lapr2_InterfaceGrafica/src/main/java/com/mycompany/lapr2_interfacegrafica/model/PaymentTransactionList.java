@@ -7,8 +7,8 @@ public class PaymentTransactionList {
 
     private List<PaymentTransaction> m_lstPaymentTransactions = new ArrayList<>();
 
-    public PaymentTransaction newPaymentTransaction(Task task, TaskExecution taskExec, Freelancer free) {
-        return new PaymentTransaction(task, taskExec, free);
+    public PaymentTransaction newPaymentTransaction(Task task, Freelancer free, String endDate, int delay, String workQualityDescription) {
+        return new PaymentTransaction(task, free, endDate, delay, workQualityDescription);
     }
 
     public boolean validatePaymentTransaction(PaymentTransaction payT) {

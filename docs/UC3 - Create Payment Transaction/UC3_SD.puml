@@ -57,10 +57,6 @@ CTRL -> TL: task = taskExists(taskId)
 activate TL
 deactivate TL
 
-CTRL -> TA : taskExec = getTaskExecData(task)
-activate TA
-deactivate TA
-
 CTRL -> PLAT: frlR = getFreelancersRecord()
 activate PLAT
 deactivate PLAT
@@ -69,18 +65,13 @@ CTRL -> FR: free = freelancerExists(frlId)
 activate FR
 deactivate FR
 
-
-CTRL -> ORG: payAmount = generatePayAmount(task,free)
-activate ORG
-deactivate ORG
-
 CTRL -> ORG: ptL = getPaymentTransactionList()
 activate ORG
 deactivate ORG
 
-CTRL -> ptL : payT = newPaymentTransaction(task, taskExec, free, payAmount)
+CTRL -> ptL : payT = newPaymentTransaction(task, free, endDate, delay, workQualityDescription)
 activate ptL
-ptL --> PA**: create(task, taskExec, free, payAmount)
+ptL --> PA**: create(task, free, endDate, delay, workQualityDescription)
 deactivate ptL
 
 CTRL -> ptL : validatePaymentTransaction(payT)

@@ -8,14 +8,12 @@ import com.mycompany.lapr2_interfacegrafica.model.Organization;
 import com.mycompany.lapr2_interfacegrafica.model.OrganizationsRecord;
 import com.mycompany.lapr2_interfacegrafica.model.PaymentTransaction;
 import com.mycompany.lapr2_interfacegrafica.model.PaymentTransactionList;
-import com.mycompany.lapr2_interfacegrafica.model.Platform;
 import com.mycompany.lapr2_interfacegrafica.model.TasksList;
 import lapr2.pot.ui.console.utils.Utils;
 
 public class CreatePaymentTransactionController {
 
     private POTApplication m_oApp;
-    private Platform m_oPlataforma;
     private UserSession m_oSessao;
     private OrganizationsRecord or;
     private TasksList tLst;
@@ -33,9 +31,8 @@ public class CreatePaymentTransactionController {
             String emailC = m_oSessao.getUserEmail();
             Organization org = or.getOrganizationByUserEmail(emailC);
             //Task task = tLst.taskExists(taskId);
-            //TaskExecution taskExec = task.taskExec();
             //Freelancer free = frlR.freelancerExists(frlId);
-            //this.payT = this.ptL.newPaymentTransaction(task, taskExec, free);
+            //this.payT = this.ptL.newPaymentTransaction(task, free, endDate, delay, workQualityDescription);
             return this.ptL.validatePaymentTransaction(this.payT);
         } catch (RuntimeException ex) {
             Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);

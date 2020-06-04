@@ -18,7 +18,6 @@ class Task {
   -Integer timeDuration
   -Double costPerHour
   -String taskCategory
-  +getTaskExecData(task)
 }
 
 class Freelancer {
@@ -36,7 +35,6 @@ class Organization {
   -String name
   -String NIF
   +getTasksList()
-  +generatePayAmount(task, free)
   +getPaymentTransactionList()
   
 }
@@ -68,17 +66,15 @@ class CreatePaymentTransactionUI {
 }
 
 class PaymentTransaction{
-  +PaymentTransaction(task, taskExec, free, payAmount)
-}
-
-class TaskExecution {
- -Date endDate
- -Double delay
- -String workQualityDescription
+  -Date endDate
+  -Double delay
+  -String workQualityDescription
+  +generatePayAmount(task, free)
+  +PaymentTransaction(task, free, endDate, delay, workQualityDescription)
 }
 
 class PaymentTransactionList{
-  +newPaymentTransaction(task, taskExec, free, payAmount)
+  +newPaymentTransaction(task, free, endDate, delay, workQualityDescription)
   +validatePaymentTransaction(payT)
   +paymentTransactionRegister(payT)
   +addPaymentTransaction(payT)
@@ -103,11 +99,9 @@ Organization "1" --> "1" TasksList : has
 Organization "1" --> "1" PaymentTransactionList : has
 PaymentTransactionList "1" --> "*" PaymentTransaction : has
 TasksList "1" --> "*" Task : has
-Task "1" --> "1" TaskExecution : has
 Task "1..*" --> "1" Freelancer : is assigned to
 
 PaymentTransaction "1" --> "1" Freelancer : relates to
 PaymentTransaction "1" --> "1" Task : relates to
-PaymentTransaction "1" --> "1" TaskExecution : relates to
 
 @enduml
