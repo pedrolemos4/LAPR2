@@ -1,71 +1,76 @@
 @startuml
 autonumber
 
-title sd_getListaFreelancersToNotify
+title sd_sendEmails
 participant "ra:RegisterFreelancer" as RA
+participant ":Platform" as PLAT
+participant "trans:PaymentTransaction" as PT
+participant "transactionsList\n:PaymentTransactionsList" as LPT
+participant "org\n:Organization" as ORG
+participant "lstFreel\n:List<Freelancer>" as LF
 participant "freel\n:Freelancer" as FREEL
-participant "task\n:Task" as TASK
-participant "taskExe:TaskExecution" as TE
-participant "lstDelay\n:List<Freelancer>" as LDL
-participant "lstFreelancersToNotify : List <Freelancer>" as LFRE
-[o-> RA : listaFN = getListaFreelancersToNotify()
+
+[o-> RA : sendEmails()
 activate RA
-RA-> LFRE** : create()
+  
+RA -> PLAT : org=getOrganization()
+activate PLAT
+deactivate PLAT
+
+RA -> ORG : transactionsList = getPaymentTransactionsList()
+activate ORG
+deactivate ORG
+  
 LOOP for each freelancer
   
-RA -> FREEL : email = getEmailByFreelancer()
-activate FREEL
-deactivate FREEL
+RA -> LF : freel = get(i)
+activate LF
+deactivate LF
   
-RA -> FREEL : newDelayList()
-activate FREEL
-FREEL -> LDL** : create()
-deactivate FREEL
+RA -> RA : int numberTransactions = 0
+RA -> RA : int delay = 0
+RA -> RA : int amountForHourDelay = 0
   
-LOOP for each task
-
-RA -> TASK : taskDelay = getTaskDelay()
-activate TASK
+LOOP for each transaction
   
-TASK -> TE : getDelay()
-activate TE
+RA -> LPT : trans = get(i)
+activate LPT
+deactivate LPT
   
-deactivate TE
-deactivate TASK
+RA -> PT : freelTrans = getFreelancer()
+activate PT
+deactivate PT
   
-RA -> FREEL : addDelay(taskDelay)
-activate FREEL
-FREEL -> LDL: addDelay(taskDelay)
-activate LDL
-deactivate LDL
-deactivate FREEL
-    
+OPT if freel = freelTrans
+  
+RA -> RA : numberTransactions++
+  
+RA -> PT : delayTrans = getDelay()
+activate PT
+deactivate PT
+  
+OPT if delayTrans>0
+  
+RA -> RA : delay++
+RA -> RA : amountForHourDelay++
+  
+end OPT
+end OPT  
 end LOOP
   
-RA -> LDL : size = getDelayLstSize()
-activate LDL
-deactivate LDL
-
-RA -> FREEL : taskDelayOverall = getOverallDelay(lstDelay,size)
+RA -> RA : percentageDelayFreel = delay / numberTransactions
+RA -> RA : averageDelay = getAverageDelay()
+  
+OPT if delay>3 && percentageDelayFreel > averageDelay
+  
+RA -> FREEL : email = getEmail()
 activate FREEL
 deactivate FREEL
   
-RA -> FREEL : taskLstSize = getTaskLstSize()
-activate FREEL
-deactivate FREEL
-
-RA -> FREEL : delayPerc = calculatePerc(size,taskLstSize)
-activate FREEL
-deactivate FREEL
+[<- RA : sendEmail(percentageDelayFreel,amountForHourDelay)
   
+end OPT  
 end LOOP
-  
-ALT if taskDelayOverall > 3 && taskLstSize > delayPerc
-  
-RA -> LFRE : addFreelancer(email)
-activate LFRE
-deactivate LFRE
-end ALT
 deactivate RA
   
   

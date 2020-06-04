@@ -78,12 +78,18 @@ The freelancer stays informed.
 |                                                        | ...starts the process of notification? | Timer | Timer |
 |                                                        | ...creates the instance Timer? | Plataform | Creator: Plataform as knowledge of the time to start the notifications. |
 | 2. The system identifies the freelancers that have mean task delay higher than 3 hours and have a percentage of delays higher than the overall percentage of delays. After that, starts the notification of the freelancers. | ...knows RegisterFreelancers? | Plataform | IE: Plataform contains RegisterFreelancer (HC + LC) |
-|  | ...knows the task delay? | TaskExecution | IE: Knows its own information |  
-|  | ...knows the percentage of delays? | TaskExecution | IE: knows its own information  |
-|  | ...knows the class TaskExecution? | RegisterTaskExecution | IE: Owns the class TaskExecution (HC + LC) |
+|  | ...knows the payment transaction list? | Organization | IE : in the MD Organizations has PaymentTransactionList |
+|  | ...knows the organization? | Platform | IE : in the MD Platform has Organization |
+|  | ...knows the each payment transaction? | PaymentTransactionList | IE: Owns the class PaymentTransaction (HC + LC) |
+|  | ...knows the task delay? | PaymentTransaction | IE: Knows its own information |  
+|  | ...knows the percentage of delays? | PaymentTransaction | IE: knows its own information  |
 |  | ...know the freelancers? | ListFreelancers | IE: Owns the class ListFreelancers (HC + LC) |
-|  | ...applys the requirements to know the right freelancers? | TaskExecution | IE: Knows its own information. |
-|  | ...saves the fit freelancers according with the requirements? | ListFreelancersToNotify | IE: Owns the class ListFreelancersToNotify (HC + LC) |
+|  |                          | PaymentTransactionList | IE : In the MD PaymentTransactionList has Freealancer |
+|  | ...knows the freelancer´s email? | Freelancer | IE: Owns his data |
+|  | ...schedules the next year´s notification? | RegisterFreelancer | IE |
+
+
+
 
 
 ### Systematization ##
@@ -91,15 +97,17 @@ The freelancer stays informed.
  From the racional results the conceptual classes promoted to software classes are : 
  
  * Plataform
- * TaskExecution
+ * PaymentTransaction
+ * Organization
+ * Freelancer
 
  The other software classes (i.e. Pure Fabrication) identify:
 
  * NotifyFreelancersTask
  * Timer
  * ListFreelancers
- * ListFreelancersToNotify
- * RegisterTaskExecution
+ * RegisterFreelancer
+ * PaymentTransactionList
 
 
 ###     Sequence Diagram

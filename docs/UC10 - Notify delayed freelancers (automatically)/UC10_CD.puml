@@ -5,22 +5,17 @@ left to right direction
 class Platform {
   -String designation
   +agendNotification()
-  +getDelay()
-  +getIntervalo()
+  +getOrganization()
   +getRegistoFreelancer()
 }
 
-class ListDelay {
-  +addDelay(taskDelay)
-  +getDelayListSize()
-}
-
-class ListFreelancerToNotify {
-  +addFreelancer(email) 
-}
-
 class RegisterFreelancer{
-  +getListFreelancerToNotify() 
+  +int numberTransactions
+  +int delay
+  +int amountForHourDelay
+  +percentageDelayFreel
+  +averageDelay
+  +scheduleAutomaticEmail()
 }
 
 abstract Timer {
@@ -30,10 +25,13 @@ abstract Timer {
 
 class NotifyFreelancerTask {
   +run() 
+  +sendEmail()
+  +nextNotification()
 }
 
 class Organization {
   -String name
+  +getPaymentTransactionList()
 }
 
 class Freelancer {
@@ -45,37 +43,25 @@ class Freelancer {
   -String IBAN
   -String address
   -String country
-  +getEmailByFreelancer()
-  +newDelyaList()
-  +addDelay(taskDelay)
-  +getOverallDelay(listDelay,size)
-  +getTaskLstSize()
-  calculatePerc(size,taskLstSize)
+  +getEmail()
   }
 
-class Task {
- -String id
- -String briefDescription
- -Integer timeDuration
- -Double costPerHour
- -String taskCategory
-  +getTaskDelay()
-}
-
-class TaskExecution {
+class PaymentTransaction{
  -Date endDate
  -Double delay
  -String workQualityDescription
   +getDelay()
+  +getFreelancer()
 }
 
-class PaymentTransaction{
+class PaymentTransactionList {
+  +get(i) 
 }
 
-class PaymentDay {
-  -Date timeOfDay
-  -Date dayOfMonth
+class ListFreelancer {
+  +get(i) 
 }
+
 
 Platform "1" -- "*" Organization : has registered >
 Platform "1" -- "1" NotifyFreelancerTask : has>
@@ -83,24 +69,15 @@ Platform "1" -- "1" RegisterFreelancer : has >
 
 NotifyFreelancerTask  --  Timer 
 
-Freelancer "1" -- "1" ListDelay : has >
+RegisterFreelancer "1" -- "1" ListFreelancer : has >
 
-RegisterFreelancer "1" -- "1" ListFreelancerToNotify : has >
-RegisterFreelancer "1" -- "1..*" Freelancer : has >
+ListFreelancer "1" -- "1..*" Freelancer : has >
 
-Organization "1" -- "*" Task: has >
-Organization "1" -- "*" PaymentTransaction: has >
+Organization "1" -- "*" PaymentTransactionList: has >
 
 PaymentTransaction "1" -- "1" Freelancer: is related to >
-PaymentTransaction "1" -- "1" Task: is related to >
-PaymentTransaction "1" -- "1" TaskExecution: is related to >
 
-TaskExecution "1..*" -- "1..*" Freelancer : is related to >
-
-Task "1" -- "1" TaskExecution: has >
-Task "1..*" -- "1" Freelancer: assigned >
-
-PaymentDay "1" -- "0..*" PaymentTransaction : is related to
+PaymentTransactionList "1" -- "1..*" PaymentTransaction : has >
 
 
 @enduml

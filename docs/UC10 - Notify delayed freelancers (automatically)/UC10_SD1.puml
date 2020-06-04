@@ -6,40 +6,41 @@ actor "Time" as TEMPO
 participant ":Plataform" as PLAT
 participant "task:NotifyFreelancersTask" as SCAT
 participant "t: Timer" as TIMER
-participant "rf: RegisterFreelancer" as RA
+participant "regFreel\n:RegisterFreelancer" as RFREEL
 
 
- TEMPO -> PLAT : agendNotification()
- activate TEMPO
+TEMPO -> PLAT : agendNotification()
+activate TEMPO
 
 activate PLAT
 PLAT -> SCAT** : create()
-PLAT -> PLAT : delay = getDelay()
-PLAT -> PLAT : intervalo =getIntervalo()
-SCAT -> PLAT : getRegistoFreelancers()
+PLAT -> PLAT : date =getDateDefined()
 PLAT -> TIMER** : create()
-PLAT -> TIMER : schedule(freel, delay, intervalo)
+PLAT -> TIMER : schedule(task, date)
 activate TIMER
-deactivate TIMER
 deactivate PLAT
 
-note over SCAT
-While the time specify by "delay" and/or "intervalo"
-end note
-
 TIMER -> SCAT : run()
-activate TIMER
 activate SCAT
-SCAT -> RA :listaFN = getListaFreelancersToNotify()
-activate RA
-REF over RA
-SD_getListaFreelancersToNotify
+SCAT -> SCAT : sendEmail()
+
+REF over SCAT
+SD_sendEmail
 end REF
-deactivate RA
+
+SCAT -> SCAT : nextNotification()
+
+
+SCAT -> PLAT : regFreel = getRegisterFreelancer()
+activate PLAT
+deactivate PLAT
+
+SCAT -> RFREEL : scheduleAutomaticEmail()
+activate RFREEL
+deactivate RFREEL
 
 deactivate TIMER
 deactivate SCAT
-
 deactivate TEMPO
 
 
