@@ -6,7 +6,7 @@ actor "Time" as TEMPO
 participant ":Plataform" as PLAT
 participant "task:NotifyFreelancersTask" as SCAT
 participant "t: Timer" as TIMER
-participant "regFreel\n:RegisterFreelancer" as RFREEL
+participant "regFreel\n:RecordFreelancer" as RFREEL
 
 
 TEMPO -> PLAT : agendNotification()
@@ -31,7 +31,7 @@ end REF
 SCAT -> SCAT : nextNotification()
 
 
-SCAT -> PLAT : regFreel = getRegisterFreelancer()
+SCAT -> PLAT : regFreel = getRecordFreelancer()
 activate PLAT
 deactivate PLAT
 

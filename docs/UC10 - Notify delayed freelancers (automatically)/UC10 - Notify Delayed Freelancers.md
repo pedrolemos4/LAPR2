@@ -77,7 +77,7 @@ The freelancer stays informed.
 | 1. The collaborator starts to create a new Freelancer. | ...coordinates the UC? | NotifyFreelancersTask | Task |
 |                                                        | ...starts the process of notification? | Timer | Timer |
 |                                                        | ...creates the instance Timer? | Plataform | Creator: Plataform as knowledge of the time to start the notifications. |
-| 2. The system identifies the freelancers that have mean task delay higher than 3 hours and have a percentage of delays higher than the overall percentage of delays. After that, starts the notification of the freelancers. | ...knows RegisterFreelancers? | Plataform | IE: Plataform contains RegisterFreelancer (HC + LC) |
+| 2. The system identifies the freelancers that have mean task delay higher than 3 hours and have a percentage of delays higher than the overall percentage of delays. After that, starts the notification of the freelancers. | ...knows RecordFreelancer? | Plataform | IE: Plataform contains RecordFreelancer (HC + LC) |
 |  | ...knows the payment transaction list? | Organization | IE : in the MD Organizations has PaymentTransactionList |
 |  | ...knows the organization? | Platform | IE : in the MD Platform has Organization |
 |  | ...knows the each payment transaction? | PaymentTransactionList | IE: Owns the class PaymentTransaction (HC + LC) |
@@ -86,7 +86,7 @@ The freelancer stays informed.
 |  | ...know the freelancers? | ListFreelancers | IE: Owns the class ListFreelancers (HC + LC) |
 |  |                          | PaymentTransactionList | IE : In the MD PaymentTransactionList has Freealancer |
 |  | ...knows the freelancer´s email? | Freelancer | IE: Owns his data |
-|  | ...schedules the next year´s notification? | RegisterFreelancer | IE |
+|  | ...schedules the next year´s notification? | RecordFreelancer | IE |
 
 
 
@@ -106,7 +106,7 @@ The freelancer stays informed.
  * NotifyFreelancersTask
  * Timer
  * ListFreelancers
- * RegisterFreelancer
+ * RecordFreelancer
  * PaymentTransactionList
 
 

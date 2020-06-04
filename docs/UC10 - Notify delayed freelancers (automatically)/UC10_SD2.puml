@@ -2,7 +2,7 @@
 autonumber
 
 title sd_sendEmails
-participant "ra:RegisterFreelancer" as RA
+participant "ra:RecordFreelancer" as RA
 participant ":Platform" as PLAT
 participant "trans:PaymentTransaction" as PT
 participant "transactionsList\n:PaymentTransactionsList" as LPT
