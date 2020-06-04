@@ -43,6 +43,7 @@ class Task {
 }
 
 class PaymentTransaction{
+  -String id
   -Date endDate
   -Double delay
   -String workQualityDescription

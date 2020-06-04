@@ -26,13 +26,13 @@ public class CreatePaymentTransactionController {
         this.m_oSessao = m_oApp.getSessaoAtual();
     }
 
-    public boolean newPaymentTransaction(String taskId, String briefDescription, int timeDuration, double costPerHour, String taskCategory, String endDate, int delay, String workQualityDescription, String frlId, String name, String expertiseLevel, String email, String NIF, String IBAN, String address, String country) {
+    public boolean newPaymentTransaction(String payTId, String taskId, String briefDescription, int timeDuration, double costPerHour, String taskCategory, String endDate, int delay, String workQualityDescription, String frlId, String name, String expertiseLevel, String email, String NIF, String IBAN, String address, String country) {
         try {
             String emailC = m_oSessao.getUserEmail();
             Organization org = or.getOrganizationByUserEmail(emailC);
             //Task task = tLst.taskExists(taskId);
             //Freelancer free = frlR.freelancerExists(frlId);
-            //this.payT = this.ptL.newPaymentTransaction(task, free, endDate, delay, workQualityDescription);
+            //this.payT = this.ptL.newPaymentTransaction(payTId, task, free, endDate, delay, workQualityDescription);
             return this.ptL.validatePaymentTransaction(this.payT);
         } catch (RuntimeException ex) {
             Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);
