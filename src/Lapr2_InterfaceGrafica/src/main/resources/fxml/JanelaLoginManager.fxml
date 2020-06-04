@@ -30,7 +30,7 @@
                         <TextField fx:id="usernameBox" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="31.0" prefWidth="245.0" promptText="Username" translateX="175.0" GridPane.rowIndex="2" />
                         <TextField fx:id="passwordBox" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="31.0" prefWidth="245.0" promptText="Password" translateX="175.0" GridPane.rowIndex="3" />
                         <Button fx:id="bottonLogin" mnemonicParsing="false" onAction="#btnLogin" text="Login" translateX="268.0" GridPane.rowIndex="4" />
-                        <Label text="Manager" translateX="235.0">
+                        <Label text="Manager" translateX="225.0" translateY="-1.0">
                            <font>
                               <Font size="32.0" />
                            </font>
