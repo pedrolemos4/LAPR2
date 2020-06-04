@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.lapr2_interfacegrafica.controller;
+package com.mycompany.lapr2_interfacegrafica.InterfaceController;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,14 +15,14 @@ import javafx.scene.input.MouseEvent;
  *
  * @author pedro
  */
-public class JanelaLoginCollaborator {
+public class JanelaLoginManager {
 
     @FXML
     private TextField usernameBox;
     @FXML
     private TextField passwordBox;
     @FXML
-    private Button login;
+    private Button bottonLogin;
 
     @FXML
     private void btnLogin(ActionEvent event) {
