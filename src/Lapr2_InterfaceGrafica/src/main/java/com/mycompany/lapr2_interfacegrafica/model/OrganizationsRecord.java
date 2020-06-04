@@ -1,14 +1,13 @@
 package com.mycompany.lapr2_interfacegrafica.model;
 
+import com.mycompany.lapr2_interfacegrafica.authorization.FacadeAuthorization;
 import java.util.ArrayList;
 import java.util.List;
-import lapr2.autorizacao.AutorizacaoFacade;
 
 public class OrganizationsRecord {
 
     private PasswordGeneratorAlgorithm alg;
-    private Plataforma m_oPlataforma;
-    private final AutorizacaoFacade m_oAutorizacao = new AutorizacaoFacade();
+    private final FacadeAuthorization m_oAutorizacao = new FacadeAuthorization();
     private final List<Organization> m_lstOrganizations = new ArrayList<>();
 
     public Organization newOrganization(String name, String NIF, String nameM, String emailM, String nameC, String emailC) {
@@ -49,8 +48,8 @@ public class OrganizationsRecord {
             String emailC = collab.getEmail();
             String pwdC = alg.generatePassword(nameC, emailC);
             if (this.m_oAutorizacao.registaUtilizadorComPapeis(nameM, emailM, pwdM,
-                    new String[]{Constantes.PAPEL_GESTOR_ORGANIZACAO, Constantes.PAPEL_COLABORADOR_ORGANIZACAO})
-                    && this.m_oAutorizacao.registaUtilizadorComPapel(nameC, emailC, pwdC, Constantes.PAPEL_COLABORADOR_ORGANIZACAO)) {
+                    new String[]{Constants.PAPEL_GESTOR_ORGANIZACAO, Constants.PAPEL_COLABORADOR_ORGANIZACAO})
+                    && this.m_oAutorizacao.registaUtilizadorComPapel(nameC, emailC, pwdC, Constants.PAPEL_COLABORADOR_ORGANIZACAO)) {
                 return addOrganization(org);
             }
         }

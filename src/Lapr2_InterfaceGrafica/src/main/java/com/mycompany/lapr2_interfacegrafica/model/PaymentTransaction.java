@@ -29,11 +29,11 @@ public class PaymentTransaction {
 
     private double generatePayAmount(Task task, Freelancer free) {
         double payAmount = 0;
-        if (free.getExpertiseLevel() == "Junior") {
-            payAmount = task.getDuration() * task.getCostPerHour();
+        if (free.getLvlExp().equalsIgnoreCase("Junior")) {
+            //payAmount = task.getDuration() * task.getCostPerHour();
         }
-        if (free.getExpertiseLevel() == "Senior") {
-            payAmount = (task.getDuration() * task.getCostPerHour()) * 2;
+        if (free.getLvlExp().equalsIgnoreCase("Senior")) {
+            //payAmount = (task.getDuration() * task.getCostPerHour()) * 2;
         }
         return payAmount;
     }

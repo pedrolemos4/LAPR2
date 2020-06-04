@@ -3,12 +3,13 @@ package com.mycompany.lapr2_interfacegrafica.controller;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import com.mycompany.lapr2_interfacegrafica.authorization.model.UserSession;
-import lapr2.pot.model.FreelancersRecord;
+import com.mycompany.lapr2_interfacegrafica.model.FreelancersRecord;
 import com.mycompany.lapr2_interfacegrafica.model.Organization;
 import com.mycompany.lapr2_interfacegrafica.model.OrganizationsRecord;
 import com.mycompany.lapr2_interfacegrafica.model.PaymentTransaction;
 import com.mycompany.lapr2_interfacegrafica.model.PaymentTransactionList;
 import com.mycompany.lapr2_interfacegrafica.model.Platform;
+import com.mycompany.lapr2_interfacegrafica.model.TasksList;
 import lapr2.pot.ui.console.utils.Utils;
 
 public class CreatePaymentTransactionController {
@@ -17,7 +18,7 @@ public class CreatePaymentTransactionController {
     private Platform m_oPlataforma;
     private UserSession m_oSessao;
     private OrganizationsRecord or;
-    //private TasksList tLst;
+    private TasksList tLst;
     private FreelancersRecord frlR;
     private PaymentTransactionList ptL;
     private PaymentTransaction payT;
@@ -34,8 +35,7 @@ public class CreatePaymentTransactionController {
             //Task task = tLst.taskExists(taskId);
             //TaskExecution taskExec = task.taskExec();
             //Freelancer free = frlR.freelancerExists(frlId);
-            //double payAmount = org.generatePayAmount(task, free);
-            //this.payT = this.ptL.newPaymentTransaction(task, taskExec, free, payAmount);
+            //this.payT = this.ptL.newPaymentTransaction(task, taskExec, free);
             return this.ptL.validatePaymentTransaction(this.payT);
         } catch (RuntimeException ex) {
             Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);
