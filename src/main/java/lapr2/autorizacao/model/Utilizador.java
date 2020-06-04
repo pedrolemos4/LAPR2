@@ -12,7 +12,7 @@ public class Utilizador
 {
     private String m_strNome;
     private String m_strEmail;
-    private String m_strPassword; // Não deveria guardar a password em "plain text"
+    private String m_strPassword;
     private Set<PapelUtilizador> m_lstPapeis = new HashSet<PapelUtilizador>();
     
     public Utilizador(String strNome, String strEmail, String strPassword)

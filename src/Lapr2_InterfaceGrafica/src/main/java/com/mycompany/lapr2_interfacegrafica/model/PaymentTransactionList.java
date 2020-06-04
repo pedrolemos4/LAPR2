@@ -5,10 +5,10 @@ import java.util.List;
 
 public class PaymentTransactionList {
 
-    private List<PaymentTransaction> m_lstPaymentTransactions = new ArrayList<PaymentTransaction>();
+    private List<PaymentTransaction> m_lstPaymentTransactions = new ArrayList<>();
 
-    public PaymentTransaction newPaymentTransaction(Task task, TaskExecution taskExec, Freelancer free, double payAmount) {
-        return new PaymentTransaction(task, taskExec, free, payAmount);
+    public PaymentTransaction newPaymentTransaction(Task task, TaskExecution taskExec, Freelancer free) {
+        return new PaymentTransaction(task, taskExec, free);
     }
 
     public boolean validatePaymentTransaction(PaymentTransaction payT) {

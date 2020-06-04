@@ -10,7 +10,7 @@ public class Organization {
     private String m_strNIF;
     private Collaborator m_oManager;
     private Collaborator m_oCollaborator;
-    private List<PaymentTransaction> m_lstPaymentTransactions = new ArrayList<PaymentTransaction>();
+    private List<PaymentTransaction> m_lstPaymentTransactions = new ArrayList<>();
 
     public Organization(String name, String NIF, Collaborator manager, Collaborator collaborator) {
         if ((name == null) || (NIF == null) || (manager == null) || (collaborator == null)
@@ -71,7 +71,4 @@ public class Organization {
         return new Collaborator(name, email);
     }
 
-    public double generatePayAmount(Task task, Freelancer free) {
-        return 0;
-    }
 }

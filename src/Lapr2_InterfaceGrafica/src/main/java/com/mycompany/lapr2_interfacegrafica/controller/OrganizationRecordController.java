@@ -4,18 +4,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import com.mycompany.lapr2_interfacegrafica.model.Organization;
 import com.mycompany.lapr2_interfacegrafica.model.OrganizationsRecord;
-import lapr2.pot.model.Platform;
+import com.mycompany.lapr2_interfacegrafica.model.Platform;
 import lapr2.pot.ui.console.utils.Utils;
 
 public class OrganizationRecordController {
 
-    private AplicacaoPOT m_oApp;
-    private Plataforma m_oPlataforma;
+    private POTApplication m_oApp;
+    private Platform m_oPlataforma;
     private Organization org;
     private OrganizationsRecord or;
 
     public OrganizationRecordController() {
-        this.m_oApp = AplicacaoPOT.getInstance();
+        this.m_oApp = POTApplication.getInstance();
         this.m_oPlataforma = m_oApp.getPlataforma();
     }
 
