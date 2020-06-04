@@ -1,14 +1,14 @@
-package lapr2.pot.controller;
+package com.mycompany.lapr2_interfacegrafica.controller;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import lapr2.autorizacao.model.SessaoUtilizador;
 import lapr2.pot.model.Freelancer;
 import lapr2.pot.model.FreelancersRecord;
-import lapr2.pot.model.Organization;
-import lapr2.pot.model.OrganizationsRecord;
-import lapr2.pot.model.PaymentTransaction;
-import lapr2.pot.model.PaymentTransactionList;
+import com.mycompany.lapr2_interfacegrafica.model.Organization;
+import com.mycompany.lapr2_interfacegrafica.model.OrganizationsRecord;
+import com.mycompany.lapr2_interfacegrafica.model.PaymentTransaction;
+import com.mycompany.lapr2_interfacegrafica.model.PaymentTransactionList;
 import lapr2.pot.model.Plataforma;
 import lapr2.pot.model.Task;
 import lapr2.pot.ui.console.utils.Utils;

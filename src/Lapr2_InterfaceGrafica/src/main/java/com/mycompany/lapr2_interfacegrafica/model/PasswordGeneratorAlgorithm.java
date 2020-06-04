@@ -1,4 +1,4 @@
-package lapr2.pot.model;
+package com.mycompany.lapr2_interfacegrafica.model;
 
 public interface PasswordGeneratorAlgorithm {
 

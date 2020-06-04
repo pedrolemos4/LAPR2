@@ -1,10 +1,10 @@
-package lapr2.pot.controller;
+package com.mycompany.lapr2_interfacegrafica.controller;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import lapr2.pot.model.Organization;
-import lapr2.pot.model.OrganizationsRecord;
-import lapr2.pot.model.Plataforma;
+import com.mycompany.lapr2_interfacegrafica.model.Organization;
+import com.mycompany.lapr2_interfacegrafica.model.OrganizationsRecord;
+import lapr2.pot.model.Platform;
 import lapr2.pot.ui.console.utils.Utils;
 
 public class OrganizationRecordController {
