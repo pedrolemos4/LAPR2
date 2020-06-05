@@ -14,7 +14,7 @@ import javafx.scene.control.TextField;
  *
  * @author Tiago
  */
-public class CreateTaskUI {
+public class CreateTaskScene_1_UI {
 
     @FXML
     private TextField txtTaskID;
