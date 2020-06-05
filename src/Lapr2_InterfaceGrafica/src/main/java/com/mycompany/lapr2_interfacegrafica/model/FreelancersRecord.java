@@ -15,11 +15,11 @@ public class FreelancersRecord {
 
     private List<Freelancer> arrayFreelancers;
 
-    public FreelancersRecord(String id, String name, String lvlExp, String email, int nif, String iban, String country, String adress) {
+    public FreelancersRecord(String id, String name, String lvlExp, String email, String nif, String iban, String country, String adress) {
         Freelancer freelancer = new Freelancer(id, name, lvlExp, email, nif, iban, country, adress);
     }
 
-    public Freelancer newFreelancer(String id, String name, String lvlExp, String email, int nif, String iban, String country, String adress) {
+    public Freelancer newFreelancer(String id, String name, String lvlExp, String email, String nif, String iban, String country, String adress) {
         return new Freelancer(id, name, lvlExp, email, nif, iban, country, adress);
     }
 
@@ -28,7 +28,7 @@ public class FreelancersRecord {
     }
 
     public boolean validatesFreelancer(Freelancer freel) {
-        if (freel.getAdress() == null || freel.getCountry() == null || freel.getEmail() == null || freel.getIban() == null || freel.getId() == null || freel.getLvlExp() == null || freel.getName() == null || freel.getNif() < 0) {
+        if (freel.getAdress() == null || freel.getCountry() == null || freel.getEmail() == null || freel.getIban() == null || freel.getId() == null || freel.getLvlExp() == null || freel.getName() == null || freel.getNif() ==null) {
             return false;
         } else {
             return true;

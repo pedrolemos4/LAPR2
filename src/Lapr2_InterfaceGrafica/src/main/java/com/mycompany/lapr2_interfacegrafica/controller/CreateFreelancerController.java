@@ -9,8 +9,8 @@ public class CreateFreelancerController {
     private String name;
     private String lvlExp;
     private String email;
-    private int nif;
-    private int iban;
+    private String nif;
+    private String iban;
     private String country;
     private String adress;
 
@@ -19,7 +19,7 @@ public class CreateFreelancerController {
     public CreateFreelancerController() {
     }
 
-    public FreelancersRecord newFreelancer(String id, String name, String lvlExp, String email, int nif, String iban, String country, String adress) {
+    public FreelancersRecord newFreelancer(String id, String name, String lvlExp, String email, String nif, String iban, String country, String adress) {
         return new FreelancersRecord(id, name, lvlExp, email, nif, iban, country, adress);
     }
 

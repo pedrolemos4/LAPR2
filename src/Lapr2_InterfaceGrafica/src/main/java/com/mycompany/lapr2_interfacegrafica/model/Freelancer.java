@@ -6,12 +6,15 @@ public class Freelancer {
     private String name;
     private String lvlExp;
     private String email;
-    private int nif;
+    private String nif;
     private String iban;
     private String country;
     private String adress;
 
-    public Freelancer(String id, String name, String lvlExp, String email, int nif, String iban, String country, String adress) {
+    public Freelancer(String id, String name, String lvlExp, String email, String nif, String iban, String country, String adress) {
+        if (adress == null || country== null || email == null || iban== null || id == null || lvlExp== null || name == null || nif==null ) {
+            throw new IllegalArgumentException("None of the arguments can be null or empty.");
+        }
         this.adress = adress;
         this.country = country;
         this.email = email;
@@ -50,12 +53,12 @@ public class Freelancer {
         return this.iban;
     }
 
-    public int getNif() {
+    public String getNif() {
         return this.nif;
     }
 
     public boolean validatesFreelancer(Freelancer freel) {
-        if (freel.getAdress() == null || freel.getCountry() == null || freel.getEmail() == null || freel.getIban() == null || freel.getId() == null || freel.getLvlExp() == null || freel.getName() == null || freel.getNif() < 0) {
+        if (freel.getAdress() == null || freel.getCountry() == null || freel.getEmail() == null || freel.getIban() == null || freel.getId() == null || freel.getLvlExp() == null || freel.getName() == null || freel.getNif() ==null) {
             return false;
         } else {
             return true;
