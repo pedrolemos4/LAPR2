@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.lapr2_interfacegrafica.InterfaceController;
+package com.mycompany.lapr2_interfacegrafica.ui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,7 +14,7 @@ import javafx.scene.control.Label;
  *
  * @author Tiago
  */
-public class JanelaPrincipalController {
+public class JanelaPrincipalUI {
 
     @FXML
     private Label labelT4J;

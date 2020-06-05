@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.lapr2_interfacegrafica.interfaceController;
+package com.mycompany.lapr2_interfacegrafica.ui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,7 +15,7 @@ import javafx.scene.control.TextField;
  *
  * @author Tiago
  */
-public class SetDayOfPaymentController {
+public class SetDayOfPaymentUI {
 
     @FXML
     private Label lblSetDayofPayment;

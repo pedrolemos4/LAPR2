@@ -3,29 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.lapr2_interfacegrafica.InterfaceController;
+package com.mycompany.lapr2_interfacegrafica.ui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 
 /**
  *
- * @author pedro
+ * @author Tiago
  */
-public class JanelaLoginManager {
+public class JanelaOptionsManagerUI {
 
     @FXML
-    private TextField usernameBox;
+    private Button btnSetDayOfPayment;
     @FXML
-    private TextField passwordBox;
-    @FXML
-    private Button bottonLogin;
+    private Button btnCheckStatistics;
 
     @FXML
-    private void btnLogin(ActionEvent event) {
+    private void btnSetDayOfPaymentAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnCheckStatisticsAction(ActionEvent event) {
     }
     
 }

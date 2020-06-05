@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.lapr2_interfacegrafica.interfaceController;
+package com.mycompany.lapr2_interfacegrafica.ui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,38 +15,30 @@ import javafx.scene.control.TextField;
  *
  * @author Tiago
  */
-public class CreateFreelancerController {
+public class CreateTaskUI {
 
     @FXML
-    private Label lblCreateFreelancer;
+    private Label lblCreateTask;
     @FXML
-    private Label lblName;
+    private Label lblTaskID;
     @FXML
-    private Label lblLevelOfExpertise;
+    private Label lblTaskDescription;
     @FXML
-    private Label lblEmail;
+    private Label lblTimeDuration;
     @FXML
-    private Label lblNIF;
+    private Label lblCostPerHour;
     @FXML
-    private Label lblIBAN;
+    private Label lblTaskCategory;
     @FXML
-    private Label lblAddress;
+    private TextField txtTaskID;
     @FXML
-    private Label lblCountry;
+    private TextField txtTaskDescription;
     @FXML
-    private TextField txtNome;
+    private TextField txtTimeDuration;
     @FXML
-    private TextField txtLevelOfExpertise;
+    private TextField txtCostPerHour;
     @FXML
-    private TextField txtEmail;
-    @FXML
-    private TextField txtNIF;
-    @FXML
-    private TextField txtIBAN;
-    @FXML
-    private TextField txtAddress;
-    @FXML
-    private TextField txtCountry;
+    private TextField txtTaskCategory;
     @FXML
     private Button btnCreate;
     @FXML

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.lapr2_interfacegrafica.interfaceController;
+package com.mycompany.lapr2_interfacegrafica.ui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
@@ -12,7 +12,7 @@ import javafx.scene.control.ListView;
  *
  * @author Tiago
  */
-public class ManAndColabCheckStatisticsController {
+public class ManAndColabCheckStatisticsUI {
 
     @FXML
     private ListView<?> lstFreelancers;
