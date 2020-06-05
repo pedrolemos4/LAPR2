@@ -38,7 +38,7 @@
                         <Insets bottom="8.0" />
                      </padding>
                   </Label>
-                  <Button fx:id="btnAddNewOrganizations" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnAddNewOrganizationsAction" prefHeight="35.0" prefWidth="200.0" text="Add New Organizations" wrapText="true" GridPane.rowIndex="3">
+                  <Button fx:id="btnAddNewOrganization" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnAddNewOrganizationAction" prefHeight="35.0" prefWidth="200.0" text="Add New Organization" wrapText="true" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets left="10.0" />
                      </GridPane.margin>

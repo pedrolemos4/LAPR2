@@ -16,16 +16,16 @@ import javafx.scene.control.Button;
 public class SceneUI {
 
     @FXML
-    private Button btnAddNewOrganizations;
-    @FXML
     private Button btnCheckPerformance;
-
     @FXML
-    private void btnAddNewOrganizationsAction(ActionEvent event) {
-    }
+    private Button btnAddNewOrganization;
 
     @FXML
     private void btnCheckPerformanceAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnAddNewOrganizationAction(ActionEvent event) {
     }
     
 }
