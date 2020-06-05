@@ -9,31 +9,20 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 
 /**
  *
  * @author Tiago
  */
-public class AddNewOrganization_1_UI {
+public class AddNewOrganizationScene_3_UI {
 
     @FXML
-    private Button btnCancel;
+    private Label lblNotification;
     @FXML
-    private Label lblAlert;
-    @FXML
-    private TextField txtName;
-    @FXML
-    private TextField txtNIF;
-    @FXML
-    private Button btnNext;
+    private Button btnOK;
 
     @FXML
-    private void btnNextAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnCancelAction(ActionEvent event) {
+    private void btnOKAction(ActionEvent event) {
     }
     
 }

@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lapr2_interfacegrafica.ui.CreateFreelancerUI">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lapr2_interfacegrafica.ui.CreateFreelancerScene_1_UI">
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -83,7 +83,7 @@
                   <Insets right="70.0" />
                </GridPane.margin>
             </TextField>
-            <Button fx:id="btnCreate" defaultButton="true" mnemonicParsing="false" onAction="#btnCreateAction" text="Create" translateX="232.0" GridPane.rowIndex="10">
+            <Button fx:id="btnNext" defaultButton="true" mnemonicParsing="false" onAction="#btnNextAction" text="Next" translateX="232.0" GridPane.rowIndex="10">
                <GridPane.margin>
                   <Insets bottom="20.0" />
                </GridPane.margin>

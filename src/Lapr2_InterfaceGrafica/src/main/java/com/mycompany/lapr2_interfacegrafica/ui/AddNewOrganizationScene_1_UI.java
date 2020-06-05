@@ -8,35 +8,28 @@ package com.mycompany.lapr2_interfacegrafica.ui;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 /**
  *
  * @author Tiago
  */
-public class CreateFreelancerUI {
+public class AddNewOrganizationScene_1_UI {
 
     @FXML
-    private TextField txtNome;
+    private Button btnCancel;
     @FXML
-    private TextField txtLevelOfExpertise;
+    private Label lblAlert;
     @FXML
-    private TextField txtEmail;
+    private TextField txtName;
     @FXML
     private TextField txtNIF;
     @FXML
-    private TextField txtIBAN;
-    @FXML
-    private TextField txtAddress;
-    @FXML
-    private TextField txtCountry;
-    @FXML
-    private Button btnCreate;
-    @FXML
-    private Button btnCancel;
+    private Button btnNext;
 
     @FXML
-    private void btnCreateAction(ActionEvent event) {
+    private void btnNextAction(ActionEvent event) {
     }
 
     @FXML

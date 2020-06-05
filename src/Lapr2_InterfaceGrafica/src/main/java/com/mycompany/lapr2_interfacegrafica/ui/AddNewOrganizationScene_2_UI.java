@@ -14,15 +14,27 @@ import javafx.scene.control.Label;
  *
  * @author Tiago
  */
-public class AddNewOrganization_3_UI {
+public class AddNewOrganizationScene_2_UI {
 
     @FXML
-    private Button btnOK;
+    private Button btnConfirm;
     @FXML
-    private Label lblNotification;
+    private Button btnCancel;
+    @FXML
+    private Button btnReturn;
+    @FXML
+    private Label lblOrganization;
 
     @FXML
-    private void btnOKAction(ActionEvent event) {
+    private void btnConfirmAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnCancelAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnReturnAction(ActionEvent event) {
     }
     
 }

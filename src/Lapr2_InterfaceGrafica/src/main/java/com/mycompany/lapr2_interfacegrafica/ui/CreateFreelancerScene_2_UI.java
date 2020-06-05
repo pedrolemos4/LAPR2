@@ -14,7 +14,7 @@ import javafx.scene.control.Label;
  *
  * @author Tiago
  */
-public class AddNewOrganization_2_UI {
+public class CreateFreelancerScene_2_UI {
 
     @FXML
     private Button btnConfirm;
@@ -23,7 +23,7 @@ public class AddNewOrganization_2_UI {
     @FXML
     private Button btnReturn;
     @FXML
-    private Label lblOrganization;
+    private Label lblFreelancer;
 
     @FXML
     private void btnConfirmAction(ActionEvent event) {
