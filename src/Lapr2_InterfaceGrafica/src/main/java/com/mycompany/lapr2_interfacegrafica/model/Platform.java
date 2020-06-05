@@ -1,11 +1,13 @@
 package com.mycompany.lapr2_interfacegrafica.model;
 
 import com.mycompany.lapr2_interfacegrafica.authorization.FacadeAuthorization;
+import java.util.List;
 
 public class Platform {
 
     private String m_strDesignacao;
     private final FacadeAuthorization m_oAutorizacao;
+    private FreelancersRecord freelRec;
 
     public Platform(String strDesignacao) {
         if ((strDesignacao == null)
@@ -18,5 +20,9 @@ public class Platform {
 
     public FacadeAuthorization getFacadeAuthorization() {
         return this.m_oAutorizacao;
+    }
+
+    public FreelancersRecord getRegistoFreelancer() {
+        return freelRec;
     }
 }

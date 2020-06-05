@@ -56,6 +56,10 @@ public class Freelancer {
     public String getNif() {
         return this.nif;
     }
+    
+    public String toString(){
+        return String.format("The freelancer is called: %n. Lives in: %n, %n. Email: %n. Iban: %n. Nif: %n. Level of Experience: %n.", name, adress, country, email, iban, nif, lvlExp);
+    }
 
     public boolean validatesFreelancer(Freelancer freel) {
         if (freel.getAdress() == null || freel.getCountry() == null || freel.getEmail() == null || freel.getIban() == null || freel.getId() == null || freel.getLvlExp() == null || freel.getName() == null || freel.getNif() ==null) {
