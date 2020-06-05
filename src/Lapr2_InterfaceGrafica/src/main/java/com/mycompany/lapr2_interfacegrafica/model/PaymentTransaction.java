@@ -2,6 +2,7 @@ package com.mycompany.lapr2_interfacegrafica.model;
 
 public class PaymentTransaction {
 
+    private String m_strId;
     private Task m_oTask;
     private Freelancer m_oFreelancer;
     private String m_strEndDate;
@@ -9,10 +10,11 @@ public class PaymentTransaction {
     private String m_strWorkQualityDescription;
     private double dPayAmount;
 
-    public PaymentTransaction(Task task, Freelancer free, String endDate, int delay, String workQualityDescription) {
+    public PaymentTransaction(String payTId, Task task, Freelancer free, String endDate, int delay, String workQualityDescription) {
         if ((task == null) || (free == null)) {
             throw new IllegalArgumentException("None of the arguments can be null or empty.");
         }
+        this.m_strId = payTId;
         this.m_oTask = task;
         this.m_oFreelancer = free;
         this.m_strEndDate = endDate;

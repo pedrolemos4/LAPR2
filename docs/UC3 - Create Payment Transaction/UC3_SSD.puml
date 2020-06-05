@@ -5,7 +5,7 @@ actor "Organization's Collaborator" as OC
 activate OC
 OC -> ":System" : creation of a payment transaction of a finished/executed task
 activate ":System"
-":System" --> OC : requests the necessary data on the payment transaction\na brief description of the task (taskId, brief description, time duration (in hours), cost per hour (in euros) and task category), \ndetails about the execution of the task (end date, delay, brief description of the quality of the work)\nand information about the freelancer that worked on the task \n(frlId, name, level of expertise, e-mail, NIF, bank account (IBAN), address and country)
+":System" --> OC : requests the necessary data on the payment transaction, that is, the payment transaction id,\na brief description of the task (taskId, brief description, time duration (in hours), cost per hour (in euros) and task category), \ndetails about the execution of the task (end date, delay, brief description of the quality of the work)\nand information about the freelancer that worked on the task \n(frlId, name, level of expertise, e-mail, NIF, bank account (IBAN), address and country)
 deactivate ":System"
 
 OC -> ":System" : enters the requested data

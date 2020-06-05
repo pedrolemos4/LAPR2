@@ -20,13 +20,13 @@ activate CO
 CO -> UI : starts the creation of a payment transaction of a finished/executed task
 activate UI
 loop
-UI --> CO : requests the necessary data on the payment transaction\na brief description of the task (id, brief description, time duration (in hours), cost per hour (in euros) and task category), \ndetails about the execution of the task (end date, delay, brief description of the quality of the work)\nand information about the freelancer that worked on the task \n(id, name, level of expertise, e-mail, NIF, bank account (IBAN), address and country)
+UI --> CO : requests the necessary data on the payment transaction, that is, the payment transaction id,\na brief description of the task (id, brief description, time duration (in hours), cost per hour (in euros) and task category), \ndetails about the execution of the task (end date, delay, brief description of the quality of the work)\nand information about the freelancer that worked on the task \n(id, name, level of expertise, e-mail, NIF, bank account (IBAN), address and country)
 deactivate UI
 
 CO -> UI : enters the requested data
 activate UI
 
-UI -> CTRL : newPaymentTransaction(taskId, briefDescription, timeDuration, costPerHour, taskCategory, \nendDate, delay, workQualityDescription, \nfrlId, name, expertiseLevel, email, NIF, IBAN, address, country)
+UI -> CTRL : newPaymentTransaction(payTId, taskId, briefDescription, timeDuration, costPerHour, taskCategory, \nendDate, delay, workQualityDescription, \nfrlId, name, expertiseLevel, email, NIF, IBAN, address, country)
 activate CTRL
 
 CTRL -> _APP: app = getInstance()
@@ -69,9 +69,9 @@ CTRL -> ORG: ptL = getPaymentTransactionList()
 activate ORG
 deactivate ORG
 
-CTRL -> ptL : payT = newPaymentTransaction(task, free, endDate, delay, workQualityDescription)
+CTRL -> ptL : payT = newPaymentTransaction(payTId, task, free, endDate, delay, workQualityDescription)
 activate ptL
-ptL --> PA**: create(task, free, endDate, delay, workQualityDescription)
+ptL --> PA**: create(payTId, task, free, endDate, delay, workQualityDescription)
 deactivate ptL
 
 CTRL -> ptL : validatePaymentTransaction(payT)
