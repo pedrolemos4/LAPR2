@@ -19,7 +19,7 @@ public class MenuAdministrativoUI
         options.add("Especificar Área de Atividade ");
         options.add("Especificar Competência Técnica");
         options.add("Especificar Categoria de Tarefa");
-        
+        options.add("Create Task");
         int opcao = 0;
         do
         {            
@@ -37,6 +37,10 @@ public class MenuAdministrativoUI
                     break;
                 
                 case 2:
+                    break;
+                case 3 :
+                    CreateTaskUI ui = new CreateTaskUI();
+                    ui.run();
                     break;
             }
 
