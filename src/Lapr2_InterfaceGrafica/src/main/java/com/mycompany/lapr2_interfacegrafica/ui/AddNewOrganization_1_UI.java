@@ -15,10 +15,8 @@ import javafx.scene.control.TextField;
  *
  * @author Tiago
  */
-public class AddNewOrganizationUI {
+public class AddNewOrganization_1_UI {
 
-    @FXML
-    private Button btnNext;
     @FXML
     private Button btnCancel;
     @FXML
@@ -27,6 +25,8 @@ public class AddNewOrganizationUI {
     private TextField txtName;
     @FXML
     private TextField txtNIF;
+    @FXML
+    private Button btnNext;
 
     @FXML
     private void btnNextAction(ActionEvent event) {
