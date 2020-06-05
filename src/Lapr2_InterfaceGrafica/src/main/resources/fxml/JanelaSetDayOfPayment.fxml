@@ -7,8 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lapr2_interfacegrafica.interfaceController.SetDayOfPaymentController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lapr2_interfacegrafica.ui.SetDayOfPaymentUI">
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -23,13 +22,13 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label fx:id="lblSetDayofPayment" minHeight="-Infinity" minWidth="-Infinity" prefWidth="210.0" text="Set Day of Payment" translateX="-100.0" translateY="-20.0" GridPane.columnIndex="2">
+            <Label minHeight="-Infinity" minWidth="-Infinity" prefWidth="210.0" text="Set Day of Payment" translateX="-100.0" translateY="-20.0" GridPane.columnIndex="2">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label fx:id="lblDate" text="Date" translateX="90.0" translateY="-30.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label fx:id="lblTimeOfTheDay" text="Time of the Day" translateX="18.0" translateY="30.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Date" translateX="90.0" translateY="-30.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Time of the Day" translateX="18.0" translateY="30.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="txtDate" promptText="dd/mm/yyyy" translateY="-30.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <TextField fx:id="txtTimeOfTheDay" promptText="hh:mm" translateY="30.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Button fx:id="btnConfirm" defaultButton="true" mnemonicParsing="false" onAction="#btnConfirmAction" text="Confirm" translateX="50.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />

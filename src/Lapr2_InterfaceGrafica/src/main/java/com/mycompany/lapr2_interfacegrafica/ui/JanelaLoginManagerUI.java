@@ -8,29 +8,23 @@ package com.mycompany.lapr2_interfacegrafica.ui;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 /**
  *
  * @author Tiago
  */
-public class JanelaPrincipalUI {
+public class JanelaLoginManagerUI {
 
     @FXML
-    private Label labelT4J;
+    private TextField txtUsername;
     @FXML
-    private Button btnAddNewOrganizations;
+    private TextField txtPassword;
     @FXML
-    private Button btnCheckPerformance;
-    @FXML
-    private Label labelAdmin;
+    private Button btnLogin;
 
     @FXML
-    private void btnAddNewOrganizationsAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnCheckPerformanceAction(ActionEvent event) {
+    private void btnLoginAction(ActionEvent event) {
     }
     
 }

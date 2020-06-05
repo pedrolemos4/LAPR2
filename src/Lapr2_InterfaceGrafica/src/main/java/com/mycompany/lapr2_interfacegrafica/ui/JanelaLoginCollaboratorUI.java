@@ -9,23 +9,22 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 
 /**
  *
- * @author pedro
+ * @author Tiago
  */
-public class JanelaLoginManager {
+public class JanelaLoginCollaboratorUI {
 
     @FXML
-    private TextField usernameBox;
+    private TextField txtUsername;
     @FXML
-    private TextField passwordBox;
+    private TextField txtPassword;
     @FXML
-    private Button bottonLogin;
+    private Button btnLogin;
 
     @FXML
-    private void btnLogin(ActionEvent event) {
+    private void btnLoginAction(ActionEvent event) {
     }
     
 }

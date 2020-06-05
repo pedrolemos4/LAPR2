@@ -8,7 +8,6 @@ package com.mycompany.lapr2_interfacegrafica.ui;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 /**
@@ -17,18 +16,6 @@ import javafx.scene.control.TextField;
  */
 public class CreateTaskUI {
 
-    @FXML
-    private Label lblCreateTask;
-    @FXML
-    private Label lblTaskID;
-    @FXML
-    private Label lblTaskDescription;
-    @FXML
-    private Label lblTimeDuration;
-    @FXML
-    private Label lblCostPerHour;
-    @FXML
-    private Label lblTaskCategory;
     @FXML
     private TextField txtTaskID;
     @FXML

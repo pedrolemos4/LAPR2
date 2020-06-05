@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lapr2_interfacegrafica.interfaceController.CreateFreelancerController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lapr2_interfacegrafica.ui.CreateFreelancerUI">
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -29,7 +29,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label fx:id="lblCreateFreelancer" text="Create Freelancer" translateX="200.0">
+            <Label text="Create Freelancer" translateX="200.0">
                <font>
                   <Font size="24.0" />
                </font>
@@ -37,17 +37,17 @@
                   <Insets top="20.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="lblName" text="Name" translateX="250.0" GridPane.rowIndex="2">
+            <Label text="Name" translateX="250.0" GridPane.rowIndex="2">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </Label>
-            <Label fx:id="lblLevelOfExpertise" text="Level of Expertise" translateX="176.0" GridPane.rowIndex="3" />
-            <Label fx:id="lblEmail" text="E-mail" translateX="249.0" GridPane.rowIndex="4" />
-            <Label fx:id="lblNIF" text="NIF" translateX="268.0" GridPane.rowIndex="5" />
-            <Label fx:id="lblIBAN" text="IBAN" translateX="258.0" GridPane.rowIndex="6" />
-            <Label fx:id="lblAddress" text="Address" translateX="239.0" GridPane.rowIndex="7" />
-            <Label fx:id="lblCountry" text="Country" translateX="240.0" GridPane.rowIndex="8" />
+            <Label text="Level of Expertise" translateX="176.0" GridPane.rowIndex="3" />
+            <Label text="E-mail" translateX="249.0" GridPane.rowIndex="4" />
+            <Label text="NIF" translateX="268.0" GridPane.rowIndex="5" />
+            <Label text="IBAN" translateX="258.0" GridPane.rowIndex="6" />
+            <Label text="Address" translateX="239.0" GridPane.rowIndex="7" />
+            <Label text="Country" translateX="240.0" GridPane.rowIndex="8" />
             <TextField fx:id="txtNome" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets right="70.0" />

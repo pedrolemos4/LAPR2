@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lapr2_interfacegrafica.controller.JanelaLoginManager">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lapr2_interfacegrafica.ui.JanelaLoginManagerUI">
    <children>
       <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0">
          <children>
@@ -27,9 +27,9 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <TextField fx:id="usernameBox" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="31.0" prefWidth="245.0" promptText="Username" translateX="175.0" GridPane.rowIndex="2" />
-                        <TextField fx:id="passwordBox" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="31.0" prefWidth="245.0" promptText="Password" translateX="175.0" GridPane.rowIndex="3" />
-                        <Button fx:id="bottonLogin" mnemonicParsing="false" onAction="#btnLogin" text="Login" translateX="268.0" GridPane.rowIndex="4" />
+                        <TextField fx:id="txtUsername" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="31.0" prefWidth="245.0" promptText="Username" translateX="175.0" GridPane.rowIndex="2" />
+                        <TextField fx:id="txtPassword" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="31.0" prefWidth="245.0" promptText="Password" translateX="175.0" GridPane.rowIndex="3" />
+                        <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#btnLoginAction" text="Login" translateX="268.0" GridPane.rowIndex="4" />
                         <Label text="Manager" translateX="225.0" translateY="-1.0">
                            <font>
                               <Font size="32.0" />

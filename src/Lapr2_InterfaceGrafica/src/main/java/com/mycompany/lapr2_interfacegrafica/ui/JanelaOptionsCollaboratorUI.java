@@ -8,7 +8,6 @@ package com.mycompany.lapr2_interfacegrafica.ui;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
 
 /**
  *
@@ -17,40 +16,40 @@ import javafx.scene.input.MouseEvent;
 public class JanelaOptionsCollaboratorUI {
 
     @FXML
-    private Button createFreelancer;
+    private Button btnCreateFreelancer;
     @FXML
-    private Button createTask;
+    private Button btnCreateTask;
     @FXML
-    private Button createPayment;
+    private Button btnCreatePayment;
     @FXML
-    private Button uploadFile;
+    private Button btnUploadFile;
     @FXML
-    private Button back;
+    private Button btnBack;
     @FXML
-    private Button checkStatistics;
+    private Button btnCheckStatistics;
 
     @FXML
-    private void btnCreateFreel(ActionEvent event) {
+    private void btnCreateFreelanceerAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnCreateTask(ActionEvent event) {
+    private void btnCreateTaskAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnCreatePayment(ActionEvent event) {
+    private void btnCreatePaymentAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnUploadFile(ActionEvent event) {
+    private void btnUploadFileAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnBack(ActionEvent event) {
+    private void btnBackAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnCheckStatistics(ActionEvent event) {
+    private void btnCheckStatisticsAction(ActionEvent event) {
     }
     
 }

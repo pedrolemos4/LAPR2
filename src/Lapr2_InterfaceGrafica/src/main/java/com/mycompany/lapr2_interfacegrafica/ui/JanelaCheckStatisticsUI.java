@@ -12,7 +12,7 @@ import javafx.scene.control.ListView;
  *
  * @author Tiago
  */
-public class ManAndColabCheckStatisticsUI {
+public class JanelaCheckStatisticsUI {
 
     @FXML
     private ListView<?> lstFreelancers;

@@ -8,7 +8,6 @@ package com.mycompany.lapr2_interfacegrafica.ui;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 /**
@@ -17,22 +16,6 @@ import javafx.scene.control.TextField;
  */
 public class CreateFreelancerUI {
 
-    @FXML
-    private Label lblCreateFreelancer;
-    @FXML
-    private Label lblName;
-    @FXML
-    private Label lblLevelOfExpertise;
-    @FXML
-    private Label lblEmail;
-    @FXML
-    private Label lblNIF;
-    @FXML
-    private Label lblIBAN;
-    @FXML
-    private Label lblAddress;
-    @FXML
-    private Label lblCountry;
     @FXML
     private TextField txtNome;
     @FXML

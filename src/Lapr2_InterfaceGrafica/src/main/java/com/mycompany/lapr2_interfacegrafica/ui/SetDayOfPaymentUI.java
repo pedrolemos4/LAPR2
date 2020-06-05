@@ -8,7 +8,6 @@ package com.mycompany.lapr2_interfacegrafica.ui;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 /**
@@ -17,12 +16,6 @@ import javafx.scene.control.TextField;
  */
 public class SetDayOfPaymentUI {
 
-    @FXML
-    private Label lblSetDayofPayment;
-    @FXML
-    private Label lblDate;
-    @FXML
-    private Label lblTimeOfTheDay;
     @FXML
     private TextField txtDate;
     @FXML

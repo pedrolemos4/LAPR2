@@ -8,8 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lapr2_interfacegrafica.interfaceController.CreateTaskController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lapr2_interfacegrafica.ui.CreateTaskUI">
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -28,7 +27,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label fx:id="lblCreateTask" text="Create Task" translateX="220.0">
+            <Label text="Create Task" translateX="220.0">
                <font>
                   <Font size="24.0" />
                </font>
@@ -36,11 +35,11 @@
                   <Insets top="5.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="lblTaskID" text="Task ID" translateX="240.0" GridPane.rowIndex="2" />
-            <Label fx:id="lblTaskDescription" text="Task Description" translateX="180.0" GridPane.rowIndex="3" />
-            <Label fx:id="lblTimeDuration" text="Time Duration" translateX="196.0" GridPane.rowIndex="4" />
-            <Label fx:id="lblCostPerHour" text="Cost per Hour" translateX="198.0" GridPane.rowIndex="5" />
-            <Label fx:id="lblTaskCategory" text="Task Category" translateX="198.0" GridPane.rowIndex="6" />
+            <Label text="Task ID" translateX="240.0" GridPane.rowIndex="2" />
+            <Label text="Task Description" translateX="180.0" GridPane.rowIndex="3" />
+            <Label text="Time Duration" translateX="196.0" GridPane.rowIndex="4" />
+            <Label text="Cost per Hour" translateX="198.0" GridPane.rowIndex="5" />
+            <Label text="Task Category" translateX="198.0" GridPane.rowIndex="6" />
             <TextField fx:id="txtTaskID" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets right="70.0" />
