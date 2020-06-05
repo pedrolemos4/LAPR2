@@ -5,7 +5,11 @@ import java.util.List;
 
 public class PaymentTransactionList {
 
-    private List<PaymentTransaction> m_lstPaymentTransactions = new ArrayList<>();
+    private List<PaymentTransaction> m_lstPaymentTransactions;
+
+    public PaymentTransactionList() {
+        this.m_lstPaymentTransactions = new ArrayList<>();
+    }
 
     public PaymentTransaction newPaymentTransaction(String payTId, Task task, Freelancer free, String endDate, int delay, String workQualityDescription) {
         return new PaymentTransaction(payTId, task, free, endDate, delay, workQualityDescription);
@@ -19,7 +23,6 @@ public class PaymentTransactionList {
         }
         return true;
     }
-
     public boolean addPaymentTransaction(PaymentTransaction payT) {
         return m_lstPaymentTransactions.add(payT);
     }

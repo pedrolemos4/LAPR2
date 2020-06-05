@@ -8,7 +8,11 @@ public class OrganizationsRecord {
 
     private PasswordGeneratorAlgorithm alg;
     private final FacadeAuthorization m_oAutorizacao = new FacadeAuthorization();
-    private final List<Organization> m_lstOrganizations = new ArrayList<>();
+    private final List<Organization> m_lstOrganizations;
+
+    public OrganizationsRecord() {
+        this.m_lstOrganizations = new ArrayList<>();
+    }
 
     public Organization newOrganization(String name, String NIF, String nameM, String emailM, String nameC, String emailC) {
         Collaborator manager = new Collaborator(nameM, emailM);

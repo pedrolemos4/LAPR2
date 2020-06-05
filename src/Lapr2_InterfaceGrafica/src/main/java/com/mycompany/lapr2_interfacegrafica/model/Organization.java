@@ -1,7 +1,5 @@
 package com.mycompany.lapr2_interfacegrafica.model;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class Organization {
@@ -10,7 +8,7 @@ public class Organization {
     private String m_strNIF;
     private Collaborator m_oManager;
     private Collaborator m_oCollaborator;
-    private List<PaymentTransaction> m_lstPaymentTransactions = new ArrayList<>();
+    private PaymentTransactionList m_oPaymentTransactionList;
 
     public Organization(String name, String NIF, Collaborator manager, Collaborator collaborator) {
         if ((name == null) || (NIF == null) || (manager == null) || (collaborator == null)
@@ -67,7 +65,7 @@ public class Organization {
         return str;
     }
 
-    public static Collaborator newCollaborator(String name, String email) {
+    public Collaborator newCollaborator(String name, String email) {
         return new Collaborator(name, email);
     }
 
