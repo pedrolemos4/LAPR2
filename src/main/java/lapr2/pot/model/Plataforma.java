@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import lapr2.autorizacao.AutorizacaoFacade;
+import lapr2.autorizacao.model.TaskRegister;
 
 
 public class Plataforma
@@ -16,6 +17,8 @@ public class Plataforma
     private final Set<Organizacao> m_lstOrganizacoes;
     private final Set<AreaAtividade> m_lstAreasAtividade;
     private final Set<CompetenciaTecnica> m_lstCompetencias;
+    
+    private final TaskRegister taskRegister = new TaskRegister();
     
 
     public Plataforma(String strDesignacao)
@@ -189,6 +192,11 @@ public class Plataforma
     
     // </editor-fold>
 
+    
+    public TaskRegister getTaskRegister(){
+        return taskRegister;
+    }
+    
 
 }
     

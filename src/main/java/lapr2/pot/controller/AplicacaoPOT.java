@@ -83,6 +83,9 @@ public class AplicacaoPOT
         this.m_oAutorizacao.registaUtilizadorComPapel("Freelancer 2", "free2@esoft.pt", "123456",Constantes.PAPEL_FREELANCER);
         
         this.m_oAutorizacao.registaUtilizadorComPapeis("Martim", "martim@esoft.pt", "123456",new String[] {Constantes.PAPEL_FREELANCER, Constantes.PAPEL_ADMINISTRATIVO});
+        
+        
+        
     }
     
     // Inspirado em https://www.javaworld.com/article/2073352/core-java/core-java-simply-singleton.html?page=2
