@@ -2,59 +2,55 @@
 package lapr2.pot.ui.console;
 
 import java.util.List;
+import lapr2.pot.controller.CreateTaskController;
 import lapr2.pot.controller.EspecificarCompetenciaTecnicaController;
 import lapr2.pot.model.AreaAtividade;
 import lapr2.pot.ui.console.utils.Utils;
 
 
-public class EspecificarCompetenciaTecnicaUI
+public class CreateTaskUI
 {
-    private EspecificarCompetenciaTecnicaController m_controller;
-    public EspecificarCompetenciaTecnicaUI()
+    private CreateTaskController controller;
+    public CreateTaskUI()
     {
-        m_controller = new EspecificarCompetenciaTecnicaController();
+        controller = new CreateTaskController();
     }
 
     public void run()
     {
-        System.out.println("\nEspecificar Competência Técnica:");
+        System.out.println("\nCreate New Task:");
 
-        if(introduzDados())
+        if(enterData())
         {
             apresentaDados();
 
-            if (Utils.confirma("Confirma os dados introduzidos? (S/N)")) {
-                if (m_controller.registaCompetenciaTecnica()) {
-                    System.out.println("Registo efetuado com sucesso.");
+            if (Utils.confirma("Confirm entered data (Y/N)")) {
+                if (controller.registerTask()) {
+                    System.out.println("Task successfully registered.");
                 } else {
-                    System.out.println("Não foi possivel concluir o registo com sucesso.");
+                    System.out.println("Unable to complete action.");
                 }
             }
         }
         else
         {
-            System.out.println("Ocorreu um erro. Operação cancelada.");
+            System.out.println("An error occured. Action canceled.");
         }
     }
     
-    private boolean introduzDados() {
-        String strId = Utils.readLineFromConsole("Id: ");
-        String strDescricaoBreve = Utils.readLineFromConsole("Descrição Breve: ");
-        String strDescricaoDetalhada = Utils.readLineFromConsole("Descrição Detalhada: ");
+    private boolean enterData() {
+        String id = Utils.readLineFromConsole("Id: ");
+        String briefDescription = Utils.readLineFromConsole("Brief Description: ");
+        int timeDuration = Utils.readIntegerFromConsole("Time duration: ");
+        double costPerHour = Utils.readDoubleFromConsole("Cost per hour: ");
+        String category = Utils.readLineFromConsole("Category: ");
         
-        List<AreaAtividade> lc = m_controller.getAreasAtividade();
-        
-        String areaId = "";
-        AreaAtividade area = (AreaAtividade)Utils.apresentaESeleciona(lc, "Selecione a Área de Atividaade a que é referente esta Competência Técnica:");
-        if (area != null)
-            areaId = area.getCodigo();
-        
-        return m_controller.novaCompetenciaTecnica(strId, strDescricaoBreve,strDescricaoDetalhada,areaId);
+        return controller.newTask(id, briefDescription, timeDuration, costPerHour, category);
     }
     
     private void apresentaDados() 
     {
-        System.out.println("\nCompetência Técnica:\n" + m_controller.getCompetenciaTecnicaString());
+        System.out.println("\nTask: \n" + controller.getTaskAsString());
     }
       
 }
