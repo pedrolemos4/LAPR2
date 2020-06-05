@@ -33,6 +33,10 @@ public class OrganizationsRecord {
         return true;
     }
 
+    public List<Organization> getOrganizations() {
+        return this.m_lstOrganizations;
+    }
+
     public boolean addOrganization(Organization org) {
         return m_lstOrganizations.add(org);
     }
@@ -52,8 +56,8 @@ public class OrganizationsRecord {
             String emailC = collab.getEmail();
             String pwdC = alg.generatePassword(nameC, emailC);
             if (this.m_oAutorizacao.registaUtilizadorComPapeis(nameM, emailM, pwdM,
-                    new String[]{Constants.PAPEL_GESTOR_ORGANIZACAO, Constants.PAPEL_COLABORADOR_ORGANIZACAO})
-                    && this.m_oAutorizacao.registaUtilizadorComPapel(nameC, emailC, pwdC, Constants.PAPEL_COLABORADOR_ORGANIZACAO)) {
+                    new String[]{Constants.ORGANIZATION_MANAGER_ROLE, Constants.ORGANIZATION_COLLABORATOR_ROLE})
+                    && this.m_oAutorizacao.registaUtilizadorComPapel(nameC, emailC, pwdC, Constants.ORGANIZATION_COLLABORATOR_ROLE)) {
                 return addOrganization(org);
             }
         }

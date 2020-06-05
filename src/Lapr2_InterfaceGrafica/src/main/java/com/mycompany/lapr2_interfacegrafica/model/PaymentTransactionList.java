@@ -2,6 +2,7 @@ package com.mycompany.lapr2_interfacegrafica.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import lapr2.pot.ui.console.utils.Date;
 
 public class PaymentTransactionList {
 
@@ -11,7 +12,7 @@ public class PaymentTransactionList {
         this.m_lstPaymentTransactions = new ArrayList<>();
     }
 
-    public PaymentTransaction newPaymentTransaction(String payTId, Task task, Freelancer free, String endDate, int delay, String workQualityDescription) {
+    public PaymentTransaction newPaymentTransaction(String payTId, Task task, Freelancer free, Date endDate, int delay, String workQualityDescription) {
         return new PaymentTransaction(payTId, task, free, endDate, delay, workQualityDescription);
     }
 
@@ -23,6 +24,11 @@ public class PaymentTransactionList {
         }
         return true;
     }
+
+    public List<PaymentTransaction> getPaymentTransactions() {
+        return this.m_lstPaymentTransactions;
+    }
+
     public boolean addPaymentTransaction(PaymentTransaction payT) {
         return m_lstPaymentTransactions.add(payT);
     }

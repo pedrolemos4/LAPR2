@@ -1,16 +1,18 @@
 package com.mycompany.lapr2_interfacegrafica.model;
 
+import lapr2.pot.ui.console.utils.Date;
+
 public class PaymentTransaction {
 
     private String m_strId;
     private Task m_oTask;
     private Freelancer m_oFreelancer;
-    private String m_strEndDate;
+    private Date m_strEndDate;
     private int m_Delay;
     private String m_strWorkQualityDescription;
     private double dPayAmount;
 
-    public PaymentTransaction(String payTId, Task task, Freelancer free, String endDate, int delay, String workQualityDescription) {
+    public PaymentTransaction(String payTId, Task task, Freelancer free, Date endDate, int delay, String workQualityDescription) {
         if ((task == null) || (free == null)) {
             throw new IllegalArgumentException("None of the arguments can be null or empty.");
         }
@@ -29,7 +31,7 @@ public class PaymentTransaction {
 
     @Override
     public String toString() {
-        String str = String.format("%s - %s - %s - %s - %s - %.2f", this.m_oTask.toString(), this.m_strEndDate, this.m_Delay, this.m_strWorkQualityDescription, this.m_oFreelancer.toString(), this.dPayAmount);
+        String str = String.format("%s - %s - %s - %s - %s - %.2f", this.m_oTask.toString(), this.m_strEndDate.toString(), this.m_Delay, this.m_strWorkQualityDescription, this.m_oFreelancer.toString(), this.dPayAmount);
         return str;
     }
 

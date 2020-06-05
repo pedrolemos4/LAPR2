@@ -1,57 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lapr2.pot.ui.console.utils;
 
 import java.util.Calendar;
 
-/**
- * Representa uma data através do dia, mês e ano.
- *
- * @author 1DI-1190429-1190785
- */
 public class Date implements Comparable<Date> {
 
-    /**
-     * O ano da data.
-     */
     private int ano;
 
-    /**
-     * O mês da data.
-     */
     private Mes mes;
 
-    /**
-     * O dia da data.
-     */
     private int dia;
 
-    /**
-     * O ano por omissão.
-     */
     private static final int ANO_POR_OMISSAO = 1;
 
-    /**
-     * O mês por omissão.
-     */
     private static final Mes MES_POR_OMISSAO = Mes.JANEIRO;
 
-    /**
-     * O dia por omissão.
-     */
     private static final int DIA_POR_OMISSAO = 1;
 
-    /**
-     * Representa os dias da semana.
-     */
     private static enum DiaDaSemana {
 
-        /**
-         * Os dias da semana.
-         */
         DOMINGO {
             @Override
             public String toString() {
@@ -95,27 +61,13 @@ public class Date implements Comparable<Date> {
             }
         };
 
-        /**
-         * Devolve a designação do dia da semana cuja ordem é recebida por
-         * parâmetro.
-         *
-         * @param ordemDiaDaSemana a ordem do dia da semana entre zero e seis,
-         * inclusivé. A menor ordem corresponde ao Domingo.
-         * @return a designação do dia da semana.
-         */
         public static String designacaoDiaDaSemana(int ordemDiaDaSemana) {
             return DiaDaSemana.values()[ordemDiaDaSemana].toString();
         }
     }
 
-    /**
-     * Representa os meses do ano.
-     */
     private static enum Mes {
 
-        /**
-         * Os meses do ano.
-         */
         JANEIRO(31) {
             @Override
             public String toString() {
@@ -189,26 +141,12 @@ public class Date implements Comparable<Date> {
             }
         };
 
-        /**
-         * O número de dias de um mês.
-         */
         private int numeroDeDias;
 
-        /**
-         * Constrói um mês com o número de dias recebido por parâmetro.
-         *
-         * @param numeroDeDias o número de dias do mês.
-         */
         private Mes(int numeroDeDias) {
             this.numeroDeDias = numeroDeDias;
         }
 
-        /**
-         * Devolve o número de dias do mês do ano recebido por parâmetro.
-         *
-         * @param ano o ano do mês.
-         * @return o número de dias do mês do ano.
-         */
         public int numeroDeDias(int ano) {
             if (ordinal() == 1 && Date.isAnoBissexto(ano)) {
                 return numeroDeDias + 1;
@@ -216,84 +154,39 @@ public class Date implements Comparable<Date> {
             return numeroDeDias;
         }
 
-        /**
-         * Devolve o mês cuja ordem é recebida por parâmetro.
-         *
-         * @param ordemDoMes a ordem do mês.
-         * @return o mês cuja ordem é recebida por parâmetro.
-         */
         public static Mes obterMes(int ordemDoMes) {
             return Mes.values()[ordemDoMes - 1];
         }
-
     }
 
-    /**
-     * Constrói uma instância de Data recebendo o ano, o mês e o dia.
-     *
-     * @param ano o ano da data.
-     * @param mes o mês da data.
-     * @param dia o dia da data.
-     */
     public Date(int ano, int mes, int dia) {
         setData(ano, mes, dia);
     }
 
-    /**
-     * Constrói uma instância de Data com a data por omissão.
-     */
     public Date() {
         ano = ANO_POR_OMISSAO;
         mes = MES_POR_OMISSAO;
         dia = DIA_POR_OMISSAO;
     }
 
-    /**
-     * Constrói uma instância de Data com as mesmas caraterísticas da data
-     * recebida por parâmetro.
-     *
-     * @param outraData a data com as características a copiar.
-     */
     public Date(Date outraData) {
         ano = outraData.ano;
         mes = outraData.mes;
         dia = outraData.dia;
     }
 
-    /**
-     * Devolve o ano da data.
-     *
-     * @return ano da data
-     */
     public int getAno() {
         return ano;
     }
 
-    /**
-     * Devolve o mês da data.
-     *
-     * @return mês da data.
-     */
     public int getMes() {
         return mes.ordinal() + 1;
     }
 
-    /**
-     * Devolve o dia da data.
-     *
-     * @return dia da data.
-     */
     public int getDia() {
         return dia;
     }
 
-    /**
-     * Modifica o ano, o mês e o dia da data.
-     *
-     * @param ano o novo ano da data.
-     * @param mes o novo mês da data.
-     * @param dia o novo dia da data.
-     */
     public final void setData(int ano, int mes, int dia) {
         if (mes < 1 || mes > 12) {
             throw new InvalidMonthException("Mês " + mes + " é inválido!!");
@@ -307,33 +200,15 @@ public class Date implements Comparable<Date> {
         this.dia = dia;
     }
 
-    /**
-     * Devolve a descrição textual da data no formato: diaDaSemana, dia de mês
-     * de ano.
-     *
-     * @return caraterísticas da data.
-     */
     @Override
     public String toString() {
         return String.format("%s, %d de %s de %d", diaDaSemana(), dia, mes, ano);
     }
 
-    /**
-     * Devolve a data no formato:%04d/%02d/%02d.
-     *
-     * @return caraterísticas da data.
-     */
     public String toAnoMesDiaString() {
         return String.format("%04d/%02d/%02d", ano, mes.ordinal() + 1, dia);
     }
 
-    /**
-     * Compara a data com o objeto recebido.
-     *
-     * @param outroObjeto o objeto a comparar com a data.
-     * @return true se o objeto recebido representar uma data equivalente à
-     * data. Caso contrário, retorna false.
-     */
     @Override
     public boolean equals(Object outroObjeto) {
         if (this == outroObjeto) {
@@ -347,24 +222,11 @@ public class Date implements Comparable<Date> {
                 && dia == outraData.dia;
     }
 
-    /**
-     * Compara a data com a outra data recebida por parâmetro.
-     *
-     * @param outraData a data a ser comparada.
-     * @return o valor 0 se a outraData recebida é igual à data; o valor -1 se a
-     * outraData for posterior à data; o valor 1 se a outraData for anterior à
-     * data.
-     */
     @Override
     public int compareTo(Date outraData) {
         return (outraData.isMaior(this)) ? -1 : (isMaior(outraData)) ? 1 : 0;
     }
 
-    /**
-     * Devolve o dia da semana da data.
-     *
-     * @return dia da semana da data.
-     */
     public String diaDaSemana() {
         int totalDias = contaDias();
         totalDias = totalDias % 7;
@@ -372,14 +234,6 @@ public class Date implements Comparable<Date> {
         return DiaDaSemana.designacaoDiaDaSemana(totalDias);
     }
 
-    /**
-     * Devolve true se a data for maior do que a data recebida por parâmetro. Se
-     * a data for menor ou igual à data recebida por parâmetro, devolve false.
-     *
-     * @param outraData a outra data com a qual se compara a data.
-     * @return true se a data for maior do que a data recebida por parâmetro,
-     * caso contrário devolve false.
-     */
     public boolean isMaior(Date outraData) {
         int totalDias = contaDias();
         int totalDias1 = outraData.contaDias();
@@ -387,15 +241,6 @@ public class Date implements Comparable<Date> {
         return totalDias > totalDias1;
     }
 
-    /**
-     * Devolve a diferença em número de dias entre a data e a data recebida por
-     * parâmetro.
-     *
-     * @param outraData a outra data com a qual se compara a data para calcular
-     * a diferença do número de dias.
-     * @return diferença em número de dias entre a data e a data recebida por
-     * parâmetro.
-     */
     public int diferenca(Date outraData) {
         int totalDias = contaDias();
         int totalDias1 = outraData.contaDias();
@@ -403,19 +248,6 @@ public class Date implements Comparable<Date> {
         return Math.abs(totalDias - totalDias1);
     }
 
-    /**
-     * Devolve a diferença em número de dias entre a data e a data recebida por
-     * parâmetro com ano, mês e dia.
-     *
-     * @param ano o ano da data com a qual se compara a data para calcular a
-     * diferença do número de dias.
-     * @param mes o mês da data com a qual se compara a data para calcular a
-     * diferença do número de dias.
-     * @param dia o dia da data com a qual se compara a data para calcular a
-     * diferença do número de dias.
-     * @return diferença em número de dias entre a data e a data recebida por
-     * parâmetro com ano, mês e dia.
-     */
     public int diferenca(int ano, int mes, int dia) {
         int totalDias = contaDias();
         Date outraData = new Date(ano, mes, dia);
@@ -424,23 +256,10 @@ public class Date implements Comparable<Date> {
         return Math.abs(totalDias - totalDias1);
     }
 
-    /**
-     * Devolve true se o ano passado por parâmetro for bissexto. Se o ano
-     * passado por parâmetro não for bissexto, devolve false.
-     *
-     * @param ano o ano a validar.
-     * @return true se o ano passado por parâmetro for bissexto, caso contrário
-     * devolve false.
-     */
     public static boolean isAnoBissexto(int ano) {
         return ano % 4 == 0 && ano % 100 != 0 || ano % 400 == 0;
     }
 
-    /**
-     * Devolve a data atual do sistema.
-     *
-     * @return a data atual do sistema.
-     */
     public static Date dataAtual() {
         Calendar hoje = Calendar.getInstance();
         int ano = hoje.get(Calendar.YEAR);
@@ -449,11 +268,6 @@ public class Date implements Comparable<Date> {
         return new Date(ano, mes, dia);
     }
 
-    /**
-     * Devolve o número de dias desde o dia 1/1/1 até à data.
-     *
-     * @return número de dias desde o dia 1/1/1 até à data.
-     */
     private int contaDias() {
         int totalDias = 0;
 

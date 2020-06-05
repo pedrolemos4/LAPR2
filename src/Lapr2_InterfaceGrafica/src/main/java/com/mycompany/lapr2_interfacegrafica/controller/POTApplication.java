@@ -16,7 +16,7 @@ public class POTApplication {
 
     private POTApplication() {
         Properties props = getProperties();
-        this.m_oPlataforma = new Platform(props.getProperty(Constants.PARAMS_PLATAFORMA_DESIGNACAO));
+        this.m_oPlataforma = new Platform(props.getProperty(Constants.PARAMS_PLATFORM_DESIGNATION));
         this.m_oAutorizacao = this.m_oPlataforma.getFacadeAuthorization();
         bootstrap();
     }
@@ -41,7 +41,7 @@ public class POTApplication {
         Properties props = new Properties();
 
         // Adiciona propriedades e valores por omissão
-        props.setProperty(Constants.PARAMS_PLATAFORMA_DESIGNACAO, "Task for Joe");
+        props.setProperty(Constants.PARAMS_PLATFORM_DESIGNATION, "Task for Joe");
 
         // Lê as propriedades e valores definidas 
         try {
@@ -55,20 +55,19 @@ public class POTApplication {
     }
 
     private void bootstrap() {
-        this.m_oAutorizacao.registaPapelUtilizador(Constants.PAPEL_ADMINISTRATIVO);
-        this.m_oAutorizacao.registaPapelUtilizador(Constants.PAPEL_FREELANCER);
-        this.m_oAutorizacao.registaPapelUtilizador(Constants.PAPEL_GESTOR_ORGANIZACAO);
-        this.m_oAutorizacao.registaPapelUtilizador(Constants.PAPEL_COLABORADOR_ORGANIZACAO);
+        this.m_oAutorizacao.registaPapelUtilizador(Constants.ADMINISTRATOR_ROLE);
+//        this.m_oAutorizacao.registaPapelUtilizador(Constants.FREELANCER_ROLE);
+//        this.m_oAutorizacao.registaPapelUtilizador(Constants.ORGANIZATION_MANAGER_ROLE);
+//        this.m_oAutorizacao.registaPapelUtilizador(Constants.ORGANIZATION_COLLABORATOR_ROLE);
 
-        this.m_oAutorizacao.registaUtilizadorComPapel("Administrativo 1", "adm1@esoft.pt", "123456", Constants.PAPEL_ADMINISTRATIVO);
-        this.m_oAutorizacao.registaUtilizadorComPapel("Administrativo 2", "adm2@esoft.pt", "123456", Constants.PAPEL_ADMINISTRATIVO);
-
-        this.m_oAutorizacao.registaUtilizadorComPapel("Freelancer 1", "free1@esoft.pt", "123456", Constants.PAPEL_FREELANCER);
-        this.m_oAutorizacao.registaUtilizadorComPapel("Freelancer 2", "free2@esoft.pt", "123456", Constants.PAPEL_FREELANCER);
-
-        this.m_oAutorizacao.registaUtilizadorComPapeis("Martim", "martim@esoft.pt", "123456", new String[]{Constants.PAPEL_FREELANCER, Constants.PAPEL_ADMINISTRATIVO});
+        this.m_oAutorizacao.registaUtilizadorComPapel("Administrativo 1", "adm1@esoft.pt", "123456", Constants.ADMINISTRATOR_ROLE);
+        this.m_oAutorizacao.registaUtilizadorComPapel("Administrativo 2", "adm2@esoft.pt", "123456", Constants.ADMINISTRATOR_ROLE);
+//
+//        this.m_oAutorizacao.registaUtilizadorComPapel("Freelancer 1", "free1@esoft.pt", "123456", Constants.FREELANCER_ROLE);
+//        this.m_oAutorizacao.registaUtilizadorComPapel("Freelancer 2", "free2@esoft.pt", "123456", Constants.FREELANCER_ROLE);
+//
+//        this.m_oAutorizacao.registaUtilizadorComPapeis("Martim", "martim@esoft.pt", "123456", new String[]{Constants.FREELANCER_ROLE, Constants.ADMINISTRATOR_ROLE});
     }
-
     // Inspirado em https://www.javaworld.com/article/2073352/core-java/core-java-simply-singleton.html?page=2
     private static POTApplication singleton = null;
 
@@ -80,5 +79,4 @@ public class POTApplication {
         }
         return singleton;
     }
-
 }
