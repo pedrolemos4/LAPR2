@@ -8,7 +8,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lapr2_interfacegrafica.controller.JanelaPrincipalController">
    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
@@ -49,7 +48,7 @@
                         <Insets left="40.0" right="10.0" />
                      </GridPane.margin>
                   </Button>
-                  <Label fx:id="labelAdmin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="280.0" text="You are the Administrator" translateX="-40.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Label fx:id="labelAdmin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="321.0" text="Welcome back Administrator" translateX="-55.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font size="24.0" />
                      </font>
