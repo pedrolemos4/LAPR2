@@ -5,8 +5,11 @@
  */
 package com.mycompany.lapr2_interfacegrafica.ui;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
@@ -14,8 +17,9 @@ import javafx.scene.control.TextField;
  *
  * @author Tiago
  */
-public class SetDayOfPaymentUI {
+public class SetDayOfPaymentUI implements Initializable {
 
+    
     @FXML
     private TextField txtDate;
     @FXML
@@ -25,6 +29,11 @@ public class SetDayOfPaymentUI {
     @FXML
     private Button btnCancel;
 
+    
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+    }
+    
     @FXML
     private void btnConfirmAction(ActionEvent event) {
     }
@@ -32,5 +41,6 @@ public class SetDayOfPaymentUI {
     @FXML
     private void btnCancelAction(ActionEvent event) {
     }
+
     
 }
