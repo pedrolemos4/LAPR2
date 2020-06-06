@@ -1,0 +1,18 @@
+@startuml
+participant "orgRec:OrganizationsRecord" as RO
+participant "org:Organization" as O
+ 
+title SD_determinatePayPlatform
+
+[o-> RO: determinatePayPlatform()
+activate RO
+RO -> RO : mapTotalPayments == null
+loop [ For each organization ]
+RO -> O: determinatePayOrg(mapTotalPayments)
+activate O
+deactivate O
+end loop
+[<-- RO : mapTotalPayments
+deactivate RO
+ 
+@enduml

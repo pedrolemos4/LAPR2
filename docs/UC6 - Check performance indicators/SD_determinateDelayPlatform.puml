@@ -1,0 +1,19 @@
+@startuml
+participant "orgRec:OrganizationsRecord" as RO
+participant "org:Organization" as O
+
+title SD_determinateDelayPlatform
+
+[o-> RO: determinateDelayPlatform()
+activate RO
+RO -> RO : mapTotalDelays == null
+loop [ For each organization ]
+RO -> O: determinateDelayOrg(mapTotalDelays)
+activate O
+deactivate O
+end loop
+[<-- RO : mapTotalDelays
+deactivate RO
+
+
+@enduml

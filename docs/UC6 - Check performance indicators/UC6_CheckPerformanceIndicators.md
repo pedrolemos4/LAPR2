@@ -102,7 +102,10 @@ Other software classes (i.e. Pure Fabrication) identified:
 ###	Sequence Diagram
 
 ![UC6_SD.svg](UC6_SD.svg)
-
+![SD_determinateDelayOrg.svg](SD_determinateDelayOrg.svg)
+![SD_determinateDelayPlatform.svg](SD_determinateDelayPlatform.svg)
+![SD_determinatePayOrg.svg](SD_determinatePayOrg.svg)
+![SD_determinatePayPlatform.svg](SD_determinatePayPlatform.svg)
 
 
 ###	Class Diagram

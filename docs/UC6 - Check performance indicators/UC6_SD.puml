@@ -1,0 +1,90 @@
+@startuml
+autonumber
+
+actor "Administrator" as ADM
+participant ":CheckPerformanceIndicatorsUI" as UI
+participant ":CheckPerformanceIndicatorsController" as CTL
+participant ":Platform" as PLT
+participant ":Organization" as O
+participant ":PaymentTransaction" as T
+participant ":OrganizationsRecord" as RO
+
+activate ADM
+ADM -> UI : initiates the process of viewing freelancers performance statistics
+activate UI
+
+UI -> CTL : getOrganizations()
+activate CTL
+CTL -> PLT : getOrganizationsRecord()
+activate PLT
+deactivate PLT
+CTL -> RO : getOrganizations()
+activate RO
+deactivate RO
+deactivate CTL
+
+UI -> CTL : calcPerformanceStatistics()
+activate CTL
+
+CTL -> O : determinatePayOrg(mapOrgPayment)
+activate O
+ref over O
+SD_determinatePayOrg
+end ref
+CTL <-- O : mapOrgPayment
+deactivate O
+CTL -> RO : determinatePayPlatform()
+activate RO
+ref over RO
+SD_determinatePayPlatform
+end ref
+CTL <-- RO : mapTotalPayments
+deactivate RO
+CTL -> RO : calcMeanPayment(mapTotalPayments)
+activate RO
+deactivate RO
+CTL -> RO : calcDeviationPayment(mapTotalPayments,mapMeanPayments)
+activate RO
+deactivate RO
+
+CTL -> O : determinateDelayOrg(mapOrgDelay)
+activate O
+ref over O
+SD_determinateDelayOrg
+end ref
+CTL <-- O : mapOrgDelay
+deactivate O
+CTL -> RO : determinateDelayPlatform()
+activate RO
+ref over RO
+SD_determinateDelayPlatform
+end ref
+CTL <-- RO : mapTotalDelays
+deactivate RO
+CTL -> RO : calcMeanDelay(mapTotalDelays)
+activate RO
+deactivate RO
+CTL -> RO : calcDeviationDelay(mapTotalDelays,mapMeanDelays)
+activate RO
+deactivate RO
+deactivate CTL
+
+UI -> CTL : determinateNormalDistribution()
+activate CTL
+CTL -> T: determinateNormalDistribution()
+activate T
+deactivate T
+deactivate CTL
+
+UI --> ADM : calculates and displays performance statistics for all freelancers \n(i.e. the average and standard deviation of \ndelay and payment, along with histograms for each and all freelancers).
+deactivate UI
+ADM -> UI : confirms
+activate UI
+UI --> ADM : successful operation
+deactivate UI
+deactivate ADM
+
+ 
+
+
+@enduml
