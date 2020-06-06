@@ -30,13 +30,10 @@ class Task {
  -String taskCategory
 }
 
-class TaskExecution {
+class PaymentTransaction{
  -Date endDate
  -Double delay
  -String workQualityDescription
-}
-
-class PaymentTransaction{
 }
 
 class PaymentDay {
@@ -51,11 +48,7 @@ Organization "1" -- "*" PaymentTransaction: has >
 
 PaymentTransaction "1" -- "1" Freelancer: is related to >
 PaymentTransaction "1" -- "1" Task: is related to >
-PaymentTransaction "1" -- "1" TaskExecution: is related to >
 
-TaskExecution "1..*" -- "1..*" Freelancer : is related to >
-
-Task "1" -- "1" TaskExecution: has >
 Task "1..*" -- "1" Freelancer: assigned >
 
 PaymentDay "1" -- "0..*" PaymentTransaction : is related to
