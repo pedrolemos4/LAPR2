@@ -33,7 +33,7 @@ public class CreateFreelancerUI {
     
     public void toCreateFreelancerScene1UI(){
         try {
-            CreateFreelancerScene_1_UI createFreelancer1UI = (CreateFreelancerScene_1_UI) this.mainApp.replaceSceneContent("/fxml/CreateFreelancer_1_UI.fxml");
+            CreateFreelancerScene_1_UI createFreelancer1UI = (CreateFreelancerScene_1_UI) this.mainApp.replaceSceneContent("/fxml/CreateFreelancer_1.fxml");
             createFreelancer1UI.setFreelancer(this);
             String freel = this.getCreateFreelancerController().getFreelancerString();
             if(freel!=null){
@@ -46,7 +46,7 @@ public class CreateFreelancerUI {
     
     public void toCreateFreelancerScene2UI(){
         try {
-            CreateFreelancerScene_2_UI createFreelancer2UI = (CreateFreelancerScene_2_UI) this.mainApp.replaceSceneContent("/fxml/CreateFreelancer_2_UI.fxml");
+            CreateFreelancerScene_2_UI createFreelancer2UI = (CreateFreelancerScene_2_UI) this.mainApp.replaceSceneContent("/fxml/CreateFreelancer_2.fxml");
             createFreelancer2UI.setFreelancer(this);
             createFreelancer2UI.showFreelancer();
         } catch(Exception ex){
@@ -56,7 +56,7 @@ public class CreateFreelancerUI {
     
     public void toCreateFreelancerScene3UI(String notification){
         try {
-            CreateFreelancerScene_3_UI createFreelancer3UI = (CreateFreelancerScene_3_UI) this.mainApp.replaceSceneContent("/fxml/CreateFreelancer_3_UI.fxml");
+            CreateFreelancerScene_3_UI createFreelancer3UI = (CreateFreelancerScene_3_UI) this.mainApp.replaceSceneContent("/fxml/CreateFreelancer_3.fxml");
             createFreelancer3UI.setFreelancer(this);
             createFreelancer3UI.showNotification(notification);
         } catch(Exception ex){
