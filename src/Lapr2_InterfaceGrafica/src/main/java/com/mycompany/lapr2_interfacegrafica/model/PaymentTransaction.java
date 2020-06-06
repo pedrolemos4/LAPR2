@@ -45,4 +45,18 @@ public class PaymentTransaction {
         }
         return payAmount;
     }
+
+    public Freelancer getM_oFreelancer() {
+        return m_oFreelancer;
+    }
+
+    public int getM_Delay() {
+        return m_Delay;
+    }
+
+    public Task getM_oTask() {
+        return m_oTask;
+    }
+    
+    
 }

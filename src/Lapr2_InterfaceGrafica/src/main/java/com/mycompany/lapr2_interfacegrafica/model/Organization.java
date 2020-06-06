@@ -1,6 +1,9 @@
 package com.mycompany.lapr2_interfacegrafica.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import java.util.TreeMap;
 
 public class Organization {
 
@@ -68,5 +71,34 @@ public class Organization {
     public Collaborator newCollaborator(String name, String email) {
         return new Collaborator(name, email);
     }
-
+    
+    //UC6
+    public TreeMap<String, List<Double>> determinatePayOrg(TreeMap<String,List<Double>> mapOrgPayment){
+//        List<PaymentTransaction> transactionList = m_oPaymentTransactionList.getPaymentTransactions();
+//        for (PaymentTransaction transaction : transactionList) {
+//            Freelancer free = transaction.getM_oFreelancer();
+//            String freeId=free.getId();
+//            Task task = transaction.getM_oTask();
+//            double transactionAmount=transaction.generatePayAmount(task, free);
+//            if(mapOrgPayment.get( freeId )== null){
+//                mapOrgPayment.put( freeId, new ArrayList<> ());
+//            }
+//            mapOrgPayment.get ( freeId ).add ( transactionAmount );
+//        }
+        return mapOrgPayment;
+    }
+    
+    public TreeMap<String, List<Double>> determinateDelayOrg(TreeMap<String,List<Double>> mapOrgDelay){
+        List<PaymentTransaction> transactionList = m_oPaymentTransactionList.getPaymentTransactions();
+        for (PaymentTransaction transaction : transactionList) {
+            Freelancer free = transaction.getM_oFreelancer();
+            String freeId=free.getId();
+            double transactionAmount=transaction.getM_Delay();
+            if(mapOrgDelay.get( freeId )== null){
+                mapOrgDelay.put( freeId, new ArrayList<> ());
+            }
+            mapOrgDelay.get ( freeId ).add ( transactionAmount );
+        }
+        return mapOrgDelay;
+    }
 }
