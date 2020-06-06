@@ -35,7 +35,7 @@ public class PaymentTransaction {
         return str;
     }
 
-    private double generatePayAmount(Task task, Freelancer free) {
+    public double generatePayAmount(Task task, Freelancer free) {
         double payAmount = 0;
         if (free.getLvlExp().equalsIgnoreCase("Junior")) {
             //payAmount = task.getDuration() * task.getCostPerHour();
