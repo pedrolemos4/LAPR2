@@ -10,7 +10,7 @@ title SD_determinatePayOrg
 [o-> O: determinatePayOrg(mapOrgPayment)
 activate O
 O -> O : mapOrgPayment == null
-O -> L : getPaymentTransactionList()
+O -> L : getPaymentTransactions()
 activate L
 deactivate L
 loop [ For each transaction ]
