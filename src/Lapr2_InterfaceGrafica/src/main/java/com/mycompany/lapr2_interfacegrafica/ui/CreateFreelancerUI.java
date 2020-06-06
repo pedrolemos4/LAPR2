@@ -31,7 +31,7 @@ public class CreateFreelancerUI {
         return this.controller;
     }
     
-    public void CreateFreelancerScene1UI(){
+    public void toCreateFreelancerScene1UI(){
         try {
             CreateFreelancerScene_1_UI createFreelancer1UI = (CreateFreelancerScene_1_UI) this.mainApp.replaceSceneContent("/fxml/CreateFreelancer_1_UI.fxml");
             createFreelancer1UI.setFreelancer(this);
@@ -44,7 +44,7 @@ public class CreateFreelancerUI {
         }
     }
     
-    public void CreateFreelancerScene2UI(){
+    public void toCreateFreelancerScene2UI(){
         try {
             CreateFreelancerScene_2_UI createFreelancer2UI = (CreateFreelancerScene_2_UI) this.mainApp.replaceSceneContent("/fxml/CreateFreelancer_2_UI.fxml");
             createFreelancer2UI.setFreelancer(this);
@@ -54,7 +54,7 @@ public class CreateFreelancerUI {
         }
     }
     
-    public void CreateFreelancerScene3UI(String notification){
+    public void toCreateFreelancerScene3UI(String notification){
         try {
             CreateFreelancerScene_3_UI createFreelancer3UI = (CreateFreelancerScene_3_UI) this.mainApp.replaceSceneContent("/fxml/CreateFreelancer_3_UI.fxml");
             createFreelancer3UI.setFreelancer(this);

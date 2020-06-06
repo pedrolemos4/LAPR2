@@ -14,7 +14,7 @@ public class FreelancersRecord {
     private String country;
     private String adress;
 
-    private List<Freelancer> arrayFreelancers;
+    private final List<Freelancer> arrayFreelancers;
 
     public FreelancersRecord() {
         this.arrayFreelancers = new ArrayList<>();
@@ -24,20 +24,23 @@ public class FreelancersRecord {
         return new Freelancer(id, name, lvlExp, email, nif, iban, country, adress);
     }
 
-    public void registerFreelancer(Freelancer freel) {
-        arrayFreelancers.add(freel);
+    public boolean registerFreelancer(Freelancer freel) {
+        if(this.validatesFreelancer(freel)){
+            addFreelancer(freel);
+        } 
+        return false;
     }
 
     public boolean validatesFreelancer(Freelancer freel) {
         if (freel.getAdress() == null || freel.getCountry() == null || freel.getEmail() == null || freel.getIban() == null || freel.getId() == null || freel.getLvlExp() == null || freel.getName() == null || freel.getNif() ==null) {
             return false;
-        } else {
+        } else { 
             return true;
         }
     }
 
     public void addFreelancer(Freelancer freel) {
-        registerFreelancer(freel);
+        arrayFreelancers.add(freel);
     }
 
     public List<Freelancer> getListFreelancers() {

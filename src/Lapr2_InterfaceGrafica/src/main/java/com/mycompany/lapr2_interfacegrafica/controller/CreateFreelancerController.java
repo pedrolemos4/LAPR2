@@ -37,8 +37,8 @@ public class CreateFreelancerController {
         }
     }
 
-    public void registerFreelancer(Freelancer freel) {
-        regFreel.registerFreelancer(freel);
+    public boolean registerFreelancer(Freelancer freel) {
+        return this.regFreel.registerFreelancer(freel);
     }
     
     public String getFreelancerString()

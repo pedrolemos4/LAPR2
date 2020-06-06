@@ -9,6 +9,7 @@ import com.mycompany.lapr2_interfacegrafica.model.Freelancer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 /**
@@ -18,8 +19,6 @@ import javafx.scene.control.TextField;
 public class CreateFreelancerScene_1_UI {
     
     private CreateFreelancerUI freel;
-    
-    private JanelaOptionsCollaboratorUI optCollab;
 
     @FXML
     private TextField txtNome;
@@ -41,6 +40,8 @@ public class CreateFreelancerScene_1_UI {
     private Button btnNext;
     @FXML
     private TextField txtId;
+    @FXML
+    private Label invalidLbl;
     
     // Get methods
     // <editor-fold defaultstate="collapsed">
@@ -92,15 +93,17 @@ public class CreateFreelancerScene_1_UI {
 
     @FXML
     private void btnCancelAction(ActionEvent event) {
-        try {
-            this.freel.getCreateFreelancerController().newFreelancer(txtId.getText(), txtNome.getText(), txtLevelOfExpertise.getText(), txtEmail.getText(), txtNIF.getText(), txtIBAN.getText(), txtCountry.getText(), txtAddress.getText());
-        } catch(IllegalArgumentException e) {
-            
-        }
+      
     }
 
     @FXML
     private void btnNextAction(ActionEvent event) {
+        try {
+            this.freel.getCreateFreelancerController().newFreelancer(txtId.getText(), txtNome.getText(), txtLevelOfExpertise.getText(), txtEmail.getText(), txtNIF.getText(), txtIBAN.getText(), txtCountry.getText(), txtAddress.getText());
+            this.freel.toCreateFreelancerScene2UI();
+        } catch(IllegalArgumentException e) {
+            invalidLbl.setText(e.getMessage());
+        }
     }
     
 }
