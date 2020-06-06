@@ -15,6 +15,8 @@ import javafx.scene.control.Label;
  * @author Tiago
  */
 public class CreateFreelancerScene_2_UI {
+    
+    private CreateFreelancerUI freel;
 
     @FXML
     private Button btnConfirm;
@@ -24,6 +26,16 @@ public class CreateFreelancerScene_2_UI {
     private Button btnReturn;
     @FXML
     private Label lblFreelancer;
+    
+    
+    
+    public void setFreelancer(CreateFreelancerUI freel){
+       this.freel=freel;
+    }
+    
+    public void showFreelancer(){
+        this.lblFreelancer.setText(this.freel.getCreateFreelancerController().getFreelancerString());
+    }
 
     @FXML
     private void btnConfirmAction(ActionEvent event) {

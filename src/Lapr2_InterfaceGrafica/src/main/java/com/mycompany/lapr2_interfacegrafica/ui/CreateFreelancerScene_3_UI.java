@@ -15,12 +15,22 @@ import javafx.scene.control.Label;
  * @author Tiago
  */
 public class CreateFreelancerScene_3_UI {
+    
+    public CreateFreelancerUI freel;
 
     @FXML
     private Button btnOK;
     @FXML
     private Label lblNotification;
 
+    public void setFreelancer(CreateFreelancerUI freel){
+       this.freel=freel;
+    }
+    
+    public void showNotification(String notification){
+        this.lblNotification.setText(notification);
+    }
+    
     @FXML
     private void btnOKAction(ActionEvent event) {
     }
