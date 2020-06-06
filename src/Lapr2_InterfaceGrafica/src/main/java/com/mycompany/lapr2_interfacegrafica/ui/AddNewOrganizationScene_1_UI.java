@@ -45,31 +45,31 @@ public class AddNewOrganizationScene_1_UI implements Initializable {
 //    public void addNewOrganization(AddNewOrganizationUI addNewOrganization) {
 //        this.addNewOrganization = addNewOrganization;
 //    }
-//
-//    public void showOrganization() {
+
+    public void showOrganization() {
 //        this.txtName.setText(this.addNewOrganization.getController().getOrganizationName());
 //        this.txtNIF.setText(this.addNewOrganization.getController().getOrganizationNIF());
-//    }
-//
-//    @FXML
-//    private void btnNextAction(ActionEvent event) {
-//        try {
+    }
+
+    @FXML
+    private void btnNextAction(ActionEvent event) {
+        try {
 //            this.addNewOrganization.getController.newOrganization(txtName.getText(), txtNIF.getText());
 //            this.addNewOrganization.toAddNewOrganizationScene2();
-//        } catch (IllegalArgumentException ex) {
-//            lblAlert.setText(ex.getMessage());
-//            if (ex.getMessage().toLowerCase().contains(" name")) {
-//                txtName.requestFocus();
-//            } else {
-//                txtNIF.requestFocus();
-//            }
-//        }
-//    }
-//
-//    @FXML
-//    private void btnCancelAction(ActionEvent event) {
+        } catch (IllegalArgumentException ex) {
+            lblAlert.setText(ex.getMessage());
+            if (ex.getMessage().toLowerCase().contains("name")) {
+                txtName.requestFocus();
+            } else {
+                txtNIF.requestFocus();
+            }
+        }
+    }
+
+    @FXML
+    private void btnCancelAction(ActionEvent event) {
 //        this.addNewOrganization.getMainApp().toMainScene();
-//    }
+    }
 
     @FXML
     private void txtNameKeyPressed(KeyEvent event) {

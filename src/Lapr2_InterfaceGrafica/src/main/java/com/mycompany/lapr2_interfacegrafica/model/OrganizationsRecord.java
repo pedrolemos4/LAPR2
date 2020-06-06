@@ -74,7 +74,7 @@ public class OrganizationsRecord {
         }
         return null;
     }
-    
+
     //UC6
     public TreeMap<String, List<Double>> determinatePayPlatform() {
         TreeMap<String, List<Double>> mapTotalPayments = new TreeMap<>();
@@ -83,7 +83,7 @@ public class OrganizationsRecord {
         }
         return mapTotalPayments;
     }
-    
+
     public TreeMap<String, Double> calcMeanPayment(TreeMap<String, List<Double>> mapTotalPayments) {
         TreeMap<String, Double> mapMeanPayments = new TreeMap<>();
         double sum = 0, mean = 0;
@@ -97,7 +97,7 @@ public class OrganizationsRecord {
         }
         return mapMeanPayments;
     }
-    
+
     public TreeMap<String, Double> calcDeviationPayment(TreeMap<String, List<Double>> mapTotalPayments, TreeMap<String, Double> mapMeanPayments) {
         TreeMap<String, Double> mapDeviationPayments = new TreeMap<>();
         double x = 0, mean = 0, subtraction = 0, deviation = 0;
@@ -116,7 +116,7 @@ public class OrganizationsRecord {
         }
         return mapDeviationPayments;
     }
-    
+
     public TreeMap<String, List<Double>> determinateDelayPlatform() {
         TreeMap<String, List<Double>> mapTotalDelays = new TreeMap<>();
         for (Organization o : m_lstOrganizations) {
@@ -124,7 +124,7 @@ public class OrganizationsRecord {
         }
         return mapTotalDelays;
     }
-    
+
     public TreeMap<String, Double> calcMeanDelay(TreeMap<String, List<Double>> mapTotalDelays) {
         TreeMap<String, Double> mapMeanDelays = new TreeMap<>();
         double sum = 0, mean = 0;
@@ -138,13 +138,13 @@ public class OrganizationsRecord {
         }
         return mapMeanDelays;
     }
-    
+
     public TreeMap<String, Double> calcDeviationDelay(TreeMap<String, List<Double>> mapTotalDelays, TreeMap<String, Double> mapMeanDelays) {
         TreeMap<String, Double> mapDeviationDelays = new TreeMap<>();
         double x = 0, mean = 0, subtraction = 0, deviation = 0;
         for (Map.Entry<String, List<Double>> entry : mapTotalDelays.entrySet()) {
             for (int i = 0; i < entry.getValue().size(); i++) {
-            x = entry.getValue().get(i);
+                x = entry.getValue().get(i);
                 for (Map.Entry<String, Double> entry1 : mapMeanDelays.entrySet()) {
                     if (entry.getKey().equalsIgnoreCase(entry1.getKey())) {
                         mean = entry1.getValue();
@@ -157,14 +157,14 @@ public class OrganizationsRecord {
         }
         return mapDeviationDelays;
     }
-    
+
     public double determinateIntervals(TreeMap<String, Double> map) {
-        double sum=0;
-        int counter=0;
+        double sum = 0;
+        int counter = 0;
         for (Map.Entry<String, Double> entry : map.entrySet()) {
             sum += entry.getValue();
             counter++;
         }
-        return sum/counter;
+        return sum / counter;
     }
 }

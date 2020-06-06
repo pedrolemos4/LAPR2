@@ -30,7 +30,7 @@ public class OrganizationRecordController {
         }
     }
 
-    public boolean registaOrganizacao() {
+    public boolean registerOrganization() {
         return this.or.organizationRegister(this.org);
     }
 
