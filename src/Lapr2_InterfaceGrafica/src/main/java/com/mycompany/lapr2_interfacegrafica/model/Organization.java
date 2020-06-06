@@ -95,7 +95,7 @@ public class Organization {
             String freeId=free.getId();
             double transactionAmount=transaction.getM_Delay();
             if(mapOrgDelay.get( freeId )== null){
-                mapOrgDelay.put( freeId, new ArrayList<> ());
+//                mapOrgDelay.put( freeId, new ArrayList<> ());
             }
             mapOrgDelay.get ( freeId ).add ( transactionAmount );
         }
