@@ -33,6 +33,14 @@ public class AddNewOrganizationScene_1_UI implements Initializable {
     private TextField txtNIF;
     @FXML
     private Button btnNext;
+    @FXML
+    private TextField txtManagerName;
+    @FXML
+    private TextField txtManagerEmail;
+    @FXML
+    private TextField txtCollaboratorName;
+    @FXML
+    private TextField txtCollaboratorEmail;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -78,6 +86,26 @@ public class AddNewOrganizationScene_1_UI implements Initializable {
 
     @FXML
     private void txtNIFKeyPressed(KeyEvent event) {
+        this.lblAlert.setText(null);
+    }
+
+    @FXML
+    private void txtManagerNameKeyPressed(KeyEvent event) {
+        this.lblAlert.setText(null);
+    }
+
+    @FXML
+    private void txtManagerEmailKeyPressed(KeyEvent event) {
+        this.lblAlert.setText(null);
+    }
+
+    @FXML
+    private void txtCollaboratorNameKeyPressed(KeyEvent event) {
+        this.lblAlert.setText(null);
+    }
+
+    @FXML
+    private void txtCollaboratorEmailKeyPressed(KeyEvent event) {
         this.lblAlert.setText(null);
     }
 
