@@ -17,7 +17,7 @@ class Plataform {
   +ResgisterFreelancer getRegisterFreelancer()
 }
 
-class RegisterFreelancer {
+class FreelancersRecord {
   +Freelancer newFreelancer(id, name, lvlExp, email, nif, iban, adress, country)
   +registerFreelancer(freel)
   +validatesFreelancer(freel)
@@ -53,14 +53,14 @@ Organization "1" -- "*" Collaborator : possui >
 Collaborator "1" -- "1" Freelancer : cria >
 
 Plataform "1" -- "1..*" Organization : possui >
-Plataform "1" -- "1" RegisterFreelancer : possui >
+Plataform "1" -- "1" FreelancersRecord : possui >
 
 CreateFreelancerUI ..> CreateFreelancerController
 CreateFreelancerController ..> Plataform
-CreateFreelancerController ..> RegisterFreelancer
+CreateFreelancerController ..> FreelancersRecord
 CreateFreelancerController ..> Freelancer
 
-RegisterFreelancer "1" -- "*" Freelancer : tem registados >
+FreelancersRecord "1" -- "*" Freelancer : tem registados >
 
 
 @enduml

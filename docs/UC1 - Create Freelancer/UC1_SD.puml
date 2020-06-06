@@ -5,7 +5,7 @@ actor "Collaborator" as CO
 participant ":CreateFreelancerUI" as UI
 participant ":CreateFreelancerController" as CTRL
 participant ":Plataforma" as PLAT
-participant ":rfr\nRegisterFreelancer" as RFR
+participant ":rfr\nFreelancersRecord" as RFR
 participant "freel:\nFreelancer" as FREEL
 
 activate CO

@@ -9,7 +9,7 @@ class Platform {
   +getRegistoFreelancer()
 }
 
-class RecordFreelancer{
+class FreelancersRecord{
   +int numberTransactions
   +int delay
   +int amountForHourDelay
@@ -65,11 +65,11 @@ class ListFreelancer {
 
 Platform "1" -- "*" Organization : has registered >
 Platform "1" -- "1" NotifyFreelancerTask : has>
-Platform "1" -- "1" RecordFreelancer : has >
+Platform "1" -- "1" FreelancersRecord : has >
 
 NotifyFreelancerTask  --  Timer 
 
-RecordFreelancer "1" -- "1" ListFreelancer : has >
+FreelancersRecord "1" -- "1" ListFreelancer : has >
 
 ListFreelancer "1" -- "1..*" Freelancer : has >
 
