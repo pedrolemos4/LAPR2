@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import org.apache.commons.math3.distribution.NormalDistribution;
 
 public class OrganizationsRecord {
 
@@ -166,5 +167,14 @@ public class OrganizationsRecord {
             counter++;
         }
         return sum / counter;
+    }
+    public double determinateNormalDistribution(){
+        int counter = 0;
+        double x = 3, m = 2, d = 1.5;
+        for (Organization org : m_lstOrganizations){
+            counter += org.calcCounterFree();
+        }
+        NormalDistribution normalD = new NormalDistribution(m,d/counter);
+        return 1-normalD.cumulativeProbability(x);
     }
 }
