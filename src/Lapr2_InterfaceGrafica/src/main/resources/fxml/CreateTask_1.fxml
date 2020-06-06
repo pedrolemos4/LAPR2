@@ -40,32 +40,32 @@
             <Label text="Time Duration" translateX="196.0" GridPane.rowIndex="4" />
             <Label text="Cost per Hour" translateX="198.0" GridPane.rowIndex="5" />
             <Label text="Task Category" translateX="198.0" GridPane.rowIndex="6" />
-            <TextField fx:id="txtTaskID" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextField fx:id="txtTaskID" onKeyPressed="#txtTaskIDKeyPressed" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets right="70.0" />
                </GridPane.margin>
             </TextField>
-            <TextField fx:id="txtTaskDescription" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <TextField fx:id="txtTaskDescription" onKeyReleased="#txtTaskDescriptionKeyPressed" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets right="70.0" />
                </GridPane.margin>
             </TextField>
-            <TextField fx:id="txtTimeDuration" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <TextField fx:id="txtTimeDuration" onKeyReleased="#txtTimeDurationKeyPressed" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets right="70.0" />
                </GridPane.margin>
             </TextField>
-            <TextField fx:id="txtCostPerHour" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <TextField fx:id="txtCostPerHour" onKeyReleased="#txtCostPerHourKeyPressed" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets right="70.0" />
                </GridPane.margin>
             </TextField>
-            <TextField fx:id="txtTaskCategory" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <TextField fx:id="txtTaskCategory" onKeyReleased="#txtTaskCategoryKeyPressed" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <GridPane.margin>
                   <Insets right="70.0" />
                </GridPane.margin>
             </TextField>
-            <Button fx:id="btnCreate" defaultButton="true" mnemonicParsing="false" onAction="#btnCreateAction" text="Create" translateX="230.0" GridPane.rowIndex="8">
+            <Button fx:id="btnNext" defaultButton="true" mnemonicParsing="false" onAction="#btnNextAction" text="Next" translateX="230.0" GridPane.rowIndex="8">
                <GridPane.margin>
                   <Insets bottom="20.0" />
                </GridPane.margin>
@@ -75,6 +75,11 @@
                   <Insets bottom="20.0" />
                </GridPane.margin>
             </Button>
+            <Label fx:id="lblAlert" textFill="#e42f0b" translateX="255.0" GridPane.rowIndex="7">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
          </children>
       </GridPane>
    </center>
