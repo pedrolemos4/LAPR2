@@ -5,42 +5,10 @@
  */
 package com.mycompany.lapr2_interfacegrafica.ui;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-
 /**
  *
  * @author Tiago
  */
-public class SetDayOfPaymentUI implements Initializable {
-
-    
-    @FXML
-    private TextField txtDate;
-    @FXML
-    private TextField txtTimeOfTheDay;
-    @FXML
-    private Button btnConfirm;
-    @FXML
-    private Button btnCancel;
-
-    
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-    }
-    
-    @FXML
-    private void btnConfirmAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnCancelAction(ActionEvent event) {
-    }
-
+public class SetDayOfPaymentUI {
     
 }
