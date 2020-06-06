@@ -37,9 +37,10 @@ public class CreateFreelancerController {
         }
     }
 
-    public boolean registerFreelancer(Freelancer freel) {
-        return this.regFreel.registerFreelancer(freel);
+    public boolean registerFreelancer() {
+        return this.regFreel.registerFreelancer(this.freel);
     }
+
     
     public String getFreelancerString()
     {

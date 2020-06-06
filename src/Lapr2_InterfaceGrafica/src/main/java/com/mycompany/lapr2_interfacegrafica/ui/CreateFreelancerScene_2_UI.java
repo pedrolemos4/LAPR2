@@ -39,14 +39,24 @@ public class CreateFreelancerScene_2_UI {
 
     @FXML
     private void btnConfirmAction(ActionEvent event) {
+        boolean registered = this.freel.getCreateFreelancerController().registerFreelancer();
+        String notification;
+        if (registered) {
+            notification = "Specify Category Success.";
+        } else {
+            notification = "Specify Category Insuccess.";
+        }
+        this.freel.toCreateFreelancerScene3UI(notification);
     }
 
     @FXML
     private void btnCancelAction(ActionEvent event) {
+        //this.freel.getMainApp().toMainScene();
     }
 
     @FXML
     private void btnReturnAction(ActionEvent event) {
+        this.freel.toCreateFreelancerScene1UI(); 
     }
     
 }
