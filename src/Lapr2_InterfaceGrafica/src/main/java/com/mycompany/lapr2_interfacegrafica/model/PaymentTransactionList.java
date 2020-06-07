@@ -39,4 +39,13 @@ public class PaymentTransactionList {
         }
         return false;
     }
+    
+    public boolean exists(String transactionId){
+        for(int i = 0; i< m_lstPaymentTransactions.size(); i++){
+            if(m_lstPaymentTransactions.get(i).getM_strId().equalsIgnoreCase(transactionId)){
+                return true;
+            }
+        }
+        return false;
+    }
 }

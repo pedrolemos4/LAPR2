@@ -57,6 +57,8 @@ public class PaymentTransaction {
     public Task getM_oTask() {
         return m_oTask;
     }
-    
-    
+
+    public String getM_strId() {
+        return m_strId;
+    }
 }
