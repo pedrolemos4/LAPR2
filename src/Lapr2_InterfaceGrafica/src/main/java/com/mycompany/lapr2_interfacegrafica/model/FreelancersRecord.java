@@ -25,16 +25,16 @@ public class FreelancersRecord {
     }
 
     public boolean registerFreelancer(Freelancer freel) {
-        if(this.validatesFreelancer(freel)){
+        if (this.validatesFreelancer(freel)) {
             addFreelancer(freel);
-        } 
+        }
         return false;
     }
 
     public boolean validatesFreelancer(Freelancer freel) {
-        if (freel.getAdress() == null || freel.getCountry() == null || freel.getEmail() == null || freel.getIban() == null || freel.getId() == null || freel.getLvlExp() == null || freel.getName() == null || freel.getNif() ==null) {
+        if (freel.getAdress() == null || freel.getCountry() == null || freel.getEmail() == null || freel.getIban() == null || freel.getId() == null || freel.getLvlExp() == null || freel.getName() == null || freel.getNif() == null) {
             return false;
-        } else { 
+        } else {
             return true;
         }
     }
@@ -45,6 +45,16 @@ public class FreelancersRecord {
 
     public List<Freelancer> getListFreelancers() {
         return arrayFreelancers;
+    }
+
+    public Freelancer freelancerExists(String frlId) {
+        for (int i = 0; i < arrayFreelancers.size(); i++) {
+            if (arrayFreelancers.get(i).getId().equalsIgnoreCase(frlId)) {
+                return arrayFreelancers.get(i);
+            }
+        }
+        return null;
+
     }
 
 }

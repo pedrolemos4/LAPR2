@@ -38,10 +38,10 @@ public class PaymentTransaction {
     public double generatePayAmount(Task task, Freelancer free) {
         double payAmount = 0;
         if (free.getLvlExp().equalsIgnoreCase("Junior")) {
-            //payAmount = task.getDuration() * task.getCostPerHour();
+            payAmount = task.getTimeDuration() * task.getCostPerHour();
         }
         if (free.getLvlExp().equalsIgnoreCase("Senior")) {
-            //payAmount = (task.getDuration() * task.getCostPerHour()) * 2;
+            payAmount = (task.getTimeDuration()* task.getCostPerHour()) * 2;
         }
         return payAmount;
     }

@@ -40,7 +40,7 @@ class Organization {
 }
 
 class TasksList {
-  +taskExists(taskId)
+  +findById(taskId)
 }
 
 class Platform {

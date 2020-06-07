@@ -53,7 +53,7 @@ CTRL -> ORG: tLst = getTasksList()
 activate ORG
 deactivate ORG
 
-CTRL -> TL: task = taskExists(taskId)
+CTRL -> TL: task = findById(taskId)
 activate TL
 deactivate TL
 
