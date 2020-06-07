@@ -3,7 +3,6 @@ autonumber
 
 actor "Time" as TEMPO
 
-participant ":Plataform" as PLAT
 participant "task:NotifyFreelancersTask" as SCAT
 participant "t: Timer" as TIMER
 participant "regFreel\n:FreelancersRecord" as RFREEL
@@ -13,12 +12,12 @@ TEMPO -> PLAT : agendNotification()
 activate TEMPO
 
 activate PLAT
-PLAT -> SCAT** : create()
-PLAT -> PLAT : date =getDateDefined()
-PLAT -> TIMER** : create()
-PLAT -> TIMER : schedule(task, date)
+RFREEL -> SCAT** : create()
+RFREEL -> RFREEL : date =getDateDefined()
+RFREEL -> TIMER** : create()
+RFREEL -> TIMER : schedule(task, date)
 activate TIMER
-deactivate PLAT
+deactivate RFREEL
 
 TIMER -> SCAT : run()
 activate SCAT
@@ -31,9 +30,9 @@ end REF
 SCAT -> SCAT : nextNotification()
 
 
-SCAT -> PLAT : regFreel = getRecordFreelancer()
-activate PLAT
-deactivate PLAT
+SCAT -> RFREEL : regFreel = getRecordFreelancer()
+activate RFREEL
+deactivate RFREEL
 
 SCAT -> RFREEL : scheduleAutomaticEmail()
 activate RFREEL

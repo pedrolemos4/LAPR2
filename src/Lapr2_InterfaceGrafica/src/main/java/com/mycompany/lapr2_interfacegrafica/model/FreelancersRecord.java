@@ -1,6 +1,8 @@
 package com.mycompany.lapr2_interfacegrafica.model;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class FreelancersRecord {
@@ -14,7 +16,12 @@ public class FreelancersRecord {
     private String country;
     private String adress;
 
+    private Organization org;
+    private Platform plat;
+    private Freelancer freel;
+
     private final List<Freelancer> arrayFreelancers;
+    private PaymentTransactionList payemntTransList;
 
     public FreelancersRecord() {
         this.arrayFreelancers = new ArrayList<>();
@@ -54,7 +61,64 @@ public class FreelancersRecord {
             }
         }
         return null;
+    }
 
+    public Date getDateDefined() {
+        Calendar dia = Calendar.getInstance();
+        dia.set(Calendar.MONTH, 12);
+        dia.set(Calendar.DAY_OF_MONTH, 31);
+        dia.set(Calendar.HOUR_OF_DAY, 23);
+        dia.set(Calendar.MINUTE, 59);
+        dia.set(Calendar.SECOND, 30);
+        return dia.getTime();
+    }
+
+    public void scheduleAutomaticEmail() {
+        NotifyFreelancerTask task = new NotifyFreelancerTask();
+        Date data = getDateDefined();
+        Timer t = new Timer();
+        t.schedule(task, data);
+    }
+
+    public void sendEmails() {
+        int numberTransactions = 0, delay = 0, amountForHourDelay = 0;
+
+        org = plat.getOrganization();
+        payemntTransList = org.getPaymentTransactionList();
+        List<PaymentTransaction> payemntTransList1 = payemntTransList.getPaymentTransactions();
+        for (int i = 0; i < arrayFreelancers.size(); i++) {
+            Freelancer freel = arrayFreelancers.get(i);
+            for (int k = 0; k < payemntTransList1.size(); k++) {
+                PaymentTransaction trans = payemntTransList1.get(k);
+                Freelancer freelTrans = payemntTransList1.get(k).getM_oFreelancer();
+                if (freel == freelTrans) {
+                    numberTransactions++;
+                    int delayTrans = trans.getM_Delay();
+                    if (delayTrans > 0) {
+                        delay++;
+                        amountForHourDelay++;
+                    }
+                }
+            }
+            int percentageDelayFreel = delay / numberTransactions;
+            double averageDelay = getAverageDelay();
+            if (delay > 3 && percentageDelayFreel > averageDelay) {
+               freel.getEmail();
+               //sendEmail(); Mando para onde?
+            }
+        }
+    }
+
+    public double getAverageDelay() {
+        int totalDelay = 0, n = 0;
+        List<PaymentTransaction> payemntTransList1 = payemntTransList.getPaymentTransactions();
+        for (int k = 0; k < payemntTransList1.size(); k++) {
+            PaymentTransaction trans = payemntTransList1.get(k);
+            int delayTrans = trans.getM_Delay();
+            totalDelay = totalDelay + delayTrans;
+            n++;
+        }
+        return totalDelay / n;
     }
 
 }
