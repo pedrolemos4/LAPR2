@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.lapr2_interfacegrafica.ui;
 
 import javafx.event.ActionEvent;
@@ -14,7 +9,7 @@ import javafx.scene.control.Button;
  * @author pedro
  */
 public class JanelaOptionsCollaboratorUI {
-    
+
     private MainApp mainApp;
 
     @FXML
@@ -38,13 +33,13 @@ public class JanelaOptionsCollaboratorUI {
 
     @FXML
     private void btnCreateTaskAction(ActionEvent event) {
-        CreateTaskUI createTaskUI = new CreateTaskUI(this.mainApp);
-        createTaskUI.toCreateTaskScene1UI();
+        // CreateTaskUI createTaskUI = new CreateTaskUI(this.mainApp);
+        // createTaskUI.toCreateTaskScene1UI();
     }
 
     @FXML
     private void btnCreatePaymentAction(ActionEvent event) {
-        
+
     }
 
     @FXML
@@ -57,7 +52,7 @@ public class JanelaOptionsCollaboratorUI {
 
     @FXML
     private void btnLogoutAction(ActionEvent event) {
-        
+
     }
-    
+
 }

@@ -68,7 +68,7 @@ class CreatePaymentTransactionUI {
 class PaymentTransaction{
   -String id
   -Date endDate
-  -Double delay
+  -Integer delay
   -String workQualityDescription
   +generatePayAmount(task, free)
   +PaymentTransaction(payTId, task, free, endDate, delay, workQualityDescription)

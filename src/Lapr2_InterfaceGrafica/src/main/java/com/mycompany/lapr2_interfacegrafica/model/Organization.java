@@ -7,7 +7,7 @@ import java.util.TreeMap;
 
 public class Organization {
 
-    private String m_strNome;
+    private String m_strName;
     private String m_strNIF;
     private Manager m_oManager;
     private Collaborator m_oCollaborator;
@@ -18,7 +18,7 @@ public class Organization {
                 || (name.isEmpty()) || (NIF.isEmpty())) {
             throw new IllegalArgumentException("None of the arguments can be null or empty.");
         }
-        this.m_strNome = name;
+        this.m_strName = name;
         this.m_strNIF = NIF;
         this.m_oManager = manager;
         this.m_oCollaborator = collaborator;
@@ -38,6 +38,14 @@ public class Organization {
 
     public Collaborator getCollaborator() {
         return this.m_oCollaborator;
+    }
+
+    public String getOrgName() {
+        return this.m_strName;
+    }
+
+    public String getOrgNIF() {
+        return this.m_strNIF;
     }
 
     @Override
@@ -70,7 +78,7 @@ public class Organization {
 
     @Override
     public String toString() {
-        String str = String.format("%s - %s - %s - %s", this.m_strNome, this.m_strNIF, this.m_oManager.toString(), this.m_oCollaborator.toString());
+        String str = String.format("%s - %s - %s - %s", this.m_strName, this.m_strNIF, this.m_oManager.toString(), this.m_oCollaborator.toString());
         return str;
     }
 
@@ -113,8 +121,8 @@ public class Organization {
         }
         return counter;
     }
-    
-    public PaymentTransactionList getPaymentTransactionList(){
+
+    public PaymentTransactionList getPaymentTransactionList() {
         return m_oPaymentTransactionList;
     }
 }

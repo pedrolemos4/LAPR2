@@ -5,7 +5,6 @@
  */
 package com.mycompany.lapr2_interfacegrafica.ui;
 
-import com.mycompany.lapr2_interfacegrafica.model.Freelancer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
