@@ -114,6 +114,9 @@ Other classes of external systems/components:
 ###	Sequence Diagram
 
 ![UC8_SD.png](UC8_SD.png)
+![SD_determinateDelayOrg.svg](SD_determinateDelayOrg.svg)
+![SD_determinatePayOrg.svg](SD_determinatePayOrg.svg)
+
 
 
 ###	Class Diagram

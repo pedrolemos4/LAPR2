@@ -10,20 +10,13 @@ participant "session\n:UserSession" as SESSAO
 participant ":Platform" as PLAT
 participant "orgR:\nOrganizationsRecord" as ORGR
 participant "org:\nOrganization" as ORG
-participant "frlR:\nFreelancersRecord" as FR
-participant "free:\nFreelancer" as FRL
-participant "dl:\nDelayList" as DL
-participant "taskexec:\nTaskExecution" as TEXEC
-participant "tLst:\nTasksList" as TL
-participant "task:\nTask" as TA
 
 
-opt
 activate CO
 CO -> UI : starts to analyze the overall statistics about task execution times of one freelancer
 
 activate UI
-UI -> CTRL: getTaskList()
+UI -> CTRL: getOrganization()
 
 activate CTRL 
 
@@ -46,85 +39,66 @@ deactivate PLAT
 CTRL -> ORGR: org = getOrganizationByUserEmail(email)
 activate ORGR
 deactivate ORGR
+deactivate CTRL
+ 
 
-CTRL -> ORG: tLst = getTaskList()
-activate ORG
-deactivate ORG
-
-deactivate CTRL 
-UI --> CO : presents the organization's task list and asks for the freelancer's ID
-deactivate UI
-
-CO -> UI : enters the requested data
-
-activate UI
-UI -> CTRL : getStatistics(frlID)
-
-
+UI -> CTRL : determinatePayOrg()
 activate CTRL
-CTRL -> PLAT: frlR = getFreelancersRecord()
-activate PLAT
-deactivate PLAT
 
-CTRL -> FR: free = freelancerExists(frlID)
-activate FR
-deactivate FR
-
-CTRL -> FR : newDelayList()
-activate FR
-
-FR -> FRL : dl = newDelayList()
-activate FRL
-FRL --> DL**: create()
-deactivate FRL
-deactivate FR
-
-loop for each freelancer's task
-CTRL -> FR :task = getTask()
-activate FR
-
-FR -> FRL : getTask()
-activate FRL
-deactivate FR
-deactivate FRL
-
-CTRL -> TEXEC: delay = getDelay(task)
-activate TEXEC
-deactivate TEXEC
-
-CTRL -> FR : addDelay(delay)
-activate FR 
-
-FR -> FRL : addDelay(delay)
-activate FRL
-
-FRL -> DL : addDelay(delay)
-activate DL
-deactivate DL
-deactivate FRL
-deactivate FR
-
-end 
-
-CTRL -> FR : getDelayListSize()
-
-activate FR
-FR -> DL : size = getDelayListSize()
-activate DL
-deactivate DL
-
-FR -> FRL : meanDelay=getMeanDelay(dl,size)
-activate FRL
-deactivate FRL
-deactivate FR
-
+CTRL -> ORG : determinatePayOrg(mapOrgPayment)
+activate ORG
+ref over ORG
+SD_determinatePayOrg
+end ref
+CTRL <-- ORG : mapOrgPayment
+deactivate ORG
 deactivate CTRL
 
 
-UI --> CO : presents the statistics about task execution times of the chosen freelancer
+UI -> CTRL : calcMeanPayment()
+activate CTRL
+CTRL -> ORGR : calcMeanPayment(mapOrgPayment)
+activate ORGR
+deactivate ORGR
+deactivate CTRL
+
+UI -> CTRL : calcDeviationPayment()
+activate CTRL
+CTRL -> ORGR : calcDeviationPayment(mapOrgPayment,mapMeanPayments)
+activate ORGR
+deactivate ORGR
+deactivate CTRL
+
+UI -> CTRL : determinateDelayOrg()
+activate CTRL
+CTRL -> ORG : determinateDelayOrg(mapOrgDelay)
+activate ORG
+ref over ORG
+SD_determinateDelayOrg
+end ref
+CTRL <-- ORG : mapOrgDelay
+deactivate ORG
+deactivate CTRL
+
+UI -> CTRL : calcMeanDelay()
+activate CTRL
+CTRL -> ORGR : calcMeanDelay(mapOrgDelay)
+activate ORGR
+deactivate ORGR
+deactivate CTRL
+
+UI -> CTRL : calcDeviationDelay()
+activate CTRL
+CTRL -> ORGR : calcDeviationDelay(mapOrgDelay,mapMeanDelays)
+activate ORGR
+deactivate ORGR
+deactivate CTRL
+
+
+
+UI --> CO : presents the statistics about task execution times\nand payments of each and all the freelancers working for that organization.
 deactivate UI
 
-end
 
 deactivate CO
 @enduml
