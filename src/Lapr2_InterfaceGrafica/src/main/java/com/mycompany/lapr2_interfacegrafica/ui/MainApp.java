@@ -1,6 +1,8 @@
 package com.mycompany.lapr2_interfacegrafica.ui;
 
 import java.io.InputStream;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
@@ -29,7 +31,7 @@ public class MainApp extends Application {
         
         stage.setTitle("JavaFX and Maven");
         stage.setScene(scene);
-        stage.show();
+        stage.show();        
     }
     
     public Initializable replaceSceneContent(String fxml) throws Exception {
