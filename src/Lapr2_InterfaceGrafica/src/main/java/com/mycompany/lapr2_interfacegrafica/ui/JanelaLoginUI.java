@@ -5,26 +5,27 @@
  */
 package com.mycompany.lapr2_interfacegrafica.ui;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
- * @author Tiago
+ * @author pedro
  */
 public class JanelaLoginUI {
-
-    @FXML
-    private TextField txtUsername;
-    @FXML
-    private TextField txtPassword;
-    @FXML
-    private Button btnLogin;
-
-    @FXML
-    private void btnLoginAction(ActionEvent event) {
+    
+    private final MainApp mainApp;
+    
+    public JanelaLoginUI(MainApp mA){
+        this.mainApp=mA;
+    }
+    
+    public void toJanelaLogin1UI(){
+        try {
+          JanelaLogin_1_UI janelaLogin1UI = (JanelaLogin_1_UI) this.mainApp.replaceSceneContent("/fxml/JanelaLogin.fxml");
+        } catch (Exception e){
+            Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, e);
+        }
     }
     
 }
