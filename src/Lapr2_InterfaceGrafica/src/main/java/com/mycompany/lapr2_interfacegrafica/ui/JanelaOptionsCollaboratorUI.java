@@ -14,6 +14,8 @@ import javafx.scene.control.Button;
  * @author pedro
  */
 public class JanelaOptionsCollaboratorUI {
+    
+    private MainApp mainApp;
 
     @FXML
     private Button btnCreateFreelancer;
@@ -24,20 +26,25 @@ public class JanelaOptionsCollaboratorUI {
     @FXML
     private Button btnUploadFile;
     @FXML
-    private Button btnBack;
-    @FXML
     private Button btnCheckStatistics;
+    @FXML
+    private Button btnLogout;
 
     @FXML
     private void btnCreateFreelanceerAction(ActionEvent event) {
+        CreateFreelancerUI createFreelancerUI = new CreateFreelancerUI(this.mainApp);
+        createFreelancerUI.toCreateFreelancerScene1UI();
     }
 
     @FXML
     private void btnCreateTaskAction(ActionEvent event) {
+        CreateTaskUI createTaskUI = new CreateTaskUI(this.mainApp);
+        createTaskUI.toCreateTaskScene1UI();
     }
 
     @FXML
     private void btnCreatePaymentAction(ActionEvent event) {
+        
     }
 
     @FXML
@@ -45,11 +52,12 @@ public class JanelaOptionsCollaboratorUI {
     }
 
     @FXML
-    private void btnBackAction(ActionEvent event) {
+    private void btnCheckStatisticsAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnCheckStatisticsAction(ActionEvent event) {
+    private void btnLogoutAction(ActionEvent event) {
+        
     }
     
 }

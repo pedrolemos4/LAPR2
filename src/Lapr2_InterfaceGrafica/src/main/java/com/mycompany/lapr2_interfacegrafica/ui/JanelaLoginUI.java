@@ -14,7 +14,7 @@ import javafx.scene.control.TextField;
  *
  * @author Tiago
  */
-public class JanelaLoginCollaboratorUI {
+public class JanelaLoginUI {
 
     @FXML
     private TextField txtUsername;
