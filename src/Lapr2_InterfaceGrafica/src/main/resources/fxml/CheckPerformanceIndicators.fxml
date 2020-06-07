@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="529.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lapr2_interfacegrafica.ui.CheckPerformanceIndicatorsScene_1_UI">
+   <children>
+      <BorderPane prefHeight="530.0" prefWidth="800.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <BorderPane prefHeight="500.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+               <center>
+                  <HBox prefHeight="340.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <ListView fx:id="lstFreelancerAndInfo" prefHeight="250.0" prefWidth="400.0" />
+                        <BarChart fx:id="barChartHistograms" prefHeight="250.0" prefWidth="400.0">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </BarChart>
+                     </children>
+                  </HBox>
+               </center>
+               <bottom>
+                  <HBox prefHeight="59.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label fx:id="lblProbability" prefHeight="33.0" prefWidth="629.0" text="The probability of the execution delay time of the freelancers that higher than 3 hours is">
+                           <HBox.margin>
+                              <Insets left="42.0" top="13.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtNormalDistribution" onAction="#normalDistribution" prefHeight="31.0" prefWidth="76.0">
+                           <HBox.margin>
+                              <Insets top="13.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+               </bottom>
+            </BorderPane>
+         </center>
+         <top>
+            <Label fx:id="lblCheckPerformance" prefHeight="55.0" prefWidth="338.0" text="Check Performance Indicators" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+            </Label>
+         </top>
+         <bottom>
+            <HBox prefHeight="60.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="btnMeanDelay" mnemonicParsing="false" onAction="#meanDelay" text="Mean Delay">
+                     <HBox.margin>
+                        <Insets left="42.0" top="13.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="btnDeviationDelay" mnemonicParsing="false" onAction="#deviationDelay" text="Deviation Delay">
+                     <HBox.margin>
+                        <Insets left="42.0" top="13.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="btnMeanPayment" mnemonicParsing="false" onAction="#meanPayment" text="Mean Payment">
+                     <HBox.margin>
+                        <Insets left="42.0" top="13.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="btnDeviationPayment" mnemonicParsing="false" onAction="#deviationPayment" text="Deviation Payment">
+                     <HBox.margin>
+                        <Insets left="42.0" top="13.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="btnClean" mnemonicParsing="false" onAction="#cleanAll" text="Clean">
+                     <HBox.margin>
+                        <Insets left="42.0" top="13.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>
