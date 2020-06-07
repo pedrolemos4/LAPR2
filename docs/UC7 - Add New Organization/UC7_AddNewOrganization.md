@@ -99,7 +99,7 @@ n/a
 | |... create Manager instances?|Organization|creator(rule 1)|
 |4. The system validates and displays the data of the organization, its manager and its collaborator, asking for confirmation. |... validates Organization data (local validation)?|Organization|IE: has its own data.|
 | |... validates Collaborator data (local validation)?|Collaborator|IE: has its own data.|
-| |... validates Manager data (local validation)?|Collaborator|IE: has its own data.|
+| |... validates Manager data (local validation)?|Manager|IE: has its own data.|
 | |... validates Organization data (global validation)?|OrganizationsRecord|IE: OrganizationsRecord has all organizations.|
 |5. The T4J administrator confirms. ||||
 |6. The system records the data of the organization, its manager and its collaborator, generating passwords for the latter and sending them by email, making them registered users and informs the T4J administrator of the success of the operation.|... saves the Organization created?| OrganizationsRecord |IE: By applying HC + LC to the Platform.|
