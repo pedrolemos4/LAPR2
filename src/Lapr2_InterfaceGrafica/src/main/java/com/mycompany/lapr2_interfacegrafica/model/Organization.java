@@ -112,11 +112,11 @@ public class Organization {
         return mapOrgDelay;
     }
 
-    public int calcCounterFree() {
-        int counter = 0;
+    public int calcCounterDelays(){
+        int counter=0;
         List<PaymentTransaction> transactionList = m_oPaymentTransactionList.getPaymentTransactions();
         for (PaymentTransaction transaction : transactionList) {
-            Freelancer free = transaction.getM_oFreelancer();
+            int t = transaction.getM_Delay();
             counter++;
         }
         return counter;

@@ -9,6 +9,8 @@ public class Platform {
     private final FacadeAuthorization m_oAutorizacao;
     private FreelancersRecord freelRec;
     private Organization org;
+    private OrganizationsRecord orgRec;
+
     
     private final TaskRecord taskRecord = new TaskRecord();
 
@@ -39,5 +41,9 @@ public class Platform {
     
     public void agendNotification(){
         
+    }
+    
+    public OrganizationsRecord getOrganizationsRecord(){
+        return orgRec;
     }
 }

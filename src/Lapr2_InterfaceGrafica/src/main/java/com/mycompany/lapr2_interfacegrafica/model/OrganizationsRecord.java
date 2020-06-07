@@ -170,7 +170,7 @@ public class OrganizationsRecord {
         int counter = 0;
         double x = 3, m = 2, d = 1.5;
         for (Organization org : m_lstOrganizations) {
-            counter += org.calcCounterFree();
+            counter += org.calcCounterDelays();
         }
         NormalDistribution normalD = new NormalDistribution(m, d / counter);
         return 1 - normalD.cumulativeProbability(x);
