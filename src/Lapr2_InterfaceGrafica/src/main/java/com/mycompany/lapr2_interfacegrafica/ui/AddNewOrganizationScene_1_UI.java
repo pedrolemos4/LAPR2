@@ -62,14 +62,23 @@ public class AddNewOrganizationScene_1_UI implements Initializable {
     @FXML
     private void btnNextAction(ActionEvent event) {
         try {
-//            this.addNewOrganization.getController.newOrganization(txtName.getText(), txtNIF.getText());
+//            this.addNewOrganization.getController.newOrganization(txtName.getText(), 
+//txtNIF.getText(),txtManagerName,txtManagerEmail,txtCollaboratorName, txtCollaboratorEmail,);
 //            this.addNewOrganization.toAddNewOrganizationScene2();
         } catch (IllegalArgumentException ex) {
             lblAlert.setText(ex.getMessage());
             if (ex.getMessage().toLowerCase().contains("name")) {
                 txtName.requestFocus();
-            } else {
+            } else if(ex.getMessage().toLowerCase().contains("NIF")){
                 txtNIF.requestFocus();
+            } else if(ex.getMessage().toLowerCase().contains("manager's name")){
+                txtManagerName.requestFocus();
+            } else if(ex.getMessage().toLowerCase().contains("manager's email")){
+                txtManagerEmail.requestFocus();
+            } else if(ex.getMessage().toLowerCase().contains("collaborator's name")){
+                txtCollaboratorName.requestFocus();
+            } else{
+                txtCollaboratorEmail.requestFocus();
             }
         }
     }
