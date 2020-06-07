@@ -12,18 +12,43 @@ class UserSession {
 }
 
 class OrganizationsRecord{
-  +Organization getOrganizationByUserEmail(String email)
+    +Organization getOrganizationByUserEmail(String email)
+    +calcMeanPayment(mapOrgPayment)
+    +calcDeviationPayment(mapOrgPayment,mapMeanPayments)
+    +calcMeanDelay(mapOrgDelay)
+    +calcDeviationDelay(mapOrgDelay,mapMeanDelays)
 }
 
 class Organization {
-   +List<Task> getTaskList()
+    +determinatePayOrg(mapOrgPayment)
+    +determinateDelayOrg(mapOrgDelay)
+}
+
+class PaymentTransactionList{
+    +getPaymentTransactions()
+}
+
+
+class PaymentTransaction {
+    -String id
+    -Date endDate
+    -Double delay
+    -String workQualityDescription
+    +getM_oFreelancer()
+    +getM_oTask()
+    +generatePayAmount(task,free)
 }
 
 class Freelancer {
-   +DelayList newDelayList()
-   +Task getTask()
-   +void addDelay(delay)
-   +Double getMeanDelay(DelayList dl, Integer size)
+    -String id
+    -String name
+    -String expertiseLevel
+    -String email
+    -String NIF
+    -String IBAN
+    -String address
+    -String country
+    +getId()
 }
 
 class Platform {
@@ -32,31 +57,18 @@ class Platform {
   +FreelancersRecord getFreelancersRecord()
 }
 
-class FreelancersRecord {
-   +Freelancer freelancerExists(String frlID)
-   +DelayList newDelayList()
-   +Task getTask()
-   +void addDelay(String delay)
-   +Integer getDelayListSize()
-}
-
 class AnalyzeFreelancerStatisticsController {
-    +getTaskList()
-    +getStatistics(frlID)
+    +getOrganization()
+    +determinatePayOrg()
+    +calcMeanPayment()
+    +calcDeviationPayment()
+    +determinateDelayOrg()
+    +calcMeanDelay()
+    +calcDeviationDelay()
 }
 
 class AnalyzeFreelancerStatisticsUI {
 }
-
-class DelayList {
-   +DelayList dl()
-   +void addDelay(delay)
-   +Integer getDelayListSize()
-}  
-
-class TaskExecution {
-   +Integer getDelay(task)
-}  
 
 class Task {
   -String id
@@ -69,27 +81,27 @@ class Task {
 AnalyzeFreelancerStatisticsUI ..> AnalyzeFreelancerStatisticsController 
 
 AnalyzeFreelancerStatisticsController ..> Platform
-AnalyzeFreelancerStatisticsController ..> FreelancersRecord
 AnalyzeFreelancerStatisticsController ..> OrganizationsRecord
 AnalyzeFreelancerStatisticsController ..> POTApplication
 AnalyzeFreelancerStatisticsController ..> UserSession
 AnalyzeFreelancerStatisticsController ..> Organization
-AnalyzeFreelancerStatisticsController ..> TaskExecution
 
 
-Platform "1" --> "1" FreelancersRecord : has >
 Platform "1" -> "1" OrganizationsRecord : has >
 
 OrganizationsRecord "1" -> "*" Organization : has >
 
-Organization "1" -> "1" TaskList : has >
+Organization "1" -- "1" PaymentTransactionList : has >
 
-FreelancersRecord "1" -> "*" Freelancer : has >
+PaymentTransactionList "1" -- "*" PaymentTransaction : has registries of >
 
-Freelancer "1" -> "1" DelayList: has >
+PaymentTransaction "1" --> "1" Freelancer : relates to
+PaymentTransaction "1" --> "1" Task : relates to
 
-TaskList "1" -> "*" Task : has >
+Task "1..*" --> "1" Freelancer : is assigned to
+
 
 @enduml
+
 
 
