@@ -1,12 +1,12 @@
 
-package com.mycompany.lapr2_interfacegrafica.authorization.model;
+package com.mycompany.lapr2_interfacegrafica.model;
 
 import java.util.HashSet;
 import java.util.Set;
 import com.mycompany.lapr2_interfacegrafica.model.Task;
 
 
-public class TaskRegister
+public class TaskRecord
 {
     private Set<Task> tasks = new HashSet<Task>();
     
