@@ -3,7 +3,7 @@ package com.mycompany.lapr2_interfacegrafica.controller;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import com.mycompany.lapr2_interfacegrafica.authorization.model.UserSession;
-import com.mycompany.lapr2_interfacegrafica.authorization.model.TaskRegister;
+import com.mycompany.lapr2_interfacegrafica.model.TaskRecord;
 import com.mycompany.lapr2_interfacegrafica.model.Constants;
 import com.mycompany.lapr2_interfacegrafica.model.Freelancer;
 import com.mycompany.lapr2_interfacegrafica.model.FreelancersRecord;
@@ -21,13 +21,12 @@ public class CreateTaskController {
     private Platform m_oPlataforma;
     private UserSession m_oSessao;
     private OrganizationsRecord or;
-    //private TasksList tLst;
     private FreelancersRecord frlR;
     private PaymentTransactionList ptL;
     private PaymentTransaction payT;
-
+    private TaskRecord taskRecord;
+    
     Task task = null;
-    private TaskRegister taskRegister;
     
     public CreateTaskController() {
         this.m_oApp = POTApplication.getInstance();
@@ -38,12 +37,12 @@ public class CreateTaskController {
         
         this.m_oPlataforma = m_oApp.getPlataforma();    
         
-        this.taskRegister = m_oPlataforma.getTaskRegister();
+        this.taskRecord = m_oPlataforma.getTaskRecord();
     }
 
     public boolean newTask(String id, String briefDescription, int timeDuration, double costPerHour, String category) {
         try {
-            task = taskRegister.newTask(id, briefDescription, timeDuration, costPerHour, category);
+            task = taskRecord.newTask(id, briefDescription, timeDuration, costPerHour, category);
                     
             return true;
         } catch (Exception e) {
@@ -52,11 +51,14 @@ public class CreateTaskController {
     }
 
     public boolean registerTask() {
-        return taskRegister.registerTask(task);
+        return taskRecord.registerTask(task);
     }
 
     public String getTaskAsString() {
         return task.toString();
     }
 
+    public Task getTask() {
+        return task;
+    }
 }
