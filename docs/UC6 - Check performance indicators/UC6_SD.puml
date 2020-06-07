@@ -6,7 +6,6 @@ participant ":CheckPerformanceIndicatorsUI" as UI
 participant ":CheckPerformanceIndicatorsController" as CTL
 participant ":Platform" as PLT
 participant ":Organization" as O
-participant ":PaymentTransaction" as T
 participant ":OrganizationsRecord" as RO
 
 activate ADM
@@ -23,7 +22,7 @@ activate RO
 deactivate RO
 deactivate CTL
 
-UI -> CTL : calcPerformanceStatistics()
+UI -> CTL : determinatePayOrg()
 activate CTL
 
 CTL -> O : determinatePayOrg(mapOrgPayment)
@@ -33,6 +32,10 @@ SD_determinatePayOrg
 end ref
 CTL <-- O : mapOrgPayment
 deactivate O
+deactivate CTL
+
+UI -> CTL : determinatePayPlatform()
+activate CTL
 CTL -> RO : determinatePayPlatform()
 activate RO
 ref over RO
@@ -40,13 +43,24 @@ SD_determinatePayPlatform
 end ref
 CTL <-- RO : mapTotalPayments
 deactivate RO
+deactivate CTL
+
+UI -> CTL : calcMeanPayment()
+activate CTL
 CTL -> RO : calcMeanPayment(mapTotalPayments)
 activate RO
 deactivate RO
+deactivate CTL
+
+UI -> CTL : calcDeviationPayment()
+activate CTL
 CTL -> RO : calcDeviationPayment(mapTotalPayments,mapMeanPayments)
 activate RO
 deactivate RO
+deactivate CTL
 
+UI -> CTL : determinateDelayOrg()
+activate CTL
 CTL -> O : determinateDelayOrg(mapOrgDelay)
 activate O
 ref over O
@@ -54,6 +68,10 @@ SD_determinateDelayOrg
 end ref
 CTL <-- O : mapOrgDelay
 deactivate O
+deactivate CTL
+
+UI -> CTL : determinateDelayPlatform()
+activate CTL
 CTL -> RO : determinateDelayPlatform()
 activate RO
 ref over RO
@@ -61,9 +79,17 @@ SD_determinateDelayPlatform
 end ref
 CTL <-- RO : mapTotalDelays
 deactivate RO
+deactivate CTL
+
+UI -> CTL : calcMeanDelay()
+activate CTL
 CTL -> RO : calcMeanDelay(mapTotalDelays)
 activate RO
 deactivate RO
+deactivate CTL
+
+UI -> CTL : calcDeviationDelay()
+activate CTL
 CTL -> RO : calcDeviationDelay(mapTotalDelays,mapMeanDelays)
 activate RO
 deactivate RO
@@ -71,9 +97,12 @@ deactivate CTL
 
 UI -> CTL : determinateNormalDistribution()
 activate CTL
-CTL -> T: determinateNormalDistribution()
-activate T
-deactivate T
+CTL -> O : calcCounterDelays()
+activate O
+deactivate O
+CTL -> RO: determinateNormalDistribution()
+activate RO
+deactivate RO
 deactivate CTL
 
 UI --> ADM : calculates and displays performance statistics for all freelancers \n(i.e. the average and standard deviation of \ndelay and payment, along with histograms for each and all freelancers).
@@ -83,8 +112,5 @@ activate UI
 UI --> ADM : successful operation
 deactivate UI
 deactivate ADM
-
- 
-
 
 @enduml

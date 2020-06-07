@@ -3,10 +3,16 @@
 class CheckPerformanceIndicatorsUI {
 }
 
-
 class CheckPerformanceIndicatorsController {
     +getOrganizations()
-    +calcPerformanceStatistics()
+    +determinatePayOrg()
+    +determinatePayPlatform()
+    +calcMeanPayment()
+    +calcDeviationPayment()
+    +determinateDelayOrg()
+    +determinateDelayPlatform()
+    +calcMeanDelay()
+    +calcDeviationDelay()
     +determinateNormalDistribution()
 }
 
@@ -24,6 +30,7 @@ class OrganizationsRecord {
     +calcDeviationPayment(mapTotalPayments,mapMeanPayments)
     +calcMeanDelay(mapTotalDelays)
     +calcDeviationDelay(mapTotalDelays,mapMeanDelays)
+    +determinateNormalDistribution()
 }
 
 class Organization {
@@ -31,6 +38,7 @@ class Organization {
     -String NIF
     +determinateDelayOrg(mapTotalDelays)
     +determinatePayOrg(mapTotalPayments)
+    +calcCounterDelays()
 }
 
  
@@ -47,9 +55,7 @@ class PaymentTransaction {
     +getM_oFreelancer()
     +getM_oTask()
     +generatePayAmount(task,free)
-    +determinateNormalDistribution()
 }
-
 
 class Freelancer {
     -String id
@@ -71,12 +77,10 @@ class Task {
   -String taskCategory
 }
 
-
 CheckPerformanceIndicatorsUI ..> CheckPerformanceIndicatorsController
 CheckPerformanceIndicatorsController ..> Platform
 CheckPerformanceIndicatorsController ..> OrganizationsRecord
 CheckPerformanceIndicatorsController ..> Organization
-CheckPerformanceIndicatorsController ..> PaymentTransaction
 
 
 Platform "1" -- "1" OrganizationsRecord : has >
@@ -86,4 +90,5 @@ PaymentTransactionList "1" -- "*" PaymentTransaction : has registries of >
 PaymentTransaction "1" --> "1" Freelancer : relates to
 PaymentTransaction "1" --> "1" Task : relates to
 Task "1..*" --> "1" Freelancer : is assigned to
+
 @enduml
