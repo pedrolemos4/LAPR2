@@ -37,4 +37,16 @@ public class OrganizationRecordController {
     public String getOrganizationToString() {
         return this.org.toString();
     }
+
+    public Organization getOrganization() {
+        return this.org;
+    }
+
+    public String getOrganizationName() {
+        return org.getOrgName();
+    }
+
+    public String getOrganizationNIF() {
+        return org.getOrgNIF();
+    }
 }

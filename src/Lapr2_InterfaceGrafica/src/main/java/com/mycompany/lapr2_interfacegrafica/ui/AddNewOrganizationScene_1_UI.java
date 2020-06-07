@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.lapr2_interfacegrafica.ui;
 
 import java.net.URL;
@@ -15,13 +10,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 
-/**
- *
- * @author Tiago
- */
 public class AddNewOrganizationScene_1_UI implements Initializable {
 
-   // private AddNewOrganizationUI addNewOrganization;
+    private AddNewOrganizationUI addNewOrganization;
 
     @FXML
     private Button btnCancel;
@@ -50,34 +41,38 @@ public class AddNewOrganizationScene_1_UI implements Initializable {
         return this.txtName;
     }
 
-//    public void addNewOrganization(AddNewOrganizationUI addNewOrganization) {
-//        this.addNewOrganization = addNewOrganization;
-//    }
+    public void addNewOrganization(AddNewOrganizationUI addNewOrganization) {
+        this.addNewOrganization = addNewOrganization;
+    }
 
     public void showOrganization() {
-//        this.txtName.setText(this.addNewOrganization.getController().getOrganizationName());
-//        this.txtNIF.setText(this.addNewOrganization.getController().getOrganizationNIF());
+        this.txtName.setText(this.addNewOrganization.getOrganizationRecordController().getOrganizationName());
+        this.txtNIF.setText(this.addNewOrganization.getOrganizationRecordController().getOrganizationNIF());
+        this.txtManagerName.setText(this.addNewOrganization.getOrganizationRecordController().getOrganization().getManager().getName());
+        this.txtManagerEmail.setText(this.addNewOrganization.getOrganizationRecordController().getOrganization().getManager().getEmail());
+        this.txtCollaboratorName.setText(this.addNewOrganization.getOrganizationRecordController().getOrganization().getCollaborator().getName());
+        this.txtCollaboratorEmail.setText(this.addNewOrganization.getOrganizationRecordController().getOrganization().getCollaborator().getEmail());
     }
 
     @FXML
     private void btnNextAction(ActionEvent event) {
         try {
-//            this.addNewOrganization.getController.newOrganization(txtName.getText(), 
-//txtNIF.getText(),txtManagerName,txtManagerEmail,txtCollaboratorName, txtCollaboratorEmail,);
-//            this.addNewOrganization.toAddNewOrganizationScene2();
+            this.addNewOrganization.getOrganizationRecordController().newOrganization(txtName.getText(),
+                    txtNIF.getText(), txtManagerName.getText(), txtManagerEmail.getText(), txtCollaboratorName.getText(), txtCollaboratorEmail.getText());
+            this.addNewOrganization.toAddNewOrganizationScene2UI();
         } catch (IllegalArgumentException ex) {
             lblAlert.setText(ex.getMessage());
             if (ex.getMessage().toLowerCase().contains("name")) {
                 txtName.requestFocus();
-            } else if(ex.getMessage().toLowerCase().contains("NIF")){
+            } else if (ex.getMessage().toLowerCase().contains("NIF")) {
                 txtNIF.requestFocus();
-            } else if(ex.getMessage().toLowerCase().contains("manager's name")){
+            } else if (ex.getMessage().toLowerCase().contains("manager's name")) {
                 txtManagerName.requestFocus();
-            } else if(ex.getMessage().toLowerCase().contains("manager's email")){
+            } else if (ex.getMessage().toLowerCase().contains("manager's email")) {
                 txtManagerEmail.requestFocus();
-            } else if(ex.getMessage().toLowerCase().contains("collaborator's name")){
+            } else if (ex.getMessage().toLowerCase().contains("collaborator's name")) {
                 txtCollaboratorName.requestFocus();
-            } else{
+            } else {
                 txtCollaboratorEmail.requestFocus();
             }
         }
