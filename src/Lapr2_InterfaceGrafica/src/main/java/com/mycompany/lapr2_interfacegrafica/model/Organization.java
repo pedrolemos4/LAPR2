@@ -113,4 +113,8 @@ public class Organization {
         }
         return counter;
     }
+    
+    public PaymentTransactionList getPaymentTransactionList(){
+        return m_oPaymentTransactionList;
+    }
 }
