@@ -9,6 +9,7 @@ public class Platform {
     private String m_strDesignacao;
     private final FacadeAuthorization m_oAutorizacao;
     private FreelancersRecord freelRec;
+    private Organization org;
     
     private final TaskRegister taskRegister = new TaskRegister();
 
@@ -31,5 +32,13 @@ public class Platform {
     
     public TaskRegister getTaskRegister(){
         return taskRegister;
+    }
+    
+    public Organization getOrganization(){
+        return org;
+    }
+    
+    public void agendNotification(){
+        
     }
 }
