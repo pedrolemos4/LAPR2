@@ -1,6 +1,7 @@
 package com.mycompany.lapr2_interfacegrafica.model;
 
 import com.mycompany.lapr2_interfacegrafica.authorization.FacadeAuthorization;
+import com.mycompany.lapr2_interfacegrafica.authorization.model.TaskRegister;
 import java.util.List;
 
 public class Platform {
@@ -8,6 +9,8 @@ public class Platform {
     private String m_strDesignacao;
     private final FacadeAuthorization m_oAutorizacao;
     private FreelancersRecord freelRec;
+    
+    private final TaskRegister taskRegister = new TaskRegister();
 
     public Platform(String strDesignacao) {
         if ((strDesignacao == null)
@@ -24,5 +27,9 @@ public class Platform {
 
     public FreelancersRecord getRegistoFreelancer() {
         return freelRec;
+    }
+    
+    public TaskRegister getTaskRegister(){
+        return taskRegister;
     }
 }
