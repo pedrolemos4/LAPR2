@@ -2,12 +2,12 @@ package com.mycompany.lapr2_interfacegrafica.model;
 
 import java.util.Objects;
 
-public class Collaborator {
+public class Manager {
 
     private String m_strName;
     private String m_strEmail;
 
-    public Collaborator(String name, String email) {
+    public Manager(String name, String email) {
         if ((name == null) || (email == null)
                 || (name.isEmpty()) || (email.isEmpty())) {
             throw new IllegalArgumentException("None of the arguments can be null or empty.");
@@ -51,7 +51,7 @@ public class Collaborator {
             return false;
         }
         // field comparison
-        Collaborator obj = (Collaborator) o;
+        Manager obj = (Manager) o;
         return (Objects.equals(m_strEmail, obj.m_strEmail));
     }
 

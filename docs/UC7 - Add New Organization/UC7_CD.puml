@@ -4,17 +4,24 @@ skinparam classAttributeIconSize 0
 class Collaborator {
   -String name
   -String email
-  +Colaborador(nameM, emailM)
-  +Colaborador(nameC, emailC)
+  +Collaborator(nameM, emailM)
   +String getNome()
+  +String getEmail()
+}
+
+class Manager {
+  -String name
+  -String email
+  +Manager(nameM, emailM)
+  +String getName()
   +String getEmail()
 }
 
 class Organization {
   -String name
   -String NIF
-  +{static} Colaborador newCollaborator(nameM, emailM)
-  +{static} Colaborador newCollaborator(nameC, emailC)
+  +{static} Manager newManager(nameM, emailM)
+  +{static} Collaborator newCollaborator(nameC, emailC)
   +Organizacao(name, NIF, manager, collab)
 }
 
@@ -30,10 +37,10 @@ class OrganizationsRecord {
   +validateOrganization(Organization org)
   +organizationRegister(Organization org)
   -addOrganization(Organization org)
-  -RegistesManagerAsUser(Collaborator manager)
-  -enviaPwd(String emailM, String pwd)
+  -RegistesManagerAsUser(Manager manager)
+  -sendPwd(String emailM, String pwd)
   -RegistesCollaboratorAsUser(Collaborator collab)
-  -enviaPwd(String emailC, String pwd)
+  -sendPwd(String emailC, String pwd)
 }
 
 class FacadeAuthorization {
@@ -61,9 +68,11 @@ OrganizationRecordController ..> Organization
 
 OrganizationsRecord "1" --> "*" Organization : has registered
 OrganizationsRecord ..> Collaborator
+OrganizationsRecord ..> Manager
+OrganizationsRecord ..> Platform
 OrganizationsRecord ..> FacadeAuthorization
 OrganizationsRecord ..> PasswordGeneratorAlgorithm
 Organization "1" --> "1" Collaborator: has
-Organization "1" --> "1" Collaborator: has manager
+Organization "1" --> "1" Manager: has
 
 @enduml

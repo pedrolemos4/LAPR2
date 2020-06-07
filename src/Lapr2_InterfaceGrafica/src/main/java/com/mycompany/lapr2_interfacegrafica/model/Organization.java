@@ -9,24 +9,30 @@ public class Organization {
 
     private String m_strNome;
     private String m_strNIF;
-    private Collaborator m_oManager;
+    private Manager m_oManager;
     private Collaborator m_oCollaborator;
     private PaymentTransactionList m_oPaymentTransactionList;
 
-    public Organization(String name, String NIF, Collaborator manager, Collaborator collaborator) {
+    public Organization(String name, String NIF, Manager manager, Collaborator collaborator) {
         if ((name == null) || (NIF == null) || (manager == null) || (collaborator == null)
                 || (name.isEmpty()) || (NIF.isEmpty())) {
             throw new IllegalArgumentException("None of the arguments can be null or empty.");
         }
-
         this.m_strNome = name;
         this.m_strNIF = NIF;
         this.m_oManager = manager;
         this.m_oCollaborator = collaborator;
-
     }
 
-    public Collaborator getManager() {
+    public Collaborator newCollaborator(String name, String email) {
+        return new Collaborator(name, email);
+    }
+
+    public Manager newManager(String name, String email) {
+        return new Manager(name, email);
+    }
+
+    public Manager getManager() {
         return this.m_oManager;
     }
 
@@ -68,10 +74,6 @@ public class Organization {
         return str;
     }
 
-    public Collaborator newCollaborator(String name, String email) {
-        return new Collaborator(name, email);
-    }
-
     //UC6
     public TreeMap<String, List<Double>> determinatePayOrg(TreeMap<String, List<Double>> mapOrgPayment) {
         List<PaymentTransaction> transactionList = m_oPaymentTransactionList.getPaymentTransactions();
@@ -101,9 +103,9 @@ public class Organization {
         }
         return mapOrgDelay;
     }
-    
-    public int calcCounterFree(){
-        int counter=0;
+
+    public int calcCounterFree() {
+        int counter = 0;
         List<PaymentTransaction> transactionList = m_oPaymentTransactionList.getPaymentTransactions();
         for (PaymentTransaction transaction : transactionList) {
             Freelancer free = transaction.getM_oFreelancer();

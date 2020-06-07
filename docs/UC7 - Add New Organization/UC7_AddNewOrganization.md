@@ -94,16 +94,19 @@ n/a
 | |... coordinates the UC?| OrganizationRecordController |Controller|
 | |... create Organization instances?|OrganizationsRecord|By the application of the Creator pattern (rule 1) it would be the "Platform". But, by applying HC + LC to the "Platform", this delegates that responsibility to the "OrganizationsRecord".|
 |2. The system requests the necessary data about the organization (i.e. name and NIF of the organization), about the manager (i.e. name and email of the manager) and about the collaborator (i.e. name and email).||||
-|3. The T4J administrator enters the requested data. |... save the data entered?|Organization,Collaborator|IE: instance created in step 1|
+|3. The T4J administrator enters the requested data. |... save the data entered?|Organization, Manager, Collaborator|IE: instance created in step 1|
 | |... create Collaborator instances?|Organization|creator(rule 1)|
+| |... create Manager instances?|Organization|creator(rule 1)|
 |4. The system validates and displays the data of the organization, its manager and its collaborator, asking for confirmation. |... validates Organization data (local validation)?|Organization|IE: has its own data.|
 | |... validates Collaborator data (local validation)?|Collaborator|IE: has its own data.|
+| |... validates Manager data (local validation)?|Collaborator|IE: has its own data.|
 | |... validates Organization data (global validation)?|OrganizationsRecord|IE: OrganizationsRecord has all organizations.|
 |5. The T4J administrator confirms. ||||
 |6. The system records the data of the organization, its manager and its collaborator, generating passwords for the latter and sending them by email, making them registered users and informs the T4J administrator of the success of the operation.|... saves the Organization created?| OrganizationsRecord |IE: By applying HC + LC to the Platform.|
 | |... generates the password?|PasswordGeneratorAlgorithm|Protected Variation + Adapter|
 | |... registers/keep the User related to the organization's manager and collaborator?|FacadeAuthorization|IE: User management is the responsibility of the respective external component whose point of interaction is through the class "FacadeAuthorization".|
-| |...envia o email do gestor|OrganizationsRecord|IE: detem a informação necessária.|
+| |... sends the email with the password to the manager?|OrganizationsRecord|IE: hold the information needed to send the password.|
+| |... sends the email with the password to the collaborator?|OrganizationsRecord|IE: hold the information needed to send the password.|
 ||informs the T4J administrator?|OrganizationRecordUI||         
 
 
@@ -113,6 +116,7 @@ It follows from the rational that the conceptual classes promoted to software cl
 
  * Platform
  * Organization
+ * Manager
  * Collaborator
  * PasswordGeneratorAlgorithm
 

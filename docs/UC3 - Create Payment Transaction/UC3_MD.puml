@@ -45,7 +45,7 @@ class Task {
 class PaymentTransaction{
   -String id
   -Date endDate
-  -Double delay
+  -Integer delay
   -String workQualityDescription
 }
 

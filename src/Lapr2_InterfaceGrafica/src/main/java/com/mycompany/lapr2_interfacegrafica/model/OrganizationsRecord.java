@@ -10,6 +10,7 @@ import org.apache.commons.math3.distribution.NormalDistribution;
 public class OrganizationsRecord {
 
     private PasswordGeneratorAlgorithm alg;
+    private Organization org;
     private final FacadeAuthorization m_oAutorizacao = new FacadeAuthorization();
     private final List<Organization> m_lstOrganizations;
 
@@ -18,13 +19,9 @@ public class OrganizationsRecord {
     }
 
     public Organization newOrganization(String name, String NIF, String nameM, String emailM, String nameC, String emailC) {
-        Collaborator manager = new Collaborator(nameM, emailM);
-        Collaborator collab = new Collaborator(nameC, emailC);
+        Manager manager = org.newManager(nameM, emailM);
+        Collaborator collab = org.newCollaborator(nameC, emailC);
         return new Organization(name, NIF, manager, collab);
-    }
-
-    public Collaborator newCollaborator(String name, String email) {
-        return new Collaborator(name, email);
     }
 
     public boolean validateOrganization(Organization org) {
@@ -50,7 +47,7 @@ public class OrganizationsRecord {
 
     public boolean organizationRegister(Organization org) {
         if (this.validateOrganization(org)) {
-            Collaborator manager = org.getManager();
+            Manager manager = org.getManager();
             String nameM = manager.getName();
             String emailM = manager.getEmail();
             String pwdM = alg.generatePassword(nameM, emailM);
@@ -168,13 +165,14 @@ public class OrganizationsRecord {
         }
         return sum / counter;
     }
-    public double determinateNormalDistribution(){
+
+    public double determinateNormalDistribution() {
         int counter = 0;
         double x = 3, m = 2, d = 1.5;
-        for (Organization org : m_lstOrganizations){
+        for (Organization org : m_lstOrganizations) {
             counter += org.calcCounterFree();
         }
-        NormalDistribution normalD = new NormalDistribution(m,d/counter);
-        return 1-normalD.cumulativeProbability(x);
+        NormalDistribution normalD = new NormalDistribution(m, d / counter);
+        return 1 - normalD.cumulativeProbability(x);
     }
 }

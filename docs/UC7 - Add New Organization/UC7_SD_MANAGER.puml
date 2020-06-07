@@ -3,7 +3,7 @@ title UC1_SD_RegistesManagerAsUser
 autonumber
 
 participant "or:OrganizationsRecord" as ORGS
-participant "manager:Collaborator" as MANAGER
+participant "manager:Manager" as MANAGER
 participant ":Platform" as PLAT
 participant "alg:PasswordGeneratorAlgorithm" as ALG << interface >>
 participant "aut:FacadeAuthorization" as AUT

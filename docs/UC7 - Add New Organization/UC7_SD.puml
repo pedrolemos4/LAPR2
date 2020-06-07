@@ -8,7 +8,7 @@ participant ":Platform" as PLAT
 participant "or:OrganizationsRecord" as ORGS
 participant "Organization" as _ORG
 participant "org:Organization" as ORG
-participant "manager:Collaborator" as MANAGER
+participant "manager:Manager" as MANAGER
 participant "collab:Collaborator" as COLLAB
 
 activate ADM
@@ -30,7 +30,7 @@ deactivate PLAT
 CTRL -> ORGS: org = newOrganization(name, NIF, nameM, emailM, nameC, emailC)
 activate ORGS
 
-ORGS -> _ORG: manager = newCollaborator(nameM, emailM)
+ORGS -> _ORG: manager = newManager(nameM, emailM)
 activate _ORG
 _ORG -> MANAGER** : create(nameM, emailM)
 deactivate _ORG
