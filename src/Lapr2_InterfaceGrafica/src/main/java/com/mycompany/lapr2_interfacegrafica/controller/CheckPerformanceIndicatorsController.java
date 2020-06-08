@@ -1,6 +1,8 @@
 
 package com.mycompany.lapr2_interfacegrafica.controller;
 
+import com.mycompany.lapr2_interfacegrafica.authorization.model.UserSession;
+import com.mycompany.lapr2_interfacegrafica.model.Constants;
 import com.mycompany.lapr2_interfacegrafica.model.Organization;
 import com.mycompany.lapr2_interfacegrafica.model.OrganizationsRecord;
 import com.mycompany.lapr2_interfacegrafica.model.Platform;
@@ -18,18 +20,20 @@ public class CheckPerformanceIndicatorsController {
     private OrganizationsRecord orgRec;
 
     public CheckPerformanceIndicatorsController() {
-        
+        if(!POTApplication.getInstance().getCurrentSession().isLoggedInWithRole(Constants.ADMINISTRATOR_ROLE))
+            throw new IllegalStateException("Unauthorized user.");
+        m_oPlataforma = POTApplication.getInstance().getPlataforma();
+        POTApplication m_oApp = POTApplication.getInstance();
+        UserSession m_oUser = m_oApp.getCurrentSession();
+        String email = m_oUser.getUserEmail();
+        orgRec = m_oPlataforma.getOrganizationsRecord();
+        org = orgRec.getOrganizationByUserEmail(email);
     }
     
     public void getOrganizations(){
         m_oPlataforma.getOrganizationsRecord();
         orgRec.getOrganizations();
     }
-    
-    
-//    public void determinatePayOrg(){
-//        org.determinatePayOrg(mapOrgPayment);
-//    }
     
     public TreeMap<String, List<Double>> determinatePayPlatform(){
         return orgRec.determinatePayPlatform();
@@ -43,12 +47,7 @@ public class CheckPerformanceIndicatorsController {
         return orgRec.calcDeviationPayment(orgRec.determinatePayPlatform()
                 , orgRec.calcMeanPayment(orgRec.determinatePayPlatform()));
     }
-    
-//    public void determinateDelayOrg(){
-//        TreeMap<String,List<Double>> mapOrgDelay= new TreeMap<>();
-//        org.determinateDelayOrg(mapOrgDelay);
-//    }
-//    
+     
     public void determinateDelayPlatform(){
         orgRec.determinateDelayPlatform();
     }
@@ -62,8 +61,12 @@ public class CheckPerformanceIndicatorsController {
                 , orgRec.calcMeanDelay(orgRec.determinateDelayPlatform()));
     }
     
-    public void determinateNormalDistribution(){
-        orgRec.determinateNormalDistribution();
+    public double determinateNormalDistribution(){
+        return orgRec.determinateNormalDistribution();
+    }
+    
+    public double determinateIntervals(TreeMap<String, Double> map){
+        return orgRec.determinateIntervals(map);
     }
  
 }

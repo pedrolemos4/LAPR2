@@ -2,6 +2,7 @@ package com.mycompany.lapr2_interfacegrafica.ui;
 
 import com.mycompany.lapr2_interfacegrafica.controller.CheckPerformanceIndicatorsController;
 import com.mycompany.lapr2_interfacegrafica.ui.MainApp;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.TreeMap;
@@ -11,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -79,6 +81,14 @@ public class CheckPerformanceIndicatorsUI implements Initializable {
         intervals = new CategoryAxis();
         numberOfFreelancers = new NumberAxis();
         barChartHistograms = new BarChart<>(intervals,numberOfFreelancers);
+        XYChart.Series barMeanDelay = new XYChart.Series<>();
+        barMeanDelay.getData().add(new XYChart.Data(calcFirstIntervalDelay(),
+                valuesFirstIntervalDelay(lstMeanDelay)));
+        
+        //falta outros intervalos!!
+        
+        
+        barChartHistograms.getData().addAll(barMeanDelay);
     }
 
     @FXML
@@ -130,6 +140,23 @@ public class CheckPerformanceIndicatorsUI implements Initializable {
     private double getSuperiorLimitDelay(){
         return controller.determinateIntervals(controller.calcDeviationDelay())
                 + controller.determinateIntervals(controller.calcDeviationDelay());        
+    }
+    
+    private String calcFirstIntervalDelay(){
+        String interval = null, infinity;
+        try{
+            double firstInterval = getInferiorLimitDelay();
+            infinity = new String(String.valueOf(Character.toString('\u221E')).getBytes("UTF-8"), "UTF-8");
+            interval = String.format("] %s, %2f [", infinity, firstInterval);
+        }catch (UnsupportedEncodingException ex){
+            infinity = "inf";
+            ex.printStackTrace();
+        }
+        return interval;
+    }
+    
+    private int valuesFirstIntervalDelay(TreeMap<String, Double> map){
+        return 0;
     }
     
 }
