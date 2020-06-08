@@ -7,5 +7,5 @@ package com.mycompany.lapr2_interfacegrafica.model;
  */
 public interface FileReader {
     
-    public boolean readNewFile();
+    public void readFile();
 }

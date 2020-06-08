@@ -20,7 +20,7 @@ import javafx.scene.control.TextField;
  * @author beatr
  */
 public class CheckPerformanceIndicatorsUI implements Initializable {
-private final MainApp mainApp;
+    private final MainApp mainApp;
     private final CheckPerformanceIndicatorsController controller;
     
     @FXML

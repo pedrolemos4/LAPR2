@@ -14,7 +14,7 @@ public class CsvReader implements FileReader {
     private FreelancersRecord m_freelancerRecord;
     private TaskList m_taskList;
     private String m_namefile;
-    
+    boolean fileExists;
     Scanner ler;
 
     public CsvReader(PaymentTransactionList paymentTransactionList, FreelancersRecord freelancerRecord ,TaskList taskList) {
@@ -27,22 +27,17 @@ public class CsvReader implements FileReader {
     }
     
     
-    public boolean readNewFile() {
+    public CsvReader (File m_namefile) {
         try {
-            File m_file = new File(m_namefile);
-            if(!m_file.exists() || !ler.hasNextLine()){
-                return false;
-            }
-            ler = new Scanner(m_file);
-            readFile(ler);
-            return true;
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            return false;            
+            ler = new Scanner(m_namefile);
+            fileExists = true;
+        } catch (FileNotFoundException ex) {
+            fileExists = false;
+            System.out.println("Ficheiro não encontrado!");
         }
     }
     
-    public void readFile(Scanner ler){
+    public void readFile(){
         Task task;
         Freelancer free;
         String transactionId, freeNIF, taskId;
