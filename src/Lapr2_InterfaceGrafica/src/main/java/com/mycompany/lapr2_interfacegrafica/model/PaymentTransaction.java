@@ -25,10 +25,6 @@ public class PaymentTransaction {
         this.dPayAmount = generatePayAmount(task, free);
     }
 
-    public double getPayAmount() {
-        return this.dPayAmount;
-    }
-
     @Override
     public String toString() {
         String str = String.format("%s - %s - %s - %s - %s - %s - %.2f", this.m_strId, this.m_oTask.toString(), this.m_strEndDate.toString(), this.m_Delay, this.m_strWorkQualityDescription, this.m_oFreelancer.toString(), this.dPayAmount);
@@ -47,18 +43,30 @@ public class PaymentTransaction {
     }
 
     public Freelancer getM_oFreelancer() {
-        return m_oFreelancer;
+        return this.m_oFreelancer;
     }
 
     public int getM_Delay() {
-        return m_Delay;
+        return this.m_Delay;
     }
 
     public Task getM_oTask() {
-        return m_oTask;
+        return this.m_oTask;
     }
 
     public String getM_strId() {
-        return m_strId;
+        return this.m_strId;
+    }
+
+    public Date getEndDate() {
+        return this.m_strEndDate;
+    }
+
+    public String getWorkQualityDescription() {
+        return this.m_strWorkQualityDescription;
+    }
+
+    public double getPayAmount() {
+        return this.dPayAmount;
     }
 }

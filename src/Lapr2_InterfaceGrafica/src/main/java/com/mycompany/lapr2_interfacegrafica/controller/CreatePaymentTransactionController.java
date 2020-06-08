@@ -69,4 +69,30 @@ public class CreatePaymentTransactionController {
     public List<String> getFreelancers() {
         return this.plat.getFreelancersRecord().getFreelancersAsStringList();
     }
+
+    public String getTask() {
+        return this.payT.getM_oTask().toString();
+    }
+
+    public String getFreelancer() {
+        return this.payT.getM_oFreelancer().toString();
+    }
+
+    public String getTaskDelay() {
+        int delay = this.payT.getM_Delay();
+        return String.valueOf(delay);
+    }
+
+    public String getEndDate() {
+        return this.payT.getEndDate().toString();
+    }
+
+    public String getWorkDescription() {
+        return this.payT.getWorkQualityDescription();
+    }
+
+    public String getPayTId() {
+        return this.payT.getM_strId();
+    }
+
 }
