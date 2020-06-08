@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lapr2_interfacegrafica.ui.UploadFileUI">
+   <children>
+      <BorderPane prefHeight="400.0" prefWidth="600.0">
+         <center>
+            <ListView fx:id="lstPaymentTransactions" prefHeight="317.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+         </center>
+         <top>
+            <Label fx:id="lblUploadFile" text="Upload File" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </top>
+         <bottom>
+            <HBox prefHeight="53.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="btnImportTxt" mnemonicParsing="false" onAction="#importTxtAction" text="Import File (txt)">
+                     <HBox.margin>
+                        <Insets left="120.0" top="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="btnImportCsv" mnemonicParsing="false" onAction="#importCsvAction" text="Import File (csv)">
+                     <HBox.margin>
+                        <Insets left="30.0" top="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="btnClean" mnemonicParsing="false" onAction="#cleanAction" text="Clean">
+                     <HBox.margin>
+                        <Insets left="30.0" top="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>

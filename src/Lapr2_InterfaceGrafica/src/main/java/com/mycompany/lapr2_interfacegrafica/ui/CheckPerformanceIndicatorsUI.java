@@ -19,8 +19,8 @@ import javafx.scene.control.TextField;
  *
  * @author beatr
  */
-public class CheckPerformanceIndicatorsScene_1_UI implements Initializable {
-    private final MainApp mainApp;
+public class CheckPerformanceIndicatorsUI implements Initializable {
+private final MainApp mainApp;
     private final CheckPerformanceIndicatorsController controller;
     
     @FXML
@@ -52,7 +52,7 @@ public class CheckPerformanceIndicatorsScene_1_UI implements Initializable {
         // TODO
     }
     
-    public CheckPerformanceIndicatorsScene_1_UI(MainApp mainApp) {
+    public CheckPerformanceIndicatorsUI(MainApp mainApp) {
         this.mainApp = mainApp;
         this.controller = new CheckPerformanceIndicatorsController();
     }
@@ -102,4 +102,5 @@ public class CheckPerformanceIndicatorsScene_1_UI implements Initializable {
     private void normalDistribution(ActionEvent event) {
         this.controller.determinateNormalDistribution();
     }
+    
 }
