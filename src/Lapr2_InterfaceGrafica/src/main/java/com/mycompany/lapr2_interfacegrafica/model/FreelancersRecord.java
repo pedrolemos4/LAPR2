@@ -55,13 +55,22 @@ public class FreelancersRecord {
         return arrayFreelancers;
     }
 
-    public Freelancer freelancerExists(String frlId) {
-        for (int i = 0; i < arrayFreelancers.size(); i++) {
-            if (arrayFreelancers.get(i).getId().equalsIgnoreCase(frlId)) {
-                return arrayFreelancers.get(i);
+    public Freelancer getFreelancerById(String freelancerId) {
+        for (Freelancer freelancer : arrayFreelancers) {
+            if (freelancer.toString().equals(freelancerId)) {
+                return freelancer;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Invalid " + freelancerId);
+    }
+
+    public Freelancer getFreelancerByStringValue(String freelancerString) {
+        for (Freelancer freelancer : arrayFreelancers) {
+            if (freelancer.toString().equals(freelancerString)) {
+                return freelancer;
+            }
+        }
+        throw new IllegalArgumentException("Invalid " + freelancerString);
     }
 
     public Date getDateDefined() {
@@ -80,6 +89,7 @@ public class FreelancersRecord {
         Timer t = new Timer();
         t.schedule(task, data);
     }
+
     /**
      * Seleciona os freelancers
      */
@@ -106,19 +116,20 @@ public class FreelancersRecord {
             int percentageDelayFreel = delay / numberTransactions;
             double averageDelay = getAverageDelay();
             if (delay > 3 && percentageDelayFreel > averageDelay) {
-               freel.getEmail();
-               sendEmail(delay,percentageDelayFreel); 
+                freel.getEmail();
+                sendEmail(delay, percentageDelayFreel);
             }
         }
     }
-    
+
     /**
      * Envia o email
+     *
      * @param delay
-     * @param percentageDelayFreel 
+     * @param percentageDelayFreel
      */
-    public void sendEmail(int delay, int percentageDelayFreel){
-        
+    public void sendEmail(int delay, int percentageDelayFreel) {
+
     }
 
     public double getAverageDelay() {

@@ -34,7 +34,7 @@ public class CreatePaymentTransactionController {
             String emailC = m_oSessao.getUserEmail();
             Organization org = or.getOrganizationByUserEmail(emailC);
             Task task = tLst.findById(taskId);
-            Freelancer free = frlR.freelancerExists(frlId);
+            Freelancer free = frlR.getFreelancerById(frlId);
             this.payT = this.ptL.newPaymentTransaction(payTId, task, free, endDate, delay, workQualityDescription);
             return this.ptL.validatePaymentTransaction(this.payT);
         } catch (RuntimeException ex) {

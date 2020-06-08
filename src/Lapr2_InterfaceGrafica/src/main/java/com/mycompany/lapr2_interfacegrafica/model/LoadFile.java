@@ -78,7 +78,7 @@ public class LoadFile {
 //                }
 //            }
             freeId = items[9];
-            free = m_freelancerRecord.freelancerExists(freeId);
+            free = m_freelancerRecord.getFreelancerById(freeId);
             if(free == null){
                 free = newFreelancer(freeId,items);
                 if(m_freelancerRecord.validatesFreelancer(free)){

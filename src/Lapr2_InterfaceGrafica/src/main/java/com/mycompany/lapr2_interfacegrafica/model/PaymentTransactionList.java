@@ -39,13 +39,22 @@ public class PaymentTransactionList {
         }
         return false;
     }
-    
-    public boolean exists(String transactionId){
-        for(int i = 0; i< m_lstPaymentTransactions.size(); i++){
-            if(m_lstPaymentTransactions.get(i).getM_strId().equalsIgnoreCase(transactionId)){
-                return true;
+
+    public PaymentTransaction getPaymentTransactionById(String paymentTransactionId) {
+        for (PaymentTransaction paymentTransaction : m_lstPaymentTransactions) {
+            if (paymentTransaction.toString().equals(paymentTransactionId)) {
+                return paymentTransaction;
             }
         }
-        return false;
+        throw new IllegalArgumentException("Invalid " + paymentTransactionId);
+    }
+
+    public PaymentTransaction getPaymentTransactionByStringValue(String paymentTransactionString) {
+        for (PaymentTransaction paymentTransaction : m_lstPaymentTransactions) {
+            if (paymentTransaction.toString().equals(paymentTransactionString)) {
+                return paymentTransaction;
+            }
+        }
+        throw new IllegalArgumentException("Invalid " + paymentTransactionString);
     }
 }
