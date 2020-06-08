@@ -8,7 +8,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <BorderPane prefHeight="291.0" prefWidth="340.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lapr2_interfacegrafica.ui.PaymentTransactionScene_1_UI">
    <opaqueInsets>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -36,6 +35,7 @@
                 <ColumnConstraints hgrow="ALWAYS" />
               </columnConstraints>
               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -46,48 +46,58 @@
                   <Insets bottom="10.0" left="10.0" right="20.0" top="10.0" />
                </padding>
                <children>
-                  <Label alignment="CENTER_RIGHT" prefHeight="21.0" prefWidth="101.0" text="Task's end date:">
+                  <Label alignment="CENTER_RIGHT" prefHeight="21.0" prefWidth="101.0" text="Task's end date:" GridPane.rowIndex="1">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="20.0" layoutY="50.0" prefHeight="21.0" prefWidth="101.0" text="Task's delay:" GridPane.rowIndex="1">
+                  <Label alignment="CENTER_RIGHT" layoutX="20.0" layoutY="50.0" prefHeight="21.0" prefWidth="101.0" text="Task's delay:" GridPane.rowIndex="2">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="20.0" layoutY="96.0" prefHeight="21.0" prefWidth="120.0" text="Work's description:" GridPane.rowIndex="2">
+                  <Label alignment="CENTER_RIGHT" layoutX="20.0" layoutY="96.0" prefHeight="21.0" prefWidth="120.0" text="Work's description:" GridPane.rowIndex="3">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="20.0" layoutY="130.0" prefHeight="21.0" prefWidth="101.0" text="Task:" GridPane.rowIndex="3">
+                  <Label alignment="CENTER_RIGHT" layoutX="20.0" layoutY="130.0" prefHeight="21.0" prefWidth="101.0" text="Task:" GridPane.rowIndex="4">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="20.0" layoutY="170.0" prefHeight="21.0" prefWidth="101.0" text="Freelancer" GridPane.rowIndex="4">
+                  <Label alignment="CENTER_RIGHT" layoutX="20.0" layoutY="170.0" prefHeight="21.0" prefWidth="101.0" text="Freelancer" GridPane.rowIndex="5">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtTaskEndDate" onKeyPressed="#txtTaskEndDateKeyPressed" prefHeight="37.0" prefWidth="367.0" GridPane.columnIndex="1">
+                  <TextField fx:id="txtTaskEndDate" onKeyPressed="#txtTaskEndDateKeyPressed" prefHeight="37.0" prefWidth="367.0" promptText="dd/mm/yyyy" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
                   </TextField>
-                  <TextField fx:id="txtTaskDelay" onKeyPressed="#txtTaskDelayKeyPressed" prefHeight="37.0" prefWidth="367.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TextField fx:id="txtTaskDelay" onKeyPressed="#txtTaskDelayKeyPressed" prefHeight="37.0" prefWidth="367.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
                   </TextField>
-                  <TextField fx:id="txtWorkDescription" onKeyPressed="#txtWorkDescriptionKeyPressed" prefHeight="37.0" prefWidth="367.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextField fx:id="txtWorkDescription" onKeyPressed="#txtWorkDescriptionKeyPressed" prefHeight="37.0" prefWidth="367.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
                   </TextField>
-                  <ComboBox fx:id="cmbTask" onAction="#cmbTaskAction" prefHeight="35.0" prefWidth="219.0" visibleRowCount="1000" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" />
-                  <ComboBox fx:id="cmbFreelancer" onAction="#cmbFreelancerAction" prefHeight="35.0" prefWidth="219.0" visibleRowCount="1000" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <ComboBox fx:id="cmbTask" onAction="#cmbTaskAction" prefHeight="35.0" prefWidth="219.0" visibleRowCount="1000" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" />
+                  <ComboBox fx:id="cmbFreelancer" onAction="#cmbFreelancerAction" prefHeight="35.0" prefWidth="219.0" visibleRowCount="1000" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Label alignment="CENTER_RIGHT" prefHeight="21.0" prefWidth="101.0" text="Transaction's ID:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtTransactionID" onKeyPressed="#txtTransactionIDKeyPressed" prefHeight="37.0" prefWidth="367.0" GridPane.columnIndex="1">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </TextField>
                </children>
             </GridPane>
          </center>

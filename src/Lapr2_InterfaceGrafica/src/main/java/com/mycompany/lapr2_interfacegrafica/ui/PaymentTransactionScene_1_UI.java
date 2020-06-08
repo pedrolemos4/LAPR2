@@ -33,6 +33,8 @@ public class PaymentTransactionScene_1_UI implements Initializable {
     private ComboBox<String> cmbTask;
     @FXML
     private ComboBox<String> cmbFreelancer;
+    @FXML
+    private TextField txtTransactionID;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -115,6 +117,10 @@ public class PaymentTransactionScene_1_UI implements Initializable {
     @FXML
     private void cmbFreelancerAction(ActionEvent event) {
         this.lblAlert.setText(null);
+    }
+
+    @FXML
+    private void txtTransactionIDKeyPressed(KeyEvent event) {
     }
 
 }
