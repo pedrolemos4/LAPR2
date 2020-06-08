@@ -5,7 +5,10 @@
  */
 package com.mycompany.lapr2_interfacegrafica.model;
 
+import java.io.FileNotFoundException;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -22,11 +25,15 @@ public class NotifyFreelancerTask extends TimerTask {
     
     @Override
     public void run(){
-        sendEmail();
+        try {
+            sendEmail();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(NotifyFreelancerTask.class.getName()).log(Level.SEVERE, null, ex);
+        }
         nextNotification();
     }
     
-    private void sendEmail(){
+    private void sendEmail() throws FileNotFoundException{
         freelRec.sendEmails();
     }
     

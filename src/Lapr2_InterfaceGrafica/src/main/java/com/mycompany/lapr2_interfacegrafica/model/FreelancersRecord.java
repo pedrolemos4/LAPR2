@@ -1,9 +1,13 @@
 package com.mycompany.lapr2_interfacegrafica.model;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Timer;
 
 public class FreelancersRecord {
@@ -93,11 +97,10 @@ public class FreelancersRecord {
     /**
      * Seleciona os freelancers
      */
-    public void sendEmails() {
+    public void sendEmails() throws FileNotFoundException {
         int numberTransactions = 0, delay = 0, amountForHourDelay = 0;
 
-        org = plat.getOrganization();
-        payemntTransList = org.getPaymentTransactionList();
+        payemntTransList = plat.getPaymentTransactionList();
         List<PaymentTransaction> payemntTransList1 = payemntTransList.getPaymentTransactions();
         for (int i = 0; i < arrayFreelancers.size(); i++) {
             Freelancer freel = arrayFreelancers.get(i);
@@ -117,19 +120,22 @@ public class FreelancersRecord {
             double averageDelay = getAverageDelay();
             if (delay > 3 && percentageDelayFreel > averageDelay) {
                 freel.getEmail();
-                sendEmail(delay, percentageDelayFreel);
+                sendEmail(delay, percentageDelayFreel,freel.getEmail());
             }
         }
     }
 
     /**
-     * Envia o email
+     * Envia o email para o ficheiro email.txt
      *
      * @param delay
      * @param percentageDelayFreel
      */
-    public void sendEmail(int delay, int percentageDelayFreel) {
-
+    public void sendEmail(int delay, int percentageDelayFreel, String email) throws FileNotFoundException {
+        PrintWriter out = new PrintWriter(new File("email.txt"));
+        String fileContent = String.format("O freelancer com o email: %n, tem um delay de %d e uma percentagem de delay de %d.",email,delay,percentageDelayFreel);
+        out.printf(fileContent);
+        out.close();
     }
 
     public double getAverageDelay() {
