@@ -31,8 +31,8 @@ public class JanelaLogin_1_UI implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.btnLogin.setDisable(POTApplication.getInstance().getPlataforma().
-                getOrganizationsRecord().getOrganizations().isEmpty());
+//        this.btnLogin.setDisable(POTApplication.getInstance().getPlataforma().
+//                getOrganizationsRecord().getOrganizations().isEmpty());
     }
 
     public void setMainApp(MainApp mainApp) {
