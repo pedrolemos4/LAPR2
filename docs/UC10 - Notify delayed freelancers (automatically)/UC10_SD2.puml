@@ -6,20 +6,15 @@ participant "ra:FreelancersRecord" as RA
 participant ":Platform" as PLAT
 participant "trans:PaymentTransaction" as PT
 participant "transactionsList\n:PaymentTransactionsList" as LPT
-participant "org\n:Organization" as ORG
 participant "lstFreel\n:List<Freelancer>" as LF
 participant "freel\n:Freelancer" as FREEL
 
 [o-> RA : sendEmails()
 activate RA
   
-RA -> PLAT : org=getOrganization()
+RA -> PLAT : transRec=getPaymentTransactionList()
 activate PLAT
 deactivate PLAT
-
-RA -> ORG : transactionsList = getPaymentTransactionsList()
-activate ORG
-deactivate ORG
   
 LOOP for each freelancer
   
