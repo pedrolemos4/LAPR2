@@ -5,11 +5,13 @@
  */
 package com.mycompany.lapr2_interfacegrafica.model;
 
+import java.util.TimerTask;
+
 /**
  *
  * @author pedro
  */
-public class NotifyFreelancerTask extends Timer {
+public class NotifyFreelancerTask extends TimerTask {
     
     private FreelancersRecord freelRec;
     private Platform plat;
@@ -25,7 +27,7 @@ public class NotifyFreelancerTask extends Timer {
     }
     
     private void sendEmail(){
-        
+        freelRec.sendEmails();
     }
     
     private void nextNotification(){

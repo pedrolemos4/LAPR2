@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Timer;
 
 public class FreelancersRecord {
 
@@ -79,7 +80,9 @@ public class FreelancersRecord {
         Timer t = new Timer();
         t.schedule(task, data);
     }
-
+    /**
+     * Seleciona os freelancers
+     */
     public void sendEmails() {
         int numberTransactions = 0, delay = 0, amountForHourDelay = 0;
 
@@ -104,9 +107,18 @@ public class FreelancersRecord {
             double averageDelay = getAverageDelay();
             if (delay > 3 && percentageDelayFreel > averageDelay) {
                freel.getEmail();
-               //sendEmail(); Mando para onde?
+               sendEmail(delay,percentageDelayFreel); 
             }
         }
+    }
+    
+    /**
+     * Envia o email
+     * @param delay
+     * @param percentageDelayFreel 
+     */
+    public void sendEmail(int delay, int percentageDelayFreel){
+        
     }
 
     public double getAverageDelay() {
