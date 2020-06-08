@@ -43,7 +43,7 @@ public class CreatePaymentTransactionController {
             Date endDate = date.convertStringToDate(eDate);
             this.ptL = org.getPaymentTransactionList();
             if (ptL.exists(payTId)) {
-                throw new RuntimeException("Já existe uma transação com o ID igual ao introduzido!!!");
+                throw new RuntimeException("There is already a transaction with the same ID as the one entered!!!");
             }
             this.payT = ptL.newPaymentTransaction(payTId, task, free, endDate, delay, workQualityDescription);
             return ptL.validatePaymentTransaction(this.payT);

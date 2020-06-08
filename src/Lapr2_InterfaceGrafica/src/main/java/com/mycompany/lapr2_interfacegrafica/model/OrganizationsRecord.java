@@ -1,6 +1,8 @@
 package com.mycompany.lapr2_interfacegrafica.model;
 
 import com.mycompany.lapr2_interfacegrafica.authorization.FacadeAuthorization;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -9,7 +11,7 @@ import org.apache.commons.math3.distribution.NormalDistribution;
 
 public class OrganizationsRecord {
 
-    private PasswordGeneratorAlgorithm alg;
+    private Platform plat;
     private Organization org;
     private final FacadeAuthorization m_oAutorizacao = new FacadeAuthorization();
     private final List<Organization> m_lstOrganizations;
@@ -50,18 +52,32 @@ public class OrganizationsRecord {
             Manager manager = org.getManager();
             String nameM = manager.getName();
             String emailM = manager.getEmail();
+            PasswordGeneratorAlgorithm alg = plat.getPasswordGeneratorAlgorithm();
             String pwdM = alg.generatePassword(nameM, emailM);
             Collaborator collab = org.getCollaborator();
             String nameC = collab.getName();
             String emailC = collab.getEmail();
             String pwdC = alg.generatePassword(nameC, emailC);
-            if (this.m_oAutorizacao.registaUtilizadorComPapeis(nameM, emailM, pwdM,
+            if (this.m_oAutorizacao.registesUserWithRoles(nameM, emailM, pwdM,
                     new String[]{Constants.ORGANIZATION_MANAGER_ROLE, Constants.ORGANIZATION_COLLABORATOR_ROLE})
-                    && this.m_oAutorizacao.registaUtilizadorComPapel(nameC, emailC, pwdC, Constants.ORGANIZATION_COLLABORATOR_ROLE)) {
+                    && this.m_oAutorizacao.registesUserWithRole(nameC, emailC, pwdC, Constants.ORGANIZATION_COLLABORATOR_ROLE)) {
+                sendEmail(emailM, pwdM);
+                sendEmail(emailC, pwdC);
                 return addOrganization(org);
             }
         }
         return false;
+    }
+
+    public void sendEmail(String email, String pwd) {
+        try {
+            try (FileWriter writer = new FileWriter("email.txt")) {
+                writer.write("Email: " + email);
+                writer.write("Password: " + pwd);
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred while sending the email.");
+        }
     }
 
     public Organization getOrganizationByUserEmail(String email) {

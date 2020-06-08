@@ -55,13 +55,13 @@ public class POTApplication {
     }
 
     private void bootstrap() {
-        this.m_oAutorizacao.registaPapelUtilizador(Constants.ADMINISTRATOR_ROLE);
+        this.m_oAutorizacao.registesUserRole(Constants.ADMINISTRATOR_ROLE);
 //        this.m_oAutorizacao.registaPapelUtilizador(Constants.FREELANCER_ROLE);
 //        this.m_oAutorizacao.registaPapelUtilizador(Constants.ORGANIZATION_MANAGER_ROLE);
 //        this.m_oAutorizacao.registaPapelUtilizador(Constants.ORGANIZATION_COLLABORATOR_ROLE);
 
-        this.m_oAutorizacao.registaUtilizadorComPapel("Administrativo 1", "adm1@esoft.pt", "123456", Constants.ADMINISTRATOR_ROLE);
-        this.m_oAutorizacao.registaUtilizadorComPapel("Administrativo 2", "adm2@esoft.pt", "123456", Constants.ADMINISTRATOR_ROLE);
+        this.m_oAutorizacao.registesUserWithRole("Administrativo 1", "adm1@esoft.pt", "123456", Constants.ADMINISTRATOR_ROLE);
+        this.m_oAutorizacao.registesUserWithRole("Administrativo 2", "adm2@esoft.pt", "123456", Constants.ADMINISTRATOR_ROLE);
 //
 //        this.m_oAutorizacao.registaUtilizadorComPapel("Freelancer 1", "free1@esoft.pt", "123456", Constants.FREELANCER_ROLE);
 //        this.m_oAutorizacao.registaUtilizadorComPapel("Freelancer 2", "free2@esoft.pt", "123456", Constants.FREELANCER_ROLE);

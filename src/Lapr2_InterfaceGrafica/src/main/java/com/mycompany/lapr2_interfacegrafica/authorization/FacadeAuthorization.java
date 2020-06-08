@@ -13,29 +13,29 @@ public class FacadeAuthorization {
     private final UserRolesRecord m_oRoles = new UserRolesRecord();
     private final UsersRecord m_oUsers = new UsersRecord();
 
-    public boolean registaPapelUtilizador(String strRole) {
+    public boolean registesUserRole(String strRole) {
         UserRole papel = this.m_oRoles.newUserRole(strRole);
         return this.m_oRoles.addRole(papel);
     }
 
-    public boolean registaPapelUtilizador(String strRole, String strDescription) {
+    public boolean registesUserRole(String strRole, String strDescription) {
         UserRole role = this.m_oRoles.newUserRole(strRole, strDescription);
         return this.m_oRoles.addRole(role);
     }
 
-    public boolean registaUtilizador(String strName, String strEmail, String strPassword) {
+    public boolean registesUser(String strName, String strEmail, String strPassword) {
         User user = this.m_oUsers.newUser(strName, strEmail, strPassword);
         return this.m_oUsers.addUser(user);
     }
 
-    public boolean registaUtilizadorComPapel(String strName, String strEmail, String strPassword, String strRole) {
+    public boolean registesUserWithRole(String strName, String strEmail, String strPassword, String strRole) {
         UserRole papel = this.m_oRoles.searchRole(strRole);
         User utlz = this.m_oUsers.newUser(strName, strEmail, strPassword);
         utlz.addRole(papel);
         return this.m_oUsers.addUser(utlz);
     }
 
-    public boolean registaUtilizadorComPapeis(String strName, String strEmail, String strPassword, String[] roles) {
+    public boolean registesUserWithRoles(String strName, String strEmail, String strPassword, String[] roles) {
         User user = this.m_oUsers.newUser(strName, strEmail, strPassword);
         for (String strPapel : roles) {
             UserRole papel = this.m_oRoles.searchRole(strPapel);
@@ -44,7 +44,7 @@ public class FacadeAuthorization {
         return this.m_oUsers.addUser(user);
     }
 
-    public boolean existeUtilizador(String strId) {
+    public boolean UserExists(String strId) {
         return this.m_oUsers.hasUser(strId);
     }
 

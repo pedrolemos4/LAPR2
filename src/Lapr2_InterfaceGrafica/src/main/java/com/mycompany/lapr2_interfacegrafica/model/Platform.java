@@ -11,6 +11,7 @@ public class Platform {
     private OrganizationsRecord orgRec;
     private PaymentTransactionList paymentTransList;
     private Organization org;
+    private PasswordGeneratorAlgorithm alg;
 
     public Platform(String strDesignacao) {
         if ((strDesignacao == null)
@@ -39,6 +40,10 @@ public class Platform {
 
     public PaymentTransactionList getPaymentTransactionList() {
         return this.paymentTransList;
+    }
+
+    public PasswordGeneratorAlgorithm getPasswordGeneratorAlgorithm() {
+        return this.alg;
     }
 
     public void agendNotification() {
