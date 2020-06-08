@@ -281,4 +281,13 @@ public class Date implements Comparable<Date> {
 
         return totalDias;
     }
+
+    public Date convertStringToDate(String stringDate) {
+        String[] arrayDate = stringDate.split("/");
+        int day, month, year;
+        day = Integer.parseInt(arrayDate[0]);
+        month = Integer.parseInt(arrayDate[1]);
+        year = Integer.parseInt(arrayDate[2]);
+        return new Date(year, month, day);
+    }
 }

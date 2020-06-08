@@ -42,7 +42,7 @@ public class TaskList {
         return findById(taskId) != null;
     }
 
-    public Task getFreelancerById(String taskId) {
+    public Task getTaskById(String taskId) {
         for (Task task : tasks) {
             if (task.toString().equals(taskId)) {
                 return task;
@@ -51,7 +51,7 @@ public class TaskList {
         throw new IllegalArgumentException("Invalid " + taskId);
     }
 
-    public Task getFreelancerByStringValue(String taskString) {
+    public Task getTaskByStringValue(String taskString) {
         for (Task task : tasks) {
             if (task.toString().equals(taskString)) {
                 return task;

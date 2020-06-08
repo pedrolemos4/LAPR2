@@ -23,18 +23,20 @@ public class CreatePaymentTransactionController {
     private FreelancersRecord frlR;
     private PaymentTransactionList ptL;
     private PaymentTransaction payT;
+    private Date date;
 
     public CreatePaymentTransactionController() {
         this.m_oApp = POTApplication.getInstance();
         this.m_oSessao = m_oApp.getSessaoAtual();
     }
 
-    public boolean newPaymentTransaction(String payTId, String taskId, String briefDescription, int timeDuration, double costPerHour, String taskCategory, Date endDate, int delay, String workQualityDescription, String frlId, String name, String expertiseLevel, String email, String NIF, String IBAN, String address, String country) {
+    public boolean newPaymentTransaction(String payTId, String taskString, String eDate, int delay, String workQualityDescription, String freelancerString) {
         try {
             String emailC = m_oSessao.getUserEmail();
             Organization org = or.getOrganizationByUserEmail(emailC);
-            Task task = tLst.findById(taskId);
-            Freelancer free = frlR.getFreelancerById(frlId);
+            Task task = tLst.getTaskByStringValue(taskString);
+            Freelancer free = frlR.getFreelancerByStringValue(freelancerString);
+            Date endDate = date.convertStringToDate(eDate);
             this.payT = this.ptL.newPaymentTransaction(payTId, task, free, endDate, delay, workQualityDescription);
             return this.ptL.validatePaymentTransaction(this.payT);
         } catch (RuntimeException ex) {
