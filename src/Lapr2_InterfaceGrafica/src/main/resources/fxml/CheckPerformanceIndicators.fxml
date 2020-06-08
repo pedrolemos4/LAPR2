@@ -20,10 +20,10 @@
                         <ListView fx:id="lstFreelancerAndInfo" prefHeight="250.0" prefWidth="400.0" />
                         <BarChart fx:id="barChartHistograms" prefHeight="250.0" prefWidth="400.0">
                           <xAxis>
-                            <CategoryAxis side="BOTTOM" />
+                            <CategoryAxis fx:id="intervals" label="Intervals" side="BOTTOM" />
                           </xAxis>
                           <yAxis>
-                            <NumberAxis side="LEFT" />
+                            <NumberAxis fx:id="numberOfFreelancers" label="Number of freelancers" side="LEFT" />
                           </yAxis>
                         </BarChart>
                      </children>

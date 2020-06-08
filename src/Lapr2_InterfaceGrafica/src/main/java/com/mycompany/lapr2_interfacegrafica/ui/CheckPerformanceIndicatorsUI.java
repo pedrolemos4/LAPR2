@@ -9,6 +9,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -43,6 +45,10 @@ public class CheckPerformanceIndicatorsUI implements Initializable {
     private ListView< TreeMap<String, Double> > lstFreelancerAndInfo;
     @FXML
     private BarChart<?, ?> barChartHistograms;
+    @FXML
+    private NumberAxis numberOfFreelancers;
+    @FXML
+    private CategoryAxis intervals;
 
     /**
      * Initializes the controller class.
@@ -70,6 +76,9 @@ public class CheckPerformanceIndicatorsUI implements Initializable {
         TreeMap<String, Double> lstMeanDelay;
         lstMeanDelay = this.controller.calcMeanDelay();
         lstFreelancerAndInfo.getItems().setAll(lstMeanDelay);
+        intervals = new CategoryAxis();
+        numberOfFreelancers = new NumberAxis();
+        barChartHistograms = new BarChart<>(intervals,numberOfFreelancers);
     }
 
     @FXML
@@ -101,6 +110,26 @@ public class CheckPerformanceIndicatorsUI implements Initializable {
     @FXML
     private void normalDistribution(ActionEvent event) {
         this.controller.determinateNormalDistribution();
+    }
+    
+    private double getInferiorLimitPayment(){
+        return controller.determinateIntervals(controller.calcDeviationPayment())
+                - controller.determinateIntervals(controller.calcDeviationPayment());
+    }
+    
+    private double getInferiorLimitDelay(){
+        return controller.determinateIntervals(controller.calcDeviationDelay())
+                - controller.determinateIntervals(controller.calcDeviationDelay());
+    }
+    
+    private double getSuperiorLimitPayment(){
+        return controller.determinateIntervals(controller.calcDeviationPayment())
+                + controller.determinateIntervals(controller.calcDeviationPayment());        
+    }
+    
+    private double getSuperiorLimitDelay(){
+        return controller.determinateIntervals(controller.calcDeviationDelay())
+                + controller.determinateIntervals(controller.calcDeviationDelay());        
     }
     
 }
