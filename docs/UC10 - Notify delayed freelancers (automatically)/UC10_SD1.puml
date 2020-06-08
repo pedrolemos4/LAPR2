@@ -8,10 +8,10 @@ participant "t: Timer" as TIMER
 participant "regFreel\n:FreelancersRecord" as RFREEL
 
 
-TEMPO -> PLAT : agendNotification()
+TEMPO -> RFREEL : agendNotification()
 activate TEMPO
+activate RFREEL
 
-activate PLAT
 RFREEL -> SCAT** : create()
 RFREEL -> RFREEL : date =getDateDefined()
 RFREEL -> TIMER** : create()
