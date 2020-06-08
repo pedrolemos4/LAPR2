@@ -9,23 +9,23 @@ import lapr2.pot.ui.console.utils.Date;
  *
  * @author beatr
  */
-public class LoadFile {
+public class CsvReader implements FileReader {
     private PaymentTransactionList m_paymentTransactionList;
     private FreelancersRecord m_freelancerRecord;
-//    private TasksList m_taskList;
+    private TaskList m_taskList;
     private String m_namefile;
     
     private int invalidLine, validLine;
     
     Scanner ler;
 
-    public LoadFile(PaymentTransactionList paymentTransactionList, FreelancersRecord freelancerRecord /**,TasksList taskList*/) {
-        if ( (paymentTransactionList == null) || (freelancerRecord == null) /**|| (taskList == null)*/)
+    public CsvReader(PaymentTransactionList paymentTransactionList, FreelancersRecord freelancerRecord ,TaskList taskList) {
+        if ( (paymentTransactionList == null) || (freelancerRecord == null) || (taskList == null))
             throw new IllegalArgumentException("None of the arguments can be null or empty.");
    
         this.m_paymentTransactionList = paymentTransactionList;
         this.m_freelancerRecord = freelancerRecord;
-//        this.m_taskList = taskList;
+        this.m_taskList = taskList;
         this.invalidLine = 0;
         this.validLine = 0;
     }
@@ -66,17 +66,17 @@ public class LoadFile {
                 invalidLine++;
                 continue;
             }
-//            taskId = items[1];
-//            task = m_taskList.getTaskById(taskId);
-//            if(task == null){
-//                task = newTask(taskId,items);
-//                if(m_taskList.validatesTask(task)){
-//                    m_taskList.registerTask(task);
-//                }else{
-//                    invalidLine++;
-//                    continue;
-//                }
-//            }
+            taskId = items[1];
+            task = m_taskList.findById(taskId);
+            if(task == null){
+                task = newTask(taskId,items);
+                if(m_taskList.validateTask(task)){
+                    m_taskList.registerTask(task);
+                }else{
+                    invalidLine++;
+                    continue;
+                }
+            }
             freeId = items[9];
             free = m_freelancerRecord.getFreelancerById(freeId);
             if(free == null){
@@ -91,13 +91,14 @@ public class LoadFile {
             Date m_strEndDate = parseDate(items[6]);
             int m_Delay = Integer.parseInt(items[7]);
             String m_strWorkQualityDescription = items[8];
+            
             //creates paymentTransaction
-//            PaymentTransaction payTransaction = m_paymentTransactionList.newPaymentTransaction(transactionId, task,
-//                    free, m_strEndDate, m_Delay, m_strWorkQualityDescription);
-//            if(m_paymentTransactionList.validatePaymentTransaction(payTransaction)){
-//                m_paymentTransactionList.paymentTransactionRegister(payTransaction);
-//                validLine++;
-//            }
+            PaymentTransaction payTransaction = m_paymentTransactionList.newPaymentTransaction(transactionId, task,
+                    free, m_strEndDate, m_Delay, m_strWorkQualityDescription);
+            if(m_paymentTransactionList.validatePaymentTransaction(payTransaction)){
+                m_paymentTransactionList.paymentTransactionRegister(payTransaction);
+                validLine++;
+            }
             
             }catch (IllegalArgumentException | ArrayIndexOutOfBoundsException ex){
                 ex.printStackTrace();
@@ -105,18 +106,18 @@ public class LoadFile {
         }
     }
     
-//    private Task newTask(String taskId,String[] items){
-//        String briefDescription;
-//        int timeDuration;
-//        double costPerHour;
-//        String category;
-//            briefDescription = items[2];
-//            timeDuration = Double.parseDouble(items[3]);
-//            costPerHour = Double.parseDouble(items[4]);
-//            category = items[5];
-//        return m_taskList.newTask(taskId,briefDescription,timeDuration,costPerHour,
-//        category);
-//    }
+    private Task newTask(String taskId,String[] items){
+        String briefDescription;
+        int timeDuration;
+        double costPerHour;
+        String category;
+            briefDescription = items[2];
+            timeDuration = Integer.parseInt(items[3]);
+            costPerHour = Double.parseDouble(items[4]);
+            category = items[5];
+        return m_taskList.newTask(taskId,briefDescription,timeDuration,costPerHour,
+        category);
+    }
     
     private Freelancer newFreelancer(String freeId, String[] items){
         String name = items[10];
