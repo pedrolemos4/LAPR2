@@ -10,6 +10,7 @@ public class Platform {
     private FreelancersRecord freelRec;
     private Organization org;
     private OrganizationsRecord orgRec;
+    private PaymentTransactionList paymentTrans;
 
     
     private final TaskRecord taskRecord = new TaskRecord();
@@ -45,5 +46,9 @@ public class Platform {
     
     public OrganizationsRecord getOrganizationsRecord(){
         return orgRec;
+    }
+    
+    public PaymentTransactionList getPaymentTransactionList(){
+        return paymentTrans;
     }
 }
