@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 
 /**
  *
@@ -23,11 +24,9 @@ public class JanelaLogin_1_UI implements Initializable {
     private MainApp mainApp;
 
     @FXML
-    private TextField txtUsername;
-    @FXML
-    private TextField txtPassword;
-    @FXML
     private Button btnLogin;
+    @FXML
+    private TextField txtEmail;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -41,6 +40,10 @@ public class JanelaLogin_1_UI implements Initializable {
 
     @FXML
     private void btnLoginAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void txtEmailKeyPressed(KeyEvent event) {
     }
 
 }
