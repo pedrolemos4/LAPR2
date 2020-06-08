@@ -13,12 +13,16 @@ import javafx.scene.control.Button;
  *
  * @author Tiago
  */
-public class SceneUI {
+public class JanelaOptionsAdminScene_UI {
 
+    private MainApp mainApp;
+    
     @FXML
     private Button btnCheckPerformance;
     @FXML
     private Button btnAddNewOrganization;
+    @FXML
+    private Button btnLogout;
 
     @FXML
     private void btnCheckPerformanceAction(ActionEvent event) {
@@ -26,6 +30,11 @@ public class SceneUI {
 
     @FXML
     private void btnAddNewOrganizationAction(ActionEvent event) {
+        AddNewOrganizationUI addNewOrganizationUI = new AddNewOrganizationUI
+    }
+
+    @FXML
+    private void btnLogoutAction(ActionEvent event) {
     }
     
 }
