@@ -41,7 +41,7 @@ public class AddNewOrganizationScene_1_UI implements Initializable {
         return this.txtName;
     }
 
-    public void addNewOrganization(AddNewOrganizationUI addNewOrganization) {
+    public void setNewOrganizationUI(AddNewOrganizationUI addNewOrganization) {
         this.addNewOrganization = addNewOrganization;
     }
 
