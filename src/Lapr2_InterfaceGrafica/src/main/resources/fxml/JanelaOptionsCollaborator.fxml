@@ -12,7 +12,7 @@
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -22,21 +22,24 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="btnCreateFreelancer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnCreateFreelanceerAction" text="Create Freelancer" translateX="85.0" GridPane.rowIndex="1" />
-            <Button fx:id="btnCreateTask" mnemonicParsing="false" onAction="#btnCreateTaskAction" text="Create Task" translateX="400.0" GridPane.rowIndex="1" />
-            <Button fx:id="btnCreatePayment" mnemonicParsing="false" onAction="#btnCreatePaymentAction" text="Create Payment" translateX="85.0" GridPane.rowIndex="2" />
-            <Button fx:id="btnUploadFile" mnemonicParsing="false" onAction="#btnUploadFileAction" text="Upload File" translateX="400.0" GridPane.rowIndex="2">
+            <Button fx:id="btnCreateFreelancer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnCreateFreelanceerAction" text="Create Freelancer" translateX="-140.0" GridPane.rowIndex="1" />
+            <Button fx:id="btnCreateTask" mnemonicParsing="false" onAction="#btnCreateTaskAction" text="Create Task" translateX="120.0" GridPane.rowIndex="1" />
+            <Button fx:id="btnCreatePayment" mnemonicParsing="false" onAction="#btnCreatePaymentAction" text="Create Payment" translateX="-140.0" GridPane.rowIndex="2" />
+            <Button fx:id="btnUploadFile" mnemonicParsing="false" onAction="#btnUploadFileAction" text="Upload File" translateX="120.0" GridPane.rowIndex="2">
                <rotationAxis>
                   <Point3D />
                </rotationAxis></Button>
-            <Label text="Options" translateX="257.0">
+            <Label text="Options">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button fx:id="btnCheckStatistics" mnemonicParsing="false" onAction="#btnCheckStatisticsAction" text="Check Statistics" translateX="243.0" GridPane.rowIndex="3" />
-            <Button fx:id="btnLogout" mnemonicParsing="false" onAction="#btnLogoutAction" text="Logout" translateX="270.0" GridPane.rowIndex="4" />
+            <Button fx:id="btnCheckStatistics" mnemonicParsing="false" onAction="#btnCheckStatisticsAction" text="Check Statistics" GridPane.rowIndex="3" />
+            <Button fx:id="btnLogout" mnemonicParsing="false" onAction="#btnLogoutAction" text="Logout" GridPane.rowIndex="4" />
          </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
       </GridPane>
    </center>
 </BorderPane>
