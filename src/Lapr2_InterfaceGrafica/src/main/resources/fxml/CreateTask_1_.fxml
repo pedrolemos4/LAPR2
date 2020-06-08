@@ -45,22 +45,22 @@
                   <Insets right="70.0" />
                </GridPane.margin>
             </TextField>
-            <TextField fx:id="txtTaskDescription" onKeyReleased="#txtTaskDescriptionKeyPressed" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <TextField fx:id="txtTaskDescription" onKeyPressed="#txtTaskDescriptionKeyPressed" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets right="70.0" />
                </GridPane.margin>
             </TextField>
-            <TextField fx:id="txtTimeDuration" onKeyReleased="#txtTimeDurationKeyPressed" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <TextField fx:id="txtTimeDuration" onKeyPressed="#txtTimeDurationKeyPressed" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets right="70.0" />
                </GridPane.margin>
             </TextField>
-            <TextField fx:id="txtCostPerHour" onKeyReleased="#txtCostPerHourKeyPressed" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <TextField fx:id="txtCostPerHour" onKeyPressed="#txtCostPerHourKeyPressed" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets right="70.0" />
                </GridPane.margin>
             </TextField>
-            <TextField fx:id="txtTaskCategory" onKeyReleased="#txtTaskCategoryKeyPressed" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <TextField fx:id="txtTaskCategory" onKeyPressed="#txtTaskCategoryKeyPressed" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <GridPane.margin>
                   <Insets right="70.0" />
                </GridPane.margin>
