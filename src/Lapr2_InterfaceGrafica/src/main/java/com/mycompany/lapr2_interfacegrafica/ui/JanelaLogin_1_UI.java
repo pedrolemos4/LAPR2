@@ -40,6 +40,8 @@ public class JanelaLogin_1_UI implements Initializable {
 
     @FXML
     private void btnLoginAction(ActionEvent event) {
+        JanelaOptionsAdminUI jOAUI = new JanelaOptionsAdminUI(this.mainApp);
+        jOAUI.toMenuAdminScene();
     }
 
     @FXML
