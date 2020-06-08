@@ -122,9 +122,9 @@ The information about the payment transaction is saved in the system.
 |2. The system requests the necessary data on the payment transaction, that is, the payment transaction id, a brief description of the task (taskId, brief description, time duration (in hours), cost per hour (in euros) and task category), details about the execution of the task (end date, delay, brief description of the quality of the work) and information about the freelancer that worked on the task (frlId, name, level of expertise, e-mail, NIF, bank account (IBAN), address and country).||||
 |3. The organization's collaborator enters the requested data. |... save the data entered?|PaymentTransaction|IE: instance created in step 1|
 ||... checks if the data of the entered task exist?|Organization|IE: In MD, Organization has Task.|
-|||TasksList|IE: In MD, Organization has Task. By application of HC+LC delegates the TasksList.|
+|||TaskList|IE: In MD, Organization has Task. By application of HC+LC delegates the TaskList.|
 ||... checks if the data of the entered freelancer exist?|Platform|IE: In MD, Platform has/uses Freelancer.|
-|||FreelancerRecord|IE: In MD, Platform has/uses Freelancer. By application of HC+LC delegates the FreelancersRecord.|
+|||FreelancersRecord|IE: In MD, Platform has/uses Freelancer. By application of HC+LC delegates the FreelancersRecord.|
 |4. The system validates and displays the payment transaction data and also the amount to pay to each freelancer, asking for confirmation. |... validates payment transaction data (local validation)?|PaymentTransaction|IE: has its own data.|
 | |... validates payment transaction data (global validation)?|Organization|IE: In MD, Organization has PaymentTransaction|
 |5. The organization's collaborator confirms. ||||
@@ -152,7 +152,7 @@ Other software classes (e.g. Pure Fabrication) identified:
  * OrganizationsRecord 
  * FreelancersRecord
  * PaymentTransactionList
- * TasksList
+ * TaskList
 
 Other classes of external systems/components:
 

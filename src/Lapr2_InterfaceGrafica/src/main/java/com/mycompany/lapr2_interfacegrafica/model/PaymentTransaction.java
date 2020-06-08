@@ -31,7 +31,7 @@ public class PaymentTransaction {
 
     @Override
     public String toString() {
-        String str = String.format("%s - %s - %s - %s - %s - %.2f", this.m_oTask.toString(), this.m_strEndDate.toString(), this.m_Delay, this.m_strWorkQualityDescription, this.m_oFreelancer.toString(), this.dPayAmount);
+        String str = String.format("%s - %s - %s - %s - %s - %s - %.2f", this.m_strId, this.m_oTask.toString(), this.m_strEndDate.toString(), this.m_Delay, this.m_strWorkQualityDescription, this.m_oFreelancer.toString(), this.dPayAmount);
         return str;
     }
 
@@ -41,7 +41,7 @@ public class PaymentTransaction {
             payAmount = task.getTimeDuration() * task.getCostPerHour();
         }
         if (free.getLvlExp().equalsIgnoreCase("Senior")) {
-            payAmount = (task.getTimeDuration()* task.getCostPerHour()) * 2;
+            payAmount = (task.getTimeDuration() * task.getCostPerHour()) * 2;
         }
         return payAmount;
     }

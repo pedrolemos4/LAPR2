@@ -5,7 +5,7 @@ class Collaborator {
   -String name
   -String email
   +Collaborator(nameM, emailM)
-  +String getNome()
+  +String getName()
   +String getEmail()
 }
 
@@ -44,8 +44,8 @@ class OrganizationsRecord {
 }
 
 class FacadeAuthorization {
-  +registesUserWithRoles(nameM, emailM, pwd, ["MANAGER", "COLLABORATOR"])
-  +registesUserWithRoles(nameC, emailC, pwd, "COLLABORATOR")
+  +registesUserWithRoles(nameM, emailM, pwdM, ["MANAGER", "COLLABORATOR"])
+  +registesUserWithRole(nameC, emailC, pwdC, "COLLABORATOR")
 }
 
 interface PasswordGeneratorAlgorithm <<interface>>{

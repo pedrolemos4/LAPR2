@@ -13,7 +13,6 @@ public class OrganizationsRecord {
 
     private Platform plat;
     private Organization org;
-    private final FacadeAuthorization m_oAutorizacao = new FacadeAuthorization();
     private final List<Organization> m_lstOrganizations;
 
     public OrganizationsRecord() {
@@ -58,9 +57,10 @@ public class OrganizationsRecord {
             String nameC = collab.getName();
             String emailC = collab.getEmail();
             String pwdC = alg.generatePassword(nameC, emailC);
-            if (this.m_oAutorizacao.registesUserWithRoles(nameM, emailM, pwdM,
+            FacadeAuthorization aut = plat.getFacadeAuthorization();
+            if (aut.registesUserWithRoles(nameM, emailM, pwdM,
                     new String[]{Constants.ORGANIZATION_MANAGER_ROLE, Constants.ORGANIZATION_COLLABORATOR_ROLE})
-                    && this.m_oAutorizacao.registesUserWithRole(nameC, emailC, pwdC, Constants.ORGANIZATION_COLLABORATOR_ROLE)) {
+                    && aut.registesUserWithRole(nameC, emailC, pwdC, Constants.ORGANIZATION_COLLABORATOR_ROLE)) {
                 sendEmail(emailM, pwdM);
                 sendEmail(emailC, pwdC);
                 return addOrganization(org);

@@ -33,9 +33,9 @@ public class CreatePaymentTransactionController {
 
     public boolean newPaymentTransaction(String payTId, String taskString, String eDate, int delay, String workQualityDescription, String freelancerString) {
         try {
-            String emailC = m_oSessao.getUserEmail();
+            String email = m_oSessao.getUserEmail();
             OrganizationsRecord orgR = plat.getOrganizationsRecord();
-            this.org = orgR.getOrganizationByUserEmail(emailC);
+            this.org = orgR.getOrganizationByUserEmail(email);
             TaskList tLst = org.getTaskList();
             Task task = tLst.getTaskByStringValue(taskString);
             FreelancersRecord frlR = plat.getFreelancersRecord();

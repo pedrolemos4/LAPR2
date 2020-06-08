@@ -27,7 +27,7 @@ ORGS -> PLAT : alg = getPwdGeneratorAlgorithm()
 activate PLAT
 deactivate PLAT
 
-ORGS -> ALG: pwd = generatePassword(nameM, emailM)
+ORGS -> ALG: pwdM = generatePassword(nameM, emailM)
 activate ALG
 deactivate ALG
 
@@ -40,7 +40,7 @@ activate AUT
 deactivate AUT
 
 
-ORGS -> ORGS: sendPwd(emailM, pwd)
+ORGS -> ORGS: sendPwd(emailM, pwdM)
 deactivate ORGS
 
 deactivate ORGS

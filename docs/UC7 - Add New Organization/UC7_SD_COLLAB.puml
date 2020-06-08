@@ -27,7 +27,7 @@ ORGS -> PLAT : alg = getPwdGeneratorAlgorithm()
 activate PLAT
 deactivate PLAT
 
-ORGS -> ALG: pwd = generatePassword(nameC, emailC)
+ORGS -> ALG: pwdC = generatePassword(nameC, emailC)
 activate ALG
 deactivate ALG
 
@@ -35,12 +35,12 @@ ORGS -> PLAT : aut = getFacadeAuthorization()
 activate PLAT
 deactivate PLAT
 
-ORGS -> AUT: registesUserWithRoles(nameC, emailC, pwd, "COLLABORATOR")
+ORGS -> AUT: registesUserWithRole(nameC, emailC, pwd, "COLLABORATOR")
 activate AUT
 deactivate AUT
 
 
-ORGS -> ORGS: sendPwd(emailC, pwd)
+ORGS -> ORGS: sendPwd(emailC, pwdC)
 deactivate ORGS
 
 deactivate ORGS

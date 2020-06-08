@@ -34,13 +34,13 @@ class Freelancer {
 class Organization {
   -String name
   -String NIF
-  +getTasksList()
+  +getTaskList()
   +getPaymentTransactionList()
   
 }
 
-class TasksList {
-  +findById(taskId)
+class TaskList {
+  +getTaskByStringValue(taskString)
 }
 
 class Platform {
@@ -50,15 +50,15 @@ class Platform {
 }
 
 class FreelancersRecord {
-  +freelancerExists(frlId)
+  +getFreelancerByStringValue(freelancerString)
 }
 
-class OrganizationsRecord  {
+class OrganizationsRecord {
   +getOrganizationByUserEmail(email)
 }
 
 class CreatePaymentTransactionController {
-  +newPaymentTransaction(payTId, taskId, briefDescription, timeDuration, costPerHour, taskCategory, \nendDate, delay, workQualityDescription, \nfrlId, name, expertiseLevel, email, NIF, IBAN, address, country)
+  +newPaymentTransaction(payTId, taskString, eDate, delay, workQualityDescription, freelancerString)
   +paymentTransactionRegister()
 }
 
@@ -81,25 +81,30 @@ class PaymentTransactionList{
   +addPaymentTransaction(payT)
 }
 
+class Date {
+ +convertStringToDate(eDate) 
+}
+
 CreatePaymentTransactionUI ..> CreatePaymentTransactionController
 CreatePaymentTransactionController ..> Platform
 CreatePaymentTransactionController ..> Task
 CreatePaymentTransactionController ..> Organization
 CreatePaymentTransactionController ..> POTApplication
 CreatePaymentTransactionController ..> UserSession
-CreatePaymentTransactionController ..> TasksList
+CreatePaymentTransactionController ..> TaskList
 CreatePaymentTransactionController ..> FreelancersRecord
 CreatePaymentTransactionController ..> OrganizationsRecord
 CreatePaymentTransactionController ..> PaymentTransactionList
+CreatePaymentTransactionController ..> Date
 Platform "1" --> "1" FreelancersRecord : has
 Platform "1" --> "1" OrganizationsRecord : has
 
 FreelancersRecord "1" --> "*" Freelancer : has
 OrganizationsRecord "1" --> "*" Organization : has
-Organization "1" --> "1" TasksList : has
+Organization "1" --> "1" TaskList : has
 Organization "1" --> "1" PaymentTransactionList : has
 PaymentTransactionList "1" --> "*" PaymentTransaction : has
-TasksList "1" --> "*" Task : has
+TaskList "1" --> "*" Task : has
 Task "1..*" --> "1" Freelancer : is assigned to
 
 PaymentTransaction "1" --> "1" Freelancer : relates to
