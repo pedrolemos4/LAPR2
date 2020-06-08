@@ -80,7 +80,7 @@ public class AddNewOrganizationScene_1_UI implements Initializable {
 
     @FXML
     private void btnCancelAction(ActionEvent event) {
-//        this.addNewOrganization.getMainApp().toMainScene();
+        this.addNewOrganization.getMainApp().toMainScene();
     }
 
     @FXML

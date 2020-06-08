@@ -1,11 +1,15 @@
 package com.mycompany.lapr2_interfacegrafica.model;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TaskList {
 
-    private Set<Task> tasks = new HashSet<>();
+    private List<Task> tasks;
+
+    public TaskList() {
+        tasks = new ArrayList<>();
+    }
 
     public Task newTask(String id, String briefDescription, int timeDuration, double costPerHour, String category) {
         return new Task(id, briefDescription, timeDuration, costPerHour, category);
@@ -60,4 +64,15 @@ public class TaskList {
         throw new IllegalArgumentException("Invalid " + taskString);
     }
 
+    public List<Task> getTasks() {
+        return this.tasks;
+    }
+
+    public List<String> getTasksAsStringList() {
+        List<String> setTasksAsString = new ArrayList<>();
+        for (Task task : tasks) {
+            setTasksAsString.add(task.toString());
+        }
+        return setTasksAsString;
+    }
 }

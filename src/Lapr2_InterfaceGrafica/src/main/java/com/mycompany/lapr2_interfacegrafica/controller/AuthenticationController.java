@@ -16,8 +16,8 @@ public class AuthenticationController {
     }
 
     public List<UserRole> getPapeisUtilizador() {
-        if (this.m_oApp.getSessaoAtual().isLoggedIn()) {
-            return this.m_oApp.getSessaoAtual().getUserRoles();
+        if (this.m_oApp.getCurrentSession().isLoggedIn()) {
+            return this.m_oApp.getCurrentSession().getUserRoles();
         }
         return null;
     }

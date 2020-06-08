@@ -25,7 +25,7 @@ public class POTApplication {
         return this.m_oPlataforma;
     }
 
-    public UserSession getSessaoAtual() {
+    public UserSession getCurrentSession() {
         return this.m_oAutorizacao.getCurrentSession();
     }
 

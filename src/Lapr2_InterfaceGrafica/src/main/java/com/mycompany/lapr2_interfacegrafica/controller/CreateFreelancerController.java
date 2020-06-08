@@ -26,11 +26,10 @@ public class CreateFreelancerController {
     }
 
     public boolean newFreelancer(String id, String name, String lvlExp, String email, String nif, String iban, String country, String adress) {
-        try{
-            this.freel = this.platform.getRegistoFreelancer().newFreelancer(id, name, lvlExp, email, nif, iban, country, adress);
-            return this.platform.getRegistoFreelancer().validatesFreelancer(this.freel);
-        }
-        catch(RuntimeException ex){
+        try {
+            this.freel = this.platform.getFreelancersRecord().newFreelancer(id, name, lvlExp, email, nif, iban, country, adress);
+            return this.platform.getFreelancersRecord().validatesFreelancer(this.freel);
+        } catch (RuntimeException ex) {
             Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);
             this.freel = null;
             return false;
@@ -41,9 +40,7 @@ public class CreateFreelancerController {
         return this.regFreel.registerFreelancer(this.freel);
     }
 
-    
-    public String getFreelancerString()
-    {
+    public String getFreelancerString() {
         return this.freel.toString();
     }
 }

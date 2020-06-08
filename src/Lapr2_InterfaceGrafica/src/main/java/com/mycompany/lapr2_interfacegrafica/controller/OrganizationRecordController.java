@@ -21,7 +21,8 @@ public class OrganizationRecordController {
 
     public boolean newOrganization(String name, String NIF, String nameM, String emailM, String nameC, String emailC) {
         try {
-            this.org = this.or.newOrganization(name, NIF, nameM, emailM, nameC, emailC);
+            this.or=m_oPlataforma.getOrganizationsRecord();
+            this.org = or.newOrganization(name, NIF, nameM, emailM, nameC, emailC);
             return this.or.validateOrganization(this.org);
         } catch (RuntimeException ex) {
             Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);

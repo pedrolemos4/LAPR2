@@ -47,12 +47,12 @@ public class AddNewOrganizationScene_2_UI implements Initializable {
 
     @FXML
     private void btnCancelAction(ActionEvent event) {
-        //this.addNewOrganizationUI.getMainApp().toMainScene();
+        this.addNewOrganizationUI.getMainApp().toMainScene();
     }
 
     @FXML
     private void btnReturnAction(ActionEvent event) {
-        //this.addNewOrganizationUI.toSpecifyCategoryScene1();
+        this.addNewOrganizationUI.toAddNewOrganizationScene1UI();
     }
 
 }

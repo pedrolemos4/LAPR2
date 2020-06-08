@@ -59,6 +59,14 @@ public class FreelancersRecord {
         return arrayFreelancers;
     }
 
+    public List<String> getFreelancersAsStringList() {
+        List<String> setFreelancersAsString = new ArrayList<>();
+        for (Freelancer freelancer : arrayFreelancers) {
+            setFreelancersAsString.add(freelancer.toString());
+        }
+        return setFreelancersAsString;
+    }
+
     public Freelancer getFreelancerById(String freelancerId) {
         for (Freelancer freelancer : arrayFreelancers) {
             if (freelancer.toString().equals(freelancerId)) {
@@ -120,7 +128,7 @@ public class FreelancersRecord {
             double averageDelay = getAverageDelay();
             if (delay > 3 && percentageDelayFreel > averageDelay) {
                 freel.getEmail();
-                sendEmail(delay, percentageDelayFreel,freel.getEmail());
+                sendEmail(delay, percentageDelayFreel, freel.getEmail());
             }
         }
     }
@@ -133,7 +141,7 @@ public class FreelancersRecord {
      */
     public void sendEmail(int delay, int percentageDelayFreel, String email) throws FileNotFoundException {
         PrintWriter out = new PrintWriter(new File("email.txt"));
-        String fileContent = String.format("O freelancer com o email: %n, tem um delay de %d e uma percentagem de delay de %d.",email,delay,percentageDelayFreel);
+        String fileContent = String.format("O freelancer com o email: %n, tem um delay de %d e uma percentagem de delay de %d.", email, delay, percentageDelayFreel);
         out.printf(fileContent);
         out.close();
     }

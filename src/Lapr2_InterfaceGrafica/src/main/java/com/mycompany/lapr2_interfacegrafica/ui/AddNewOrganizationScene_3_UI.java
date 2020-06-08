@@ -28,10 +28,10 @@ public class AddNewOrganizationScene_3_UI implements Initializable {
     public void showNotification(String notification) {
         this.lblNotification.setText(notification);
     }
-//
-//    @FXML
-//    private void btnOKAction(ActionEvent event) {
-//        this.specifyCategoryUI.getMainApp().toMainScene();
-//    }
+
+    @FXML
+    private void btnOKAction(ActionEvent event) {
+        this.addNewOrganizationUI.getMainApp().toMainScene();
+    }
 
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.lapr2_interfacegrafica.ui;
 
 import com.mycompany.lapr2_interfacegrafica.controller.CreatePaymentTransactionController;
@@ -19,13 +14,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 
-/**
- *
- * @author Tiago
- */
 public class PaymentTransactionScene_1_UI implements Initializable {
 
-    //private CreatePaymentTransactionUI createPaymentTransactionUI;
+    private CreatePaymentTransactionUI createPaymentTransactionUI;
     @FXML
     private Button btnNext;
     @FXML
@@ -47,19 +38,19 @@ public class PaymentTransactionScene_1_UI implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
     }
 
-//    public void setPaymentTransactionUI(CreatePaymentTransactionUI paymentTransactionUI) {
-//        this.paymentTransactionUI = paymentTransactionUI;
-//    }
+    public void setPaymentTransactionUI(CreatePaymentTransactionUI createPaymentTransactionUI) {
+        this.createPaymentTransactionUI = createPaymentTransactionUI;
+    }
+
     public void initComboBox() {
-//        CreatePaymentTransactionController controller = this.createPaymentTransactionUI.
-//                getController();
-//        ObservableList<String> tasks
-//                = FXCollections.observableArrayList(controller.getCategoriesAsStringSet());
-//        this.cmbTask.setItems(tasks);
-//
-//        ObservableList<String> freelancers
-//                = FXCollections.observableArrayList(controller.getFreelancersçAsStringSet());
-//        this.cmbFreelancer.setItems(freelancers);
+        CreatePaymentTransactionController controller = this.createPaymentTransactionUI.
+                getCreatePaymentTransactionController();
+        ObservableList<String> tasks
+                = FXCollections.observableArrayList(controller.getTasks());
+        this.cmbTask.setItems(tasks);
+        ObservableList<String> freelancers
+                = FXCollections.observableArrayList(controller.getFreelancers());
+        this.cmbFreelancer.setItems(freelancers);
     }
 
     public void showTransaction() {
@@ -98,7 +89,7 @@ public class PaymentTransactionScene_1_UI implements Initializable {
 
     @FXML
     private void btnCancelAction(ActionEvent event) {
-        //this.paymentTransactionUI.getMainApp().toMainScene();
+        this.createPaymentTransactionUI.getMainApp().toMainScene();
     }
 
     @FXML

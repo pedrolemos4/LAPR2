@@ -25,10 +25,10 @@ public class CreatePaymentTransactionUI {
     public void toAddNewOrganizationScene1UI() {
         try {
             PaymentTransactionScene_1_UI createPaymentTransaction1UI = (PaymentTransactionScene_1_UI) this.mainApp.replaceSceneContent("/fxml/PaymentTransaction_1.fxml");
-            addOrganization1UI.addNewOrganization(this);
-            String org1 = this.getOrganizationRecordController().getOrganizationToString();
-            if (org1 != null) {
-                addOrganization1UI.showOrganization();
+            createPaymentTransaction1UI.setPaymentTransactionUI(this);
+            String payT = this.getCreatePaymentTransactionController().getPaymentTransactionToString();
+            if (payT != null) {
+                createPaymentTransaction1UI.showTransaction();
             }
         } catch (Exception ex) {
             Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
@@ -37,9 +37,9 @@ public class CreatePaymentTransactionUI {
 
     public void toAddNewOrganizationScene2UI() {
         try {
-            AddNewOrganizationScene_2_UI addOrganization2UI = (AddNewOrganizationScene_2_UI) this.mainApp.replaceSceneContent("/fxml/AddNewOrganization_2_.fxml");
-            addOrganization2UI.setAddNewOrganization(this);
-            addOrganization2UI.showOrganization();
+            PaymentTransactionScene_2_UI createPaymentTransaction2UI = (PaymentTransactionScene_2_UI) this.mainApp.replaceSceneContent("/fxml/PaymentTransaction_2.fxml");
+            createPaymentTransaction2UI.setCreatePaymentTransactionUI(this);
+            createPaymentTransaction2UI.showTransaction();
         } catch (Exception ex) {
             Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -47,9 +47,9 @@ public class CreatePaymentTransactionUI {
 
     public void toAddNewOrganizationScene3UI(String notification) {
         try {
-            AddNewOrganizationScene_3_UI addOrganization3UI = (AddNewOrganizationScene_3_UI) this.mainApp.replaceSceneContent("/fxml/AddNewOrganization_3_.fxml");
-            addOrganization3UI.setAddNewOrganizationUI(this);
-            addOrganization3UI.showNotification(notification);
+            PaymentTransactionScene_3_UI createPaymentTransaction3UI = (PaymentTransactionScene_3_UI) this.mainApp.replaceSceneContent("/fxml/PaymentTransaction_3.fxml");
+            createPaymentTransaction3UI.setCreatePaymentTransactionUI(this);
+            createPaymentTransaction3UI.showNotification(notification);
         } catch (Exception ex) {
             Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
         }

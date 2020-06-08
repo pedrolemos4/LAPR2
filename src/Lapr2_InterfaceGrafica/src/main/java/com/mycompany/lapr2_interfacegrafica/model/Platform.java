@@ -8,12 +8,9 @@ public class Platform {
     private String m_strDesignacao;
     private final FacadeAuthorization m_oAutorizacao;
     private FreelancersRecord freelRec;
-    private Organization org;
     private OrganizationsRecord orgRec;
-    private PaymentTransactionList paymentTrans;
-
-    
-    private final TaskList taskRecord = new TaskList();
+    private PaymentTransactionList paymentTransList;
+    private Organization org;
 
     public Platform(String strDesignacao) {
         if ((strDesignacao == null)
@@ -28,27 +25,23 @@ public class Platform {
         return this.m_oAutorizacao;
     }
 
-    public FreelancersRecord getRegistoFreelancer() {
-        return freelRec;
+    public FreelancersRecord getFreelancersRecord() {
+        return this.freelRec;
     }
-    
-    public TaskList getTaskRecord(){
-        return taskRecord;
+
+    public Organization getOrganization() {
+        return this.org;
     }
-    
-    public Organization getOrganization(){
-        return org;
+
+    public OrganizationsRecord getOrganizationsRecord() {
+        return this.orgRec;
     }
-    
-    public void agendNotification(){
-        
+
+    public PaymentTransactionList getPaymentTransactionList() {
+        return this.paymentTransList;
     }
-    
-    public OrganizationsRecord getOrganizationsRecord(){
-        return orgRec;
-    }
-    
-    public PaymentTransactionList getPaymentTransactionList(){
-        return paymentTrans;
+
+    public void agendNotification() {
+
     }
 }

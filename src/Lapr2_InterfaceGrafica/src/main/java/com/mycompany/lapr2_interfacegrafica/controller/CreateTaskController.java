@@ -21,29 +21,31 @@ public class CreateTaskController {
     private Platform m_oPlataforma;
     private UserSession m_oSessao;
     private OrganizationsRecord or;
+    private Organization org;
     private FreelancersRecord frlR;
     private PaymentTransactionList ptL;
     private PaymentTransaction payT;
     private TaskList taskRecord;
-    
+
     Task task = null;
-    
+
     public CreateTaskController() {
         this.m_oApp = POTApplication.getInstance();
-        this.m_oSessao = m_oApp.getSessaoAtual();
+        this.m_oSessao = m_oApp.getCurrentSession();
 
-        if(!m_oApp.getSessaoAtual().isLoggedInWithRole(Constants.ADMINISTRATOR_ROLE))
+        if (!m_oApp.getCurrentSession().isLoggedInWithRole(Constants.ADMINISTRATOR_ROLE)) {
             throw new IllegalStateException("Utilizador não Autorizado");
-        
-        this.m_oPlataforma = m_oApp.getPlataforma();    
-        
-        this.taskRecord = m_oPlataforma.getTaskRecord();
+        }
+
+        this.m_oPlataforma = m_oApp.getPlataforma();
+
+        this.taskRecord = org.getTaskList();
     }
 
     public boolean newTask(String id, String briefDescription, int timeDuration, double costPerHour, String category) {
         try {
             task = taskRecord.newTask(id, briefDescription, timeDuration, costPerHour, category);
-                    
+
             return true;
         } catch (Exception e) {
             return false;

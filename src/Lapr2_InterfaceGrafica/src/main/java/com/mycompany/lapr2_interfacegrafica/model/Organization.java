@@ -11,6 +11,7 @@ public class Organization {
     private String m_strNIF;
     private Manager m_oManager;
     private Collaborator m_oCollaborator;
+    private TaskList taskList;
     private PaymentTransactionList m_oPaymentTransactionList;
 
     public Organization(String name, String NIF, Manager manager, Collaborator collaborator) {
@@ -22,6 +23,10 @@ public class Organization {
         this.m_strNIF = NIF;
         this.m_oManager = manager;
         this.m_oCollaborator = collaborator;
+    }
+
+    public TaskList getTaskList() {
+        return this.taskList;
     }
 
     public Collaborator newCollaborator(String name, String email) {
@@ -112,8 +117,8 @@ public class Organization {
         return mapOrgDelay;
     }
 
-    public int calcCounterDelays(){
-        int counter=0;
+    public int calcCounterDelays() {
+        int counter = 0;
         List<PaymentTransaction> transactionList = m_oPaymentTransactionList.getPaymentTransactions();
         for (PaymentTransaction transaction : transactionList) {
             int t = transaction.getM_Delay();
