@@ -6,7 +6,7 @@ import java.util.Set;
 import com.mycompany.lapr2_interfacegrafica.model.Task;
 
 
-public class TaskRecord
+public class TaskList
 {
     private Set<Task> tasks = new HashSet<Task>();
     

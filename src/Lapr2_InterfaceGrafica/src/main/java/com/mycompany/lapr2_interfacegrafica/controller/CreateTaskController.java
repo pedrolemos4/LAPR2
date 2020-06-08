@@ -3,7 +3,7 @@ package com.mycompany.lapr2_interfacegrafica.controller;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import com.mycompany.lapr2_interfacegrafica.authorization.model.UserSession;
-import com.mycompany.lapr2_interfacegrafica.model.TaskRecord;
+import com.mycompany.lapr2_interfacegrafica.model.TaskList;
 import com.mycompany.lapr2_interfacegrafica.model.Constants;
 import com.mycompany.lapr2_interfacegrafica.model.Freelancer;
 import com.mycompany.lapr2_interfacegrafica.model.FreelancersRecord;
@@ -24,7 +24,7 @@ public class CreateTaskController {
     private FreelancersRecord frlR;
     private PaymentTransactionList ptL;
     private PaymentTransaction payT;
-    private TaskRecord taskRecord;
+    private TaskList taskRecord;
     
     Task task = null;
     

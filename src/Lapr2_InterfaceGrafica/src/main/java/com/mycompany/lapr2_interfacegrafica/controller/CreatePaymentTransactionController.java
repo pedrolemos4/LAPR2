@@ -1,6 +1,6 @@
 package com.mycompany.lapr2_interfacegrafica.controller;
 
-import com.mycompany.lapr2_interfacegrafica.model.TaskRecord;
+import com.mycompany.lapr2_interfacegrafica.model.TaskList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import com.mycompany.lapr2_interfacegrafica.authorization.model.UserSession;
@@ -19,7 +19,7 @@ public class CreatePaymentTransactionController {
     private POTApplication m_oApp;
     private UserSession m_oSessao;
     private OrganizationsRecord or;
-    private TaskRecord tLst;
+    private TaskList tLst;
     private FreelancersRecord frlR;
     private PaymentTransactionList ptL;
     private PaymentTransaction payT;

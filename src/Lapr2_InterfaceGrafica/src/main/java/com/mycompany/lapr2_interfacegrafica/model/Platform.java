@@ -13,7 +13,7 @@ public class Platform {
     private PaymentTransactionList paymentTrans;
 
     
-    private final TaskRecord taskRecord = new TaskRecord();
+    private final TaskList taskRecord = new TaskList();
 
     public Platform(String strDesignacao) {
         if ((strDesignacao == null)
@@ -32,7 +32,7 @@ public class Platform {
         return freelRec;
     }
     
-    public TaskRecord getTaskRecord(){
+    public TaskList getTaskRecord(){
         return taskRecord;
     }
     
