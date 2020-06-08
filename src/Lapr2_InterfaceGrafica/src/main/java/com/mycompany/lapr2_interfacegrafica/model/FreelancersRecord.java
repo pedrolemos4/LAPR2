@@ -76,7 +76,7 @@ public class FreelancersRecord {
         throw new IllegalArgumentException("Invalid " + freelancerId);
     }
 
-    public Freelancer getFreelancerByNIF(String freelancerNIF) {
+    public Freelancer findByNIF(String freelancerNIF) {
         for (Freelancer freelancer : arrayFreelancers) {
             if (freelancer.getNif().equals(freelancerNIF)) {
                 return freelancer;

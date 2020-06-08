@@ -15,8 +15,6 @@ public class CsvReader implements FileReader {
     private TaskList m_taskList;
     private String m_namefile;
     
-    private int invalidLine, validLine;
-    
     Scanner ler;
 
     public CsvReader(PaymentTransactionList paymentTransactionList, FreelancersRecord freelancerRecord ,TaskList taskList) {
@@ -26,8 +24,6 @@ public class CsvReader implements FileReader {
         this.m_paymentTransactionList = paymentTransactionList;
         this.m_freelancerRecord = freelancerRecord;
         this.m_taskList = taskList;
-        this.invalidLine = 0;
-        this.validLine = 0;
     }
     
     
@@ -49,9 +45,8 @@ public class CsvReader implements FileReader {
     public void readFile(Scanner ler){
         Task task;
         Freelancer free;
-        String transactionId;
-        String freeId;
-        String taskId;
+        String transactionId, freeNIF, taskId;
+        int invalidLine = 0, validLine = 0;
         
         String line = ler.nextLine();
         while(ler.hasNextLine()){
@@ -77,10 +72,10 @@ public class CsvReader implements FileReader {
                     continue;
                 }
             }
-            freeId = items[9];
-            free = m_freelancerRecord.getFreelancerById(freeId);
+            freeNIF = items[13];
+            free = m_freelancerRecord.findByNIF(freeNIF);
             if(free == null){
-                free = newFreelancer(freeId,items);
+                free = newFreelancer(freeNIF,items);
                 if(m_freelancerRecord.validatesFreelancer(free)){
                     m_freelancerRecord.registerFreelancer(free);
                 }else{
@@ -119,15 +114,15 @@ public class CsvReader implements FileReader {
         category);
     }
     
-    private Freelancer newFreelancer(String freeId, String[] items){
+    private Freelancer newFreelancer(String freeNIF, String[] items){
+        String id = items[9];
         String name = items[10];
         String lvlExp = items[11];
         String email = items[12];
-        String nif = items[13];
         String iban = items[14];
         String country = items [16];
         String adress = items[15];
-        return m_freelancerRecord.newFreelancer(freeId, name, lvlExp, email, nif, iban, country, adress);
+        return m_freelancerRecord.newFreelancer(id, name, lvlExp, email, freeNIF, iban, country, adress);
     }
     
     private Date parseDate(String date){
