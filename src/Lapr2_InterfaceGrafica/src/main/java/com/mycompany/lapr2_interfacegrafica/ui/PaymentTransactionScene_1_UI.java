@@ -56,24 +56,26 @@ public class PaymentTransactionScene_1_UI implements Initializable {
     }
 
     public void showTransaction() {
-//        this.cmbFreelancer.setValue(this.CreatePaymentTransactionUI.getController.getFreelancer());
-//        this.cmbTask.setValue(this.CreatePaymentTransactionUI.getController.getTask());
-//        this.txtTaskDelay.setText(this.CreatePaymentTransactionUI.getController.getTaskDelay());
-//        this.txtTaskEndDate.setText(this.CreatePaymentTransactionUI.getController.getTaskEndDate());
-//        this.txtWorkDescription.setText(this.CreatePaymentTransactionUI.getController.getWorkDescription());
+        this.txtTransactionID.setText(this.createPaymentTransactionUI.getCreatePaymentTransactionController().getPayTId());
+        this.cmbTask.setValue(this.createPaymentTransactionUI.getCreatePaymentTransactionController().getTask());
+        this.txtTaskDelay.setText(this.createPaymentTransactionUI.getCreatePaymentTransactionController().getTaskDelay());
+        this.txtTaskEndDate.setText(this.createPaymentTransactionUI.getCreatePaymentTransactionController().getEndDate());
+        this.txtWorkDescription.setText(this.createPaymentTransactionUI.getCreatePaymentTransactionController().getWorkDescription());
+        this.cmbFreelancer.setValue(this.createPaymentTransactionUI.getCreatePaymentTransactionController().getFreelancer());
     }
 
     @FXML
     private void btnNextAction(ActionEvent event) {
         try {
+            String payTId = this.txtTransactionID.getText();
             String endDate = this.txtTaskEndDate.getText();
             int taskDelay = Integer.parseInt(this.txtTaskDelay.getText());
             String workDescription = this.txtWorkDescription.getText();
             String task = this.cmbTask.getSelectionModel().getSelectedItem();
             String freelancer = this.cmbFreelancer.getSelectionModel().getSelectedItem();
-            //   this.paymentTransactionUI.getController().newPaymentTransaction(endDate,
-            //           taskDelay, workDescription, task, freelancer);
-            // this.paymentTransactionUI.toCreatePaymentTransactionScene2();
+            this.createPaymentTransactionUI.getCreatePaymentTransactionController().newPaymentTransaction(payTId, task, endDate,
+                    taskDelay, workDescription, freelancer);
+            this.createPaymentTransactionUI.toAddNewOrganizationScene2UI();
         } catch (NumberFormatException ex) {
             this.lblAlert.setText("Invalid number!");
             this.txtTaskDelay.requestFocus();
