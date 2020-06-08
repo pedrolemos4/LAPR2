@@ -1,49 +1,63 @@
-
 package com.mycompany.lapr2_interfacegrafica.model;
 
 import java.util.HashSet;
 import java.util.Set;
-import com.mycompany.lapr2_interfacegrafica.model.Task;
 
+public class TaskList {
 
-public class TaskList
-{
-    private Set<Task> tasks = new HashSet<Task>();
-    
-    
+    private Set<Task> tasks = new HashSet<>();
+
     public Task newTask(String id, String briefDescription, int timeDuration, double costPerHour, String category) {
         return new Task(id, briefDescription, timeDuration, costPerHour, category);
     }
 
     public boolean registerTask(Task task) {
-        if (validateTask(task)){
+        if (validateTask(task)) {
             tasks.add(task);
             return true;
-        }else{
+        } else {
             return false;
         }
     }
-    
-    public boolean validateTask(Task task){
+
+    public boolean validateTask(Task task) {
         try {
-            task.validate();            
+            task.validate();
             return true;
         } catch (Exception e) {
             return false;
-        }        
+        }
     }
 
-    public Task findById(String taskId){
-        for(Task task: tasks)
-        {
-            if(task.hasId(taskId))
+    public Task findById(String taskId) {
+        for (Task task : tasks) {
+            if (task.hasId(taskId)) {
                 return task;
+            }
         }
         return null;
     }
-    
-    public boolean hasTask(String taskId){
-        return findById(taskId)!=null;
+
+    public boolean hasTask(String taskId) {
+        return findById(taskId) != null;
     }
-    
+
+    public Task getFreelancerById(String taskId) {
+        for (Task task : tasks) {
+            if (task.toString().equals(taskId)) {
+                return task;
+            }
+        }
+        throw new IllegalArgumentException("Invalid " + taskId);
+    }
+
+    public Task getFreelancerByStringValue(String taskString) {
+        for (Task task : tasks) {
+            if (task.toString().equals(taskString)) {
+                return task;
+            }
+        }
+        throw new IllegalArgumentException("Invalid " + taskString);
+    }
+
 }
