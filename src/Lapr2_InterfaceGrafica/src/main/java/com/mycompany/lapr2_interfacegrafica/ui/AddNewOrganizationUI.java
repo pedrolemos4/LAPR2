@@ -24,7 +24,8 @@ public class AddNewOrganizationUI {
 
     public void toAddNewOrganizationScene1UI() {
         try {
-            AddNewOrganizationScene_1_UI addOrganization1UI = (AddNewOrganizationScene_1_UI) this.mainApp.replaceSceneContent("/fxml/AddNewOrganization_1_.fxml");
+            AddNewOrganizationScene_1_UI addOrganization1UI = 
+                    (AddNewOrganizationScene_1_UI) this.mainApp.replaceSceneContent("/fxml/AddNewOrganization_1_.fxml");
            // addOrganization1UI.setNewOrganizationUI(this);
 //            String org1 = this.getOrganizationRecordController().getOrganizationToString();
 //            if (org1 != null) {

@@ -5,9 +5,8 @@
  */
 package com.mycompany.lapr2_interfacegrafica.ui;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -15,17 +14,24 @@ import javafx.scene.control.Button;
  */
 public class JanelaOptionsManagerUI {
 
-    @FXML
-    private Button btnSetDayOfPayment;
-    @FXML
-    private Button btnCheckStatistics;
+    private final MainApp mainApp;
 
-    @FXML
-    private void btnSetDayOfPaymentAction(ActionEvent event) {
+    public JanelaOptionsManagerUI(MainApp mainApp) {
+        this.mainApp = mainApp;
     }
 
-    @FXML
-    private void btnCheckStatisticsAction(ActionEvent event) {
+    public MainApp getMainApp() {
+        return this.mainApp;
     }
-    
+
+    public void toMenuManagerScene() {
+        try {
+            JanelaOptionsManagerScene_UI janelaOptionsManagerScene_ui
+                    = (JanelaOptionsManagerScene_UI) this.mainApp.replaceSceneContent("/fxml/JanelaOptionsManager.fxml");
+            janelaOptionsManagerScene_ui.setNewOptionsManagerUI(this);
+
+        } catch (Exception ex) {
+            Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
