@@ -117,7 +117,7 @@ public class TxtReader implements FileReader{
         String iban = items[14];
         String country = items [16];
         String adress = items[15];
-        return m_freelancerRecord.newFreelancer(id, name, lvlExp, email, freeNIF, iban, country, adress);
+        return m_freelancerRecord.newFreelancer(name, lvlExp, email, freeNIF, iban, country, adress);
     }
     
     private Date parseDate(String date){

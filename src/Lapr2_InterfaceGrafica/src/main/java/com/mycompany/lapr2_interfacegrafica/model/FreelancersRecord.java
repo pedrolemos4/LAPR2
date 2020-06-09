@@ -32,8 +32,8 @@ public class FreelancersRecord {
         this.arrayFreelancers = new ArrayList<>();
     }
 
-    public Freelancer newFreelancer(String id, String name, String lvlExp, String email, String nif, String iban, String country, String adress) {
-        return new Freelancer(id, name, lvlExp, email, nif, iban, country, adress);
+    public Freelancer newFreelancer(String name, String lvlExp, String email, String nif, String iban, String country, String adress) {
+        return new Freelancer(name, lvlExp, email, nif, iban, country, adress);
     }
 
     public boolean registerFreelancer(Freelancer freel) {
@@ -44,7 +44,7 @@ public class FreelancersRecord {
     }
 
     public boolean validatesFreelancer(Freelancer freel) {
-        if (freel.getAdress() == null || freel.getCountry() == null || freel.getEmail() == null || freel.getIban() == null || freel.getId() == null || freel.getLvlExp() == null || freel.getName() == null || freel.getNif() == null) {
+        if (freel.getAdress() == null || freel.getCountry() == null || freel.getEmail() == null || freel.getIban() == null || freel.getLvlExp() == null || freel.getName() == null || freel.getNif() == null) {
             return false;
         } else {
             return true;
