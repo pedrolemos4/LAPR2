@@ -32,7 +32,7 @@
                <bottom>
                   <HBox prefHeight="59.0" prefWidth="800.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Label fx:id="lblProbability" prefHeight="33.0" prefWidth="629.0" text="The probability of the execution delay time of the freelancers that higher than 3 hours is">
+                        <Label fx:id="lblProbability" prefHeight="33.0" prefWidth="713.0">
                            <HBox.margin>
                               <Insets left="42.0" top="13.0" />
                            </HBox.margin>
@@ -40,11 +40,6 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtNormalDistribution" onAction="#normalDistribution" prefHeight="31.0" prefWidth="76.0">
-                           <HBox.margin>
-                              <Insets top="13.0" />
-                           </HBox.margin>
-                        </TextField>
                      </children>
                   </HBox>
                </bottom>

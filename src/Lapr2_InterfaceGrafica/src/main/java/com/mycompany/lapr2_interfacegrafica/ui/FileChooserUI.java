@@ -11,7 +11,7 @@ public class FileChooserUI {
 
     private FileChooserUI() {
         fileChooser = new FileChooser();
-        associarFiltro("Ficheiros Anúncios", "*.txt");
+        associarFiltro("File Transactions", "*.txt");
     }
 
     public static FileChooser criarFileChooser() {

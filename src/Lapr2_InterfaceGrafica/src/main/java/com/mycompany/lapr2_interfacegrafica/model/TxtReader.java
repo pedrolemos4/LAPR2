@@ -37,7 +37,10 @@ public class TxtReader implements FileReader{
         }
     }
     
-    public void readFile(){
+    public boolean readFile(){
+        if (!fileExists || !ler.hasNextLine()) {
+            return false;
+        } else {
         Task task;
         Freelancer free;
         String transactionId, freeNIF, taskId;
@@ -93,6 +96,8 @@ public class TxtReader implements FileReader{
             }catch (IllegalArgumentException | ArrayIndexOutOfBoundsException ex){
                 ex.printStackTrace();
             }
+        }
+        return !fileExists;
         }
     }
     

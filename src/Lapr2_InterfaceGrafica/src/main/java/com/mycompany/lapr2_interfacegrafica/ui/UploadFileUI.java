@@ -61,7 +61,7 @@ public class UploadFileUI implements Initializable {
         if (file != null) {
             lstPaymentTransactions.getItems().clear();
 //            if (controller.getFileTxt(file)) {
-                lstPaymentTransactions.getItems().setAll(controller.getTransactions());
+                addTransactions();
 //            }
         }
     }
