@@ -6,8 +6,15 @@
 package com.mycompany.lapr2_interfacegrafica.ui;
 
 import com.mycompany.lapr2_interfacegrafica.controller.CreateFreelancerController;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 /**
  *
@@ -63,4 +70,13 @@ public class CreateFreelancerUI {
             Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void goToScene(ActionEvent event , String fxml) throws IOException{
+        Parent button = FXMLLoader.load(getClass().getResource(fxml));
+        Scene buttonScene = new Scene(button);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(buttonScene);
+        window.show();
+    }
 }
+

@@ -17,18 +17,19 @@ public class OrganizationRecordController {
     public OrganizationRecordController() {
         this.m_oApp = POTApplication.getInstance();
         this.m_oPlataforma = m_oApp.getPlataforma();
+        this.org=null;
     }
 
-    public boolean newOrganization(String name, String NIF, String nameM, String emailM, String nameC, String emailC) {
-        try {
+    public Organization newOrganization(String name, String NIF, String nameM, String emailM, String nameC, String emailC) {
+//        try {
             this.or=m_oPlataforma.getOrganizationsRecord();
-            this.org = or.newOrganization(name, NIF, nameM, emailM, nameC, emailC);
-            return this.or.validateOrganization(this.org);
-        } catch (RuntimeException ex) {
-            Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);
-            this.org = null;
-            return false;
-        }
+            return this.org = or.newOrganization(name, NIF, nameM, emailM, nameC, emailC);
+//            return this.or.validateOrganization(this.org);
+//        } catch (RuntimeException ex) {
+//            Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);
+//            this.org = null;
+//            return false;
+//        }
     }
 
     public boolean registerOrganization() {

@@ -19,7 +19,7 @@ public class Freelancer {
         this.country = country;
         this.email = email;
         this.iban = iban;
-        this.id = id;
+        //this.id = id;
         this.lvlExp = lvlExp;
         this.name = name;
         this.nif = nif;

@@ -5,11 +5,17 @@
  */
 package com.mycompany.lapr2_interfacegrafica.ui;
 
+import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  *
@@ -91,18 +97,27 @@ public class CreateFreelancerScene_1_UI {
     }
 
     @FXML
-    private void btnCancelAction(ActionEvent event) {
+    private void btnCancelAction(ActionEvent event) throws IOException {
+       goToScene(event,"/fxml/JanelaLogin.fxml");
        //this.freel.getMainApp().toMainScene();
     }
 
     @FXML
-    private void btnNextAction(ActionEvent event) {
+    private void btnNextAction(ActionEvent event) throws IOException {
         try {
-            this.freel.getCreateFreelancerController().newFreelancer(txtNome.getText(), txtLevelOfExpertise.getText(), txtEmail.getText(), txtNIF.getText(), txtIBAN.getText(), txtCountry.getText(), txtAddress.getText());
-            this.freel.toCreateFreelancerScene2UI();
+           // this.freel.getCreateFreelancerController().newFreelancer(txtNome.getText(), txtLevelOfExpertise.getText(), txtEmail.getText(), txtNIF.getText(), txtIBAN.getText(), txtCountry.getText(), txtAddress.getText());
+            goToScene(event,"/fxml/CreateFreelancer_2.fxml");
+           // this.freel.toCreateFreelancerScene2UI();
         } catch(IllegalArgumentException e) {
             invalidLbl.setText(e.getMessage());
         }
     }
     
+     private void goToScene(ActionEvent event, String fxml) throws IOException {
+        Parent button = FXMLLoader.load(getClass().getResource(fxml));
+        Scene buttonScene = new Scene(button);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(buttonScene);
+        window.show();
+    }
 }

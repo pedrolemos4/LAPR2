@@ -40,10 +40,10 @@ public class JanelaLogin_1_UI implements Initializable {
 
     @FXML
     private void btnLoginAction(ActionEvent event) {
-      // JanelaOptionsAdminUI jOAUI = new JanelaOptionsAdminUI(this.mainApp);
-      // jOAUI.toMenuAdminScene();
-     JanelaOptionsCollaboratorUI jOCUI = new JanelaOptionsCollaboratorUI(this.mainApp);
-       jOCUI.toMenuCollaboratorScene();
+      JanelaOptionsAdminUI jOAUI = new JanelaOptionsAdminUI(this.mainApp);
+       jOAUI.toMenuAdminScene();
+    // JanelaOptionsCollaboratorUI jOCUI = new JanelaOptionsCollaboratorUI(this.mainApp);
+      // jOCUI.toMenuCollaboratorScene();
 //        JanelaOptionsManagerUI jOMUI = new JanelaOptionsManagerUI(this.mainApp);
 //        jOMUI.toMenuManagerScene();
     }
