@@ -23,17 +23,13 @@ public class CreateFreelancerController {
     public Freelancer freel;
 
     public CreateFreelancerController() {
+        this.platform = POTApplication.getPlataforma();
+        regFreel= platform.getFreelancersRecord();
     }
 
-    public boolean newFreelancer(String name, String lvlExp, String email, String nif, String iban, String country, String adress) {
-        try {
-            this.freel = this.platform.getFreelancersRecord().newFreelancer(name, lvlExp, email, nif, iban, country, adress);
-            return this.platform.getFreelancersRecord().validatesFreelancer(this.freel);
-        } catch (RuntimeException ex) {
-            Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);
-            this.freel = null;
-            return false;
-        }
+    public Freelancer newFreelancer(String name, String lvlExp, String email, String nif, String iban, String country, String adress) {
+        freel = regFreel.newFreelancer(name, lvlExp, email, nif, iban, country, adress);
+        return freel;
     }
 
     public boolean registerFreelancer() {

@@ -5,10 +5,14 @@
  */
 package com.mycompany.lapr2_interfacegrafica.ui;
 
+import com.mycompany.lapr2_interfacegrafica.controller.CreateFreelancerController;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -21,9 +25,10 @@ import javafx.stage.Stage;
  *
  * @author Tiago
  */
-public class CreateFreelancerScene_1_UI {
+public class CreateFreelancerScene_1_UI implements Initializable {
     
     private CreateFreelancerUI freel;
+    private CreateFreelancerController controller;
 
     @FXML
     private TextField txtNome;
@@ -105,7 +110,14 @@ public class CreateFreelancerScene_1_UI {
     @FXML
     private void btnNextAction(ActionEvent event) throws IOException {
         try {
-           // this.freel.getCreateFreelancerController().newFreelancer(txtNome.getText(), txtLevelOfExpertise.getText(), txtEmail.getText(), txtNIF.getText(), txtIBAN.getText(), txtCountry.getText(), txtAddress.getText());
+            String name = this.txtNome.getText();
+            String lvlExp =  this.txtLevelOfExpertise.getText();
+            String email = this.txtEmail.getText();
+            String nif = this.txtNIF.getText();
+            String iban = this.txtIBAN.getText();
+            String country = this.txtCountry.getText();
+            String adress = this.txtAddress.getText();
+            controller.newFreelancer(name, lvlExp, email, nif, iban, country, adress);
             goToScene(event,"/fxml/CreateFreelancer_2.fxml");
            // this.freel.toCreateFreelancerScene2UI();
         } catch(IllegalArgumentException e) {
@@ -119,5 +131,10 @@ public class CreateFreelancerScene_1_UI {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(buttonScene);
         window.show();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        this.controller = new CreateFreelancerController();
     }
 }

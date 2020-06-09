@@ -43,6 +43,16 @@ public class FreelancersRecord {
         return false;
     }
 
+    public String compareFreelancer(String id) {
+        int num = 1;
+        for (Freelancer freel : arrayFreelancers) {
+            String idFrel = freel.getId();
+            if ((id + num).equals(idFrel)) {
+                num++;
+            }
+        }
+        return id + num;
+    }
     public boolean validatesFreelancer(Freelancer freel) {
         if (freel.getAdress() == null || freel.getCountry() == null || freel.getEmail() == null || freel.getIban() == null || freel.getLvlExp() == null || freel.getName() == null || freel.getNif() == null) {
             return false;
