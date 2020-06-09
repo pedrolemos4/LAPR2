@@ -8,7 +8,7 @@ public class AuthenticationController {
     private POTApplication m_oApp;
 
     public AuthenticationController() {
-        this.m_oApp = POTApplication.getInstance();
+     //   this.m_oApp = POTApplication.getInstance();
     }
 
     public boolean doLogin(String strId, String strPwd) {

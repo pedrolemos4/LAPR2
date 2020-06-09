@@ -1,5 +1,6 @@
-package com.mycompany.lapr2_interfacegrafica.ui;
+    package com.mycompany.lapr2_interfacegrafica.ui;
 
+import com.mycompany.lapr2_interfacegrafica.controller.POTApplication;
 import java.io.InputStream;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -22,6 +23,7 @@ public class MainApp extends Application {
     private final double MINIMUM_WINDOW_HEIGHT = 300.0;
     private final double SCENE_WIDTH = 450.0;
     private final double SCENE_HEIGHT = 350.0;
+    private POTApplication potApplication = new POTApplication();
 
     @Override
     public void start(Stage stage) throws Exception {

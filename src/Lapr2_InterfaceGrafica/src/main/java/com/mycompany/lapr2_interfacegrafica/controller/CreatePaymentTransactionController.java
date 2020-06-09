@@ -27,7 +27,7 @@ public class CreatePaymentTransactionController {
     private Date date;
 
     public CreatePaymentTransactionController() {
-        this.m_oApp = POTApplication.getInstance();
+       // this.m_oApp = POTApplication.getInstance();
         this.m_oSessao = m_oApp.getCurrentSession();
     }
 

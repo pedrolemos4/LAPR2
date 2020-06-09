@@ -13,13 +13,14 @@ public class Platform {
     private Organization org;
     private PasswordGeneratorAlgorithm alg;
 
-    public Platform(String strDesignacao) {
-        if ((strDesignacao == null)
-                || (strDesignacao.isEmpty())) {
-            throw new IllegalArgumentException("Nenhum dos argumentos pode ser nulo ou vazio.");
-        }
-        this.m_strDesignacao = strDesignacao;
+    public Platform() {
+//        if ((strDesignacao == null)
+//                || (strDesignacao.isEmpty())) {
+//            throw new IllegalArgumentException("Nenhum dos argumentos pode ser nulo ou vazio.");
+//        }
+//        this.m_strDesignacao = strDesignacao;
         this.m_oAutorizacao = new FacadeAuthorization();
+        this.orgRec = new OrganizationsRecord();
     }
 
     public FacadeAuthorization getFacadeAuthorization() {

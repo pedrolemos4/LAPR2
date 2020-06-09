@@ -62,7 +62,11 @@ public class AddNewOrganizationScene_1_UI implements Initializable {
 
     @FXML
     private void btnNextAction(ActionEvent event) throws IOException {
+//        if(addNewOrganization==null){
+//            addNewOrganization= new AddNewOrganizationUI();
+//        }
         try {
+            System.out.println("zlkfjalkdfjalk");
 //            this.addNewOrganization.getOrganizationRecordController().newOrganization(this.txtName.getText(),
 //                    this.txtNIF.getText(), this.txtManagerName.getText(),
 //                    this.txtManagerEmail.getText(), this.txtCollaboratorName.getText(),

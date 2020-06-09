@@ -19,6 +19,7 @@ public class AddNewOrganizationUI {
     public AddNewOrganizationUI(MainApp mainApp) {
         this.mainApp = mainApp;
         this.controller = new OrganizationRecordController();
+        
     }
 
     public MainApp getMainApp() {

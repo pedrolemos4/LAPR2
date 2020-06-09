@@ -9,21 +9,20 @@ public class Freelancer {
     private String nif;
     private String iban;
     private String country;
-    private String adress;
+    private String address;
 
     public Freelancer(String name, String lvlExp, String email, String nif, String iban, String country, String adress) {
         if (adress == null || country == null || email == null || iban == null || lvlExp == null || name == null || nif == null) {
             throw new IllegalArgumentException("None of the arguments can be null or empty.");
         }
-        this.adress = adress;
-        this.country = country;
-        this.email = email;
-        this.iban = iban;
-        //this.id = id;
-        this.lvlExp = lvlExp;
-        this.name = name;
-        this.nif = nif;
-        this.id = generateId(name);
+        setAddress(adress);
+        setCountry(country);
+        setEmail(email);
+        setIBAN(iban);
+        setExpertise(lvlExp);
+        setName(name);
+        setNif(nif);
+        setId(id);
     }
 
     public String generateId(String nome) {
@@ -49,7 +48,7 @@ public class Freelancer {
         }
 
     public String getAdress() {
-        return this.adress;
+        return this.address;
     }
 
     public String getCountry() {
@@ -80,8 +79,64 @@ public class Freelancer {
         return this.nif;
     }
 
+    public void setName(String name) {
+        if(name.trim().isEmpty() || name ==null) throw new IllegalArgumentException("Invalid name!");
+        this.name = name;
+    }
+
+    public void setEmail(String email) {
+        if(email.trim().isEmpty()|| email ==null) throw new IllegalArgumentException("Invalid Email!");
+        this.email = email;
+    }
+
+    public void setNif(String nif) {
+        try {
+            if (nif.trim().isEmpty()|| Long.parseLong(nif) >= 1000000000 || Long.parseLong(nif) <= 99999999) {
+                throw new IllegalArgumentException("Invalid NIF ! (A valid has 9 numbers)");
+            }
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException("Invalid Format for NIF !");
+        }
+        this.nif = nif;
+    }
+
+    public void setIBAN(String IBAN) {
+        if (IBAN.trim().isEmpty() ) {
+            throw new IllegalArgumentException("Empty Bank Account !");
+        }
+        this.iban = IBAN;
+    }
+
+    public void setAddress(String address) {
+        if (address == null || address.trim().isEmpty()) {
+            throw new IllegalArgumentException("Invalid Address !");
+        }
+        this.address = address;
+    }
+
+    public void setCountry(String country) {
+        if (country == null || country.trim().isEmpty()) {
+            throw new IllegalArgumentException("Invalid Country !");
+        }
+        this.country = country;
+    }
+
+    public void setExpertise(String expertise) {
+        if(expertise ==null){
+            throw new IllegalArgumentException("Empty Expertise !");
+        }
+        this.lvlExp = expertise;
+    }
+
+    public void setId(String id) {
+        if(id ==null){
+            new IllegalArgumentException("ID Freelancer is Empty");
+        }
+        this.id = id;
+    }
+
     public String toString() {
-        return String.format("The freelancer is called: %n. Lives in: %n, %n. Email: %n. Iban: %n. Nif: %n. Level of Experience: %n.", name, adress, country, email, iban, nif, lvlExp);
+        return String.format("The freelancer is called: %n. Lives in: %n, %n. Email: %n. Iban: %n. Nif: %n. Level of Experience: %n.", name, address, country, email, iban, nif, lvlExp);
     }
 
     public boolean validatesFreelancer(Freelancer freel) {

@@ -15,9 +15,10 @@ public class OrganizationRecordController {
     private OrganizationsRecord or;
 
     public OrganizationRecordController() {
-        this.m_oApp = POTApplication.getInstance();
+       // this.m_oApp = POTApplication.getInstance();
         this.m_oPlataforma = m_oApp.getPlataforma();
         this.org=null;
+        System.out.println("1");
     }
 
     public Organization newOrganization(String name, String NIF, String nameM, String emailM, String nameC, String emailC) {

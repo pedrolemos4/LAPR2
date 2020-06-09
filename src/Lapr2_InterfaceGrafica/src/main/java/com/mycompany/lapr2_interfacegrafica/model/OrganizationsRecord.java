@@ -17,6 +17,7 @@ public class OrganizationsRecord {
 
     public OrganizationsRecord() {
         this.m_lstOrganizations = new ArrayList<>();
+        System.out.println("Registo de org");
     }
 
     public Organization newOrganization(String name, String NIF, String nameM, String emailM, String nameC, String emailC) {

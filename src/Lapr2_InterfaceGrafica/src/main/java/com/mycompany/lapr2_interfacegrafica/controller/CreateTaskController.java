@@ -30,7 +30,7 @@ public class CreateTaskController {
     Task task = null;
 
     public CreateTaskController() {
-        this.m_oApp = POTApplication.getInstance();
+       // this.m_oApp = POTApplication.getInstance();
         this.m_oSessao = m_oApp.getCurrentSession();
 
         if (!m_oApp.getCurrentSession().isLoggedInWithRole(Constants.ADMINISTRATOR_ROLE)) {

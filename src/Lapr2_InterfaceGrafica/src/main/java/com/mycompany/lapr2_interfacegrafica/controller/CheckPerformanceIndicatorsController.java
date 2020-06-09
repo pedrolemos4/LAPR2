@@ -20,14 +20,14 @@ public class CheckPerformanceIndicatorsController {
     private OrganizationsRecord orgRec;
 
     public CheckPerformanceIndicatorsController() {
-        if(!POTApplication.getInstance().getCurrentSession().isLoggedInWithRole(Constants.ADMINISTRATOR_ROLE))
-            throw new IllegalStateException("Unauthorized user.");
-        m_oPlataforma = POTApplication.getInstance().getPlataforma();
-        POTApplication m_oApp = POTApplication.getInstance();
-        UserSession m_oUser = m_oApp.getCurrentSession();
-        String email = m_oUser.getUserEmail();
-        orgRec = m_oPlataforma.getOrganizationsRecord();
-        org = orgRec.getOrganizationByUserEmail(email);
+//        if(!POTApplication.getInstance().getCurrentSession().isLoggedInWithRole(Constants.ADMINISTRATOR_ROLE))
+//            throw new IllegalStateException("Unauthorized user.");
+//        m_oPlataforma = POTApplication.getInstance().getPlataforma();
+//        POTApplication m_oApp = POTApplication.getInstance();
+//        UserSession m_oUser = m_oApp.getCurrentSession();
+//        String email = m_oUser.getUserEmail();
+//        orgRec = m_oPlataforma.getOrganizationsRecord();
+//        org = orgRec.getOrganizationByUserEmail(email);
     }
     
     public void getOrganizations(){
