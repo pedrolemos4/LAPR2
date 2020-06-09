@@ -32,7 +32,7 @@ The freelancer stays in the system.
 ### Main sucess scene (Basic flux)
 
 1. The collaborator starts to create a new Freelancer. 
-2. The system asks needed information (i.e. id, name, level of expertise, e-mail, NIF, bank account (IBAN), address and country). 
+2. The system asks needed information (i.e. name, level of expertise, e-mail, NIF, bank account (IBAN), address and country). 
 3. The collaborator introduces the information. 
 4.The system validates and apresents the information to the collaborater, asking for confirmation. 
 5. The collaborator confirms. 
@@ -81,7 +81,7 @@ The freelancer stays in the system.
 
 ## 2. OO Analysis
 
-### Excerto do Modelo de Domínio Relevante para o UC
+### Excerpt from the Relevant Domain Model for UC
 
 ![UC1_MD.png](UC1_MD.png) 
 
@@ -96,10 +96,11 @@ The freelancer stays in the system.
 |                                                        | ...coordinates the UC? | CreateFreelancerController | Controller |
 |                                                        | ...creates the instance Freelancer? | RegisterFreelancer | HC+LC + Creator |
 |                                                        | ...knows RegisterFreelancer? | Plataform | HC+LC |
-| 2. The system asks needed information (i.e. id, name, level of expertise, e-mail, NIF, bank account (IBAN), address and country). |  |  |  |  
+| 2. The system asks needed information (i.e. name, level of expertise, e-mail, NIF, bank account (IBAN), address and country). |  |  |  |  
 | 3. The collaborator introduces the information. | ...keeps the information? | Freelancer | IE: Knows his own information | 
+|                                                 | ...generates the id for each freelancer? | Freelancer | IE: Knows his own information. |
 | 4. The system validates and apresents the information to the collaborater, asking for confirmation. | ...validates the information?(local)? | Freelancer  | IE: Knows his own information |  
-|                                                                                                    | ...validates the information(global)? | RegisterFreelancer | HC+LC |                                        
+|                                                                                                     | ...validates the information(global)? | RegisterFreelancer | HC+LC |                                        
 | 5. The collaborator confirms. |  |  |  | 
 | 6. The system regists the information and informs the collaborator about the sucess of the operation. | ...keeps the freelancer created? | RegisterFreelancer | HC+LC: Plataform delegated functions  |
 |                                                                                                       | ...informs the collaborator? | CreaterFreelancerUI | Pure Fabrication |
@@ -117,7 +118,7 @@ The freelancer stays in the system.
 
  * CreateFreelancerUI
  * CreateFreelancerController 
- * RegisterFreelancer 
+ * FreelancerRecord 
 
 
 ###     Sequence Diagram

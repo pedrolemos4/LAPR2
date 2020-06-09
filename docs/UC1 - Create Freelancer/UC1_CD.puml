@@ -8,7 +8,7 @@ class CreateFreelancerUI {
 }
 
 class CreateFreelancerController {
-  +Freelancer newFreelancer(id, name, lvlExp, email, nif, iban, adress, country)
+  +Freelancer newFreelancer(name, lvlExp, email, nif, iban, adress, country)
   +registerFreelancer(freel) 
 }
 
@@ -18,7 +18,7 @@ class Plataform {
 }
 
 class FreelancersRecord {
-  +Freelancer newFreelancer(id, name, lvlExp, email, nif, iban, adress, country)
+  +Freelancer newFreelancer(name, lvlExp, email, nif, iban, adress, country)
   +registerFreelancer(freel)
   +validatesFreelancer(freel)
   +addFreelancer(freel)
@@ -26,7 +26,6 @@ class FreelancersRecord {
 }
 
 class Freelancer {
-  -String id
   -String name
   -String level of expertise
   -String email

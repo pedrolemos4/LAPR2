@@ -63,7 +63,7 @@ The freelancer stays informed.
 
 ## 2. OO Analysis
 
-### Excerto do Modelo de Domínio Relevante para o UC
+### Excerpt from the Relevant Domain Model for UC
 
 ![UC10_MD.png](UC10_MD.png) 
 
@@ -77,16 +77,15 @@ The freelancer stays informed.
 | 1. The collaborator starts to create a new Freelancer. | ...coordinates the UC? | NotifyFreelancersTask | Task |
 |                                                        | ...starts the process of notification? | Timer | Timer |
 |                                                        | ...creates the instance Timer? | Plataform | Creator: Plataform as knowledge of the time to start the notifications. |
-| 2. The system identifies the freelancers that have mean task delay higher than 3 hours and have a percentage of delays higher than the overall percentage of delays. After that, starts the notification of the freelancers. | ...knows RecordFreelancer? | Plataform | IE: Plataform contains RecordFreelancer (HC + LC) |
-|  | ...knows the payment transaction list? | Organization | IE : in the MD Organizations has PaymentTransactionList |
-|  | ...knows the organization? | Platform | IE : in the MD Platform has Organization |
+| 2. The system identifies the freelancers that have mean task delay higher than 3 hours and have a percentage of delays higher than the overall percentage of delays. After that, starts the notification of the freelancers. | ...knows FreelancerRecord? | Plataform | IE: Plataform contains RecordFreelancer (HC + LC) |
+|  | ...knows the PaymentTransactionList? | Platform | IE : in the MD Platform has Organization |
 |  | ...knows the each payment transaction? | PaymentTransactionList | IE: Owns the class PaymentTransaction (HC + LC) |
 |  | ...knows the task delay? | PaymentTransaction | IE: Knows its own information |  
 |  | ...knows the percentage of delays? | PaymentTransaction | IE: knows its own information  |
 |  | ...know the freelancers? | ListFreelancers | IE: Owns the class ListFreelancers (HC + LC) |
 |  |                          | PaymentTransactionList | IE : In the MD PaymentTransactionList has Freealancer |
 |  | ...knows the freelancer´s email? | Freelancer | IE: Owns his data |
-|  | ...schedules the next year´s notification? | RecordFreelancer | IE |
+|  | ...schedules the next year´s notification? | FreelacerRecord | IE |
 
 
 
@@ -106,7 +105,7 @@ The freelancer stays informed.
  * NotifyFreelancersTask
  * Timer
  * ListFreelancers
- * RecordFreelancer
+ * FreelancerRecord
  * PaymentTransactionList
 
 

@@ -18,14 +18,18 @@ deactivate UI
 CO -> UI : introduces the information
 activate UI
 
-UI -> CTRL : newFreelancer(id, name, lvlExp, email, nif, iban, adress, country)
+UI -> CTRL : newFreelancer(name, lvlExp, email, nif, iban, adress, country)
 activate CTRL
 
-CTRL -> PLAT: rfrl=getRegistoFreelancers()
+CTRL -> PLAT : rfrl=getRegistoFreelancers()
 activate PLAT
 deactivate PLAT
 
-CTRL -> RFR : newFreelancer(id, name, lvlExp, email, nif, iban, adress, country)
+CTRL -> PLAT : generateId(name)
+activate PLAT 
+deactivate PLAT
+
+CTRL -> RFR : newFreelancer(name, lvlExp, email, nif, iban, adress, country)
 activate RFR
 RFR --> FREEL**: create(id, name, lvlExp, email, nif, iban, adress, country)
 activate FREEL

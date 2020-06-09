@@ -5,7 +5,7 @@ actor "Collaborator" as ADM
 activate ADM
 ADM -> ":System" : starts to create a new Freelancer.
 activate ":System"
-":System" --> ADM : asks needed information (i.e. id, name, level of expertise, e-mail, NIF, bank account (IBAN), address and country).
+":System" --> ADM : asks needed information (i.e. name, level of expertise, e-mail, NIF, bank account (IBAN), address and country).
 deactivate ":System"
 
 ADM -> ":System" : introduces the information.
