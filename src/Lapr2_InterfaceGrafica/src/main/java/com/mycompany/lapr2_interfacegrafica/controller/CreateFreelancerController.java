@@ -9,16 +9,8 @@ import lapr2.pot.ui.console.utils.Utils;
 
 public class CreateFreelancerController {
 
-    private String id;
-    private String name;
-    private String lvlExp;
-    private String email;
-    private String nif;
-    private String iban;
-    private String country;
-    private String adress;
+    
     private Platform platform;
-
     public FreelancersRecord regFreel;
     public Freelancer freel;
 
@@ -28,7 +20,8 @@ public class CreateFreelancerController {
     }
 
     public Freelancer newFreelancer(String name, String lvlExp, String email, String nif, String iban, String country, String adress) {
-        return regFreel.newFreelancer(name, lvlExp, email, nif, iban, country, adress);
+        freel = regFreel.newFreelancer(name, lvlExp, email, nif, iban, country, adress);
+        return freel;
     }
 
     public boolean registerFreelancer() {

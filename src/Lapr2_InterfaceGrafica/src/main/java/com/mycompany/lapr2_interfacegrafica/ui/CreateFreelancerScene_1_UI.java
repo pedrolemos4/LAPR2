@@ -118,7 +118,7 @@ public class CreateFreelancerScene_1_UI implements Initializable {
             String adress = this.txtAddress.getText();
             controller.newFreelancer(name, lvlExp, email, nif, iban, country, adress);
             goToScene(event,"/fxml/CreateFreelancer_2.fxml");
-           // this.freel.toCreateFreelancerScene2UI();
+            this.freel.toCreateFreelancerScene2UI();
         } catch(IllegalArgumentException e) {
             invalidLbl.setText(e.getMessage());
         }

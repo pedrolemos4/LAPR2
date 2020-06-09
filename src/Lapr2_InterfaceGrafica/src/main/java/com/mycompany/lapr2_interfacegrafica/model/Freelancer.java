@@ -135,7 +135,7 @@ public class Freelancer {
     }
 
     public void setExpertise(String expertise) {
-        if(expertise ==null){
+        if(expertise ==null || expertise!="Junior" || expertise!="Senior"){
             throw new IllegalArgumentException("Empty Expertise !");
         }
         this.lvlExp = expertise;
