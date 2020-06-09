@@ -12,7 +12,6 @@ class Organization {
 }
 
 class Freelancer {
-  -String id
   -String name
   -String expertiseLevel
   -String email
@@ -36,11 +35,6 @@ class PaymentTransaction{
  -String workQualityDescription
 }
 
-class PaymentDay {
-  -Date timeOfDay
-  -Date dayOfMonth
-}
-
 Platform "1" -- "*" Organization : has registered >
 
 Organization "1" -- "*" Task: has >
@@ -50,8 +44,6 @@ PaymentTransaction "1" -- "1" Freelancer: is related to >
 PaymentTransaction "1" -- "1" Task: is related to >
 
 Task "1..*" -- "1" Freelancer: assigned >
-
-PaymentDay "1" -- "0..*" PaymentTransaction : is related to
 
 
 @enduml

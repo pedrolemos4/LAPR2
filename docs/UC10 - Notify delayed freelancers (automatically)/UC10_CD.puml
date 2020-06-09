@@ -5,7 +5,6 @@ left to right direction
 class Platform {
   -String designation
   +agendNotification()
-  +getOrganization()
   +getRegistoFreelancer()
 }
 
@@ -29,13 +28,7 @@ class NotifyFreelancerTask {
   +nextNotification()
 }
 
-class Organization {
-  -String name
-  +getPaymentTransactionList()
-}
-
 class Freelancer {
-  -String id
   -String name
   -String expertiseLevel
   -String email
@@ -44,6 +37,7 @@ class Freelancer {
   -String address
   -String country
   +getEmail()
+  +List<Freelancer> ListFreelancer
   }
 
 class PaymentTransaction{
@@ -58,22 +52,14 @@ class PaymentTransactionList {
   +get(i) 
 }
 
-class ListFreelancer {
-  +get(i) 
-}
 
-
-Platform "1" -- "*" Organization : has registered >
-Platform "1" -- "1" NotifyFreelancerTask : has>
+Platform "1" -- "*" PaymentTransactionList : has registered >
+Platform "1" -- "1" NotifyFreelancerTask : has >
 Platform "1" -- "1" FreelancersRecord : has >
 
 NotifyFreelancerTask  --  Timer 
 
-FreelancersRecord "1" -- "1" ListFreelancer : has >
-
-ListFreelancer "1" -- "1..*" Freelancer : has >
-
-Organization "1" -- "*" PaymentTransactionList: has >
+FreelancersRecord "1" -- "1..*" Freelancer : possui >
 
 PaymentTransaction "1" -- "1" Freelancer: is related to >
 
