@@ -10,22 +10,21 @@ import lapr2.pot.ui.console.utils.Utils;
 public class CreateFreelancerController {
 
     
-    private Platform platform;
+    public Platform platform;
     public FreelancersRecord regFreel;
     public Freelancer freel;
 
     public CreateFreelancerController() {
         this.platform = POTApplication.getPlataforma();
-        regFreel= platform.getFreelancersRecord();
+        this.regFreel= platform.getFreelancersRecord();
     }
 
     public Freelancer newFreelancer(String name, String lvlExp, String email, String nif, String iban, String country, String adress) {
-        freel = regFreel.newFreelancer(name, lvlExp, email, nif, iban, country, adress);
-        return freel;
+        return new Freelancer(name, lvlExp, email, nif, iban, country, adress);
     }
 
     public boolean registerFreelancer() {
-        return this.regFreel.registerFreelancer(this.freel);
+        return regFreel.registerFreelancer(this.freel);
     }
 
     public String getFreelancerString() {

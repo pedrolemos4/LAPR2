@@ -22,8 +22,8 @@ import javafx.stage.Stage;
  */
 public class CreateFreelancerUI {
     
-    private final MainApp mainApp;
-    private final CreateFreelancerController controller;
+    public MainApp mainApp;
+    public CreateFreelancerController controller;
     
     public CreateFreelancerUI(MainApp mainApp){
         this.mainApp = mainApp;

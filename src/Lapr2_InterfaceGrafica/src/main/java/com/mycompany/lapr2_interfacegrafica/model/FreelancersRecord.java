@@ -12,21 +12,21 @@ import java.util.Timer;
 
 public class FreelancersRecord {
 
-    private String id;
-    private String name;
-    private String lvlExp;
-    private String email;
-    private int nif;
-    private String iban;
-    private String country;
-    private String adress;
+    public String id;
+    public String name;
+    public String lvlExp;
+    public String email;
+    public int nif;
+    public String iban;
+    public String country;
+    public String adress;
 
-    private Organization org;
-    private Platform plat;
-    private Freelancer freel;
+    public Organization org;
+    public Platform plat;
+    public Freelancer freel;
 
-    private final List<Freelancer> arrayFreelancers;
-    private PaymentTransactionList payemntTransList;
+    public List<Freelancer> arrayFreelancers;
+    public PaymentTransactionList payemntTransList;
 
     public FreelancersRecord() {
         this.arrayFreelancers = new ArrayList<>();

@@ -109,16 +109,10 @@ public class CreateFreelancerScene_1_UI implements Initializable {
     @FXML
     private void btnNextAction(ActionEvent event) throws IOException {
         try {
-            String name = this.txtNome.getText();
-            String lvlExp =  this.txtLevelOfExpertise.getText();
-            String email = this.txtEmail.getText();
-            String nif = this.txtNIF.getText();
-            String iban = this.txtIBAN.getText();
-            String country = this.txtCountry.getText();
-            String adress = this.txtAddress.getText();
-            controller.newFreelancer(name, lvlExp, email, nif, iban, country, adress);
+            controller.newFreelancer(txtNome.getText(), txtLevelOfExpertise.getText(), txtEmail.getText(), txtNIF.getText(), txtIBAN.getText(), txtCountry.getText(), txtAddress.getText());
+//            controller.registerFreelancer();
             goToScene(event,"/fxml/CreateFreelancer_2.fxml");
-            this.freel.toCreateFreelancerScene2UI();
+            //this.freel.toCreateFreelancerScene2UI();
         } catch(IllegalArgumentException e) {
             invalidLbl.setText(e.getMessage());
         }

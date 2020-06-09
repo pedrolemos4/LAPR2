@@ -16,7 +16,7 @@ import javafx.scene.control.Label;
  */
 public class CreateFreelancerScene_2_UI {
     
-    private CreateFreelancerUI freel;
+    public CreateFreelancerUI freel;
 
     @FXML
     private Button btnConfirm;
@@ -28,6 +28,9 @@ public class CreateFreelancerScene_2_UI {
     private Label lblFreelancer;
     
     
+    public CreateFreelancerScene_2_UI(){
+        setFreelancer(freel);
+    }
     
     public void setFreelancer(CreateFreelancerUI freel){
        this.freel=freel;
@@ -39,9 +42,9 @@ public class CreateFreelancerScene_2_UI {
 
     @FXML
     private void btnConfirmAction(ActionEvent event) {
-        boolean registered = this.freel.getCreateFreelancerController().registerFreelancer();
+//        boolean registered = this.freel.getCreateFreelancerController().registerFreelancer();
         String notification;
-        if (registered) {
+        if (freel.getCreateFreelancerController().registerFreelancer()==true) {
             notification = "Specify Category Success.";
         } else {
             notification = "Specify Category Insuccess.";
