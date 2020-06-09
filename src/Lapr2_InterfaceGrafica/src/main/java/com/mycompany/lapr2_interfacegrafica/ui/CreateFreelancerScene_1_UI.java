@@ -48,7 +48,6 @@ public class CreateFreelancerScene_1_UI implements Initializable {
     private Button btnCancel;
     @FXML
     private Button btnNext;
-    @FXML
     private TextField txtId;
     @FXML
     private Label invalidLbl;

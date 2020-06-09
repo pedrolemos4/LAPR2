@@ -22,10 +22,23 @@ public class Freelancer {
         setExpertise(lvlExp);
         setName(name);
         setNif(nif);
+    }
+    
+    public Freelancer(String id,String name, String lvlExp, String email, String nif, String iban, String country, String adress) {
+        if (id==null || adress == null || country == null || email == null || iban == null || lvlExp == null || name == null || nif == null) {
+            throw new IllegalArgumentException("None of the arguments can be null or empty.");
+        }
+        setAddress(adress);
+        setCountry(country);
+        setEmail(email);
+        setIBAN(iban);
+        setExpertise(lvlExp);
+        setName(name);
+        setNif(nif);
         setId(id);
     }
 
-    public String generateId(String nome) {
+    public void generateId(String nome) {
         String letra1, letra2;
         String[] array = nome.split("");
         letra1 = array[0];
@@ -33,7 +46,7 @@ public class Freelancer {
         letra2 = array[size];
         int numero = compareFreelancer(this);
         String idGerado = (letra1+letra2+numero);
-        return idGerado;
+        setId(idGerado);
     }
     
 

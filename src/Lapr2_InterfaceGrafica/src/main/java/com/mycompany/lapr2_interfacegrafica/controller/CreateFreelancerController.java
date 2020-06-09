@@ -28,8 +28,7 @@ public class CreateFreelancerController {
     }
 
     public Freelancer newFreelancer(String name, String lvlExp, String email, String nif, String iban, String country, String adress) {
-        freel = regFreel.newFreelancer(name, lvlExp, email, nif, iban, country, adress);
-        return freel;
+        return regFreel.newFreelancer(name, lvlExp, email, nif, iban, country, adress);
     }
 
     public boolean registerFreelancer() {
