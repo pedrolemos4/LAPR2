@@ -1,9 +1,10 @@
 package com.mycompany.lapr2_interfacegrafica.authorization.model;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-public class UsersRecord {
+public class UsersRecord implements Serializable {
 
     private Set<User> m_lstUsers = new HashSet<>();
 
@@ -12,10 +13,11 @@ public class UsersRecord {
     }
 
     public boolean addUser(User user) {
-        if (user != null) {
+        if (hasUser(user)) {
             return this.m_lstUsers.add(user);
+        } else {
+            return false;
         }
-        return false;
     }
 
     public boolean removeUser(User user) {
@@ -43,6 +45,12 @@ public class UsersRecord {
     }
 
     public boolean hasUser(User user) {
-        return this.m_lstUsers.contains(user);
+        boolean flag = true;
+        for (User utlz : this.m_lstUsers) {
+            if (utlz.getEmail().equals(user.getEmail())) {
+                return false;
+            }
+        }
+        return flag;
     }
 }

@@ -1,12 +1,13 @@
 package com.mycompany.lapr2_interfacegrafica.authorization.model;
 
-import java.util.List;
+import java.io.Serializable;
 
-public class UserSession {
+public class UserSession implements Serializable {
 
-    private User m_oUser = null;
+    private User m_oUser ;
 
-    private UserSession() {
+    public UserSession() {
+        this.m_oUser=null;
     }
 
     public UserSession(User oUser) {
@@ -52,7 +53,7 @@ public class UserSession {
         return null;
     }
 
-    public List<UserRole> getUserRoles() {
-        return this.m_oUser.getRoles();
+    public User getUser() {
+        return this.m_oUser;
     }
 }

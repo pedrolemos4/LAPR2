@@ -1,12 +1,13 @@
 package com.mycompany.lapr2_interfacegrafica.authorization.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-public class User {
+public class User implements Serializable{
 
     private String m_strName;
     private String m_strEmail;
