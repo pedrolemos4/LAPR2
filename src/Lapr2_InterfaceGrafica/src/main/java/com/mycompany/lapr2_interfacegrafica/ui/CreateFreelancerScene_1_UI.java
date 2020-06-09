@@ -98,7 +98,7 @@ public class CreateFreelancerScene_1_UI {
     @FXML
     private void btnNextAction(ActionEvent event) {
         try {
-            this.freel.getCreateFreelancerController().newFreelancer(txtId.getText(), txtNome.getText(), txtLevelOfExpertise.getText(), txtEmail.getText(), txtNIF.getText(), txtIBAN.getText(), txtCountry.getText(), txtAddress.getText());
+            this.freel.getCreateFreelancerController().newFreelancer(txtNome.getText(), txtLevelOfExpertise.getText(), txtEmail.getText(), txtNIF.getText(), txtIBAN.getText(), txtCountry.getText(), txtAddress.getText());
             this.freel.toCreateFreelancerScene2UI();
         } catch(IllegalArgumentException e) {
             invalidLbl.setText(e.getMessage());

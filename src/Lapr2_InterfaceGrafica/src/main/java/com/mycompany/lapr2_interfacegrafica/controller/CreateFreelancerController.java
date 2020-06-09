@@ -25,9 +25,9 @@ public class CreateFreelancerController {
     public CreateFreelancerController() {
     }
 
-    public boolean newFreelancer(String id, String name, String lvlExp, String email, String nif, String iban, String country, String adress) {
+    public boolean newFreelancer(String name, String lvlExp, String email, String nif, String iban, String country, String adress) {
         try {
-            this.freel = this.platform.getFreelancersRecord().newFreelancer(id, name, lvlExp, email, nif, iban, country, adress);
+            this.freel = this.platform.getFreelancersRecord().newFreelancer(name, lvlExp, email, nif, iban, country, adress);
             return this.platform.getFreelancersRecord().validatesFreelancer(this.freel);
         } catch (RuntimeException ex) {
             Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);
