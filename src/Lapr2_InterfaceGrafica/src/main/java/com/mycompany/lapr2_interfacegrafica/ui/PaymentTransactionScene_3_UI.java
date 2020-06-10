@@ -26,7 +26,7 @@ public class PaymentTransactionScene_3_UI implements Initializable {
 
     @FXML
     private void btnOKAction(ActionEvent event) {
-        this.createPaymentTransactionUI.getMainApp().toMainScene();
+        //this.createPaymentTransactionUI.getMainApp().toMainScene();
     }
 
     public void showNotification(String notification) {

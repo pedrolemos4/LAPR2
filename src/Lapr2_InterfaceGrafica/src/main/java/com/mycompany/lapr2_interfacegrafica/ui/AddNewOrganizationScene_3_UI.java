@@ -8,7 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-public class AddNewOrganizationScene_3_UI implements Initializable {
+public class AddNewOrganizationScene_3_UI {
 
     private AddNewOrganizationUI addNewOrganizationUI;
 
@@ -16,10 +16,6 @@ public class AddNewOrganizationScene_3_UI implements Initializable {
     private Label lblNotification;
     @FXML
     private Button btnOK;
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-    }
 
     public void setAddNewOrganizationUI(AddNewOrganizationUI addNewOrganizationUI) {
         this.addNewOrganizationUI = addNewOrganizationUI;
@@ -31,7 +27,7 @@ public class AddNewOrganizationScene_3_UI implements Initializable {
 
     @FXML
     private void btnOKAction(ActionEvent event) {
-        this.addNewOrganizationUI.getMainApp().toMainScene();
+        //this.addNewOrganizationUI.getMainApp().toMainScene();
     }
 
 }

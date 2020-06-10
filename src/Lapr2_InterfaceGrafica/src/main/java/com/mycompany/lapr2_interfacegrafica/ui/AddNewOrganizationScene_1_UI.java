@@ -1,5 +1,6 @@
 package com.mycompany.lapr2_interfacegrafica.ui;
 
+import com.mycompany.lapr2_interfacegrafica.controller.OrganizationRecordController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -19,6 +20,7 @@ import javafx.stage.Stage;
 public class AddNewOrganizationScene_1_UI implements Initializable {
 
     private AddNewOrganizationUI addNewOrganization;
+    private OrganizationRecordController controller;
 
     @FXML
     private Button btnCancel;
@@ -41,6 +43,7 @@ public class AddNewOrganizationScene_1_UI implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        this.controller = new OrganizationRecordController();
     }
 
     public TextField getTxtName() {
@@ -52,12 +55,12 @@ public class AddNewOrganizationScene_1_UI implements Initializable {
     }
 
     public void showOrganization() {
-        this.txtName.setText(this.addNewOrganization.getOrganizationRecordController().getOrganizationName());
-        this.txtNIF.setText(this.addNewOrganization.getOrganizationRecordController().getOrganizationNIF());
-        this.txtManagerName.setText(this.addNewOrganization.getOrganizationRecordController().getOrganization().getManager().getName());
-        this.txtManagerEmail.setText(this.addNewOrganization.getOrganizationRecordController().getOrganization().getManager().getEmail());
-        this.txtCollaboratorName.setText(this.addNewOrganization.getOrganizationRecordController().getOrganization().getCollaborator().getName());
-        this.txtCollaboratorEmail.setText(this.addNewOrganization.getOrganizationRecordController().getOrganization().getCollaborator().getEmail());
+        this.txtName.setText(this.controller.getOrganizationName());
+        this.txtNIF.setText(this.controller.getOrganizationNIF());
+        this.txtManagerName.setText(this.controller.getOrganization().getManager().getName());
+        this.txtManagerEmail.setText(this.controller.getOrganization().getManager().getEmail());
+        this.txtCollaboratorName.setText(this.controller.getOrganization().getCollaborator().getName());
+        this.txtCollaboratorEmail.setText(this.controller.getOrganization().getCollaborator().getEmail());
     }
 
     @FXML
@@ -92,7 +95,7 @@ public class AddNewOrganizationScene_1_UI implements Initializable {
 
     @FXML
     private void btnCancelAction(ActionEvent event) throws IOException {
-        goToScene(event,"/fxml/JanelaLogin.fxml");
+        goToScene(event, "/fxml/JanelaLogin.fxml");
         //this.addNewOrganization.getMainApp().toMainScene();
     }
 
@@ -126,8 +129,7 @@ public class AddNewOrganizationScene_1_UI implements Initializable {
         this.lblAlert.setText(null);
     }
 
-    
-     private void goToScene(ActionEvent event, String fxml) throws IOException {
+    private void goToScene(ActionEvent event, String fxml) throws IOException {
         Parent button = FXMLLoader.load(getClass().getResource(fxml));
         Scene buttonScene = new Scene(button);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

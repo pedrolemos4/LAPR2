@@ -1,5 +1,6 @@
 package com.mycompany.lapr2_interfacegrafica.ui;
 
+import com.mycompany.lapr2_interfacegrafica.controller.CreatePaymentTransactionController;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -11,6 +12,8 @@ import javafx.scene.control.Label;
 public class PaymentTransactionScene_2_UI implements Initializable {
 
     private CreatePaymentTransactionUI createPaymentTransactionUI;
+    private CreatePaymentTransactionController controller;
+
     @FXML
     private Button btnConfirm;
     @FXML
@@ -22,6 +25,7 @@ public class PaymentTransactionScene_2_UI implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        this.controller = new CreatePaymentTransactionController();
     }
 
     public void setCreatePaymentTransactionUI(CreatePaymentTransactionUI createPaymentTransactionUI) {
@@ -29,32 +33,31 @@ public class PaymentTransactionScene_2_UI implements Initializable {
     }
 
     public void showTransaction() {
-        String strTransaction = createPaymentTransactionUI.getCreatePaymentTransactionController().getPaymentTransactionToString();
+        String strTransaction = this.controller.getPaymentTransactionToString();
         this.lblTransaction.setMinWidth(strTransaction.length());
         this.lblTransaction.setText(strTransaction);
     }
 
     @FXML
     private void btnConfirmAction(ActionEvent event) {
-        boolean registered = this.createPaymentTransactionUI.
-                getCreatePaymentTransactionController().paymentTransactionRegister();
+        boolean registered = this.controller.paymentTransactionRegister();
         String notification;
         if (registered) {
             notification = "Transaction created with Success.";
         } else {
             notification = "Transaction created Insuccess.";
         }
-        this.createPaymentTransactionUI.toAddNewOrganizationScene3UI(notification);
+        this.createPaymentTransactionUI.toPaymentTransactionScene3UI(notification);
     }
 
     @FXML
     private void btnCancelAction(ActionEvent event) {
-        this.createPaymentTransactionUI.getMainApp().toMainScene();
+        //this.createPaymentTransactionUI.getMainApp().toMainScene();
     }
 
     @FXML
     private void btnReturnAction(ActionEvent event) {
-        this.createPaymentTransactionUI.toAddNewOrganizationScene1UI();
+        this.createPaymentTransactionUI.toPaymentTransactionScene1UI();
     }
 
 }

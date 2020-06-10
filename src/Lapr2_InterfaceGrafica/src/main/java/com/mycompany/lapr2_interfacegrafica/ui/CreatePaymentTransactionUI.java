@@ -22,7 +22,7 @@ public class CreatePaymentTransactionUI {
         return this.controller;
     }
 
-    public void toAddNewOrganizationScene1UI() {
+    public void toPaymentTransactionScene1UI() {
         try {
             PaymentTransactionScene_1_UI createPaymentTransaction1UI = (PaymentTransactionScene_1_UI) this.mainApp.replaceSceneContent("/fxml/PaymentTransaction_1.fxml");
             createPaymentTransaction1UI.setPaymentTransactionUI(this);
@@ -35,7 +35,7 @@ public class CreatePaymentTransactionUI {
         }
     }
 
-    public void toAddNewOrganizationScene2UI() {
+    public void toPaymentTransactionScene2UI() {
         try {
             PaymentTransactionScene_2_UI createPaymentTransaction2UI = (PaymentTransactionScene_2_UI) this.mainApp.replaceSceneContent("/fxml/PaymentTransaction_2.fxml");
             createPaymentTransaction2UI.setCreatePaymentTransactionUI(this);
@@ -45,7 +45,7 @@ public class CreatePaymentTransactionUI {
         }
     }
 
-    public void toAddNewOrganizationScene3UI(String notification) {
+    public void toPaymentTransactionScene3UI(String notification) {
         try {
             PaymentTransactionScene_3_UI createPaymentTransaction3UI = (PaymentTransactionScene_3_UI) this.mainApp.replaceSceneContent("/fxml/PaymentTransaction_3.fxml");
             createPaymentTransaction3UI.setCreatePaymentTransactionUI(this);

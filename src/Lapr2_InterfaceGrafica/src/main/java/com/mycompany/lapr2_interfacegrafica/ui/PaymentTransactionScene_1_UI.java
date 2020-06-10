@@ -17,6 +17,8 @@ import javafx.scene.input.KeyEvent;
 public class PaymentTransactionScene_1_UI implements Initializable {
 
     private CreatePaymentTransactionUI createPaymentTransactionUI;
+    private CreatePaymentTransactionController controller;
+    
     @FXML
     private Button btnNext;
     @FXML
@@ -38,6 +40,7 @@ public class PaymentTransactionScene_1_UI implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        this.controller = new CreatePaymentTransactionController();
     }
 
     public void setPaymentTransactionUI(CreatePaymentTransactionUI createPaymentTransactionUI) {
@@ -56,12 +59,12 @@ public class PaymentTransactionScene_1_UI implements Initializable {
     }
 
     public void showTransaction() {
-        this.txtTransactionID.setText(this.createPaymentTransactionUI.getCreatePaymentTransactionController().getPayTId());
-        this.cmbTask.setValue(this.createPaymentTransactionUI.getCreatePaymentTransactionController().getTask());
-        this.txtTaskDelay.setText(this.createPaymentTransactionUI.getCreatePaymentTransactionController().getTaskDelay());
-        this.txtTaskEndDate.setText(this.createPaymentTransactionUI.getCreatePaymentTransactionController().getEndDate());
-        this.txtWorkDescription.setText(this.createPaymentTransactionUI.getCreatePaymentTransactionController().getWorkDescription());
-        this.cmbFreelancer.setValue(this.createPaymentTransactionUI.getCreatePaymentTransactionController().getFreelancer());
+        this.txtTransactionID.setText(this.controller.getPayTId());
+        this.cmbTask.setValue(this.controller.getTask());
+        this.txtTaskDelay.setText(this.controller.getTaskDelay());
+        this.txtTaskEndDate.setText(this.controller.getEndDate());
+        this.txtWorkDescription.setText(this.controller.getWorkDescription());
+        this.cmbFreelancer.setValue(this.controller.getFreelancer());
     }
 
     @FXML
@@ -75,7 +78,7 @@ public class PaymentTransactionScene_1_UI implements Initializable {
             String freelancer = this.cmbFreelancer.getSelectionModel().getSelectedItem();
             this.createPaymentTransactionUI.getCreatePaymentTransactionController().newPaymentTransaction(payTId, task, endDate,
                     taskDelay, workDescription, freelancer);
-            this.createPaymentTransactionUI.toAddNewOrganizationScene2UI();
+            this.createPaymentTransactionUI.toPaymentTransactionScene2UI();
         } catch (NumberFormatException ex) {
             this.lblAlert.setText("Invalid number!");
             this.txtTaskDelay.requestFocus();
@@ -93,7 +96,7 @@ public class PaymentTransactionScene_1_UI implements Initializable {
 
     @FXML
     private void btnCancelAction(ActionEvent event) {
-        this.createPaymentTransactionUI.getMainApp().toMainScene();
+        //this.createPaymentTransactionUI.getMainApp().toMainScene();
     }
 
     @FXML

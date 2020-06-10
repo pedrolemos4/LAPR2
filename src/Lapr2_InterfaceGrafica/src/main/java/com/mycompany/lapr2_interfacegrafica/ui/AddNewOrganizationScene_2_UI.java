@@ -1,5 +1,6 @@
 package com.mycompany.lapr2_interfacegrafica.ui;
 
+import com.mycompany.lapr2_interfacegrafica.controller.OrganizationRecordController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,6 +18,7 @@ import javafx.stage.Stage;
 public class AddNewOrganizationScene_2_UI implements Initializable {
 
     private AddNewOrganizationUI addNewOrganizationUI;
+    private OrganizationRecordController controller;
 
     @FXML
     private Button btnConfirm;
@@ -29,7 +31,7 @@ public class AddNewOrganizationScene_2_UI implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-      //  showOrganization();
+        this.controller = new OrganizationRecordController();
     }
 
     public void setAddNewOrganization(AddNewOrganizationUI addNewOrganizationUI) {
@@ -37,12 +39,12 @@ public class AddNewOrganizationScene_2_UI implements Initializable {
     }
 
     public void showOrganization() {
-        this.lblOrganization.setText(this.addNewOrganizationUI.getOrganizationRecordController().getOrganizationToString());
+        this.lblOrganization.setText(this.controller.getOrganizationToString());
     }
 
     @FXML
     private void btnConfirmAction(ActionEvent event) {
-        boolean registered = this.addNewOrganizationUI.getOrganizationRecordController().registerOrganization();
+        boolean registered = this.controller.registerOrganization();
         String notification;
         if (registered) {
             notification = "Organization added with sucess.";
@@ -54,16 +56,16 @@ public class AddNewOrganizationScene_2_UI implements Initializable {
 
     @FXML
     private void btnCancelAction(ActionEvent event) throws IOException {
-        goToScene(event,"/fxml/JanelaLogin.fxml");
+        goToScene(event, "/fxml/JanelaLogin.fxml");
         //this.addNewOrganizationUI.getMainApp().toMainScene();
     }
 
     @FXML
     private void btnReturnAction(ActionEvent event) throws IOException {
-        goToScene(event,"/fxml/AddNewOrganization_1_.fxml");
-        //this.addNewOrganizationUI.toAddNewOrganizationScene1UI();
+        goToScene(event, "/fxml/AddNewOrganization_1_.fxml");
+        this.addNewOrganizationUI.toAddNewOrganizationScene1UI();
     }
-    
+
     private void goToScene(ActionEvent event, String fxml) throws IOException {
         Parent button = FXMLLoader.load(getClass().getResource(fxml));
         Scene buttonScene = new Scene(button);
