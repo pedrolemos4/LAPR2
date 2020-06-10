@@ -25,11 +25,10 @@ import javafx.stage.Stage;
  *
  * @author pedro
  */
-public class CreateFreelancerScene_2_UI implements Initializable{
+public class CreateFreelancerScene_2_UI implements Initializable {
 
-    
-    private static final String TITULO_APLICACAO="Pray4Us";
-    
+    private static final String TITULO_APLICACAO = "Pray4Us";
+
     public CreateFreelancerController controller;
 
     @FXML
@@ -44,7 +43,6 @@ public class CreateFreelancerScene_2_UI implements Initializable{
 //    public void setFreelancer(CreateFreelancerUI freel) {
 //        this.freel = freel;
 //    }
-
     public void showFreelancer() {
         this.lblFreelancer.setText(controller.getFreelancerString());
     }
@@ -53,29 +51,30 @@ public class CreateFreelancerScene_2_UI implements Initializable{
     private void btnConfirmAction(ActionEvent event) throws IOException {
         String notification;
         if (controller.registerFreelancer()) {
-            notification = "Specify Category Success.";
+            AlertUI.createAlert(Alert.AlertType.INFORMATION, "Success", "T4J-PAYMENTS", "Freelancer registered successfully").show();
+            goToScene(event, "/fxml/OptionsCollaborator.fxml");
         } else {
-            notification = "Specify Category Insuccess.";
+            AlertUI.createAlert(Alert.AlertType.ERROR, "Insuccess", "T4J-CREATE FREELANCER", "Freelancer registered unsuccessfully").show();
+            goToScene(event, "/fxml/CreateFreelancer_1.fxml");
         }
-        goToScene(event,"/fxml/CreateFreelancer_3.fxml"/*,notification*/);        
 //        this.freel.toCreateFreelancerScene3UI(notification);
     }
 
     @FXML
-    private void btnCancelAction(ActionEvent event) {
-        //this.freel.getMainApp().toMainScene();
+    private void btnCancelAction(ActionEvent event) throws IOException {
+        goToScene(event, "/fxml/OptionsCollaborator.fxml");
     }
 
     @FXML
     private void btnReturnAction(ActionEvent event) throws IOException {
-        goToScene(event, "/fxml/CreateFreelancer_1_UI.fxml");
+        goToScene(event, "/fxml/CreateFreelancer_1.fxml");
     }
 
     private void goToScene(ActionEvent event, String fxml) throws IOException {
         Parent button = FXMLLoader.load(getClass().getResource(fxml));
         Scene buttonScene = new Scene(button);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-      //  AlertUI.createAlert(Alert.AlertType.CONFIRMATION, TITULO_APLICACAO, "Arroz", not);
+        //  AlertUI.createAlert(Alert.AlertType.CONFIRMATION, TITULO_APLICACAO, "Arroz", not);
         window.setScene(buttonScene);
         window.show();
     }
