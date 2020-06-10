@@ -20,13 +20,13 @@ public class CreateFreelancerController {
     }
 
     public Freelancer newFreelancer(String name, String lvlExp, String email, String nif, String iban, String country, String adress) {
-        freel=new Freelancer(name, lvlExp, email, nif, iban, country, adress);
+        this.freel=new Freelancer(name, lvlExp, email, nif, iban, country, adress);
         return freel;
     }
 
     public boolean registerFreelancer() {
-        regFreel.generateId(freel);
-        return regFreel.registerFreelancer(freel);
+        regFreel.generateId(this.freel);
+        return regFreel.registerFreelancer(this.freel);
     }
 
     public String getFreelancerString() {
