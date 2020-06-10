@@ -15,7 +15,7 @@ public class CreateFreelancerController {
     public Freelancer freel;
 
     public CreateFreelancerController() {
-        this.platform = POTApplication.getPlataforma();
+        this.platform = POTApplication.getPlatform();
         this.regFreel= platform.getFreelancersRecord();
     }
 
