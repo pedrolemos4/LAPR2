@@ -69,7 +69,6 @@ public class AddNewOrganizationScene_1_UI implements Initializable {
 //            addNewOrganization= new AddNewOrganizationUI();
 //        }
         try {
-            System.out.println("zlkfjalkdfjalk");
 //            this.addNewOrganization.getOrganizationRecordController().newOrganization(this.txtName.getText(),
 //                    this.txtNIF.getText(), this.txtManagerName.getText(),
 //                    this.txtManagerEmail.getText(), this.txtCollaboratorName.getText(),
@@ -129,11 +128,16 @@ public class AddNewOrganizationScene_1_UI implements Initializable {
         this.lblAlert.setText(null);
     }
 
-    private void goToScene(ActionEvent event, String fxml) throws IOException {
+    public void goToScene(ActionEvent event, String fxml) throws IOException {
         Parent button = FXMLLoader.load(getClass().getResource(fxml));
         Scene buttonScene = new Scene(button);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(buttonScene);
         window.show();
+        setController();
+    }
+
+    public void setController() {
+        this.controller = new OrganizationRecordController();
     }
 }
