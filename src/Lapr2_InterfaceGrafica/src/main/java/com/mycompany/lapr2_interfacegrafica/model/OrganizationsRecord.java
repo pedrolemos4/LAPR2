@@ -17,10 +17,18 @@ public class OrganizationsRecord {
 
     public OrganizationsRecord() {
         this.m_lstOrganizations = new ArrayList<>();
-        System.out.println("Registo de org");
     }
 
     public Organization newOrganization(String name, String NIF, String nameM, String emailM, String nameC, String emailC) {
+        if (!this.validateNIF(NIF)) {
+            throw new IllegalArgumentException("There is already an organization with a NIF equal to the one introduced!");
+        }
+        if (!this.validateManagerEmail(emailM)) {
+            throw new IllegalArgumentException("Manager email already exists in the system!");
+        }
+        if (!this.validateManagerEmail(emailM)) {
+            throw new IllegalArgumentException("Collaborator email already exists in the system!");
+        }
         Manager manager = org.newManager(nameM, emailM);
         Collaborator collab = org.newCollaborator(nameC, emailC);
         return new Organization(name, NIF, manager, collab);
@@ -29,6 +37,33 @@ public class OrganizationsRecord {
     public boolean validateOrganization(Organization org) {
         for (int i = 0; i < m_lstOrganizations.size(); i++) {
             if (m_lstOrganizations.get(i).equals(org)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean validateNIF(String nif) {
+        for (int i = 0; i < m_lstOrganizations.size(); i++) {
+            if (m_lstOrganizations.get(i).getOrgNIF().equals(nif)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean validateManagerEmail(String email) {
+        for (int i = 0; i < m_lstOrganizations.size(); i++) {
+            if (m_lstOrganizations.get(i).getManager().getEmail().equals(email)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean validateCollaboratorEmail(String email) {
+        for (int i = 0; i < m_lstOrganizations.size(); i++) {
+            if (m_lstOrganizations.get(i).getCollaborator().getEmail().equals(email)) {
                 return false;
             }
         }
@@ -59,8 +94,7 @@ public class OrganizationsRecord {
             String emailC = collab.getEmail();
             String pwdC = alg.generatePassword(nameC, emailC);
             FacadeAuthorization aut = plat.getFacadeAuthorization();
-            if (aut.registesUserWithRoles(nameM, emailM, pwdM,
-                    new String[]{Constants.ORGANIZATION_MANAGER_ROLE, Constants.ORGANIZATION_COLLABORATOR_ROLE})
+            if (aut.registesUserWithRole(nameM, emailM, pwdM, Constants.ORGANIZATION_MANAGER_ROLE)
                     && aut.registesUserWithRole(nameC, emailC, pwdC, Constants.ORGANIZATION_COLLABORATOR_ROLE)) {
                 sendEmail(emailM, pwdM);
                 sendEmail(emailC, pwdC);
@@ -180,7 +214,7 @@ public class OrganizationsRecord {
                 sum += entry.getValue().get(i);
                 counter++;
             }
-            mean = sum /counter;
+            mean = sum / counter;
         }
         return mean;
     }

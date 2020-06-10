@@ -8,8 +8,8 @@ public class Collaborator {
     private String m_strEmail;
 
     public Collaborator(String name, String email) {
-        this.m_strName = name;
-        this.m_strEmail = email;
+        setName(name);
+        setEmail(email);
     }
 
     public boolean hasId(String strId) {

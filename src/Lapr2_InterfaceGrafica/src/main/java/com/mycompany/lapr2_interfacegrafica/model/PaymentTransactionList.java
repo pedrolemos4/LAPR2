@@ -14,7 +14,7 @@ public class PaymentTransactionList {
 
     public PaymentTransaction newPaymentTransaction(String payTId, Task task, Freelancer free, Date endDate, int delay, String workQualityDescription) {
         if (this.exists(payTId)) {
-            throw new RuntimeException("There is already a transaction with the same ID as the one entered!");
+            throw new IllegalArgumentException("There is already a transaction with the same ID as the one entered!");
         }
         return new PaymentTransaction(payTId, task, free, endDate, delay, workQualityDescription);
     }

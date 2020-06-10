@@ -8,13 +8,8 @@ public class Manager {
     private String m_strEmail;
 
     public Manager(String name, String email) {
-        if ((name == null) || (email == null)
-                || (name.isEmpty()) || (email.isEmpty())) {
-            throw new IllegalArgumentException("None of the arguments can be null or empty.");
-        }
-
-        this.m_strName = name;
-        this.m_strEmail = email;
+        setName(name);
+        setEmail(email);
     }
 
     public boolean hasId(String strId) {
