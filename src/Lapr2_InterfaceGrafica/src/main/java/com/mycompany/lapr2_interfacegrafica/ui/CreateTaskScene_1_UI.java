@@ -1,5 +1,6 @@
 package com.mycompany.lapr2_interfacegrafica.ui;
 
+import com.mycompany.lapr2_interfacegrafica.controller.CreateTaskController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,6 +22,10 @@ import javafx.stage.Stage;
  * @author Tiago
  */
 public class CreateTaskScene_1_UI implements Initializable {
+
+    private JanelaOptionsCollaboratorScene_UI optionsCollaboratorUI;
+
+    private CreateTaskController createTaskController;
 
     //  private CreateTaskUI createTaskUI;
     @FXML
@@ -52,21 +57,26 @@ public class CreateTaskScene_1_UI implements Initializable {
 //        this.createTaskUI = createTaskUI;
 //    }
     public void showTask() {
-//        this.txtTaskID.setText(this.createTaskUI.getController().getTaskId());
-//        this.txtTaskDescription.setText(this.createTaskUI.getController().getTaskDescription);
-//        this.txtTimeDuration.setText(this.createTaskUI.getController().getTimeDuration);
-//        this.txtCostPerHour.setText(this.createTaskUI.getController().getCostPerHour);
-//        this.txtTaskCategory.setText(this.createTaskUI.getController().getTaskCategory);
+//        this.txtTaskID.setText(this.createTaskController.getTaskId());
+//        this.txtTaskDescription.setText(this.createTaskController.getTaskDescription);
+//        this.txtTimeDuration.setText(this.createTaskController.getTimeDuration);
+//        this.txtCostPerHour.setText(this.createTaskController.getCostPerHour);
+//        this.txtTaskCategory.setText(this.createTaskController.getTaskCategory);
     }
 
     @FXML
-    private void btnCancelAction(ActionEvent event) {
+    private void btnCancelAction(ActionEvent event) throws IOException {
+        goToScene(event, "/fxml/OptionsCollaborator.fxml");
         //     this.createTaskUI.getMainApp().toMainScene();
     }
 
     @FXML
-    private void btnNextAction(ActionEvent event) {
+    private void btnNextAction(ActionEvent event) throws IOException {
         try {
+            createTaskController.newTask(txtTaskID.getText(), txtTaskDescription.getText(),
+                    Integer.parseInt(txtTimeDuration.getText()), Double.parseDouble(txtCostPerHour.getText()),
+                     txtTaskCategory.getText());
+            goToScene(event,"/fxml/CreateTask_2.fxml");
 //            this.createTaskUI.getController().newTask(txtTaskID.getText(), txtTaskDescription.getText(),
 //                    txtTimeDuration.getText(), txtCostPerHour.getText(), txtTaskCategory.getText());
 //            this.createTaskUI.toCreateTaskScene2();

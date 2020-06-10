@@ -48,8 +48,11 @@ public class AddNewOrganizationScene_2_UI implements Initializable {
     private void btnConfirmAction(ActionEvent event) throws IOException {
         boolean registered = this.controller.registerOrganization();
         if(registered){
-            AlertUI.createAlert(Alert.AlertType.INFORMATION, "Success", "T4J-PAYMENTS", "Organization registered successfully");
+            AlertUI.createAlert(Alert.AlertType.INFORMATION, "Success", "T4J-PAYMENTS", "Organization registered successfully").show();
             goToScene(event,"/fxml/OptionsAdmin.fxml");
+        } else{
+            AlertUI.createAlert(Alert.AlertType.ERROR, "Error", "T4J-PAYMENTS", "Organization was not registered.").show();    
+            goToScene(event,"/fxml/AddNewOrganization_1_.fxml");
         }
 //        String notification;
 //        if (registered) {
