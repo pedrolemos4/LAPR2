@@ -51,7 +51,7 @@ public class JanelaOptionsAdminScene_UI implements Initializable {
         if(checkPerformanceIndicatorsUI==null) {
             checkPerformanceIndicatorsUI = new CheckPerformanceIndicatorsUI();
         }
-        checkPerformanceIndicatorsUI.; 
+        checkPerformanceIndicatorsUI.goToScene(event, "/fxml/CheckPerformanceIndicator.fxml"); 
 //        Parent checkPerformance = FXMLLoader.load(getClass().getResource("/fxml/CheckPerformanceIndicators.fxml"));
 //        Scene checkPerfomanceScene = new Scene(checkPerformance);
 //        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();

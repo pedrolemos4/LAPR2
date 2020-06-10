@@ -43,7 +43,6 @@ public class AddNewOrganizationScene_1_UI implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.controller = new OrganizationRecordController();
     }
 
     public TextField getTxtName() {
