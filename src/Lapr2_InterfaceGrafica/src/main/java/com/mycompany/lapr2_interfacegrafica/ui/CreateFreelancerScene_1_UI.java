@@ -26,7 +26,7 @@ import javafx.stage.Stage;
  * @author Tiago
  */
 public class CreateFreelancerScene_1_UI implements Initializable {
-    
+
     private CreateFreelancerUI freel;
     private CreateFreelancerController controller;
 
@@ -51,45 +51,43 @@ public class CreateFreelancerScene_1_UI implements Initializable {
     private TextField txtId;
     @FXML
     private Label invalidLbl;
-    
+
     // Get methods
     // <editor-fold defaultstate="collapsed">
-    
-    public TextField getNome(){
+    public TextField getNome() {
         return this.txtNome;
     }
-    
-    public TextField getLvlExp(){
+
+    public TextField getLvlExp() {
         return this.txtLevelOfExpertise;
     }
-    
-    public TextField getEmail(){
+
+    public TextField getEmail() {
         return this.txtEmail;
     }
-    
-    public TextField getNif(){
+
+    public TextField getNif() {
         return this.txtNIF;
     }
-    
-    public TextField getIban(){
+
+    public TextField getIban() {
         return this.txtIBAN;
     }
-    
-    public TextField getAdress(){
+
+    public TextField getAdress() {
         return this.txtAddress;
     }
-    
-    public TextField getCountry(){
+
+    public TextField getCountry() {
         return this.txtCountry;
     }
-    
+
     // </editor-fold> 
-    
-    public void setFreelancer(CreateFreelancerUI freel){
-        this.freel=freel;
+    public void setFreelancer(CreateFreelancerUI freel) {
+        this.freel = freel;
     }
-    
-    public void showFreelancer(){
+
+    public void showFreelancer() {
         this.txtId.setText(this.freel.getCreateFreelancerController().freel.getId());
         this.txtNome.setText(this.freel.getCreateFreelancerController().freel.getName());
         this.txtAddress.setText(this.freel.getCreateFreelancerController().freel.getAdress());
@@ -102,8 +100,8 @@ public class CreateFreelancerScene_1_UI implements Initializable {
 
     @FXML
     private void btnCancelAction(ActionEvent event) throws IOException {
-       goToScene(event,"/fxml/JanelaLogin.fxml");
-       //this.freel.getMainApp().toMainScene();
+        goToScene(event, "/fxml/JanelaLogin.fxml");
+        //this.freel.getMainApp().toMainScene();
     }
 
     @FXML
@@ -111,14 +109,14 @@ public class CreateFreelancerScene_1_UI implements Initializable {
         try {
             controller.newFreelancer(txtNome.getText(), txtLevelOfExpertise.getText(), txtEmail.getText(), txtNIF.getText(), txtIBAN.getText(), txtCountry.getText(), txtAddress.getText());
 //            controller.registerFreelancer();
-            goToScene(event,"/fxml/CreateFreelancer_2.fxml");
+            goToScene(event, "/fxml/CreateFreelancer_2.fxml");
             //this.freel.toCreateFreelancerScene2UI();
-        } catch(IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             invalidLbl.setText(e.getMessage());
         }
     }
-    
-     private void goToScene(ActionEvent event, String fxml) throws IOException {
+
+    public void goToScene(ActionEvent event, String fxml) throws IOException {
         Parent button = FXMLLoader.load(getClass().getResource(fxml));
         Scene buttonScene = new Scene(button);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

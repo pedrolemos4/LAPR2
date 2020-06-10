@@ -3,15 +3,21 @@ package com.mycompany.lapr2_interfacegrafica.ui;
 import com.mycompany.lapr2_interfacegrafica.controller.UploadFileController;
 import com.mycompany.lapr2_interfacegrafica.model.PaymentTransaction;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -19,8 +25,8 @@ import javafx.stage.FileChooser;
  * @author beatr
  */
 public class UploadFileUI implements Initializable {
-    private final MainApp mainApp;
-    private final UploadFileController controller;
+  //  private final MainApp mainApp;
+   // private final UploadFileController controller;
     
     @FXML
     private Label lblUploadFile;
@@ -41,18 +47,18 @@ public class UploadFileUI implements Initializable {
         // TODO
     }
     
-    public UploadFileUI(MainApp mainApp) {
-        this.mainApp = mainApp;
-        this.controller = new UploadFileController();
-    }
+//    public UploadFileUI(MainApp mainApp) {
+//        this.mainApp = mainApp;
+//        this.controller = new UploadFileController();
+//    }
 
-    public MainApp getMainApp() {
-        return this.mainApp;
-    }
-
-    public UploadFileController getOrganizationRecordController() {
-        return this.controller;
-    }
+//    public MainApp getMainApp() {
+//        return this.mainApp;
+//    }
+//
+//    public UploadFileController getOrganizationRecordController() {
+//        return this.controller;
+//    }
 
     @FXML
     private void importTxtAction(ActionEvent event) {
@@ -87,4 +93,11 @@ public class UploadFileUI implements Initializable {
         lstPaymentTransactions.getItems().clear();  
     }
     
+    public void goToScene(ActionEvent event, String fxml) throws IOException {
+        Parent button = FXMLLoader.load(getClass().getResource(fxml));
+        Scene buttonScene = new Scene(button);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(buttonScene);
+        window.show();
+    }
 }

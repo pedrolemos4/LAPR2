@@ -1,24 +1,30 @@
 package com.mycompany.lapr2_interfacegrafica.ui;
 
 import com.mycompany.lapr2_interfacegrafica.controller.CreatePaymentTransactionController;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
 
 public class PaymentTransactionScene_1_UI implements Initializable {
 
     private CreatePaymentTransactionUI createPaymentTransactionUI;
     private CreatePaymentTransactionController controller;
-    
+
     @FXML
     private Button btnNext;
     @FXML
@@ -126,6 +132,14 @@ public class PaymentTransactionScene_1_UI implements Initializable {
 
     @FXML
     private void txtTransactionIDKeyPressed(KeyEvent event) {
+    }
+
+    public void goToScene(ActionEvent event, String fxml) throws IOException {
+        Parent button = FXMLLoader.load(getClass().getResource(fxml));
+        Scene buttonScene = new Scene(button);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(buttonScene);
+        window.show();
     }
 
 }
