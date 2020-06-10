@@ -38,28 +38,6 @@ public class Freelancer {
         setId(id);
     }
 
-    public void generateId(String nome) {
-        String letra1, letra2;
-        String[] array = nome.split("");
-        letra1 = array[0];
-        int size = array.length;
-        letra2 = array[size];
-        int numero = compareFreelancer(this);
-        String idGerado = (letra1+letra2+numero);
-        setId(idGerado);
-    }
-    
-
-    public int compareFreelancer(Freelancer otherFreelancer) {
-        if (this.name.equalsIgnoreCase(otherFreelancer.getName())) {
-            String [] idOr = this.getId().split("");
-            int numero=Integer.parseInt(idOr[2]);
-            int numero1=numero+1;
-            return numero1;
-        }
-            return 0;
-        }
-
     public String getAdress() {
         return this.address;
     }

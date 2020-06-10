@@ -7,11 +7,11 @@ public class Platform {
 
     private String m_strDesignacao;
     private final FacadeAuthorization m_oAutorizacao;
-    private FreelancersRecord freelRec;
-    private OrganizationsRecord orgRec;
-    private PaymentTransactionList paymentTransList;
-    private Organization org;
-    private PasswordGeneratorAlgorithm alg;
+    public FreelancersRecord freelRec;
+    public OrganizationsRecord orgRec;
+    public PaymentTransactionList paymentTransList;
+    public Organization org;
+    public PasswordGeneratorAlgorithm alg;
 
     public Platform() {
 //        if ((strDesignacao == null)
@@ -28,7 +28,7 @@ public class Platform {
     }
 
     public FreelancersRecord getFreelancersRecord() {
-        return this.freelRec;
+        return freelRec;
     }
 
     public Organization getOrganization() {

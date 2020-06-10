@@ -28,7 +28,7 @@ public class CreateFreelancerUI {
     public CreateFreelancerUI(MainApp mainApp){
         this.mainApp = mainApp;
         this.controller = new CreateFreelancerController();
-    }
+    } 
     
     public MainApp getMainApp(){
         return this.mainApp;
@@ -54,7 +54,7 @@ public class CreateFreelancerUI {
     public void toCreateFreelancerScene2UI(){
         try {
             CreateFreelancerScene_2_UI createFreelancer2UI = (CreateFreelancerScene_2_UI) this.mainApp.replaceSceneContent("/fxml/CreateFreelancer_2.fxml");
-            createFreelancer2UI.setFreelancer(this);
+//            createFreelancer2UI.setFreelancer(this);
             createFreelancer2UI.showFreelancer();
         } catch(Exception ex){
             Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
