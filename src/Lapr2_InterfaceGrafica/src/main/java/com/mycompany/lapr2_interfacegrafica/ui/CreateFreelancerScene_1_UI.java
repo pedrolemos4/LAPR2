@@ -27,7 +27,6 @@ import javafx.stage.Stage;
  */
 public class CreateFreelancerScene_1_UI implements Initializable {
 
-    private CreateFreelancerUI freel;
     private CreateFreelancerController controller;
 
     @FXML
@@ -83,20 +82,13 @@ public class CreateFreelancerScene_1_UI implements Initializable {
     }
 
     // </editor-fold> 
-    public void setFreelancer(CreateFreelancerUI freel) {
-        this.freel = freel;
-    }
+//    public void setFreelancer(CreateFreelancerUI freel) {
+//        this.freel = freel;
+//    }
 
-    public void showFreelancer() {
-        this.txtId.setText(this.freel.getCreateFreelancerController().freel.getId());
-        this.txtNome.setText(this.freel.getCreateFreelancerController().freel.getName());
-        this.txtAddress.setText(this.freel.getCreateFreelancerController().freel.getAdress());
-        this.txtCountry.setText(this.freel.getCreateFreelancerController().freel.getCountry());
-        this.txtEmail.setText(this.freel.getCreateFreelancerController().freel.getEmail());
-        this.txtLevelOfExpertise.setText(this.freel.getCreateFreelancerController().freel.getLvlExp());
-        this.txtNIF.setText(this.freel.getCreateFreelancerController().freel.getNif());
-        this.txtIBAN.setText(this.freel.getCreateFreelancerController().freel.getIban());
-    }
+//    public void showFreelancer() {
+//        controller.freel.toString();
+//    }
 
     @FXML
     private void btnCancelAction(ActionEvent event) throws IOException {
@@ -108,7 +100,7 @@ public class CreateFreelancerScene_1_UI implements Initializable {
     private void btnNextAction(ActionEvent event) throws IOException {
         try {
             controller.newFreelancer(txtNome.getText(), txtLevelOfExpertise.getText(), txtEmail.getText(), txtNIF.getText(), txtIBAN.getText(), txtCountry.getText(), txtAddress.getText());
-//            controller.registerFreelancer();
+            controller.registerFreelancer();
             goToScene(event, "/fxml/CreateFreelancer_2.fxml");
             //this.freel.toCreateFreelancerScene2UI();
         } catch (IllegalArgumentException e) {

@@ -30,7 +30,6 @@ public class CreateFreelancerScene_2_UI implements Initializable{
     
     private static final String TITULO_APLICACAO="Pray4Us";
     
-    public CreateFreelancerUI freel;
     public CreateFreelancerController controller;
 
     @FXML
@@ -58,7 +57,7 @@ public class CreateFreelancerScene_2_UI implements Initializable{
         } else {
             notification = "Specify Category Insuccess.";
         }
-        goToScene(event,"/fxml/CreateFreelancer_3.fxml",notification);        
+        goToScene(event,"/fxml/CreateFreelancer_3.fxml"/*,notification*/);        
 //        this.freel.toCreateFreelancerScene3UI(notification);
     }
 
@@ -68,15 +67,15 @@ public class CreateFreelancerScene_2_UI implements Initializable{
     }
 
     @FXML
-    private void btnReturnAction(ActionEvent event) {
-        this.freel.toCreateFreelancerScene1UI();
+    private void btnReturnAction(ActionEvent event) throws IOException {
+        goToScene(event, "/fxml/CreateFreelancer_1_UI.fxml");
     }
 
-    private void goToScene(ActionEvent event, String fxml, String not) throws IOException {
+    private void goToScene(ActionEvent event, String fxml) throws IOException {
         Parent button = FXMLLoader.load(getClass().getResource(fxml));
         Scene buttonScene = new Scene(button);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        AlertUI.createAlert(Alert.AlertType.CONFIRMATION, TITULO_APLICACAO, "Arroz", not);
+      //  AlertUI.createAlert(Alert.AlertType.CONFIRMATION, TITULO_APLICACAO, "Arroz", not);
         window.setScene(buttonScene);
         window.show();
     }

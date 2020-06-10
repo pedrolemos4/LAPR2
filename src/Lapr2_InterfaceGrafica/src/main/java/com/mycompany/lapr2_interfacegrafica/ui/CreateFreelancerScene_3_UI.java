@@ -20,7 +20,6 @@ import javafx.scene.control.Label;
  */
 public class CreateFreelancerScene_3_UI implements Initializable{
     
-    public CreateFreelancerUI freel;
     public CreateFreelancerController controller;
 
     @FXML
@@ -28,9 +27,9 @@ public class CreateFreelancerScene_3_UI implements Initializable{
     @FXML
     private Label lblNotification;
 
-    public void setFreelancer(CreateFreelancerUI freel){
-       this.freel=freel;
-    }
+//    public void setFreelancer(CreateFreelancerUI freel){
+//       this.freel=freel;
+//    }
     
     public void showNotification(String notification){
         this.lblNotification.setText(notification);
