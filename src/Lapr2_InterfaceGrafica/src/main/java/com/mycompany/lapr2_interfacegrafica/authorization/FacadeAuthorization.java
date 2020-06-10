@@ -51,14 +51,15 @@ public class FacadeAuthorization {
         return this.m_oUsers.hasUser(strId);
     }
 
-    public UserSession doLogin(String strId, String strPwd) {
+    public boolean doLogin(String strId, String strPwd) {
         User user = this.m_oUsers.searchUser(strId);
         if (user != null) {
             if (user.hasPassword(strPwd)) {
                 this.m_oSession = new UserSession(user);
+                return true;
             }
         }
-        return getCurrentSession();
+        return false;
     }
 
     public UserSession getCurrentSession() {
