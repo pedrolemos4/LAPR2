@@ -15,14 +15,10 @@ public class Organization {
     private PaymentTransactionList m_oPaymentTransactionList;
 
     public Organization(String name, String NIF, Manager manager, Collaborator collaborator) {
-        if ((name == null) || (NIF == null) || (manager == null) || (collaborator == null)
-                || (name.isEmpty()) || (NIF.isEmpty())) {
-            throw new IllegalArgumentException("None of the arguments can be null or empty.");
-        }
-        this.m_strName = name;
-        this.m_strNIF = NIF;
-        this.m_oManager = manager;
-        this.m_oCollaborator = collaborator;
+        setName(name);
+        setNIF(NIF);
+        setManager(manager);
+        setCollaborator(collaborator);
     }
 
     public TaskList getTaskList() {
@@ -51,6 +47,33 @@ public class Organization {
 
     public String getOrgNIF() {
         return this.m_strNIF;
+    }
+
+    public void setName(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Invalid Organization Name!");
+        }
+    }
+
+    public void setNIF(String nif) {
+        if (nif == null || nif.trim().length() < 9) {
+            throw new IllegalArgumentException("Invalid Organization NIF!");
+        }
+        this.m_strNIF = nif;
+    }
+
+    public void setManager(Manager m) {
+        if (m == null) {
+            throw new IllegalArgumentException("Invalid Manager!");
+        }
+        this.m_oManager = m;
+    }
+
+    public void setCollaborator(Collaborator c) {
+        if (c == null) {
+            throw new IllegalArgumentException("Invalid Collaborator!");
+        }
+        this.m_oCollaborator = c;
     }
 
     @Override
@@ -91,9 +114,9 @@ public class Organization {
     public TreeMap<String, List<Double>> determinatePayOrg(TreeMap<String, List<Double>> mapOrgPayment) {
         List<PaymentTransaction> transactionList = m_oPaymentTransactionList.getPaymentTransactions();
         for (PaymentTransaction transaction : transactionList) {
-            Freelancer free = transaction.getM_oFreelancer();
+            Freelancer free = transaction.getFreelancer();
             String freeId = free.getId();
-            Task task = transaction.getM_oTask();
+            Task task = transaction.getTask();
             double transactionAmount = transaction.generatePayAmount(task, free);
             if (mapOrgPayment.get(freeId) == null) {
                 mapOrgPayment.put(freeId, new ArrayList<Double>());
@@ -106,9 +129,9 @@ public class Organization {
     public TreeMap<String, List<Double>> determinateDelayOrg(TreeMap<String, List<Double>> mapOrgDelay) {
         List<PaymentTransaction> transactionList = m_oPaymentTransactionList.getPaymentTransactions();
         for (PaymentTransaction transaction : transactionList) {
-            Freelancer free = transaction.getM_oFreelancer();
+            Freelancer free = transaction.getFreelancer();
             String freeId = free.getId();
-            double transactionAmount = transaction.getM_Delay();
+            double transactionAmount = transaction.getPayAmount();
             if (mapOrgDelay.get(freeId) == null) {
                 mapOrgDelay.put(freeId, new ArrayList<Double>());
             }
@@ -121,7 +144,7 @@ public class Organization {
         int counter = 0;
         List<PaymentTransaction> transactionList = m_oPaymentTransactionList.getPaymentTransactions();
         for (PaymentTransaction transaction : transactionList) {
-            int t = transaction.getM_Delay();
+            int t = transaction.getDelay();
             counter++;
         }
         return counter;

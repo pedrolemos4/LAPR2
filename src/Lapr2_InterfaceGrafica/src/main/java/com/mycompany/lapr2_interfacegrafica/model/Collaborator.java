@@ -8,11 +8,6 @@ public class Collaborator {
     private String m_strEmail;
 
     public Collaborator(String name, String email) {
-        if ((name == null) || (email == null)
-                || (name.isEmpty()) || (email.isEmpty())) {
-            throw new IllegalArgumentException("None of the arguments can be null or empty.");
-        }
-
         this.m_strName = name;
         this.m_strEmail = email;
     }
@@ -27,6 +22,20 @@ public class Collaborator {
 
     public String getEmail() {
         return this.m_strEmail;
+    }
+
+    public void setName(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Invalid Collaborator Name!");
+        }
+        this.m_strName = name;
+    }
+
+    public void setEmail(String email) {
+        if (email == null || email.trim().isEmpty()) {
+            throw new IllegalArgumentException("Invalid Collaborator Email!");
+        }
+        this.m_strName = email;
     }
 
     @Override

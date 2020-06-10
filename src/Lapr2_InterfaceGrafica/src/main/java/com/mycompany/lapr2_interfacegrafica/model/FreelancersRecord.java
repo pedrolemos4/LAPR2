@@ -53,6 +53,7 @@ public class FreelancersRecord {
         }
         return id + num;
     }
+
     public boolean validatesFreelancer(Freelancer freel) {
         if (freel.getAdress() == null || freel.getCountry() == null || freel.getEmail() == null || freel.getIban() == null || freel.getLvlExp() == null || freel.getName() == null || freel.getNif() == null) {
             return false;
@@ -133,10 +134,10 @@ public class FreelancersRecord {
             Freelancer freel = arrayFreelancers.get(i);
             for (int k = 0; k < payemntTransList1.size(); k++) {
                 PaymentTransaction trans = payemntTransList1.get(k);
-                Freelancer freelTrans = payemntTransList1.get(k).getM_oFreelancer();
+                Freelancer freelTrans = payemntTransList1.get(k).getFreelancer();
                 if (freel == freelTrans) {
                     numberTransactions++;
-                    int delayTrans = trans.getM_Delay();
+                    int delayTrans = trans.getDelay();
                     if (delayTrans > 0) {
                         delay++;
                         amountForHourDelay++;
@@ -170,7 +171,7 @@ public class FreelancersRecord {
         List<PaymentTransaction> payemntTransList1 = payemntTransList.getPaymentTransactions();
         for (int k = 0; k < payemntTransList1.size(); k++) {
             PaymentTransaction trans = payemntTransList1.get(k);
-            int delayTrans = trans.getM_Delay();
+            int delayTrans = trans.getDelay();
             totalDelay = totalDelay + delayTrans;
             n++;
         }

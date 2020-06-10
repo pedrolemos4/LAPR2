@@ -27,31 +27,25 @@ public class CreatePaymentTransactionController {
     private Date date;
 
     public CreatePaymentTransactionController() {
-       // this.m_oApp = POTApplication.getInstance();
+        // this.m_oApp = POTApplication.getInstance();
         this.m_oSessao = m_oApp.getCurrentSession();
     }
 
-    public boolean newPaymentTransaction(String payTId, String taskString, String eDate, int delay, String workQualityDescription, String freelancerString) {
-        try {
-            String email = m_oSessao.getUserEmail();
-            OrganizationsRecord orgR = plat.getOrganizationsRecord();
-            this.org = orgR.getOrganizationByUserEmail(email);
-            TaskList tLst = org.getTaskList();
-            Task task = tLst.getTaskByStringValue(taskString);
-            FreelancersRecord frlR = plat.getFreelancersRecord();
-            Freelancer free = frlR.getFreelancerByStringValue(freelancerString);
-            Date endDate = date.convertStringToDate(eDate);
-            this.ptL = org.getPaymentTransactionList();
-            if (ptL.exists(payTId)) {
-                throw new RuntimeException("There is already a transaction with the same ID as the one entered!!!");
-            }
-            this.payT = ptL.newPaymentTransaction(payTId, task, free, endDate, delay, workQualityDescription);
-            return ptL.validatePaymentTransaction(this.payT);
-        } catch (RuntimeException ex) {
-            Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);
-            this.payT = null;
-            return false;
+    public PaymentTransaction newPaymentTransaction(String payTId, String taskString, String eDate, int delay, String workQualityDescription, String freelancerString) {
+        String email = m_oSessao.getUserEmail();
+        OrganizationsRecord orgR = plat.getOrganizationsRecord();
+        this.org = orgR.getOrganizationByUserEmail(email);
+        TaskList tLst = org.getTaskList();
+        Task task = tLst.getTaskByStringValue(taskString);
+        FreelancersRecord frlR = plat.getFreelancersRecord();
+        Freelancer free = frlR.getFreelancerByStringValue(freelancerString);
+        Date endDate = date.convertStringToDate(eDate);
+        this.ptL = org.getPaymentTransactionList();
+        this.payT = ptL.newPaymentTransaction(payTId, task, free, endDate, delay, workQualityDescription);
+        if (this.ptL.validatePaymentTransaction(this.payT)) {
+            return this.payT;
         }
+        return null;
     }
 
     public boolean paymentTransactionRegister() {
@@ -71,15 +65,15 @@ public class CreatePaymentTransactionController {
     }
 
     public String getTask() {
-        return this.payT.getM_oTask().toString();
+        return this.payT.getTask().toString();
     }
 
     public String getFreelancer() {
-        return this.payT.getM_oFreelancer().toString();
+        return this.payT.getFreelancer().toString();
     }
 
     public String getTaskDelay() {
-        int delay = this.payT.getM_Delay();
+        int delay = this.payT.getDelay();
         return String.valueOf(delay);
     }
 
@@ -92,7 +86,7 @@ public class CreatePaymentTransactionController {
     }
 
     public String getPayTId() {
-        return this.payT.getM_strId();
+        return this.payT.getId();
     }
 
 }

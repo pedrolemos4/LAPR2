@@ -4,30 +4,27 @@ import lapr2.pot.ui.console.utils.Date;
 
 public class PaymentTransaction {
 
-    private String m_strId;
-    private Task m_oTask;
-    private Freelancer m_oFreelancer;
-    private Date m_strEndDate;
-    private int m_Delay;
-    private String m_strWorkQualityDescription;
+    private String id;
+    private Task task;
+    private Freelancer freelancer;
+    private Date endDate;
+    private int delay;
+    private String workQualityDescription;
     private double dPayAmount;
 
     public PaymentTransaction(String payTId, Task task, Freelancer free, Date endDate, int delay, String workQualityDescription) {
-        if ((task == null) || (free == null)) {
-            throw new IllegalArgumentException("None of the arguments can be null or empty.");
-        }
-        this.m_strId = payTId;
-        this.m_oTask = task;
-        this.m_oFreelancer = free;
-        this.m_strEndDate = endDate;
-        this.m_Delay = delay;
-        this.m_strWorkQualityDescription = workQualityDescription;
-        this.dPayAmount = generatePayAmount(task, free);
+        setId(payTId);
+        setTask(task);
+        setFreelancer(free);
+        setEndDate(endDate);
+        setDelay(delay);
+        setWorkQualityDescription(workQualityDescription);
+        this.dPayAmount = generatePayAmount(this.task, this.freelancer);
     }
 
     @Override
     public String toString() {
-        String str = String.format("%s - %s - %s - %s - %s - %s - %.2f", this.m_strId, this.m_oTask.toString(), this.m_strEndDate.toString(), this.m_Delay, this.m_strWorkQualityDescription, this.m_oFreelancer.toString(), this.dPayAmount);
+        String str = String.format("ID: %s - %s - End Date: %s - Delay: %d hours - Work Quality Description: %s - %s - %.2f", this.id, this.task.toString(), this.endDate.toAnoMesDiaString(), this.delay, this.workQualityDescription, this.freelancer.toString(), this.dPayAmount);
         return str;
     }
 
@@ -42,31 +39,74 @@ public class PaymentTransaction {
         return payAmount;
     }
 
-    public Freelancer getM_oFreelancer() {
-        return this.m_oFreelancer;
+    public String getId() {
+        return this.id;
     }
 
-    public int getM_Delay() {
-        return this.m_Delay;
+    public Task getTask() {
+        return this.task;
     }
 
-    public Task getM_oTask() {
-        return this.m_oTask;
-    }
-
-    public String getM_strId() {
-        return this.m_strId;
+    public Freelancer getFreelancer() {
+        return this.freelancer;
     }
 
     public Date getEndDate() {
-        return this.m_strEndDate;
+        return this.endDate;
+    }
+
+    public int getDelay() {
+        return this.delay;
     }
 
     public String getWorkQualityDescription() {
-        return this.m_strWorkQualityDescription;
+        return this.workQualityDescription;
     }
 
     public double getPayAmount() {
         return this.dPayAmount;
+    }
+
+    public void setId(String id) {
+        if (id == null || id.trim().isEmpty()) {
+            throw new IllegalArgumentException("Invalid Payment Transation ID!");
+        }
+        this.id = id;
+    }
+
+    public void setTask(Task task) {
+        if (task == null) {
+            throw new IllegalArgumentException("Invalid Task!");
+        }
+        this.task = task;
+    }
+
+    public void setFreelancer(Freelancer free) {
+        if (free == null) {
+            throw new IllegalArgumentException("Invalid Freelancer!");
+        }
+        this.freelancer = free;
+    }
+
+    public void setEndDate(Date eDate) {
+        if (eDate == null || eDate.toString().trim().isEmpty() || eDate.toAnoMesDiaString().trim().isEmpty()) {
+            throw new IllegalArgumentException("Invalid Date!");
+        }
+        this.endDate = eDate;
+    }
+
+    public void setDelay(int delay) {
+        try {
+            this.delay = delay;
+        } catch (NumberFormatException ex) {
+            throw new NumberFormatException("Invalid delay!");
+        }
+    }
+
+    public void setWorkQualityDescription(String workQualityDescription) {
+        if (workQualityDescription == null || workQualityDescription.trim().isEmpty()) {
+            throw new IllegalArgumentException("Invalid Work Quality Description!");
+        }
+        this.workQualityDescription = workQualityDescription;
     }
 }

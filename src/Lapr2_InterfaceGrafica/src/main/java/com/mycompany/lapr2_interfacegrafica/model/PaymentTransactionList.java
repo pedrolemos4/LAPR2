@@ -13,6 +13,9 @@ public class PaymentTransactionList {
     }
 
     public PaymentTransaction newPaymentTransaction(String payTId, Task task, Freelancer free, Date endDate, int delay, String workQualityDescription) {
+        if (this.exists(payTId)) {
+            throw new RuntimeException("There is already a transaction with the same ID as the one entered!");
+        }
         return new PaymentTransaction(payTId, task, free, endDate, delay, workQualityDescription);
     }
 
@@ -42,7 +45,7 @@ public class PaymentTransactionList {
 
     public boolean exists(String transactionId) {
         for (int i = 0; i < m_lstPaymentTransactions.size(); i++) {
-            if (m_lstPaymentTransactions.get(i).getM_strId().equalsIgnoreCase(transactionId)) {
+            if (m_lstPaymentTransactions.get(i).getId().equalsIgnoreCase(transactionId)) {
                 return true;
             }
         }

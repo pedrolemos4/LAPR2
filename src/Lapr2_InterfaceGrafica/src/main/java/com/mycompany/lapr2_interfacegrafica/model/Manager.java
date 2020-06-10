@@ -29,6 +29,20 @@ public class Manager {
         return this.m_strEmail;
     }
 
+    public void setName(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Invalid Manager Name!");
+        }
+        this.m_strName = name;
+    }
+
+    public void setEmail(String email) {
+        if (email == null || email.trim().isEmpty()) {
+            throw new IllegalArgumentException("Invalid Manager Email!");
+        }
+        this.m_strName = email;
+    }
+
     @Override
     public int hashCode() {
         int hash = 3;
