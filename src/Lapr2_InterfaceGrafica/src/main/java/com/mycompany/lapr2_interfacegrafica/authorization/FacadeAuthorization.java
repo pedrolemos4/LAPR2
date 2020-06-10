@@ -36,7 +36,7 @@ public class FacadeAuthorization {
         String password = exAlgApi.generatePassword(strName, strEmail);
         UserRole papel = this.m_oRoles.searchRole(strRole);
         User utlz = this.m_oUsers.newUser(strName, strEmail, password);
-        utlz.addRole(papel);
+        utlz.setRole(strRole);
         return this.m_oUsers.addUser(utlz);
     }
 
