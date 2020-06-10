@@ -50,6 +50,7 @@ public class FreelancersRecord {
         int size = array.length;
         letra2 = array[size];
         String id1 = letra1 + letra2;
+        id1 = id1.toUpperCase();
         String numero = compareFreelancer(id1);
 //        String idGerado = (letra1 + letra2 + numero);
         freel.setId(numero);
