@@ -22,7 +22,7 @@ import javafx.stage.Stage;
 
 public class PaymentTransactionScene_1_UI implements Initializable {
 
-    private CreatePaymentTransactionUI createPaymentTransactionUI;
+    private JanelaOptionsAdminScene_UI optionsAdminUI;
     private CreatePaymentTransactionController controller;
 
     @FXML
@@ -49,13 +49,13 @@ public class PaymentTransactionScene_1_UI implements Initializable {
         this.controller = new CreatePaymentTransactionController();
     }
 
-    public void setPaymentTransactionUI(CreatePaymentTransactionUI createPaymentTransactionUI) {
-        this.createPaymentTransactionUI = createPaymentTransactionUI;
-    }
+//    public void setPaymentTransactionUI(CreatePaymentTransactionUI createPaymentTransactionUI) {
+//        this.createPaymentTransactionUI = createPaymentTransactionUI;
+//    }
 
     public void initComboBox() {
-        CreatePaymentTransactionController controller = this.createPaymentTransactionUI.
-                getCreatePaymentTransactionController();
+//        CreatePaymentTransactionController controller = this.createPaymentTransactionUI.
+//                getCreatePaymentTransactionController();
         ObservableList<String> tasks
                 = FXCollections.observableArrayList(controller.getTasks());
         this.cmbTask.setItems(tasks);
@@ -74,7 +74,7 @@ public class PaymentTransactionScene_1_UI implements Initializable {
     }
 
     @FXML
-    private void btnNextAction(ActionEvent event) {
+    private void btnNextAction(ActionEvent event) throws IOException {
         try {
             String payTId = this.txtTransactionID.getText();
             String endDate = this.txtTaskEndDate.getText();
@@ -82,9 +82,11 @@ public class PaymentTransactionScene_1_UI implements Initializable {
             String workDescription = this.txtWorkDescription.getText();
             String task = this.cmbTask.getSelectionModel().getSelectedItem();
             String freelancer = this.cmbFreelancer.getSelectionModel().getSelectedItem();
-            this.createPaymentTransactionUI.getCreatePaymentTransactionController().newPaymentTransaction(payTId, task, endDate,
-                    taskDelay, workDescription, freelancer);
-            this.createPaymentTransactionUI.toPaymentTransactionScene2UI();
+            controller.newPaymentTransaction(payTId, task, endDate, taskDelay, workDescription, freelancer);
+            goToScene(event,"/fxml/PaymentTransaction_1.fxml");
+//            this.createPaymentTransactionUI.getCreatePaymentTransactionController().newPaymentTransaction(payTId, task, endDate,
+//                    taskDelay, workDescription, freelancer);
+//            this.createPaymentTransactionUI.toPaymentTransactionScene2UI();
         } catch (NumberFormatException ex) {
             this.lblAlert.setText("Invalid number!");
             this.txtTaskDelay.requestFocus();
@@ -101,7 +103,8 @@ public class PaymentTransactionScene_1_UI implements Initializable {
     }
 
     @FXML
-    private void btnCancelAction(ActionEvent event) {
+    private void btnCancelAction(ActionEvent event) throws IOException {
+        goToScene(event,"/fxml/OptionsCollaborator.fxml");
         //this.createPaymentTransactionUI.getMainApp().toMainScene();
     }
 
