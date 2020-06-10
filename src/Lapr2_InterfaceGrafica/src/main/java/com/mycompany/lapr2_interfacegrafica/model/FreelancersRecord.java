@@ -43,15 +43,31 @@ public class FreelancersRecord {
         return false;
     }
 
+    public void generateId(Freelancer freel) {
+        String letra1, letra2;
+        String[] array = freel.getName().split("");
+        letra1 = array[0];
+        int size = array.length;
+        letra2 = array[size];
+        String id1 = letra1 + letra2;
+        String numero = compareFreelancer(id1);
+//        String idGerado = (letra1 + letra2 + numero);
+        freel.setId(numero);
+    }
+
     public String compareFreelancer(String id) {
         int num = 1;
-        for (Freelancer freel : arrayFreelancers) {
-            String idFrel = freel.getId();
-            if ((id + num).equals(idFrel)) {
-                num++;
+        try {
+            for (Freelancer freel : arrayFreelancers) {
+                String idFrel = freel.getId();
+                if ((id + num).equals(idFrel)) {
+                    num++;
+                }
             }
+            return id + num;
+        } catch (NullPointerException e) {
+            return id + "1";
         }
-        return id + num;
     }
 
     public boolean validatesFreelancer(Freelancer freel) {
