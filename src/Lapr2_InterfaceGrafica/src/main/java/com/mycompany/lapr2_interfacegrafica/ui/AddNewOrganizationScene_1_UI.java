@@ -19,7 +19,8 @@ import javafx.stage.Stage;
 
 public class AddNewOrganizationScene_1_UI implements Initializable {
 
-    private AddNewOrganizationUI addNewOrganization;
+    private JanelaOptionsAdminScene_UI optionsAdminUI;
+    
     private OrganizationRecordController controller;
 
     @FXML
@@ -49,10 +50,6 @@ public class AddNewOrganizationScene_1_UI implements Initializable {
         return this.txtName;
     }
 
-    public void setNewOrganizationUI(AddNewOrganizationUI addNewOrganization) {
-        this.addNewOrganization = addNewOrganization;
-    }
-
     public void showOrganization() {
         this.txtName.setText(this.controller.getOrganizationName());
         this.txtNIF.setText(this.controller.getOrganizationNIF());
@@ -68,6 +65,8 @@ public class AddNewOrganizationScene_1_UI implements Initializable {
 //            addNewOrganization= new AddNewOrganizationUI();
 //        }
         try {
+            controller.newOrganization(txtName.getText(), txtNIF.getText(), txtManagerName.getText(),
+                    txtManagerEmail.getText(),txtCollaboratorName.getText(),txtCollaboratorEmail.getText());
 //            this.addNewOrganization.getOrganizationRecordController().newOrganization(this.txtName.getText(),
 //                    this.txtNIF.getText(), this.txtManagerName.getText(),
 //                    this.txtManagerEmail.getText(), this.txtCollaboratorName.getText(),
@@ -93,7 +92,7 @@ public class AddNewOrganizationScene_1_UI implements Initializable {
 
     @FXML
     private void btnCancelAction(ActionEvent event) throws IOException {
-        goToScene(event, "/fxml/JanelaLogin.fxml");
+        goToScene(event, "/fxml/OptionsAdmin.fxml");
         //this.addNewOrganization.getMainApp().toMainScene();
     }
 

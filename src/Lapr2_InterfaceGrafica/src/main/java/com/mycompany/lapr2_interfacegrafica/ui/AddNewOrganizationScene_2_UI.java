@@ -11,13 +11,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class AddNewOrganizationScene_2_UI implements Initializable {
 
-    private AddNewOrganizationUI addNewOrganizationUI;
+    private AddNewOrganizationScene_1_UI addNewOrganizationUI;
+    private JanelaOptionsAdminScene_UI janelaOptionsAdminUI;
     private OrganizationRecordController controller;
 
     @FXML
@@ -34,36 +36,40 @@ public class AddNewOrganizationScene_2_UI implements Initializable {
         this.controller = new OrganizationRecordController();
     }
 
-    public void setAddNewOrganization(AddNewOrganizationUI addNewOrganizationUI) {
-        this.addNewOrganizationUI = addNewOrganizationUI;
-    }
+//    public void setAddNewOrganization(AddNewOrganizationUI addNewOrganizationUI) {
+//        this.addNewOrganizationUI = addNewOrganizationUI;
+//    }
 
     public void showOrganization() {
         this.lblOrganization.setText(this.controller.getOrganizationToString());
     }
 
     @FXML
-    private void btnConfirmAction(ActionEvent event) {
+    private void btnConfirmAction(ActionEvent event) throws IOException {
         boolean registered = this.controller.registerOrganization();
-        String notification;
-        if (registered) {
-            notification = "Organization added with sucess.";
-        } else {
-            notification = "Organization was not added.";
+        if(registered){
+            AlertUI.createAlert(Alert.AlertType.INFORMATION, "Success", "T4J-PAYMENTS", "Organization registered successfully");
+            goToScene(event,"/fxml/OptionsAdmin.fxml");
         }
-        this.addNewOrganizationUI.toAddNewOrganizationScene3UI(notification);
+//        String notification;
+//        if (registered) {
+//            notification = "Organization added with sucess.";
+//        } else {
+//            notification = "Organization was not added.";
+//        }
+//        this.addNewOrganizationUI.toAddNewOrganizationScene3UI(notification);
     }
 
     @FXML
     private void btnCancelAction(ActionEvent event) throws IOException {
-        goToScene(event, "/fxml/JanelaLogin.fxml");
+        goToScene(event, "/fxml/OptionsAdmin.fxml");
         //this.addNewOrganizationUI.getMainApp().toMainScene();
     }
 
     @FXML
     private void btnReturnAction(ActionEvent event) throws IOException {
         goToScene(event, "/fxml/AddNewOrganization_1_.fxml");
-        this.addNewOrganizationUI.toAddNewOrganizationScene1UI();
+       // this.addNewOrganizationUI.toAddNewOrganizationScene1UI();
     }
 
     private void goToScene(ActionEvent event, String fxml) throws IOException {
