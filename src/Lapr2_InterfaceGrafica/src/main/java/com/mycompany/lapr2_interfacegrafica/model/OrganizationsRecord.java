@@ -173,23 +173,39 @@ public class OrganizationsRecord {
         return mapDeviationDelays;
     }
 
-    public double determinateIntervals(TreeMap<String, Double> map) {
-        double sum = 0;
-        int counter = 0;
-        for (Map.Entry<String, Double> entry : map.entrySet()) {
-            sum += entry.getValue();
-            counter++;
+    public double determinateIntervalsMean(TreeMap<String, List<Double>> map) {
+        double sum = 0, mean = 0, counter = 0;
+        for (Map.Entry<String, List<Double>> entry : map.entrySet()) {
+            for (int i = 0; i < entry.getValue().size(); i++) {
+                sum += entry.getValue().get(i);
+                counter++;
+            }
+            mean = sum /counter;
         }
-        return sum / counter;
+        return mean;
+    }
+
+    public double determineIntervalsDeviation(TreeMap<String, List<Double>> map) {
+        double x = 0, subtraction = 0;
+        int counter = 0;
+        for (Map.Entry<String, List<Double>> entry : map.entrySet()) {
+            for (int i = 0; i < entry.getValue().size(); i++) {
+                x = entry.getValue().get(i);
+                subtraction += Math.pow(x - determinateIntervalsMean(map), 2);
+                counter++;
+            }
+        }
+        return Math.sqrt(subtraction / counter);
     }
 
     public double determinateNormalDistribution() {
         int counter = 0;
         double x = 3, m = 2, d = 1.5;
+        double deviation = Math.pow(d, 2);
         for (Organization org : m_lstOrganizations) {
             counter += org.calcCounterDelays();
         }
-        NormalDistribution normalD = new NormalDistribution(m, d / counter);
+        NormalDistribution normalD = new NormalDistribution(m, deviation / counter);
         return 1 - normalD.cumulativeProbability(x);
     }
 }

@@ -48,8 +48,8 @@ public class CheckPerformanceIndicatorsController {
                 , orgRec.calcMeanPayment(orgRec.determinatePayPlatform()));
     }
      
-    public void determinateDelayPlatform(){
-        orgRec.determinateDelayPlatform();
+    public TreeMap<String, List<Double>> determinateDelayPlatform(){
+        return orgRec.determinateDelayPlatform();
     }
     
     public TreeMap<String, Double> calcMeanDelay(){
@@ -65,8 +65,12 @@ public class CheckPerformanceIndicatorsController {
         return orgRec.determinateNormalDistribution();
     }
     
-    public double determinateIntervals(TreeMap<String, Double> map){
-        return orgRec.determinateIntervals(map);
+    public double determinateIntervalsMean(TreeMap<String, List<Double> > map){
+        return orgRec.determinateIntervalsMean(map);
+    }
+    
+    public double determinateIntervalsDeviation(TreeMap<String, List<Double> > map){
+        return orgRec.determineIntervalsDeviation(map);
     }
  
 }

@@ -3,6 +3,7 @@ package com.mycompany.lapr2_interfacegrafica.ui;
 import com.mycompany.lapr2_interfacegrafica.controller.CheckPerformanceIndicatorsController;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
+import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.TreeMap;
@@ -75,19 +76,17 @@ public class CheckPerformanceIndicatorsUI implements Initializable {
         TreeMap<String, Double> lstMeanDelay;
         lstMeanDelay = this.controller.calcMeanDelay();
         lstFreelancerAndInfo.getItems().setAll(lstMeanDelay);
-        intervals = new CategoryAxis();
-        numberOfFreelancers = new NumberAxis();
-        barChartHistograms = new BarChart<>(intervals,numberOfFreelancers);
+
         XYChart.Series barMeanDelay = new XYChart.Series<>();
         
         barMeanDelay.getData().add(new XYChart.Data(calcFirstIntervalDelay(),
-                valuesFirstIntervalDelay(lstMeanDelay)));
+                valuesFirstIntervalDelay(controller.determinateDelayPlatform())));
         barMeanDelay.getData().add(new XYChart.Data(calcSecondIntervalDelay(),
-                valuesSecondIntervalDelay(lstMeanDelay)));
+                valuesSecondIntervalDelay(controller.determinateDelayPlatform())));
         barMeanDelay.getData().add(new XYChart.Data(calcThirdIntervalDelay(),
-                valuesThirdIntervalDelay(lstMeanDelay)));        
+                valuesThirdIntervalDelay(controller.determinateDelayPlatform())));        
         
-        barChartHistograms.getData().addAll(barMeanDelay);
+        barChartHistograms.getData().add(barMeanDelay);
     }
 
     @FXML
@@ -95,19 +94,17 @@ public class CheckPerformanceIndicatorsUI implements Initializable {
         TreeMap<String, Double> lstDeviationDelay;
         lstDeviationDelay = this.controller.calcDeviationDelay();
         lstFreelancerAndInfo.getItems().setAll(lstDeviationDelay);
-        intervals = new CategoryAxis();
-        numberOfFreelancers = new NumberAxis();
-        barChartHistograms = new BarChart<>(intervals,numberOfFreelancers);
+
         XYChart.Series barDeviationDelay = new XYChart.Series<>();
         
         barDeviationDelay.getData().add(new XYChart.Data(calcFirstIntervalDelay(),
-                valuesFirstIntervalDelay(lstDeviationDelay)));
+                valuesFirstIntervalDelay(controller.determinateDelayPlatform())));
         barDeviationDelay.getData().add(new XYChart.Data(calcSecondIntervalDelay(),
-                valuesSecondIntervalDelay(lstDeviationDelay)));
+                valuesSecondIntervalDelay(controller.determinateDelayPlatform())));
         barDeviationDelay.getData().add(new XYChart.Data(calcThirdIntervalDelay(),
-                valuesThirdIntervalDelay(lstDeviationDelay)));        
+                valuesThirdIntervalDelay(controller.determinateDelayPlatform())));        
         
-        barChartHistograms.getData().addAll(barDeviationDelay);
+        barChartHistograms.getData().add(barDeviationDelay);
     }
 
     @FXML
@@ -115,19 +112,17 @@ public class CheckPerformanceIndicatorsUI implements Initializable {
         TreeMap<String, Double> lstMeanPayment;
         lstMeanPayment = this.controller.calcMeanPayment();
         lstFreelancerAndInfo.getItems().setAll(lstMeanPayment);
-        intervals = new CategoryAxis();
-        numberOfFreelancers = new NumberAxis();
-        barChartHistograms = new BarChart<>(intervals,numberOfFreelancers);
+
         XYChart.Series barMeanPayment = new XYChart.Series<>();
         
         barMeanPayment.getData().add(new XYChart.Data(calcFirstIntervalPayment(),
-                valuesFirstIntervalPayment(lstMeanPayment)));
+                valuesFirstIntervalPayment(controller.determinatePayPlatform())));
         barMeanPayment.getData().add(new XYChart.Data(calcSecondIntervalPayment(),
-                valuesSecondIntervalPayment(lstMeanPayment)));
+                valuesSecondIntervalPayment(controller.determinatePayPlatform())));
         barMeanPayment.getData().add(new XYChart.Data(calcThirdIntervalPayment(),
-                valuesThirdIntervalPayment(lstMeanPayment)));        
+                valuesThirdIntervalPayment(controller.determinatePayPlatform())));        
         
-        barChartHistograms.getData().addAll(barMeanPayment);
+        barChartHistograms.getData().add(barMeanPayment);
     }
 
     @FXML
@@ -135,19 +130,17 @@ public class CheckPerformanceIndicatorsUI implements Initializable {
         TreeMap<String, Double> lstDeviationPayment;
         lstDeviationPayment = this.controller.calcMeanPayment();
         lstFreelancerAndInfo.getItems().setAll(lstDeviationPayment);
-        intervals = new CategoryAxis();
-        numberOfFreelancers = new NumberAxis();
-        barChartHistograms = new BarChart<>(intervals,numberOfFreelancers);
+
         XYChart.Series barDeviationPayment = new XYChart.Series<>();
         
         barDeviationPayment.getData().add(new XYChart.Data(calcFirstIntervalPayment(),
-                valuesFirstIntervalPayment(lstDeviationPayment)));
+                valuesFirstIntervalPayment(controller.determinatePayPlatform())));
         barDeviationPayment.getData().add(new XYChart.Data(calcSecondIntervalPayment(),
-                valuesSecondIntervalPayment(lstDeviationPayment)));
+                valuesSecondIntervalPayment(controller.determinatePayPlatform())));
         barDeviationPayment.getData().add(new XYChart.Data(calcThirdIntervalPayment(),
-                valuesThirdIntervalPayment(lstDeviationPayment)));        
+                valuesThirdIntervalPayment(controller.determinatePayPlatform())));        
         
-        barChartHistograms.getData().addAll(barDeviationPayment);
+        barChartHistograms.getData().add(barDeviationPayment);
         
         lblProbability.setText("The probability of the execution delay time of the freelancers that higher than 3 hours is" + normalDistribution());
     }
@@ -162,23 +155,23 @@ public class CheckPerformanceIndicatorsUI implements Initializable {
     }
     
     private double getInferiorLimitPayment(){
-        return controller.determinateIntervals(controller.calcMeanPayment())
-                - controller.determinateIntervals(controller.calcDeviationPayment());
+        return controller.determinateIntervalsMean(controller.determinatePayPlatform())
+                - controller.determinateIntervalsDeviation(controller.determinatePayPlatform());
     }
     
     private double getInferiorLimitDelay(){
-        return controller.determinateIntervals(controller.calcMeanDelay())
-                - controller.determinateIntervals(controller.calcDeviationDelay());
+        return controller.determinateIntervalsMean(controller.determinateDelayPlatform())
+                - controller.determinateIntervalsDeviation(controller.determinateDelayPlatform());
     }
     
     private double getSuperiorLimitPayment(){
-        return controller.determinateIntervals(controller.calcMeanPayment())
-                + controller.determinateIntervals(controller.calcDeviationPayment());        
+        return controller.determinateIntervalsMean(controller.determinatePayPlatform())
+                + controller.determinateIntervalsDeviation(controller.determinatePayPlatform());        
     }
     
     private double getSuperiorLimitDelay(){
-        return controller.determinateIntervals(controller.calcMeanDelay())
-                + controller.determinateIntervals(controller.calcDeviationDelay());        
+        return controller.determinateIntervalsMean(controller.determinateDelayPlatform())
+                + controller.determinateIntervalsDeviation(controller.determinateDelayPlatform());        
     }
     
     private String calcFirstIntervalDelay(){
@@ -186,7 +179,7 @@ public class CheckPerformanceIndicatorsUI implements Initializable {
         try{
             double firstInterval = getInferiorLimitDelay();
             infinity = new String(String.valueOf(Character.toString('\u221E')).getBytes("UTF-8"), "UTF-8");
-            interval = String.format("] %s, %2f [", infinity, firstInterval);
+            interval = String.format("] -%s, %2f [", infinity, firstInterval);
         }catch (UnsupportedEncodingException ex){
             infinity = "inf";
             ex.printStackTrace();
@@ -199,7 +192,7 @@ public class CheckPerformanceIndicatorsUI implements Initializable {
         try{
             double firstInterval = getInferiorLimitPayment();
             infinity = new String(String.valueOf(Character.toString('\u221E')).getBytes("UTF-8"), "UTF-8");
-            interval = String.format("] %s, %2f [", infinity, firstInterval);
+            interval = String.format("] -%s, %2f [", infinity, firstInterval);
         }catch (UnsupportedEncodingException ex){
             infinity = "inf";
             ex.printStackTrace();
@@ -224,7 +217,7 @@ public class CheckPerformanceIndicatorsUI implements Initializable {
         try{
             double secondInterval = getSuperiorLimitPayment();
             infinity = new String(String.valueOf(Character.toString('\u221E')).getBytes("UTF-8"), "UTF-8");
-            interval = String.format("] %2f, %s [", secondInterval, infinity);
+            interval = String.format("] %2f, +%s [", secondInterval, infinity);
         }catch (UnsupportedEncodingException ex){
             infinity = "inf";
             ex.printStackTrace();
@@ -237,7 +230,7 @@ public class CheckPerformanceIndicatorsUI implements Initializable {
         try{
             double secondInterval = getSuperiorLimitDelay();
             infinity = new String(String.valueOf(Character.toString('\u221E')).getBytes("UTF-8"), "UTF-8");
-            interval = String.format("] %2f, %s [", secondInterval, infinity);
+            interval = String.format("] %2f, +%s [", secondInterval, infinity);
         }catch (UnsupportedEncodingException ex){
             infinity = "inf";
             ex.printStackTrace();
@@ -245,68 +238,72 @@ public class CheckPerformanceIndicatorsUI implements Initializable {
         return interval;
     }
     
-    
-    private int valuesFirstIntervalDelay(TreeMap<String, Double> map){
+    private int valuesFirstIntervalPayment(TreeMap<String, List<Double>> map){
         int counter = 0;
-        for(Map.Entry<String, Double> entry : map.entrySet()){
-            if(entry.getValue() <= getInferiorLimitDelay()){
-                entry.getKey();
-                counter++;
+        for (Map.Entry<String, List<Double>> entry : map.entrySet()) {
+            for (int i = 0; i < entry.getValue().size(); i++) {
+                if (entry.getValue().get(i) <= getInferiorLimitPayment()) {
+                    counter++;
+                }
             }
         }
         return counter;
     }
     
-    private int valuesFirstIntervalPayment(TreeMap<String, Double> map){
+    private int valuesFirstIntervalDelay(TreeMap<String, List<Double>> map){
         int counter = 0;
-        for(Map.Entry<String, Double> entry : map.entrySet()){
-            if(entry.getValue() <= getInferiorLimitPayment()){
-                entry.getKey();
-                counter++;
+        for (Map.Entry<String, List<Double>> entry : map.entrySet()) {
+            for (int i = 0; i < entry.getValue().size(); i++) {
+                if (entry.getValue().get(i) <= getInferiorLimitDelay()) {
+                    counter++;
+                }
+            }
+        }
+        return counter;
+    }
+    private int valuesSecondIntervalPayment(TreeMap<String, List<Double>> map){
+        int counter = 0;
+        for (Map.Entry<String, List<Double>> entry : map.entrySet()) {
+            for (int i = 0; i < entry.getValue().size(); i++) {
+                if (entry.getValue().get(i) > getInferiorLimitPayment() && entry.getValue().get(i)< getSuperiorLimitPayment()) {
+                    counter++;
+                }
             }
         }
         return counter;
     }
     
-    private int valuesSecondIntervalDelay(TreeMap<String, Double> map){
+    private int valuesSecondIntervalDelay(TreeMap<String, List<Double>> map){
         int counter = 0;
-        for(Map.Entry<String, Double> entry : map.entrySet()){
-            if(entry.getValue() > getInferiorLimitDelay() || entry.getValue() < getSuperiorLimitDelay() ){
-                entry.getKey();
-                counter++;
+        for (Map.Entry<String, List<Double>> entry : map.entrySet()) {
+            for (int i = 0; i < entry.getValue().size(); i++) {
+                if (entry.getValue().get(i) > getInferiorLimitDelay() && entry.getValue().get(i)< getSuperiorLimitDelay()) {
+                    counter++;
+                }
             }
         }
         return counter;
     }
     
-    private int valuesSecondIntervalPayment(TreeMap<String, Double> map){
+    private int valuesThirdIntervalPayment(TreeMap<String, List<Double>> map){
         int counter = 0;
-        for(Map.Entry<String, Double> entry : map.entrySet()){
-            if(entry.getValue() > getInferiorLimitPayment() || entry.getValue() < getSuperiorLimitPayment() ){
-                entry.getKey();
-                counter++;
+        for (Map.Entry<String, List<Double>> entry : map.entrySet()) {
+            for (int i = 0; i < entry.getValue().size(); i++) {
+                if (entry.getValue().get(i) >= getSuperiorLimitPayment()) {
+                    counter++;
+                }
             }
         }
         return counter;
     }
     
-    private int valuesThirdIntervalDelay(TreeMap<String, Double> map){
+    private int valuesThirdIntervalDelay(TreeMap<String, List<Double>> map){
         int counter = 0;
-        for(Map.Entry<String, Double> entry : map.entrySet()){
-            if(entry.getValue() >= getSuperiorLimitDelay() ){
-                entry.getKey();
-                counter++;
-            }
-        }
-        return counter;
-    }
-    
-    private int valuesThirdIntervalPayment(TreeMap<String, Double> map){
-        int counter = 0;
-        for(Map.Entry<String, Double> entry : map.entrySet()){
-            if(entry.getValue() >= getSuperiorLimitPayment() ){
-                entry.getKey();
-                counter++;
+        for (Map.Entry<String, List<Double>> entry : map.entrySet()) {
+            for (int i = 0; i < entry.getValue().size(); i++) {
+                if (entry.getValue().get(i) >= getSuperiorLimitDelay()) {
+                    counter++;
+                }
             }
         }
         return counter;
