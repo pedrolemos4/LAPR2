@@ -31,13 +31,13 @@ public class CreateTaskController {
 
     public CreateTaskController() {
        // this.m_oApp = POTApplication.getInstance();
-        this.m_oSessao = m_oApp.getCurrentSession();
+//        this.m_oSessao = m_oApp.getCurrentSession();
 
-        if (!m_oApp.getCurrentSession().isLoggedInWithRole(Constants.ADMINISTRATOR_ROLE)) {
-            throw new IllegalStateException("Utilizador não Autorizado");
-        }
+//        if (!m_oApp.getCurrentSession().isLoggedInWithRole(Constants.ADMINISTRATOR_ROLE)) {
+//            throw new IllegalStateException("Utilizador não Autorizado");
+//        }
 
-        this.m_oPlataforma = m_oApp.getPlataforma();
+        this.m_oPlataforma = m_oApp.getPlatform();
 
         this.taskRecord = org.getTaskList();
     }
