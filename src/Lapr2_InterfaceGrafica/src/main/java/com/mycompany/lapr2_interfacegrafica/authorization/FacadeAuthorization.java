@@ -5,11 +5,15 @@ import com.mycompany.lapr2_interfacegrafica.authorization.model.UserRole;
 import com.mycompany.lapr2_interfacegrafica.authorization.model.UserRolesRecord;
 import com.mycompany.lapr2_interfacegrafica.authorization.model.UserSession;
 import com.mycompany.lapr2_interfacegrafica.authorization.model.UsersRecord;
+import com.mycompany.lapr2_interfacegrafica.model.ExternalAlgorithm1API;
+import com.mycompany.lapr2_interfacegrafica.model.PasswordGeneratorAlgorithm;
 
 public class FacadeAuthorization {
 
     private UserSession m_oSession = null;
-
+    
+    private ExternalAlgorithm1API exAlgApi;
+    
     private final UserRolesRecord m_oRoles = new UserRolesRecord();
     private final UsersRecord m_oUsers = new UsersRecord();
 
@@ -28,9 +32,10 @@ public class FacadeAuthorization {
         return this.m_oUsers.addUser(user);
     }
 
-    public boolean registesUserWithRole(String strName, String strEmail, String strPassword, String strRole) {
+    public boolean registesUserWithRole(String strName, String strEmail, String strRole) {
+        String password= exAlgApi.generatePassword(strName, strEmail);
         UserRole papel = this.m_oRoles.searchRole(strRole);
-        User utlz = this.m_oUsers.newUser(strName, strEmail, strPassword);
+        User utlz = this.m_oUsers.newUser(strName, strEmail, password);
         utlz.addRole(papel);
         return this.m_oUsers.addUser(utlz);
     }
@@ -68,4 +73,6 @@ public class FacadeAuthorization {
         }
         this.m_oSession = null;
     }
+
+    
 }

@@ -11,8 +11,8 @@ import com.mycompany.lapr2_interfacegrafica.model.Platform;
 
 public class POTApplication {
 
-    public static Platform m_oPlataforma = new Platform();
-    public static FacadeAuthorization m_oAutorizacao = new FacadeAuthorization();
+    public static Platform m_oPlatform = new Platform();
+    public static FacadeAuthorization m_oAuthorization = new FacadeAuthorization();
 
     public POTApplication() {
         //Properties props = getProperties();
@@ -22,22 +22,34 @@ public class POTApplication {
 //        //bootstrap();
     }
 
-    public static Platform getPlataforma() {
-        return m_oPlataforma;
+    public static Platform getPlatform() {
+        return m_oPlatform;
     }
 
-    public UserSession getCurrentSession() {
-        return m_oAutorizacao.getCurrentSession();
+    public static FacadeAuthorization getFacadeAuthorization(){
+        return m_oAuthorization;
     }
-
-    public boolean doLogin(String strId, String strPwd) {
-        return m_oAutorizacao.doLogin(strId, strPwd) != null;
+    
+    public static void setPlatform(Platform platform){
+        m_oPlatform = platform;
     }
-
-    public void doLogout() {
-        m_oAutorizacao.doLogout();
+    
+    public static void setAuthorizationFacade(FacadeAuthorization authorizationFacade){
+        m_oAuthorization = authorizationFacade;
     }
-
+//    
+//    public UserSession getCurrentSession() {
+//        return m_oAutorizacao.getCurrentSession();
+//    }
+//
+//    public boolean doLogin(String strId, String strPwd) {
+//        return m_oAutorizacao.doLogin(strId, strPwd) != null;
+//    }
+//
+//    public void doLogout() {
+//        m_oAutorizacao.doLogout();
+//    }
+//
 //    private Properties getProperties() {
 //        Properties props = new Properties();
 //

@@ -1,22 +1,37 @@
-    package com.mycompany.lapr2_interfacegrafica.ui;
+package com.mycompany.lapr2_interfacegrafica.ui;
 
+import com.mycompany.lapr2_interfacegrafica.authorization.FacadeAuthorization;
 import com.mycompany.lapr2_interfacegrafica.controller.POTApplication;
+import com.mycompany.lapr2_interfacegrafica.model.Platform;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class MainApp extends Application {
+
+    public static final String TITULO_APLICACAO = "  ";
 
     private Stage stage;
     private final double MINIMUM_WINDOW_WIDTH = 400.0;
@@ -27,12 +42,36 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        this.stage = stage;
-        stage.setTitle("Demo Maven and JavaFX Application");
-        stage.setMinWidth(MINIMUM_WINDOW_WIDTH);
-        stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
-        toMainScene();
-        this.stage.show();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/JanelaLogin.fxml"));
+        Parent root = loader.load();
+
+        Scene scene = new Scene(root);
+        stage.setTitle(TITULO_APLICACAO);
+        stage.setScene(scene);
+
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                Alert alert = AlertUI.createAlert(Alert.AlertType.CONFIRMATION, TITULO_APLICACAO, "Exit Confirmation", "Are you sure you want to leave the app");
+
+                if (alert.showAndWait().get() == ButtonType.CANCEL) {
+                    event.consume();
+                } else {
+                    try {
+                        serializeData();
+                    } catch (IOException ex) {
+                        Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        });
+        readFromBinaryFile();
+//        this.stage = stage;
+//        stage.setTitle("Demo Maven and JavaFX Application");
+//        stage.setMinWidth(MINIMUM_WINDOW_WIDTH);
+//        stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
+//        toMainScene();
+//        this.stage.show();
 //        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
 //
 //        Scene scene = new Scene(root);
@@ -43,46 +82,70 @@ public class MainApp extends Application {
 //        stage.show();
     }
 
-    public Stage getStage() {
-        return this.stage;
-    }
-
-    public void toMainScene() {
-        try {
-            JanelaLogin_1_UI loginUI = (JanelaLogin_1_UI) replaceSceneContent("/fxml/JanelaLogin.fxml");
-            loginUI.setMainApp(this);
-        } catch (Exception ex) {
-            Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
+    private void readFromBinaryFile() throws FileNotFoundException, IOException, ClassNotFoundException {
+        File platformData = new File("PlatformData.bin");
+        if (platformData.length() != 0) {
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream("PlatformData.bin"));
+            Platform plat = (Platform) in.readObject();
+            POTApplication.setPlatform(plat);
+        }
+        File loginData = new File("LoginData.bin");
+        if(loginData.length()==0){
+            POTApplication.getFacadeAuthorization().registesUserWithRole("Rui", "ruiadmin@t4j.com", "Administrator");
+        } else{
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream("LoginData.bin"));
+            FacadeAuthorization facadeAuthorization = (FacadeAuthorization) in.readObject();
+            POTApplication.setAuthorizationFacade(facadeAuthorization);
         }
     }
 
-    public Initializable replaceSceneContent(String fxml) throws Exception {
-        FXMLLoader loader = new FXMLLoader();
-        InputStream in = MainApp.class.getResourceAsStream(fxml);
-        loader.setBuilderFactory(new JavaFXBuilderFactory());
-        loader.setLocation(MainApp.class.getResource(fxml));
-        Pane page;
-        try {
-            page = (Pane) loader.load(in);
-        } finally {
-            in.close();
-        }
-        Scene scene = new Scene(page, SCENE_WIDTH, SCENE_HEIGHT);
-        scene.getStylesheets().add("/styles/Styles.css");
-        this.stage.setScene(scene);
-        this.stage.sizeToScene();
-        return (Initializable) loader.getController();
+    public void serializeData() throws FileNotFoundException, IOException{
+        ObjectOutputStream loginData= new ObjectOutputStream (new FileOutputStream("LoginData.bin"));
+        loginData.writeObject(POTApplication.getFacadeAuthorization());
+        ObjectOutputStream platData = new ObjectOutputStream(new FileOutputStream("PlatformData.bin"));
+        platData.writeObject(POTApplication.getPlatform());
+        
     }
-
+//    
+//    public Stage getStage() {
+//        return this.stage;
+//    }
+//
 //    public void toMainScene() {
 //        try {
+//            JanelaLogin_1_UI loginUI = (JanelaLogin_1_UI) replaceSceneContent("/fxml/JanelaLogin.fxml");
+//            loginUI.setMainApp(this);
+//        } catch (Exception ex) {
+//            Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
+//
+//    public Initializable replaceSceneContent(String fxml) throws Exception {
+//        FXMLLoader loader = new FXMLLoader();
+//        InputStream in = MainApp.class.getResourceAsStream(fxml);
+//        loader.setBuilderFactory(new JavaFXBuilderFactory());
+//        loader.setLocation(MainApp.class.getResource(fxml));
+//        Pane page;
+//        try {
+//            page = (Pane) loader.load(in);
+//        } finally {
+//            in.close();
+//        }
+//        Scene scene = new Scene(page, SCENE_WIDTH, SCENE_HEIGHT);
+//        scene.getStylesheets().add("/styles/Styles.css");
+//        this.stage.setScene(scene);
+//        this.stage.sizeToScene();
+//        return (Initializable) loader.getController();
+//    }
+//
+////    public void toMainScene() {
+////        try {
 //            MainUI mainUI = (MainUI) replaceSceneContent("/fxml/Main.fxml");
 //            mainUI.setMainApp(this);
 //        } catch (Exception ex) {
 //            Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
 //        }
 //    }
-
     /**
      * The main() method is ignored in correctly deployed JavaFX application.
      * main() serves only as fallback in case the application can not be
