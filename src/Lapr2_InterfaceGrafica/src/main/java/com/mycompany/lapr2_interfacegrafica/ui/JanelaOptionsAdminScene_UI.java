@@ -24,9 +24,11 @@ import javafx.stage.Stage;
  */
 public class JanelaOptionsAdminScene_UI implements Initializable {
 
-    private MainApp mainApp;
-
-    private JanelaOptionsAdminUI janelaOptionsAdminUI;
+//    private MainApp mainApp;
+//    private JanelaOptionsAdminUI janelaOptionsAdminUI;
+    
+    private AddNewOrganizationScene_1_UI addNewOrganizationUI;
+    private JanelaLogin_1_UI janelaLoginUI;
     
     @FXML
     private Button btnCheckPerformance;
@@ -39,8 +41,8 @@ public class JanelaOptionsAdminScene_UI implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
     }
 
-    public void setNewOptionsAdminUI(JanelaOptionsAdminUI janelaOptionsAdminUI){
-        this.janelaOptionsAdminUI=janelaOptionsAdminUI;
+    public void setNewOptionsAdminUI(JanelaLogin_1_UI janelaLoginUI){
+        this.janelaLoginUI=janelaLoginUI;
     }
     
     @FXML

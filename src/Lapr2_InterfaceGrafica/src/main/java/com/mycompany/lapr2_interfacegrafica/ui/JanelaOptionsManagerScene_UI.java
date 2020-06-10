@@ -20,7 +20,7 @@ public class JanelaOptionsManagerScene_UI implements Initializable {
 
     private MainApp mainApp;
 
-    private JanelaOptionsManagerUI janelaOptionsManagerUI;
+    private JanelaLogin_1_UI janelaLoginUI;
 
     @FXML
     private Button btnCheckStatistics;
@@ -31,8 +31,8 @@ public class JanelaOptionsManagerScene_UI implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
     }
 
-    public void setNewOptionsManagerUI(JanelaOptionsManagerUI janelaOptionsManagerUI) {
-        this.janelaOptionsManagerUI = janelaOptionsManagerUI;
+    public void setNewOptionsManagerUI(JanelaLogin_1_UI janelaLoginUI) {
+        this.janelaLoginUI = janelaLoginUI;
     }
 
     @FXML

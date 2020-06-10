@@ -21,7 +21,7 @@ public class JanelaOptionsCollaboratorScene_UI implements Initializable {
 
     private MainApp mainApp;
 
-    private JanelaOptionsCollaboratorUI janelaOptionsCollaboratorUI;
+    private JanelaLogin_1_UI janelaLoginUI;
 
     @FXML
     private Button btnCreateTask;
@@ -40,13 +40,13 @@ public class JanelaOptionsCollaboratorScene_UI implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
     }
 
-    public void setNewOptionsCollaboratorUI(JanelaOptionsCollaboratorUI janelaOptionsCollaboratorUI) {
-        this.janelaOptionsCollaboratorUI = janelaOptionsCollaboratorUI;
+    public void setNewOptionsCollaboratorUI(JanelaLogin_1_UI janelaLoginUI) {
+        this.janelaLoginUI = janelaLoginUI;
     }
 
     @FXML
     private void btnCreateFreelanceerAction(ActionEvent event) throws IOException {
-        goToScene(event,"/fxml/CreateFreelancer_1.fxml");
+        goToScene(event, "/fxml/CreateFreelancer_1.fxml");
 //        Parent createFreelancer = FXMLLoader.load(getClass().getResource("/fxml/CreateFreelancer_1.fxml"));
 //        Scene createFreelancerScene = new Scene(createFreelancer);
 //        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -58,7 +58,7 @@ public class JanelaOptionsCollaboratorScene_UI implements Initializable {
 
     @FXML
     private void btnCreateTaskAction(ActionEvent event) throws IOException {
-        goToScene(event,"/fxml/CreateTask_1_.fxml");
+        goToScene(event, "/fxml/CreateTask_1_.fxml");
 //        Parent createTask = FXMLLoader.load(getClass().getResource("/fxml/CreateTask_1_.fxml"));
 //        Scene createTaskScene = new Scene(createTask);
 //        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -75,17 +75,17 @@ public class JanelaOptionsCollaboratorScene_UI implements Initializable {
 
     @FXML
     private void btnUploadFileAction(ActionEvent event) throws IOException {
-        goToScene(event,"/fxml/UploadFIle.fxml");
+        goToScene(event, "/fxml/UploadFIle.fxml");
     }
 
     @FXML
     private void btnCheckStatisticsAction(ActionEvent event) throws IOException {
-        goToScene(event,"/fxml/JanelaCheckStatistics.fxml");
+        goToScene(event, "/fxml/JanelaCheckStatistics.fxml");
     }
 
     @FXML
     private void btnLogoutAction(ActionEvent event) throws IOException {
-        goToScene(event,"/fxml/JanelaLogin.fxml");
+        goToScene(event, "/fxml/JanelaLogin.fxml");
     }
 
     private void goToScene(ActionEvent event, String fxml) throws IOException {

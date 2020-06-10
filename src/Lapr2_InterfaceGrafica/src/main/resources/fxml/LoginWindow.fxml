@@ -21,7 +21,7 @@
         </rowConstraints>
          <children>
             <TextField fx:id="txtEmail" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#txtEmailKeyPressed" prefHeight="50.0" prefWidth="367.0" promptText="Email" />
-            <PasswordField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="367.0" promptText="Password" GridPane.rowIndex="1" />
+            <PasswordField fx:id="txtPassword" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="367.0" promptText="Password" GridPane.rowIndex="1" />
             <Button fx:id="btnLogin" layoutX="15.0" layoutY="35.0" mnemonicParsing="false" onAction="#btnLoginAction" text="Login" GridPane.rowIndex="2" />
          </children>
          <padding>

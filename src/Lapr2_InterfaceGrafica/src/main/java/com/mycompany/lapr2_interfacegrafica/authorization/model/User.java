@@ -12,7 +12,8 @@ public class User implements Serializable{
     private String m_strName;
     private String m_strEmail;
     private String m_strPassword;
-    private Set<UserRole> m_lstRoles = new HashSet<>();
+  //  private Set<UserRole> m_lstRoles = new HashSet<>();
+    private String role;
 
     public User(String strName, String strEmail, String strPassword) {
 
@@ -45,42 +46,47 @@ public class User implements Serializable{
     public boolean hasPassword(String strPwd) {
         return this.m_strPassword.equals(strPwd);
     }
+//
+//    public boolean addRole(UserRole role) {
+//        if (role != null) {
+//            return this.m_lstRoles.add(role);
+//        }
+//        return false;
+//    }
+//
+//    public boolean removeRole(UserRole role) {
+//        if (role != null) {
+//            return this.m_lstRoles.remove(role);
+//        }
+//        return false;
+//    }
+//
+//    public boolean hasRole(UserRole role) {
+//        return this.m_lstRoles.contains(role);
+//    }
+//
+//    public boolean hasRole(String strRole) {
+//        for (UserRole role : this.m_lstRoles) {
+//            if (role.hasId(strRole)) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 
-    public boolean addRole(UserRole role) {
-        if (role != null) {
-            return this.m_lstRoles.add(role);
-        }
-        return false;
+    public String getRole() {
+        return this.role;
+//        List<UserRole> list = new ArrayList<>();
+//        for (UserRole papel : this.m_lstRoles) {
+//            list.add(papel);
+//        }
+//        return list;
     }
 
-    public boolean removeRole(UserRole role) {
-        if (role != null) {
-            return this.m_lstRoles.remove(role);
-        }
-        return false;
+    public void setRole(String role){
+        this.role = role;
     }
-
-    public boolean hasRole(UserRole role) {
-        return this.m_lstRoles.contains(role);
-    }
-
-    public boolean hasRole(String strRole) {
-        for (UserRole role : this.m_lstRoles) {
-            if (role.hasId(strRole)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public List<UserRole> getRoles() {
-        List<UserRole> list = new ArrayList<>();
-        for (UserRole papel : this.m_lstRoles) {
-            list.add(papel);
-        }
-        return list;
-    }
-
+    
     @Override
     public int hashCode() {
         int hash = 7;
