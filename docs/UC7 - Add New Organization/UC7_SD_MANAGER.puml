@@ -35,12 +35,12 @@ ORGS -> PLAT : aut = getFacadeAuthorization()
 activate PLAT
 deactivate PLAT
 
-ORGS -> AUT: registesUserWithRoles(nameM, emailM, pwd, ["MANAGER", "COLLABORATOR"])
+ORGS -> AUT: registesUserWithRoles(nameM, emailM, pwd, "MANAGER")
 activate AUT
 deactivate AUT
 
 
-ORGS -> ORGS: sendPwd(emailM, pwdM)
+ORGS -> ORGS: sendEmail(orgName, emailM, pwdM, "MANAGER")
 deactivate ORGS
 
 deactivate ORGS

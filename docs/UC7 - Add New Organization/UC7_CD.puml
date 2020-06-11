@@ -22,7 +22,8 @@ class Organization {
   -String NIF
   +{static} Manager newManager(nameM, emailM)
   +{static} Collaborator newCollaborator(nameC, emailC)
-  +Organizacao(name, NIF, manager, collab)
+  +Organizacao(name, NIF, nameM, emailM, nameC, emailC)
+  -getName()
 }
 
 class Platform {
@@ -38,13 +39,13 @@ class OrganizationsRecord {
   +organizationRegister(Organization org)
   -addOrganization(Organization org)
   -RegistesManagerAsUser(Manager manager)
-  -sendPwd(String emailM, String pwd)
+  -sendEmail(String orgName, String emailM, String pwd, "MANAGER")
   -RegistesCollaboratorAsUser(Collaborator collab)
-  -sendPwd(String emailC, String pwd)
+  -sendEmail(String orgName, String emailC, String pwd, "COLLABORATOR")
 }
 
 class FacadeAuthorization {
-  +registesUserWithRoles(nameM, emailM, pwdM, ["MANAGER", "COLLABORATOR"])
+  +registesUserWithRoles(nameM, emailM, pwdM, "MANAGER")
   +registesUserWithRole(nameC, emailC, pwdC, "COLLABORATOR")
 }
 

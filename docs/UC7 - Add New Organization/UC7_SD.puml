@@ -30,17 +30,13 @@ deactivate PLAT
 CTRL -> ORGS: org = newOrganization(name, NIF, nameM, emailM, nameC, emailC)
 activate ORGS
 
-ORGS -> _ORG: manager = newManager(nameM, emailM)
-activate _ORG
-_ORG -> MANAGER** : create(nameM, emailM)
-deactivate _ORG
-
-ORGS -> _ORG: collab = newCollaborator(nameC, emailC)
-activate _ORG
-_ORG -> COLLAB** : create(nameC, emailC)
-deactivate _ORG
-
-ORGS -> ORG ** : create(name, NIF, manager, collab)
+ORGS -> ORG ** : create(name, NIF, nameM, emailM, nameC, emailC)
+|||
+activate ORG
+ORG -> MANAGER ** : create (nameM, emailM)
+ORG -> COLLAB ** : create (nameC, emailC)
+|||
+deactivate ORG
 deactivate ORGS
 
 CTRL -> ORGS : validateOrganization(org)
@@ -60,6 +56,10 @@ CTRL -> ORGS: organizationRegister(org)
 activate ORGS
 
 ORGS -> ORGS: validateOrganization(org)
+
+ORGS -> ORG: orgName = getOrgName()
+activate ORG
+deactivate ORG
 
 ref over ORGS, MANAGER, PLAT
   UC1_SD_RegistesManagerAsUser

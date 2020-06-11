@@ -40,7 +40,7 @@ activate AUT
 deactivate AUT
 
 
-ORGS -> ORGS: sendPwd(emailC, pwdC)
+ORGS -> ORGS: sendEmail(orgName, emailC, pwdC, "COLLABORATOR")
 deactivate ORGS
 
 deactivate ORGS

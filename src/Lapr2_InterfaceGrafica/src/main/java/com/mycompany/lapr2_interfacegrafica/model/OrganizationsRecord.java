@@ -94,22 +94,24 @@ public class OrganizationsRecord implements Serializable {
     }
 
     public boolean organizationRegister(Organization org) throws IOException {
-        String orgName = org.getOrgName();
-        Manager manager = org.getManager();
-        String nameM = manager.getName();
-        String emailM = manager.getEmail();
-        ExternalAlgorithm1API exAlgApi = new ExternalAlgorithm1API();
-        String pwdM = exAlgApi.generatePassword(nameM, emailM);
-        Collaborator collab = org.getCollaborator();
-        String nameC = collab.getName();
-        String emailC = collab.getEmail();
-        String pwdC = exAlgApi.generatePassword(nameC, emailC);
-        FacadeAuthorization aut = POTApplication.getFacadeAuthorization();
-        if (aut.registesUserWithRole(nameM, emailM, pwdM, Constants.ORGANIZATION_MANAGER_ROLE)
-                && aut.registesUserWithRole(nameC, emailC, pwdC, Constants.ORGANIZATION_COLLABORATOR_ROLE)) {
-            sendEmail(orgName, emailM, pwdM, Constants.ORGANIZATION_MANAGER_ROLE);
-            sendEmail(orgName, emailC, pwdC, Constants.ORGANIZATION_COLLABORATOR_ROLE);
-            return addOrganization(org);
+        if (this.validateOrganization(org)) {
+            String orgName = org.getOrgName();
+            Manager manager = org.getManager();
+            String nameM = manager.getName();
+            String emailM = manager.getEmail();
+            ExternalAlgorithm1API exAlgApi = new ExternalAlgorithm1API();
+            String pwdM = exAlgApi.generatePassword(nameM, emailM);
+            Collaborator collab = org.getCollaborator();
+            String nameC = collab.getName();
+            String emailC = collab.getEmail();
+            String pwdC = exAlgApi.generatePassword(nameC, emailC);
+            FacadeAuthorization aut = POTApplication.getFacadeAuthorization();
+            if (aut.registesUserWithRole(nameM, emailM, pwdM, Constants.ORGANIZATION_MANAGER_ROLE)
+                    && aut.registesUserWithRole(nameC, emailC, pwdC, Constants.ORGANIZATION_COLLABORATOR_ROLE)) {
+                sendEmail(orgName, emailM, pwdM, Constants.ORGANIZATION_MANAGER_ROLE);
+                sendEmail(orgName, emailC, pwdC, Constants.ORGANIZATION_COLLABORATOR_ROLE);
+                return addOrganization(org);
+            }
         }
         return false;
     }
