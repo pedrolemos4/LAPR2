@@ -54,7 +54,7 @@ public class JanelaOptionsCollaboratorScene_UI implements Initializable {
         if(this.createFreelancerUI==null){
             createFreelancerUI= new CreateFreelancerScene_1_UI();
         }
-        createFreelancerUI.goToScene(event, "/fxml/CreateFreelancer_1.fxml");
+        createFreelancerUI.goToScene(event,"/fxml/CreateFreelancer_1.fxml");
 //        Parent createFreelancer = FXMLLoader.load(getClass().getResource("/fxml/CreateFreelancer_1.fxml"));
 //        Scene createFreelancerScene = new Scene(createFreelancer);
 //        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -105,8 +105,13 @@ public class JanelaOptionsCollaboratorScene_UI implements Initializable {
 
     @FXML
     private void btnLogoutAction(ActionEvent event) throws IOException {
+        if(janelaLoginUI==null){
+            janelaLoginUI = new JanelaLogin_1_UI();
+        }
         janelaLoginUI.logout();
-        ((Node)event.getSource()).getScene().getWindow();
+        ((Node)event.getSource()).getScene().getWindow().hide();
+//        janelaLoginUI.logout();
+//        ((Node)event.getSource()).getScene().getWindow();
         //goToScene(event, "/fxml/JanelaLogin.fxml");
     }
 

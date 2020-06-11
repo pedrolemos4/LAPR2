@@ -29,7 +29,7 @@ public class Platform implements Serializable {
     }
 
     public FreelancersRecord getFreelancersRecord() {
-        return freelRec;
+        return this.freelRec;
     }
 
     public Organization getOrganization() {

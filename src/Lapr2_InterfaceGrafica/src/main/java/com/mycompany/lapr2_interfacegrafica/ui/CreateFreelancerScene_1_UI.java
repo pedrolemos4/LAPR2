@@ -49,6 +49,11 @@ public class CreateFreelancerScene_1_UI implements Initializable {
     private Button btnNext;
     @FXML
     private Label invalidLbl;
+    
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        this.controller = new CreateFreelancerController();
+    }
 
     // Get methods
     // <editor-fold defaultstate="collapsed">
@@ -98,7 +103,10 @@ public class CreateFreelancerScene_1_UI implements Initializable {
     @FXML
     private void btnNextAction(ActionEvent event) throws IOException {
         try {
-            controller.newFreelancer(txtNome.getText(), txtLevelOfExpertise.getText(), txtEmail.getText(), txtNIF.getText(), txtIBAN.getText(), txtCountry.getText(), txtAddress.getText());
+            String nome = txtNome.getText();
+            System.out.println("nomeUI: " + nome);
+            controller.newFreelancer(nome, txtLevelOfExpertise.getText(),
+                    txtEmail.getText(), txtNIF.getText(), txtIBAN.getText(), txtCountry.getText(), txtAddress.getText());
             controller.registerFreelancer();
             goToScene(event, "/fxml/CreateFreelancer_2.fxml");
             //this.freel.toCreateFreelancerScene2UI();
@@ -115,8 +123,4 @@ public class CreateFreelancerScene_1_UI implements Initializable {
         window.show();
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        this.controller = new CreateFreelancerController();
-    }
 }

@@ -87,7 +87,7 @@ public class FacadeAuthorization implements Serializable {
         if (this.m_oSession != null) {
             this.m_oSession.doLogout();
         }
-        this.m_oSession = null;
+        //this.m_oSession = null;
     }
 
 }

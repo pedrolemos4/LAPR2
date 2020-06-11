@@ -17,6 +17,7 @@ public class Freelancer implements Serializable{
         if (adress == null || country == null || email == null || iban == null || lvlExp == null || name == null || nif == null) {
             throw new IllegalArgumentException("None of the arguments can be null or empty.");
         }
+        System.out.println("Entras no Construtor?");
         setAddress(adress);
         setCountry(country);
         setEmail(email);
@@ -73,12 +74,12 @@ public class Freelancer implements Serializable{
     }
 
     public void setName(String name) {
-        if(name.trim().isEmpty() || name ==null) throw new IllegalArgumentException("Invalid name!");
+        if(name ==null || name.trim().isEmpty()) throw new IllegalArgumentException("Invalid name!");
         this.name = name;
     }
 
     public void setEmail(String email) {
-        if(email.trim().isEmpty()|| email ==null) throw new IllegalArgumentException("Invalid Email!");
+        if(email ==null|| email.trim().isEmpty()) throw new IllegalArgumentException("Invalid Email!");
         this.email = email;
     }
 
@@ -123,11 +124,12 @@ public class Freelancer implements Serializable{
 
     public void setId(String id) {
         if(id ==null){
-            new IllegalArgumentException("ID Freelancer is Empty");
+           throw new IllegalArgumentException("ID Freelancer is Empty");
         }
         this.id = id;
     }
 
+    @Override
     public String toString() {
         return String.format("The freelancer is called: %n. Lives in: %n, %n. Email: %n. Iban: %n. Nif: %n. Level of Experience: %n.", name, address, country, email, iban, nif, lvlExp);
     }

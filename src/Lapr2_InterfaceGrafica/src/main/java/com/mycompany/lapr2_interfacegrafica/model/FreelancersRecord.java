@@ -13,20 +13,11 @@ import java.util.Timer;
 
 public class FreelancersRecord implements Serializable {
 
-    public String id;
-    public String name;
-    public String lvlExp;
-    public String email;
-    public int nif;
-    public String iban;
-    public String country;
-    public String adress;
-
     public Organization org;
-    public Platform plat;
-    public Freelancer freel;
+    private Platform plat;
+    private Freelancer freel;
 
-    public List<Freelancer> arrayFreelancers;
+    public final List<Freelancer> arrayFreelancers;
     public PaymentTransactionList payemntTransList;
 
     public FreelancersRecord() {
@@ -34,7 +25,9 @@ public class FreelancersRecord implements Serializable {
     }
 
     public Freelancer newFreelancer(String name, String lvlExp, String email, String nif, String iban, String country, String adress) {
-        return new Freelancer(name, lvlExp, email, nif, iban, country, adress);
+        System.out.println("Entras no Record?");
+        this.freel = new Freelancer(name, lvlExp, email, nif, iban, country, adress);
+        return this.freel;
     }
 
     public boolean registerFreelancer(Freelancer freel) {
@@ -86,6 +79,11 @@ public class FreelancersRecord implements Serializable {
 
     public List<Freelancer> getListFreelancers() {
         return arrayFreelancers;
+    }
+
+    public Freelancer getFreelancer() {
+        System.out.println("Frl: " + this.freel.toString());
+        return this.freel;
     }
 
     public List<String> getFreelancersAsStringList() {
@@ -179,14 +177,14 @@ public class FreelancersRecord implements Serializable {
      */
     public void sendEmail(int delay, int percentageDelayFreel, String email) throws FileNotFoundException {
         Scanner in = new Scanner("email.txt");
-        while(in.hasNextLine()){
+        while (in.hasNextLine()) {
             String line = in.nextLine();
-            if(line.trim()==null){
+            if (line.trim() == null) {
                 continue;
             }
         }
         in.close();
-        PrintWriter out = new PrintWriter("email.txt"); 
+        PrintWriter out = new PrintWriter("email.txt");
         String fileContent = String.format("O freelancer com o email: %n, tem um delay de %d e uma percentagem de delay de %d.", email, delay, percentageDelayFreel);
         out.printf(fileContent);
         out.close();

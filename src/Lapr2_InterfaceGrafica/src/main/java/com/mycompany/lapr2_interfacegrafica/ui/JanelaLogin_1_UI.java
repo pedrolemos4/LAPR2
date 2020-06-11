@@ -49,6 +49,7 @@ public class JanelaLogin_1_UI implements Initializable {
     private JanelaOptionsManagerScene_UI optionsManagerUI;
     private Stage loginStage;
     private FacadeAuthorization facadeAuthorization;
+    private JanelaLogin_1_UI loginUI;
 
     @FXML
     private Button btnLogin;
@@ -70,12 +71,16 @@ public class JanelaLogin_1_UI implements Initializable {
             menuAdminStage.setScene(scene);
             optionsAdminUI = loader.getController();
             optionsAdminUI.setNewOptionsAdminUI(this);
-            menuAdminStage.setOnCloseRequest(new EventHandler<WindowEvent>(){
+            menuAdminStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 @Override
                 public void handle(WindowEvent event) {
-                    logout();
+                    try {
+                        logout();
+                    } catch (IOException ex) {
+                        Logger.getLogger(JanelaLogin_1_UI.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
-                
+
             });
 
             scene.getStylesheets().add("/styles/Styles.css");
@@ -95,12 +100,16 @@ public class JanelaLogin_1_UI implements Initializable {
             menuCollaboratorStage.setScene(scene);
             optionsCollaboratorUI = loader.getController();
             optionsCollaboratorUI.setNewOptionsCollaboratorUI(this);
-            menuCollaboratorStage.setOnCloseRequest(new EventHandler<WindowEvent>(){
+            menuCollaboratorStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 @Override
                 public void handle(WindowEvent event) {
-                    logout();
+                    try {
+                        logout();
+                    } catch (IOException ex) {
+                        Logger.getLogger(JanelaLogin_1_UI.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
-                
+
             });
 
         } catch (IOException ex) {
@@ -118,41 +127,64 @@ public class JanelaLogin_1_UI implements Initializable {
             menuManagerStage.setScene(scene);
             optionsManagerUI = loader.getController();
             optionsManagerUI.setNewOptionsManagerUI(this);
-            menuManagerStage.setOnCloseRequest(new EventHandler<WindowEvent>(){
+            menuManagerStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 @Override
                 public void handle(WindowEvent event) {
-                    logout();
+                    try {
+                        logout();
+                    } catch (IOException ex) {
+                        Logger.getLogger(JanelaLogin_1_UI.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
-                
+
             });
-        } catch(IOException ex){
+        } catch (IOException ex) {
             AlertUI.createAlert(Alert.AlertType.ERROR, "Error", "T4J-PAYMENTS", ex.getMessage());
-        } finally{
+        } finally {
         }
 //        this.btnLogin.setDisable(POTApplication.getInstance().getPlataforma().
 //                getOrganizationsRecord().getOrganizations().isEmpty());
     }
 
-     public void setStage(Stage stage) {
+    public void setStage(Stage stage) {
         this.loginStage = stage;
         facadeAuthorization = POTApplication.getFacadeAuthorization();
     }
-     
-    public void logout(){
+
+    public void logout() throws IOException {
+        facadeAuthorization = POTApplication.getFacadeAuthorization();
         facadeAuthorization.doLogout();
-        loginStage.show();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/LoginWindow.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+
+            loginStage = new Stage();
+            loginStage.initModality(Modality.APPLICATION_MODAL);
+            // menuManagerStage.setTitle("Manager");
+            loginStage.setResizable(false);
+            loginStage.setScene(scene);
+            loginUI = loader.getController();
+            loginUI.setNewLoginUI(this);
+//            optionsManagerUI = loader.getController();
+//            optionsManagerUI.setNewOptionsManagerUI(this);
+            loginStage.show();
+        } catch (IOException ex) {
+            AlertUI.createAlert(Alert.AlertType.ERROR, "Error", "T4J-Payments", ex.getMessage());
+        }
     }
 //    public void setMainApp(MainApp mainApp) {
 //        this.mainApp = mainApp;
 //    }
+
     @FXML
     private void btnLoginAction(ActionEvent event) throws IOException {
         String email = this.txtEmail.getText();
         String password = this.txtPassword.getText();
         if (POTApplication.getFacadeAuthorization().doLogin(email, password)) {
-           // String role = POTApplication.getFacadeAuthorization().getCurrentSession().getUser().getRoles();
+            // String role = POTApplication.getFacadeAuthorization().getCurrentSession().getUser().getRoles();
             System.out.println("Login");
-            switch (POTApplication.getFacadeAuthorization().getCurrentSession().getUser().getRole())   {
+            switch (POTApplication.getFacadeAuthorization().getCurrentSession().getUser().getRole()) {
                 case "ADMINISTRATOR":
                     System.out.println("Admin");
                     goToScene(event, "/fxml/OptionsAdmin.fxml");
@@ -174,7 +206,8 @@ public class JanelaLogin_1_UI implements Initializable {
     }
 
     @FXML
-    private void txtEmailKeyPressed(KeyEvent event) {
+    private void txtEmailKeyPressed(KeyEvent event
+    ) {
     }
 
     private void goToScene(ActionEvent event, String fxml) throws IOException {
@@ -191,5 +224,9 @@ public class JanelaLogin_1_UI implements Initializable {
         ObjectOutputStream platData = new ObjectOutputStream(new FileOutputStream("PlatformData.bin"));
         platData.writeObject(POTApplication.getPlatform());
 
+    }
+
+    public void setNewLoginUI(JanelaLogin_1_UI janelaLoginUI) {
+        this.loginUI = janelaLoginUI;
     }
 }

@@ -76,8 +76,11 @@ public class JanelaOptionsAdminScene_UI implements Initializable {
 
     @FXML
     private void btnLogoutAction(ActionEvent event) throws IOException {
+        if(janelaLoginUI==null){
+            janelaLoginUI = new JanelaLogin_1_UI();
+        }
         janelaLoginUI.logout();
-        ((Node)event.getSource()).getScene().getWindow();
+        ((Node)event.getSource()).getScene().getWindow().hide();
 //        Parent logout = FXMLLoader.load(getClass().getResource("/fxml/JanelaLogin.fxml"));
 //        Scene logoutScene = new Scene(logout);
 //        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
