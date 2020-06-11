@@ -54,7 +54,7 @@ public class Organization implements Serializable {
         if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException("Invalid Organization Name!");
         }
-        this.m_strName=name;
+        this.m_strName = name;
     }
 
     public void setNIF(String nif) {

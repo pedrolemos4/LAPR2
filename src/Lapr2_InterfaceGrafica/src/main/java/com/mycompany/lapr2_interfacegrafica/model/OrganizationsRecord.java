@@ -2,12 +2,15 @@ package com.mycompany.lapr2_interfacegrafica.model;
 
 import com.mycompany.lapr2_interfacegrafica.authorization.FacadeAuthorization;
 import com.mycompany.lapr2_interfacegrafica.controller.POTApplication;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.TreeMap;
 import org.apache.commons.math3.distribution.NormalDistribution;
 
@@ -31,10 +34,11 @@ public class OrganizationsRecord implements Serializable {
         if (!this.validateCollaboratorEmail(emailC)) {
             throw new IllegalArgumentException("Collaborator email already exists in the system!");
         }
-        //   Manager manager = this.org.newManager(nameM, emailM);
-        // Collaborator collab = this.org.newCollaborator(nameC, emailC);
-        this.org=new Organization(name, NIF, nameM, emailM, nameC, emailC);
-        return new Organization(name, NIF, nameM, emailM, nameC, emailC);
+        if (emailM.equals(emailC)) {
+            throw new IllegalArgumentException("Manager email and Collaborator email are the same!");
+        }
+        this.org = new Organization(name, NIF, nameM, emailM, nameC, emailC);
+        return this.org;
     }
 
     public Organization getOrganization() {
@@ -89,39 +93,33 @@ public class OrganizationsRecord implements Serializable {
         return org.toString();
     }
 
-    public boolean organizationRegister(Organization org) {
-        //if (this.validateOrganization(org)) {
+    public boolean organizationRegister(Organization org) throws IOException {
+        String orgName = org.getOrgName();
         Manager manager = org.getManager();
         String nameM = manager.getName();
         String emailM = manager.getEmail();
         ExternalAlgorithm1API exAlgApi = new ExternalAlgorithm1API();
         String pwdM = exAlgApi.generatePassword(nameM, emailM);
-        //  PasswordGeneratorAlgorithm alg = plat.getPasswordGeneratorAlgorithm();
-        //String pwdM = alg.generatePassword(nameM, emailM);
         Collaborator collab = org.getCollaborator();
         String nameC = collab.getName();
         String emailC = collab.getEmail();
         String pwdC = exAlgApi.generatePassword(nameC, emailC);
-        //String pwdC = alg.generatePassword(nameC, emailC);
         FacadeAuthorization aut = POTApplication.getFacadeAuthorization();
         if (aut.registesUserWithRole(nameM, emailM, pwdM, Constants.ORGANIZATION_MANAGER_ROLE)
                 && aut.registesUserWithRole(nameC, emailC, pwdC, Constants.ORGANIZATION_COLLABORATOR_ROLE)) {
-            sendEmail(emailM, pwdM);
-            sendEmail(emailC, pwdC);
+            sendEmail(orgName, emailM, pwdM, Constants.ORGANIZATION_MANAGER_ROLE);
+            sendEmail(orgName, emailC, pwdC, Constants.ORGANIZATION_COLLABORATOR_ROLE);
             return addOrganization(org);
         }
-        //  }
         return false;
     }
 
-    public void sendEmail(String email, String pwd) {
-        try {
-            try (FileWriter writer = new FileWriter("email.txt")) {
-                writer.write("Email: " + email);
-                writer.write("Password: " + pwd);
-            }
-        } catch (IOException e) {
-            System.out.println("An error occurred while sending the email.");
+    public void sendEmail(String orgName, String email, String pwd, String role) throws IOException {
+        try (FileWriter writer = new FileWriter("email.txt", true)) {
+            writer.write("Organization: " + orgName + "\nRole: " + role + "\nEmail: " + email + "\nPassword: " + pwd + "\n");
+            writer.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println("File to save emails not found!");
         }
     }
 
