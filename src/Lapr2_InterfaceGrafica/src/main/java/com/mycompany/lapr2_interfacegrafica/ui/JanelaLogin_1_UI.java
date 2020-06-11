@@ -8,6 +8,7 @@ package com.mycompany.lapr2_interfacegrafica.ui;
 import com.mycompany.lapr2_interfacegrafica.authorization.FacadeAuthorization;
 import com.mycompany.lapr2_interfacegrafica.controller.POTApplication;
 import com.mycompany.lapr2_interfacegrafica.model.Constants;
+import static com.mycompany.lapr2_interfacegrafica.model.Constants.ADMINISTRATOR_ROLE;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -150,14 +151,16 @@ public class JanelaLogin_1_UI implements Initializable {
         String password = this.txtPassword.getText();
         if (POTApplication.getFacadeAuthorization().doLogin(email, password)) {
            // String role = POTApplication.getFacadeAuthorization().getCurrentSession().getUser().getRoles();
+            System.out.println("Login");
             switch (POTApplication.getFacadeAuthorization().getCurrentSession().getUser().getRole())   {
-                case Constants.ADMINISTRATOR_ROLE:
+                case "ADMINISTRATOR":
+                    System.out.println("Admin");
                     goToScene(event, "/fxml/OptionsAdmin.fxml");
                     break;
-                case Constants.ORGANIZATION_COLLABORATOR_ROLE:
+                case "ORGANIZATION_COLLABORATOR":
                     goToScene(event, "/fxml/OptionsCollaborator.fxml");
                     break;
-                case Constants.ORGANIZATION_MANAGER_ROLE:
+                case "ORGANIZATION_MANAGER":
                     goToScene(event, "/fxml/OptionsManager.fxml");
                     break;
             }

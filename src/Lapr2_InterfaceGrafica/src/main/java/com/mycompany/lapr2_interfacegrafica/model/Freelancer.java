@@ -1,6 +1,8 @@
 package com.mycompany.lapr2_interfacegrafica.model;
 
-public class Freelancer {
+import java.io.Serializable;
+
+public class Freelancer implements Serializable{
 
     private String id;
     private String name;

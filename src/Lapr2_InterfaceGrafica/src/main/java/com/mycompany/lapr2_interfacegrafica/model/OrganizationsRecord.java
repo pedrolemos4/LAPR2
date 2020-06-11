@@ -1,15 +1,17 @@
 package com.mycompany.lapr2_interfacegrafica.model;
 
 import com.mycompany.lapr2_interfacegrafica.authorization.FacadeAuthorization;
+import com.mycompany.lapr2_interfacegrafica.controller.POTApplication;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import org.apache.commons.math3.distribution.NormalDistribution;
 
-public class OrganizationsRecord {
+public class OrganizationsRecord implements Serializable {
 
     private Platform plat;
     private Organization org;
@@ -26,12 +28,17 @@ public class OrganizationsRecord {
         if (!this.validateManagerEmail(emailM)) {
             throw new IllegalArgumentException("Manager email already exists in the system!");
         }
-        if (!this.validateManagerEmail(emailM)) {
+        if (!this.validateCollaboratorEmail(emailC)) {
             throw new IllegalArgumentException("Collaborator email already exists in the system!");
         }
-        Manager manager = org.newManager(nameM, emailM);
-        Collaborator collab = org.newCollaborator(nameC, emailC);
-        return new Organization(name, NIF, manager, collab);
+        //   Manager manager = this.org.newManager(nameM, emailM);
+        // Collaborator collab = this.org.newCollaborator(nameC, emailC);
+        this.org=new Organization(name, NIF, nameM, emailM, nameC, emailC);
+        return new Organization(name, NIF, nameM, emailM, nameC, emailC);
+    }
+
+    public Organization getOrganization() {
+        return org;
     }
 
     public boolean validateOrganization(Organization org) {
@@ -83,24 +90,27 @@ public class OrganizationsRecord {
     }
 
     public boolean organizationRegister(Organization org) {
-        if (this.validateOrganization(org)) {
-            Manager manager = org.getManager();
-            String nameM = manager.getName();
-            String emailM = manager.getEmail();
-            PasswordGeneratorAlgorithm alg = plat.getPasswordGeneratorAlgorithm();
-            String pwdM = alg.generatePassword(nameM, emailM);
-            Collaborator collab = org.getCollaborator();
-            String nameC = collab.getName();
-            String emailC = collab.getEmail();
-            String pwdC = alg.generatePassword(nameC, emailC);
-            FacadeAuthorization aut = plat.getFacadeAuthorization();
-            if (aut.registesUserWithRole(nameM, emailM, pwdM, Constants.ORGANIZATION_MANAGER_ROLE)
-                    && aut.registesUserWithRole(nameC, emailC, pwdC, Constants.ORGANIZATION_COLLABORATOR_ROLE)) {
-                sendEmail(emailM, pwdM);
-                sendEmail(emailC, pwdC);
-                return addOrganization(org);
-            }
+        //if (this.validateOrganization(org)) {
+        Manager manager = org.getManager();
+        String nameM = manager.getName();
+        String emailM = manager.getEmail();
+        ExternalAlgorithm1API exAlgApi = new ExternalAlgorithm1API();
+        String pwdM = exAlgApi.generatePassword(nameM, emailM);
+        //  PasswordGeneratorAlgorithm alg = plat.getPasswordGeneratorAlgorithm();
+        //String pwdM = alg.generatePassword(nameM, emailM);
+        Collaborator collab = org.getCollaborator();
+        String nameC = collab.getName();
+        String emailC = collab.getEmail();
+        String pwdC = exAlgApi.generatePassword(nameC, emailC);
+        //String pwdC = alg.generatePassword(nameC, emailC);
+        FacadeAuthorization aut = POTApplication.getFacadeAuthorization();
+        if (aut.registesUserWithRole(nameM, emailM, pwdM, Constants.ORGANIZATION_MANAGER_ROLE)
+                && aut.registesUserWithRole(nameC, emailC, pwdC, Constants.ORGANIZATION_COLLABORATOR_ROLE)) {
+            sendEmail(emailM, pwdM);
+            sendEmail(emailC, pwdC);
+            return addOrganization(org);
         }
+        //  }
         return false;
     }
 

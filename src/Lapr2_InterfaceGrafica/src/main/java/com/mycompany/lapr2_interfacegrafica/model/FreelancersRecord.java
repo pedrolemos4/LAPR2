@@ -3,6 +3,7 @@ package com.mycompany.lapr2_interfacegrafica.model;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -10,7 +11,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Timer;
 
-public class FreelancersRecord {
+public class FreelancersRecord implements Serializable {
 
     public String id;
     public String name;

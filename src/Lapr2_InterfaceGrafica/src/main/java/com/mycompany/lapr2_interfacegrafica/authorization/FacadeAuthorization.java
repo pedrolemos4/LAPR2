@@ -7,13 +7,22 @@ import com.mycompany.lapr2_interfacegrafica.authorization.model.UserSession;
 import com.mycompany.lapr2_interfacegrafica.authorization.model.UsersRecord;
 import com.mycompany.lapr2_interfacegrafica.model.ExternalAlgorithm1API;
 import com.mycompany.lapr2_interfacegrafica.model.PasswordGeneratorAlgorithm;
+import com.mycompany.lapr2_interfacegrafica.model.Platform;
+import java.io.Serializable;
 
-public class FacadeAuthorization {
+public class FacadeAuthorization implements Serializable {
 
-    private UserSession m_oSession = null;
+    private UserSession m_oSession;
 
-    private ExternalAlgorithm1API exAlgApi;
+    //  private ExternalAlgorithm1API exAlgApi;
+    private Platform plat;
 
+    private UsersRecord usersRecord;
+
+    public FacadeAuthorization() {
+        this.usersRecord = new UsersRecord();
+        this.m_oSession = new UserSession();
+    }
     private final UserRolesRecord m_oRoles = new UserRolesRecord();
     private final UsersRecord m_oUsers = new UsersRecord();
 
@@ -33,10 +42,14 @@ public class FacadeAuthorization {
     }
 
     public boolean registesUserWithRole(String strName, String strEmail, String strRole) {
-        String password = exAlgApi.generatePassword(strName, strEmail);
+        // ExternalAlgorithm1API alg = plat.getPasswordGeneratorAlgorithm();
+        ExternalAlgorithm1API exAlgApi = new ExternalAlgorithm1API();
+        String pwdM = exAlgApi.generatePassword(strName, strEmail);
+
+        //String password = exAlgApi.generatePassword(strName, strEmail);
         System.out.println("password");
         UserRole papel = this.m_oRoles.searchRole(strRole);
-        User utlz = this.m_oUsers.newUser(strName, strEmail, password);
+        User utlz = this.m_oUsers.newUser(strName, strEmail, pwdM);
         utlz.setRole(strRole);
         return this.m_oUsers.addUser(utlz);
     }
@@ -54,13 +67,16 @@ public class FacadeAuthorization {
 
     public boolean doLogin(String strId, String strPwd) {
         User user = this.m_oUsers.searchUser(strId);
-        if (user != null) {
-            if (user.hasPassword(strPwd)) {
-                this.m_oSession = new UserSession(user);
-                return true;
-            }
+        if (user == null) {
+            return false;
         }
-        return false;
+
+        if (user.hasPassword(strPwd)) {
+            this.m_oSession = new UserSession(user);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public UserSession getCurrentSession() {

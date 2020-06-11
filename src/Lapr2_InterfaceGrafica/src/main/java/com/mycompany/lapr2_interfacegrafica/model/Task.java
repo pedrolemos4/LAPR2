@@ -1,8 +1,9 @@
 package com.mycompany.lapr2_interfacegrafica.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Task {
+public class Task implements Serializable {
      private String id; 
      private String briefDescription; 
      private int timeDuration; 

@@ -1,9 +1,10 @@
 package com.mycompany.lapr2_interfacegrafica.model;
 
 import com.mycompany.lapr2_interfacegrafica.authorization.FacadeAuthorization;
+import java.io.Serializable;
 import java.util.List;
 
-public class Platform {
+public class Platform implements Serializable {
 
     private String m_strDesignacao;
     private final FacadeAuthorization m_oAutorizacao;
@@ -11,7 +12,7 @@ public class Platform {
     public OrganizationsRecord orgRec;
     public PaymentTransactionList paymentTransList;
     public Organization org;
-    public PasswordGeneratorAlgorithm alg;
+    public ExternalAlgorithm1API alg;
 
     public Platform() {
 //        if ((strDesignacao == null)
@@ -43,7 +44,7 @@ public class Platform {
         return this.paymentTransList;
     }
 
-    public PasswordGeneratorAlgorithm getPasswordGeneratorAlgorithm() {
+    public ExternalAlgorithm1API getPasswordGeneratorAlgorithm() {
         return this.alg;
     }
 

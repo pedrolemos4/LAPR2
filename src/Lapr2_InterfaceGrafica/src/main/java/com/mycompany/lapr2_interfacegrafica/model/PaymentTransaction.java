@@ -1,8 +1,9 @@
 package com.mycompany.lapr2_interfacegrafica.model;
 
+import java.io.Serializable;
 import lapr2.pot.ui.console.utils.Date;
 
-public class PaymentTransaction {
+public class PaymentTransaction implements Serializable {
 
     private String id;
     private Task task;
