@@ -38,7 +38,7 @@ public class OrganizationsRecord implements Serializable {
     }
 
     public Organization getOrganization() {
-        return org;
+        return this.org;
     }
 
     public boolean validateOrganization(Organization org) {

@@ -3,7 +3,7 @@ package com.mycompany.lapr2_interfacegrafica.model;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Collaborator implements Serializable{
+public class Collaborator implements Serializable {
 
     private String m_strName;
     private String m_strEmail;
@@ -33,7 +33,7 @@ public class Collaborator implements Serializable{
     }
 
     public void setEmail(String email) {
-        if (email == null || email.trim().isEmpty()) {
+        if (email == null || email.trim().isEmpty() || !email.contains("@") || !email.endsWith(".com")) {
             throw new IllegalArgumentException("Invalid Collaborator Email!");
         }
         this.m_strEmail = email;

@@ -33,7 +33,7 @@ public class Manager implements Serializable {
     }
 
     public void setEmail(String email) {
-        if (email == null || email.trim().isEmpty()) {
+        if (email == null || email.trim().isEmpty() || !email.contains("@") || !email.endsWith(".com")) {
             throw new IllegalArgumentException("Invalid Manager Email!");
         }
         this.m_strEmail = email;
