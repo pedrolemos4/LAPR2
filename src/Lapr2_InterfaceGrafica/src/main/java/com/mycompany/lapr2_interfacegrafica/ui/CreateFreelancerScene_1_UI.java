@@ -104,11 +104,11 @@ public class CreateFreelancerScene_1_UI implements Initializable {
     @FXML
     private void btnNextAction(ActionEvent event) throws IOException {
         try {
-            Freelancer fre = controller.newFreelancer(this.txtNome.getText(), this.txtLevelOfExpertise.getText(),
+                    controller.newFreelancer(this.txtNome.getText(), this.txtLevelOfExpertise.getText(),
                     this.txtEmail.getText(), this.txtNIF.getText(), this.txtIBAN.getText(), 
                     this.txtCountry.getText(), this.txtAddress.getText());
-            System.out.println("Apos newFreelancer na scene. "+fre.toString());
-            controller.registerFreelancer();
+            //System.out.println("Apos newFreelancer na scene. "+fre.toString());
+            //controller.registerFreelancer();
             goToScene(event, "/fxml/CreateFreelancer_2.fxml");
             //this.freel.toCreateFreelancerScene2UI();
         } catch (IllegalArgumentException e) {

@@ -56,9 +56,12 @@ public class CreateTaskScene_2_UI implements Initializable {
 
     @FXML
     private void btnConfirmAction(ActionEvent event) throws IOException {
+        if(this.createTaskController==null){
+            System.out.println("Fodeu na UI");
+        }
         boolean registered = this.createTaskController.registerTask();
         if (registered) {
-            AlertUI.createAlert(Alert.AlertType.INFORMATION, "Success", "T4J-PAYMENTS", "Task created successfully.");
+            AlertUI.createAlert(Alert.AlertType.INFORMATION, "Success", "T4J-PAYMENTS", "Task created successfully.").show();
             goToScene(event, "/fxml/OptionsCollaborator.fxml");
         } else{
             AlertUI.createAlert(Alert.AlertType.ERROR, "Error", "T4J-PAYMENTS", "Task was not registered");

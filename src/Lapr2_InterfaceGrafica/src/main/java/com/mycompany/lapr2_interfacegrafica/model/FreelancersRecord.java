@@ -15,7 +15,7 @@ public class FreelancersRecord implements Serializable {
 
     public Organization org;
     private Platform plat;
-    private Freelancer freel;
+    private Freelancer frl;
 
     public final List<Freelancer> arrayFreelancers;
     public PaymentTransactionList payemntTransList;
@@ -25,19 +25,27 @@ public class FreelancersRecord implements Serializable {
     }
 
     public Freelancer newFreelancer(String name, String lvlExp, String email, String nif, String iban, String country, String adress) {
-        this.freel = new Freelancer(name, lvlExp, email, nif, iban, country, adress);
-        return this.freel;
+        return new Freelancer(name, lvlExp, email, nif, iban, country, adress);
+    }
+
+    public Freelancer getFreelancer() {
+        return this.frl;
     }
 
     public boolean registerFreelancer(Freelancer freel) {
         System.out.println("register no freelancersRecord.");
+        String name = freel.getName();
+       // generateId(freel);
         if (this.validatesFreelancer(freel)) {
-            addFreelancer(freel);
+            return arrayFreelancers.add(freel);
+        } else {
+            System.out.println("eduardo");
         }
         return false;
     }
 
     public void generateId(Freelancer freel1) {
+        System.out.println("Free lancer nome candido" + freel1.getName());
         String array = freel1.getName();
         System.out.println("array: " + array);
         String[] arrayaux = array.split(" ");
@@ -69,8 +77,10 @@ public class FreelancersRecord implements Serializable {
 
     public boolean validatesFreelancer(Freelancer freel) {
         if (freel.getAdress() == null || freel.getCountry() == null || freel.getEmail() == null || freel.getIban() == null || freel.getLvlExp() == null || freel.getName() == null || freel.getNif() == null) {
+            System.out.println("Eduardo2");
             return false;
         } else {
+            System.out.println("Eduardo 3");
             return true;
         }
     }
@@ -81,11 +91,6 @@ public class FreelancersRecord implements Serializable {
 
     public List<Freelancer> getListFreelancers() {
         return arrayFreelancers;
-    }
-
-    public Freelancer getFreelancer() {
-        System.out.println("Frl: getFreelancer no registerFreelancer(). " + this.freel.toString());
-        return this.freel;
     }
 
     public List<String> getFreelancersAsStringList() {

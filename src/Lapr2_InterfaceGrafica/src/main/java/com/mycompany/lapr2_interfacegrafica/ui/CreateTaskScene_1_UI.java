@@ -47,6 +47,7 @@ public class CreateTaskScene_1_UI implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        this.createTaskController = new CreateTaskController();
     }
 
     public TextField getTaskID() {

@@ -13,12 +13,12 @@ import com.mycompany.lapr2_interfacegrafica.model.PaymentTransaction;
 import com.mycompany.lapr2_interfacegrafica.model.PaymentTransactionList;
 import com.mycompany.lapr2_interfacegrafica.model.Platform;
 import com.mycompany.lapr2_interfacegrafica.model.Task;
+import java.io.IOException;
 import lapr2.pot.ui.console.utils.Utils;
 
 public class CreateTaskController {
 
-    private POTApplication m_oApp;
-    private Platform m_oPlataforma;
+    private Platform m_oPlatform;
     private UserSession m_oSessao;
     private OrganizationsRecord or;
     private Organization org;
@@ -27,7 +27,7 @@ public class CreateTaskController {
     private PaymentTransaction payT;
     private TaskList taskRecord;
 
-    Task task = null;
+    private Task task;
 
     public CreateTaskController() {
        // this.m_oApp = POTApplication.getInstance();
@@ -37,9 +37,8 @@ public class CreateTaskController {
 //            throw new IllegalStateException("Utilizador não Autorizado");
 //        }
 
-        this.m_oPlataforma = m_oApp.getPlatform();
-
-        this.taskRecord = org.getTaskList();
+        this.m_oPlatform = POTApplication.getPlatform();
+        this.taskRecord = m_oPlatform.getTaskList();
     }
 
     public boolean newTask(String id, String briefDescription, int timeDuration, double costPerHour, String category) {
@@ -52,8 +51,10 @@ public class CreateTaskController {
         }
     }
 
-    public boolean registerTask() {
-        return taskRecord.registerTask(task);
+    public boolean registerTask() throws IOException{
+        TaskList taskList = m_oPlatform.getTaskList();
+        Task task1 = taskList.getTask();
+        return taskList.registerTask(task1);
     }
 
     public String getTaskAsString() {

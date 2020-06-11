@@ -13,6 +13,7 @@ public class Platform implements Serializable {
     public PaymentTransactionList paymentTransList;
     public Organization org;
     public ExternalAlgorithm1API alg;
+    public TaskList taskList;
 
     public Platform() {
 //        if ((strDesignacao == null)
@@ -23,6 +24,7 @@ public class Platform implements Serializable {
         this.m_oAutorizacao = new FacadeAuthorization();
         this.orgRec = new OrganizationsRecord();
         this.freelRec = new FreelancersRecord();
+        this.taskList = new TaskList();
     }
 
     public FacadeAuthorization getFacadeAuthorization() {
@@ -31,6 +33,10 @@ public class Platform implements Serializable {
 
     public FreelancersRecord getFreelancersRecord() {
         return this.freelRec;
+    }
+
+    public TaskList getTaskList() {
+        return this.taskList;
     }
 
     public Organization getOrganization() {

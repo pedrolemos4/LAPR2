@@ -49,8 +49,8 @@ public class CreateFreelancerScene_2_UI implements Initializable {
 
     @FXML
     private void btnConfirmAction(ActionEvent event) throws IOException {
-        
-        if (controller.registerFreelancer()) {
+        boolean registered = this.controller.registerFreelancer();
+        if (registered) {
             AlertUI.createAlert(Alert.AlertType.INFORMATION, "Success", "T4J-PAYMENTS", "Freelancer registered successfully").show();
             goToScene(event, "/fxml/OptionsCollaborator.fxml");
         } else {

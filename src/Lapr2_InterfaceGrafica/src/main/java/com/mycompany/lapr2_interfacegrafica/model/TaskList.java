@@ -7,15 +7,21 @@ import java.util.List;
 public class TaskList implements Serializable{
 
     private List<Task> tasks;
+    private Task task;
 
     public TaskList() {
         tasks = new ArrayList<>();
     }
 
     public Task newTask(String id, String briefDescription, int timeDuration, double costPerHour, String category) {
-        return new Task(id, briefDescription, timeDuration, costPerHour, category);
+        this.task= new Task(id, briefDescription, timeDuration, costPerHour, category);
+        return this.task;
     }
 
+    public Task getTask(){
+        System.out.println("To String: " +this.task.toString());
+        return this.task;
+    }
     public boolean registerTask(Task task) {
         if (validateTask(task)) {
             tasks.add(task);

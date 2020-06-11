@@ -16,21 +16,27 @@ public class CreateFreelancerController {
     public CreateFreelancerController() {
         this.platform = POTApplication.getPlatform();
         this.regFreel = platform.getFreelancersRecord();
+
     }
 
     public Freelancer newFreelancer(String name, String lvlExp, String email, String nif, String iban, String country, String address) {
         //FreelancersRecord fr = platform.getFreelancersRecord();
         //System.out.println(String.format("The freelancer is called: %s. Lives in: %s, %s. Email: %s. Iban: %s. Nif: %s. Level of Experience: %s.", name, address, country, email, iban, nif, lvlExp));
-        Freelancer freel1 = this.regFreel.newFreelancer(name, lvlExp, email, nif, iban, country, address);
-        this.freel = freel1;
-        return this.freel;
+        freel = regFreel.newFreelancer(name, lvlExp, email, nif, iban, country, address);
+        return freel;
     }
 
     public boolean registerFreelancer() {
-       // FreelancersRecord fr = platform.getFreelancersRecord();
-        regFreel.generateId(freel);
-        // regFreel.generateId(this.freel);
-        return regFreel.registerFreelancer(freel);
+//        if(regFreel==null){
+//            System.out.println("Registo fREELANCER NULL");
+//        }
+//         regFreel.generateId(freel);
+        FreelancersRecord fr = platform.getFreelancersRecord();
+        Freelancer frl = fr.getFreelancer();
+        System.out.println(frl.toString());
+        System.out.println("Name: " + frl.getName());
+        return fr.registerFreelancer(frl);
+
     }
 
     public String getFreelancerString() {
