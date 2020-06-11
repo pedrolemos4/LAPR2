@@ -34,6 +34,7 @@ public class FacadeAuthorization {
 
     public boolean registesUserWithRole(String strName, String strEmail, String strRole) {
         String password = exAlgApi.generatePassword(strName, strEmail);
+        System.out.println("password");
         UserRole papel = this.m_oRoles.searchRole(strRole);
         User utlz = this.m_oUsers.newUser(strName, strEmail, password);
         utlz.setRole(strRole);
@@ -43,7 +44,7 @@ public class FacadeAuthorization {
     public boolean registesUserWithRole(String strName, String strEmail, String strPassword, String role) {
         User user = this.m_oUsers.newUser(strName, strEmail, strPassword);
         UserRole papel = this.m_oRoles.searchRole(role);
-        user.addRole(papel);
+        user.setRole(role);
         return this.m_oUsers.addUser(user);
     }
 

@@ -27,8 +27,7 @@ public class CreatePaymentTransactionController {
     private Date date;
 
     public CreatePaymentTransactionController() {
-        // this.m_oApp = POTApplication.getInstance();
-        this.m_oSessao = m_oApp.getCurrentSession();
+        this.plat = POTApplication.getPlatform();
     }
 
     public PaymentTransaction newPaymentTransaction(String payTId, String taskString, String eDate, int delay, String workQualityDescription, String freelancerString) {

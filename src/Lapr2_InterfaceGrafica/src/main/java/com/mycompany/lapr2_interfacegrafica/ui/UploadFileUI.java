@@ -26,7 +26,7 @@ import javafx.stage.Stage;
  */
 public class UploadFileUI implements Initializable {
   //  private final MainApp mainApp;
-   // private final UploadFileController controller;
+   private  UploadFileController controller;
     
     @FXML
     private Label lblUploadFile;
@@ -44,7 +44,7 @@ public class UploadFileUI implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        this.controller = new UploadFileController();
     }
     
 //    public UploadFileUI(MainApp mainApp) {

@@ -92,6 +92,7 @@ public class JanelaLogin_1_UI implements Initializable {
             menuCollaboratorStage.setTitle("Collaborator");
             menuCollaboratorStage.setResizable(false);
             menuCollaboratorStage.setScene(scene);
+            optionsCollaboratorUI = loader.getController();
             optionsCollaboratorUI.setNewOptionsCollaboratorUI(this);
             menuCollaboratorStage.setOnCloseRequest(new EventHandler<WindowEvent>(){
                 @Override
@@ -131,6 +132,11 @@ public class JanelaLogin_1_UI implements Initializable {
 //                getOrganizationsRecord().getOrganizations().isEmpty());
     }
 
+     public void setStage(Stage stage) {
+        this.loginStage = stage;
+        facadeAuthorization = POTApplication.getFacadeAuthorization();
+    }
+     
     public void logout(){
         facadeAuthorization.doLogout();
         loginStage.show();

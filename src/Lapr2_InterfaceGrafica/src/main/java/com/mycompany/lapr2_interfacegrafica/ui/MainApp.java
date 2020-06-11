@@ -42,7 +42,7 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/JanelaLogin.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/LoginWindow.fxml"));
         Parent root = loader.load();
 
         Scene scene = new Scene(root);
@@ -66,6 +66,9 @@ public class MainApp extends Application {
             }
         });
         readFromBinaryFile();
+        JanelaLogin_1_UI loginUI = loader.getController();
+        loginUI.setStage(stage);
+        stage.show();
 //        this.stage = stage;
 //        stage.setTitle("Demo Maven and JavaFX Application");
 //        stage.setMinWidth(MINIMUM_WINDOW_WIDTH);

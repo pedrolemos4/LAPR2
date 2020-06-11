@@ -9,20 +9,19 @@ import lapr2.pot.ui.console.utils.Utils;
 
 public class OrganizationRecordController {
 
-    private POTApplication m_oApp;
-    private Platform m_oPlataforma;
+    
+    private Platform m_oPlatform;
     private Organization org;
     private OrganizationsRecord or;
 
     public OrganizationRecordController() {
         // this.m_oApp = POTApplication.getInstance();
-        this.m_oPlataforma = m_oApp.getPlataforma();
-        this.org = null;
-        System.out.println("1");
+        this.m_oPlatform = POTApplication.getPlatform();
+        this.or=m_oPlatform.getOrganizationsRecord();
     }
 
     public Organization newOrganization(String name, String NIF, String nameM, String emailM, String nameC, String emailC) {
-        this.or = m_oPlataforma.getOrganizationsRecord();
+        this.or = m_oPlatform.getOrganizationsRecord();
         this.org = or.newOrganization(name, NIF, nameM, emailM, nameC, emailC);
         if (this.or.validateOrganization(this.org)) {
             return this.org;
