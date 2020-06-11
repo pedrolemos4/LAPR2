@@ -9,7 +9,6 @@ import lapr2.pot.ui.console.utils.Utils;
 
 public class OrganizationRecordController {
 
-    
     private Platform m_oPlatform;
     private Organization org;
     private OrganizationsRecord or;
@@ -17,20 +16,29 @@ public class OrganizationRecordController {
     public OrganizationRecordController() {
         // this.m_oApp = POTApplication.getInstance();
         this.m_oPlatform = POTApplication.getPlatform();
-        this.or=m_oPlatform.getOrganizationsRecord();
+        this.or = m_oPlatform.getOrganizationsRecord();
     }
 
     public Organization newOrganization(String name, String NIF, String nameM, String emailM, String nameC, String emailC) {
-        this.or = m_oPlatform.getOrganizationsRecord();
-        this.org = or.newOrganization(name, NIF, nameM, emailM, nameC, emailC);
-        if (this.or.validateOrganization(this.org)) {
-            return this.org;
+        OrganizationsRecord r = m_oPlatform.getOrganizationsRecord();
+        Organization org1 = r.newOrganization(name, NIF, nameM, emailM, nameC, emailC);
+        this.org = org1;
+        if (this.or.validateOrganization(org1)) {
+            System.out.println("Validou Controller");
+            this.or.addOrganization(org1);
+            return org1;
         }
         return null;
     }
 
     public boolean registerOrganization() {
-        return this.or.organizationRegister(this.org);
+        OrganizationsRecord g = m_oPlatform.getOrganizationsRecord();
+        Organization y = g.getOrganization();
+        //this.or.getOrganizationToString(this.org);
+
+//        this.or.getOrganizations().get(0);
+//        System.out.println("Org: " + this.or.getOrganizations().get(0).toString());
+        return g.organizationRegister(y);
     }
 
     public String getOrganizationToString() {

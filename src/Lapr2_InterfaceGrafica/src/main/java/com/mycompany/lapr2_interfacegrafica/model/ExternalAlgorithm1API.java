@@ -2,7 +2,7 @@ package com.mycompany.lapr2_interfacegrafica.model;
 
 public class ExternalAlgorithm1API implements PasswordGeneratorAlgorithm {
 
-    private static final String ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    private final String ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
     @Override
     public String generatePassword(String nameM, String emailM) {
@@ -12,6 +12,7 @@ public class ExternalAlgorithm1API implements PasswordGeneratorAlgorithm {
             int character = (int) (Math.random() * ALPHA_NUMERIC_STRING.length());
             builder.append(ALPHA_NUMERIC_STRING.charAt(character));
         }
+        System.out.println("Olá + " + builder.toString());
         return builder.toString();
     }
 

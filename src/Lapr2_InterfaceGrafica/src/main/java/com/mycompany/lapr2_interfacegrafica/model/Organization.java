@@ -1,11 +1,12 @@
 package com.mycompany.lapr2_interfacegrafica.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.TreeMap;
 
-public class Organization {
+public class Organization implements Serializable {
 
     private String m_strName;
     private String m_strNIF;
@@ -14,11 +15,11 @@ public class Organization {
     private TaskList taskList;
     private PaymentTransactionList m_oPaymentTransactionList;
 
-    public Organization(String name, String NIF, Manager manager, Collaborator collaborator) {
+    public Organization(String name, String NIF, String nomeM, String emailM, String nomeC, String emailC) {
         setName(name);
         setNIF(NIF);
-        setManager(manager);
-        setCollaborator(collaborator);
+        this.m_oManager = new Manager(nomeM, emailM);
+        this.m_oCollaborator = new Collaborator(nomeC, emailC);
     }
 
     public TaskList getTaskList() {
@@ -53,6 +54,7 @@ public class Organization {
         if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException("Invalid Organization Name!");
         }
+        this.m_strName=name;
     }
 
     public void setNIF(String nif) {

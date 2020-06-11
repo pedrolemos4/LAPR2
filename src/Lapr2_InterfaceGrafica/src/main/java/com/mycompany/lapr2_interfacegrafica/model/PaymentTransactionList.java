@@ -1,10 +1,11 @@
 package com.mycompany.lapr2_interfacegrafica.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import lapr2.pot.ui.console.utils.Date;
 
-public class PaymentTransactionList {
+public class PaymentTransactionList implements Serializable {
 
     private List<PaymentTransaction> m_lstPaymentTransactions;
 

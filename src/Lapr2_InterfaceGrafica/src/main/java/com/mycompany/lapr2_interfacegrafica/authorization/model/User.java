@@ -7,24 +7,26 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-public class User implements Serializable{
+public class User implements Serializable {
 
     private String m_strName;
     private String m_strEmail;
     private String m_strPassword;
-  //  private Set<UserRole> m_lstRoles = new HashSet<>();
+    //  private Set<UserRole> m_lstRoles = new HashSet<>();
     private String role;
 
     public User(String strName, String strEmail, String strPassword) {
 
         if ((strName == null) || (strEmail == null) || (strPassword == null) || (strName.isEmpty()) || (strEmail.isEmpty()) || (strPassword.isEmpty())) {
+            System.out.println("Name: " + strName);
+            System.out.println("Email: " + strEmail);
+            System.out.println("Password: " + strPassword);
             throw new IllegalArgumentException("None of the arguments can be null or empty.");
         }
 
         this.m_strName = strName;
         this.m_strEmail = strEmail;
         this.m_strPassword = strPassword;
-
     }
 
     public String getId() {
@@ -83,10 +85,10 @@ public class User implements Serializable{
 //        return list;
     }
 
-    public void setRole(String role){
+    public void setRole(String role) {
         this.role = role;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 7;

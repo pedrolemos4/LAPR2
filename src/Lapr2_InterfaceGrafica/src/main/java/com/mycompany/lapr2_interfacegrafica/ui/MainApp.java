@@ -2,6 +2,7 @@ package com.mycompany.lapr2_interfacegrafica.ui;
 
 import com.mycompany.lapr2_interfacegrafica.authorization.FacadeAuthorization;
 import com.mycompany.lapr2_interfacegrafica.controller.POTApplication;
+import com.mycompany.lapr2_interfacegrafica.model.Constants;
 import com.mycompany.lapr2_interfacegrafica.model.Platform;
 import java.io.File;
 import java.io.FileInputStream;
@@ -52,7 +53,7 @@ public class MainApp extends Application {
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
-                Alert alert = AlertUI.createAlert(Alert.AlertType.CONFIRMATION, TITULO_APLICACAO, "Exit Confirmation", "Are you sure you want to leave the app");
+                Alert alert = AlertUI.createAlert(Alert.AlertType.CONFIRMATION, TITULO_APLICACAO, "Exit Confirmation", "Are you sure you want to leave the app?");
 
                 if (alert.showAndWait().get() == ButtonType.CANCEL) {
                     event.consume();
@@ -94,7 +95,7 @@ public class MainApp extends Application {
         }
         File loginData = new File("LoginData.bin");
         if(loginData.length()==0){
-            POTApplication.getFacadeAuthorization().registesUserWithRole("Rui", "ruiadmin@t4j.com", "Administrator");
+            POTApplication.getFacadeAuthorization().registesUserWithRole("Rui", "ruiadmin@t4j.com", Constants.ADMINISTRATOR_ROLE);
         } else{
             ObjectInputStream in = new ObjectInputStream(new FileInputStream("LoginData.bin"));
             FacadeAuthorization facadeAuthorization = (FacadeAuthorization) in.readObject();
@@ -103,10 +104,11 @@ public class MainApp extends Application {
     }
 
     public void serializeData() throws FileNotFoundException, IOException{
-        ObjectOutputStream loginData= new ObjectOutputStream (new FileOutputStream("LoginData.bin"));
-        loginData.writeObject(POTApplication.getFacadeAuthorization());
         ObjectOutputStream platData = new ObjectOutputStream(new FileOutputStream("PlatformData.bin"));
         platData.writeObject(POTApplication.getPlatform());
+        ObjectOutputStream loginData= new ObjectOutputStream (new FileOutputStream("LoginData.bin"));
+        loginData.writeObject(POTApplication.getFacadeAuthorization());
+        
         
     }
 //    

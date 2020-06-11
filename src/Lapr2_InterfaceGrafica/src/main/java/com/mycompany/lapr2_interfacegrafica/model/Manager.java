@@ -1,8 +1,9 @@
 package com.mycompany.lapr2_interfacegrafica.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Manager {
+public class Manager implements Serializable {
 
     private String m_strName;
     private String m_strEmail;
@@ -35,7 +36,7 @@ public class Manager {
         if (email == null || email.trim().isEmpty()) {
             throw new IllegalArgumentException("Invalid Manager Email!");
         }
-        this.m_strName = email;
+        this.m_strEmail = email;
     }
 
     @Override

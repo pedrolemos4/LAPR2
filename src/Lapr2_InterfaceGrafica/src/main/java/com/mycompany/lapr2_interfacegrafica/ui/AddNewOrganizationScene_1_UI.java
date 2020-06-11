@@ -20,7 +20,7 @@ import javafx.stage.Stage;
 public class AddNewOrganizationScene_1_UI implements Initializable {
 
     private JanelaOptionsAdminScene_UI optionsAdminUI;
-    
+
     private OrganizationRecordController controller;
 
     @FXML
@@ -44,6 +44,7 @@ public class AddNewOrganizationScene_1_UI implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        this.controller = new OrganizationRecordController();
     }
 
     public TextField getTxtName() {
@@ -65,8 +66,12 @@ public class AddNewOrganizationScene_1_UI implements Initializable {
 //            addNewOrganization= new AddNewOrganizationUI();
 //        }
         try {
+            System.out.println("1 UI - ManagerName: " + txtManagerName.getText());
+            System.out.println("1 UI - ManagerEmail: " + txtManagerEmail.getText());
+            System.out.println("1 UI - ColabName: " + txtCollaboratorName.getText());
+            System.out.println("1 UI - ColabEmail: " + txtCollaboratorEmail.getText());
             controller.newOrganization(txtName.getText(), txtNIF.getText(), txtManagerName.getText(),
-                    txtManagerEmail.getText(),txtCollaboratorName.getText(),txtCollaboratorEmail.getText());
+                    txtManagerEmail.getText(), txtCollaboratorName.getText(), txtCollaboratorEmail.getText());
 //            this.addNewOrganization.getOrganizationRecordController().newOrganization(this.txtName.getText(),
 //                    this.txtNIF.getText(), this.txtManagerName.getText(),
 //                    this.txtManagerEmail.getText(), this.txtCollaboratorName.getText(),
@@ -132,7 +137,7 @@ public class AddNewOrganizationScene_1_UI implements Initializable {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(buttonScene);
         window.show();
-        setController();
+       // setController();
     }
 
     public void setController() {
