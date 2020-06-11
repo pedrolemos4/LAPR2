@@ -14,7 +14,7 @@
    <top>
       <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="560.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Confirm the following task information?" />
+            <Label text="Confirm the following task information?" translateX="180.0" />
          </children>
       </HBox>
    </top>

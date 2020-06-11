@@ -37,6 +37,8 @@ public class JanelaOptionsAdminScene_UI implements Initializable {
     private Button btnAddNewOrganization;
     @FXML
     private Button btnLogout;
+    @FXML
+    private Button btnSendEmail;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -86,5 +88,9 @@ public class JanelaOptionsAdminScene_UI implements Initializable {
 //        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 //        window.setScene(logoutScene);
 //        window.show();
+    }
+
+    @FXML
+    private void btnSendEmailAction(ActionEvent event) {
     }
 }

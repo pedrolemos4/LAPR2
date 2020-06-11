@@ -25,9 +25,10 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button fx:id="btnAddNewOrganization" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnAddNewOrganizationAction" text="Add New Organization" translateX="-180.0" GridPane.rowIndex="1" />
-            <Button fx:id="btnCheckPerformance" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnCheckPerformanceAction" text="Check Perfomance Indicators" translateX="200.0" GridPane.rowIndex="1" />
+            <Button fx:id="btnAddNewOrganization" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnAddNewOrganizationAction" prefHeight="31.0" prefWidth="210.0" text="Add New Organization" translateX="-180.0" GridPane.rowIndex="1" />
+            <Button fx:id="btnCheckPerformance" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnCheckPerformanceAction" prefHeight="31.0" prefWidth="217.0" text="Check Perfomance Indicators" translateX="180.0" GridPane.rowIndex="1" />
             <Button fx:id="btnLogout" mnemonicParsing="false" onAction="#btnLogoutAction" text="Logout" GridPane.rowIndex="2" />
+            <Button fx:id="btnSendEmail" mnemonicParsing="false" onAction="#btnSendEmailAction" text="Send Email" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </center>
