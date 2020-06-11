@@ -19,23 +19,18 @@ public class CreateFreelancerController {
     }
 
     public Freelancer newFreelancer(String name, String lvlExp, String email, String nif, String iban, String country, String address) {
-         FreelancersRecord fr = platform.getFreelancersRecord();
-        System.out.println(String.format("The freelancer is called: %s. Lives in: %s, %s. Email: %s. Iban: %s. Nif: %s. Level of Experience: %s.", name, address, country, email, iban, nif, lvlExp));
-
-        Freelancer freel1 = fr.newFreelancer(name, lvlExp, email, nif, iban, country, address);
-        System.out.println("Passou!");
+        //FreelancersRecord fr = platform.getFreelancersRecord();
+        //System.out.println(String.format("The freelancer is called: %s. Lives in: %s, %s. Email: %s. Iban: %s. Nif: %s. Level of Experience: %s.", name, address, country, email, iban, nif, lvlExp));
+        Freelancer freel1 = this.regFreel.newFreelancer(name, lvlExp, email, nif, iban, country, address);
         this.freel = freel1;
-        System.out.println("Criou frl!");
-
         return this.freel;
     }
 
     public boolean registerFreelancer() {
-        FreelancersRecord fr = platform.getFreelancersRecord();
-        Freelancer frl = fr.getFreelancer();
-        fr.generateId(frl);
+       // FreelancersRecord fr = platform.getFreelancersRecord();
+        regFreel.generateId(freel);
         // regFreel.generateId(this.freel);
-        return fr.registerFreelancer(frl);
+        return regFreel.registerFreelancer(freel);
     }
 
     public String getFreelancerString() {

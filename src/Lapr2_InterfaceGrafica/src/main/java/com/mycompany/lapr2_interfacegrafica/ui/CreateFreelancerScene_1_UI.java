@@ -6,6 +6,7 @@
 package com.mycompany.lapr2_interfacegrafica.ui;
 
 import com.mycompany.lapr2_interfacegrafica.controller.CreateFreelancerController;
+import com.mycompany.lapr2_interfacegrafica.model.Freelancer;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -103,10 +104,10 @@ public class CreateFreelancerScene_1_UI implements Initializable {
     @FXML
     private void btnNextAction(ActionEvent event) throws IOException {
         try {
-            String nome = txtNome.getText();
-            System.out.println("nomeUI: " + nome);
-            controller.newFreelancer(nome, txtLevelOfExpertise.getText(),
-                    txtEmail.getText(), txtNIF.getText(), txtIBAN.getText(), txtCountry.getText(), txtAddress.getText());
+            Freelancer fre = controller.newFreelancer(this.txtNome.getText(), this.txtLevelOfExpertise.getText(),
+                    this.txtEmail.getText(), this.txtNIF.getText(), this.txtIBAN.getText(), 
+                    this.txtCountry.getText(), this.txtAddress.getText());
+            System.out.println("Apos newFreelancer na scene. "+fre.toString());
             controller.registerFreelancer();
             goToScene(event, "/fxml/CreateFreelancer_2.fxml");
             //this.freel.toCreateFreelancerScene2UI();

@@ -25,29 +25,31 @@ public class FreelancersRecord implements Serializable {
     }
 
     public Freelancer newFreelancer(String name, String lvlExp, String email, String nif, String iban, String country, String adress) {
-        System.out.println("Entras no Record?");
         this.freel = new Freelancer(name, lvlExp, email, nif, iban, country, adress);
         return this.freel;
     }
 
     public boolean registerFreelancer(Freelancer freel) {
+        System.out.println("register no freelancersRecord.");
         if (this.validatesFreelancer(freel)) {
             addFreelancer(freel);
         }
         return false;
     }
 
-    public void generateId(Freelancer freel) {
-        String letra1, letra2;
-        String[] array = freel.getName().split("");
-        letra1 = array[0];
-        int size = array.length;
-        letra2 = array[size];
-        String id1 = letra1 + letra2;
+    public void generateId(Freelancer freel1) {
+        String array = freel1.getName();
+        System.out.println("array: " + array);
+        String[] arrayaux = array.split(" ");
+        String nome1 = arrayaux[0];
+        String nome2 = arrayaux[1];
+        char letra1 = nome1.charAt(0);
+        int size = arrayaux.length;
+        char letra2 = nome2.charAt(0);
+        String id1 = ("" + letra1 + letra2);
         id1 = id1.toUpperCase();
         String numero = compareFreelancer(id1);
-//        String idGerado = (letra1 + letra2 + numero);
-        freel.setId(numero);
+        freel1.setId(numero);
     }
 
     public String compareFreelancer(String id) {
@@ -82,7 +84,7 @@ public class FreelancersRecord implements Serializable {
     }
 
     public Freelancer getFreelancer() {
-        System.out.println("Frl: " + this.freel.toString());
+        System.out.println("Frl: getFreelancer no registerFreelancer(). " + this.freel.toString());
         return this.freel;
     }
 

@@ -22,6 +22,7 @@ public class Platform implements Serializable {
 //        this.m_strDesignacao = strDesignacao;
         this.m_oAutorizacao = new FacadeAuthorization();
         this.orgRec = new OrganizationsRecord();
+        this.freelRec = new FreelancersRecord();
     }
 
     public FacadeAuthorization getFacadeAuthorization() {

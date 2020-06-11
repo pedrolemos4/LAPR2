@@ -13,67 +13,34 @@ public class Freelancer implements Serializable{
     private String country;
     private String address;
 
-    public Freelancer(String name, String lvlExp, String email, String nif, String iban, String country, String adress) {
-        if (adress == null || country == null || email == null || iban == null || lvlExp == null || name == null || nif == null) {
+    public Freelancer(String name1, String lvlExp, String email, String nif, String iban, String country, String adress) {
+        if (adress == null || country == null || email == null || iban == null || lvlExp == null || name1 == null || nif == null) {
             throw new IllegalArgumentException("None of the arguments can be null or empty.");
         }
-        System.out.println("Entras no Construtor?");
         setAddress(adress);
         setCountry(country);
         setEmail(email);
         setIBAN(iban);
         setExpertise(lvlExp);
-        setName(name);
+        setName(name1);
         setNif(nif);
     }
     
-    public Freelancer(String id,String name, String lvlExp, String email, String nif, String iban, String country, String adress) {
-        if (id==null || adress == null || country == null || email == null || iban == null || lvlExp == null || name == null || nif == null) {
-            throw new IllegalArgumentException("None of the arguments can be null or empty.");
-        }
-        setAddress(adress);
-        setCountry(country);
-        setEmail(email);
-        setIBAN(iban);
-        setExpertise(lvlExp);
-        setName(name);
-        setNif(nif);
-        setId(id);
-    }
-
-    public String getAdress() {
-        return this.address;
-    }
-
-    public String getCountry() {
-        return this.country;
-    }
-
-    public String getId() {
-        return this.id;
-    }
-
-    public String getLvlExp() {
-        return this.lvlExp;
-    }
-
-    public String getEmail() {
-        return this.email;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public String getIban() {
-        return this.iban;
-    }
-
-    public String getNif() {
-        return this.nif;
-    }
-
-    public void setName(String name) {
+//    public Freelancer(String id,String name, String lvlExp, String email, String nif, String iban, String country, String adress) {
+//        if (id==null || adress == null || country == null || email == null || iban == null || lvlExp == null || name == null || nif == null) {
+//            throw new IllegalArgumentException("None of the arguments can be null or empty.");
+//        }
+//        setAddress(adress);
+//        setCountry(country);
+//        setEmail(email);
+//        setIBAN(iban);
+//        setExpertise(lvlExp);
+//        setName(name);
+//        setNif(nif);
+//        setId(id);
+//    }
+    
+        public void setName(String name) {
         if(name ==null || name.trim().isEmpty()) throw new IllegalArgumentException("Invalid name!");
         this.name = name;
     }
@@ -129,9 +96,42 @@ public class Freelancer implements Serializable{
         this.id = id;
     }
 
+    public String getAdress() {
+        return this.address;
+    }
+
+    public String getCountry() {
+        return this.country;
+    }
+
+    public String getId() {
+        return this.id;
+    }
+
+    public String getLvlExp() {
+        return this.lvlExp;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String getIban() {
+        return this.iban;
+    }
+
+    public String getNif() {
+        return this.nif;
+    }
+
     @Override
     public String toString() {
-        return String.format("The freelancer is called: %n. Lives in: %n, %n. Email: %n. Iban: %n. Nif: %n. Level of Experience: %n.", name, address, country, email, iban, nif, lvlExp);
+        return String.format("The freelancer is called: %s. Lives in: %s, %s. "
+                + "Email: %s. Iban: %s. Nif: %s. Level of Experience: %s.", name, address, country, email, iban, nif, lvlExp);
     }
 
     public boolean validatesFreelancer(Freelancer freel) {
