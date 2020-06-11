@@ -20,7 +20,7 @@ public class NotifyFreelancerTask extends TimerTask {
     private Platform plat;
     
     public NotifyFreelancerTask(){
-        freelRec=plat.getFreelancersRecord();
+        this.freelRec=plat.getFreelancersRecord();
     }
     
     @Override

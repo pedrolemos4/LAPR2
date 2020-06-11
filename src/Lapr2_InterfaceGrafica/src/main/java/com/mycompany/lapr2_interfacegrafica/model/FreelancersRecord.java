@@ -178,7 +178,15 @@ public class FreelancersRecord implements Serializable {
      * @param percentageDelayFreel
      */
     public void sendEmail(int delay, int percentageDelayFreel, String email) throws FileNotFoundException {
-        PrintWriter out = new PrintWriter(new File("email.txt"));
+        Scanner in = new Scanner("email.txt");
+        while(in.hasNextLine()){
+            String line = in.nextLine();
+            if(line.trim()==null){
+                continue;
+            }
+        }
+        in.close();
+        PrintWriter out = new PrintWriter("email.txt"); 
         String fileContent = String.format("O freelancer com o email: %n, tem um delay de %d e uma percentagem de delay de %d.", email, delay, percentageDelayFreel);
         out.printf(fileContent);
         out.close();
