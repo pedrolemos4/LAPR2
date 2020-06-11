@@ -10,5 +10,5 @@ package com.mycompany.lapr2_interfacegrafica.ui;
  * @author Tiago
  */
 public class SetDayOfPaymentUI {
-    
+    //TODO invocar o SetDayOfPaymentController.setProcessPaymentsDay ???
 }
