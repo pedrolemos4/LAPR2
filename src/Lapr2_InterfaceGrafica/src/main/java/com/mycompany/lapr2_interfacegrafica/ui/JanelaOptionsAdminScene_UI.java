@@ -5,9 +5,15 @@
  */
 package com.mycompany.lapr2_interfacegrafica.ui;
 
+import com.mycompany.lapr2_interfacegrafica.controller.SendEmailController;
+import com.mycompany.lapr2_interfacegrafica.model.Freelancer;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +21,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
@@ -26,11 +33,13 @@ public class JanelaOptionsAdminScene_UI implements Initializable {
 
 //    private MainApp mainApp;
 //    private JanelaOptionsAdminUI janelaOptionsAdminUI;
-    
     private AddNewOrganizationScene_1_UI addNewOrganizationUI;
     private JanelaLogin_1_UI janelaLoginUI;
     private CheckPerformanceIndicatorsUI checkPerformanceIndicatorsUI;
-    
+    private SendEmailController sendEmailController;
+
+    private List<Freelancer> lstFreelApt;
+
     @FXML
     private Button btnCheckPerformance;
     @FXML
@@ -42,18 +51,24 @@ public class JanelaOptionsAdminScene_UI implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        try {
+            sendEmailController = new SendEmailController();
+            lstFreelApt = sendEmailController.getListFreelancersAdapt();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(JanelaOptionsAdminScene_UI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
-    public void setNewOptionsAdminUI(JanelaLogin_1_UI janelaLoginUI){
-        this.janelaLoginUI=janelaLoginUI;
+    public void setNewOptionsAdminUI(JanelaLogin_1_UI janelaLoginUI) {
+        this.janelaLoginUI = janelaLoginUI;
     }
-    
+
     @FXML
     private void btnCheckPerformanceAction(ActionEvent event) throws IOException {
-        if(checkPerformanceIndicatorsUI==null) {
+        if (checkPerformanceIndicatorsUI == null) {
             checkPerformanceIndicatorsUI = new CheckPerformanceIndicatorsUI();
         }
-        checkPerformanceIndicatorsUI.goToScene(event, "/fxml/CheckPerformanceIndicator.fxml"); 
+        checkPerformanceIndicatorsUI.goToScene(event, "/fxml/CheckPerformanceIndicator.fxml");
 //        Parent checkPerformance = FXMLLoader.load(getClass().getResource("/fxml/CheckPerformanceIndicators.fxml"));
 //        Scene checkPerfomanceScene = new Scene(checkPerformance);
 //        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -63,8 +78,8 @@ public class JanelaOptionsAdminScene_UI implements Initializable {
 
     @FXML
     private void btnAddNewOrganizationAction(ActionEvent event) throws IOException {
-        if(addNewOrganizationUI==null){
-           addNewOrganizationUI= new AddNewOrganizationScene_1_UI();
+        if (addNewOrganizationUI == null) {
+            addNewOrganizationUI = new AddNewOrganizationScene_1_UI();
         }
         addNewOrganizationUI.goToScene(event, "/fxml/AddNewOrganization_1_.fxml");
 //        Parent addOrganization = FXMLLoader.load(getClass().getResource("/fxml/AddNewOrganization_1_.fxml"));
@@ -78,11 +93,11 @@ public class JanelaOptionsAdminScene_UI implements Initializable {
 
     @FXML
     private void btnLogoutAction(ActionEvent event) throws IOException {
-        if(janelaLoginUI==null){
+        if (janelaLoginUI == null) {
             janelaLoginUI = new JanelaLogin_1_UI();
         }
         janelaLoginUI.logout();
-        ((Node)event.getSource()).getScene().getWindow().hide();
+        ((Node) event.getSource()).getScene().getWindow().hide();
 //        Parent logout = FXMLLoader.load(getClass().getResource("/fxml/JanelaLogin.fxml"));
 //        Scene logoutScene = new Scene(logout);
 //        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -91,6 +106,19 @@ public class JanelaOptionsAdminScene_UI implements Initializable {
     }
 
     @FXML
-    private void btnSendEmailAction(ActionEvent event) {
+    private void btnSendEmailAction(ActionEvent event) throws FileNotFoundException {
+        try {
+            if (sendEmailController == null) {
+                sendEmailController = new SendEmailController();
+            }
+            for (Freelancer freel : lstFreelApt) {
+                sendEmailController.sendEmail(freel);
+                AlertUI.createAlert(Alert.AlertType.ERROR, "Error", "T4J", "Successful").show();
+            }
+        } catch (NullPointerException e) {
+            AlertUI.createAlert(Alert.AlertType.ERROR, "Error", "T4J", "You need to select a freelancer").show();
+        } catch (Exception e) {
+            AlertUI.createAlert(Alert.AlertType.ERROR, "Error", "T4J", "Unsuccessful").show();
+        }
     }
 }

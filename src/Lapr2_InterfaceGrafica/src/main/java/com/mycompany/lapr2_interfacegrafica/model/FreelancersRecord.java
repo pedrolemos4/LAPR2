@@ -139,44 +139,62 @@ public class FreelancersRecord implements Serializable {
         t.schedule(task, data);
     }
 
-    /**
-     * Seleciona os freelancers
-     */
-    public void sendEmails() throws FileNotFoundException {
-        int numberTransactions = 0, delay = 0, amountForHourDelay = 0;
+    public int getDelay(Freelancer freel3) {
+        int delay = 0;
+        List<Freelancer> freelApt = new ArrayList<>();
+        payemntTransList = plat.getPaymentTransactionList();
+        List<PaymentTransaction> payemntTransList1 = payemntTransList.getPaymentTransactions();
+        for (int k = 0; k < payemntTransList1.size(); k++) {
+            Freelancer frel = payemntTransList1.get(k).getFreelancer();
+            if (frel.equals(freel3)) {
+                if (payemntTransList1.get(k).getDelay() > 0) {
+                    delay = delay + payemntTransList1.get(k).getDelay();
+                }
+            }
+        }
+        return delay;
+    }
 
+    public int getPercentageDelay(Freelancer freel1) {
+        int numberTrans = 0, delay = 0;
+        List<Freelancer> freelApt = new ArrayList<>();
+        payemntTransList = plat.getPaymentTransactionList();
+        List<PaymentTransaction> payemntTransList1 = payemntTransList.getPaymentTransactions();
+        for (int k = 0; k < payemntTransList1.size(); k++) {
+            Freelancer frel = payemntTransList1.get(k).getFreelancer();
+            if (frel.equals(freel1)) {
+                numberTrans++;
+                if (payemntTransList1.get(k).getDelay() > 0) {
+                    delay++;
+                }
+            }
+        }
+        return delay / numberTrans;
+    }
+
+    public List<Freelancer> getFreelancersAdapt() throws FileNotFoundException {
+        List<Freelancer> freelApt = new ArrayList<>();
         payemntTransList = plat.getPaymentTransactionList();
         List<PaymentTransaction> payemntTransList1 = payemntTransList.getPaymentTransactions();
         for (int i = 0; i < arrayFreelancers.size(); i++) {
             Freelancer freel = arrayFreelancers.get(i);
-            for (int k = 0; k < payemntTransList1.size(); k++) {
-                PaymentTransaction trans = payemntTransList1.get(k);
-                Freelancer freelTrans = payemntTransList1.get(k).getFreelancer();
-                if (freel == freelTrans) {
-                    numberTransactions++;
-                    int delayTrans = trans.getDelay();
-                    if (delayTrans > 0) {
-                        delay++;
-                        amountForHourDelay++;
-                    }
-                }
-            }
-            int percentageDelayFreel = delay / numberTransactions;
+            int delay = getDelay(freel);
+            int perDelay = getPercentageDelay(freel);
             double averageDelay = getAverageDelay();
-            if (delay > 3 && percentageDelayFreel > averageDelay) {
-                freel.getEmail();
-                sendEmail(delay, percentageDelayFreel, freel.getEmail());
+            if (delay > 3 && perDelay > averageDelay) {
+                freelApt.add(freel);
             }
+
         }
+        return freelApt;
     }
 
     /**
-     * Envia o email para o ficheiro email.txt
      *
-     * @param delay
-     * @param percentageDelayFreel
+     * @param freel
+     * @throws FileNotFoundException
      */
-    public void sendEmail(int delay, int percentageDelayFreel, String email) throws FileNotFoundException {
+    public void sendEmail(Freelancer freel) throws FileNotFoundException {
         Scanner in = new Scanner("email.txt");
         while (in.hasNextLine()) {
             String line = in.nextLine();
@@ -186,7 +204,7 @@ public class FreelancersRecord implements Serializable {
         }
         in.close();
         PrintWriter out = new PrintWriter("email.txt");
-        String fileContent = String.format("O freelancer com o email: %n, tem um delay de %d e uma percentagem de delay de %d.", email, delay, percentageDelayFreel);
+        String fileContent = String.format("O freelancer com o email: %n, tem um delay de %d e uma percentagem de delay de %d.", getAverageDelay(), getDelay(freel), getPercentageDelay(freel));
         out.printf(fileContent);
         out.close();
     }

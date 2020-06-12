@@ -15,16 +15,16 @@ import java.util.logging.Logger;
  * @author pedro
  */
 public class NotifyFreelancerTask extends TimerTask {
-    
+
     private FreelancersRecord freelRec;
     private Platform plat;
-    
-    public NotifyFreelancerTask(){
-        this.freelRec=plat.getFreelancersRecord();
+
+    public NotifyFreelancerTask() {
+        this.freelRec = plat.getFreelancersRecord();
     }
-    
+
     @Override
-    public void run(){
+    public void run() {
         try {
             sendEmail();
         } catch (FileNotFoundException ex) {
@@ -32,13 +32,15 @@ public class NotifyFreelancerTask extends TimerTask {
         }
         nextNotification();
     }
-    
-    private void sendEmail() throws FileNotFoundException{
-        freelRec.sendEmails();
+
+    private void sendEmail() throws FileNotFoundException {
+        for (Freelancer freel : freelRec.getFreelancersAdapt()) {
+            freelRec.sendEmail(freel);
+        }
     }
-    
-    private void nextNotification(){
+
+    private void nextNotification() {
         freelRec.scheduleAutomaticEmail();
     }
-    
+
 }
