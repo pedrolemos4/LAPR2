@@ -21,6 +21,7 @@ public class Organization implements Serializable {
         this.m_oManager = new Manager(nomeM, emailM);
         this.m_oCollaborator = new Collaborator(nomeC, emailC);
         this.taskList = new TaskList();
+        this.m_oPaymentTransactionList = new PaymentTransactionList();
     }
 
     public TaskList getTaskList() {

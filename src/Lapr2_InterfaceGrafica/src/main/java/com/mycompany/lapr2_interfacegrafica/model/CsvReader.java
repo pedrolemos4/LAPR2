@@ -14,7 +14,6 @@ public class CsvReader implements FileReader {
     private PaymentTransactionList m_paymentTransactionList;
     private FreelancersRecord m_freelancerRecord;
     private TaskList m_taskList;
-    private String m_namefile;
     boolean fileExists;
     Scanner ler;
 
@@ -28,17 +27,18 @@ public class CsvReader implements FileReader {
         this.m_taskList = taskList;
     }
 
-    public CsvReader(File m_namefile) {
+    public void readNewFile(File m_namefile) {
         try {
             ler = new Scanner(m_namefile);
             fileExists = true;
+            readFile(ler);
         } catch (FileNotFoundException ex) {
             fileExists = false;
-            System.out.println("Ficheiro não encontrado!");
+            System.out.println("File Not Found!");
         }
     }
 
-    public boolean readFile() {
+    public boolean readFile(Scanner ler) {
         if (!fileExists || !ler.hasNextLine()) {
             return false;
         } else {
@@ -46,10 +46,12 @@ public class CsvReader implements FileReader {
             Freelancer free;
             String transactionId, freeNIF, taskId;
             int invalidLine = 0, validLine = 0;
-
             String line = ler.nextLine();
+            
             while (ler.hasNextLine()) {
-                String[] items = ler.nextLine().split(";");
+                
+                String[]items = ler.nextLine().split(";");
+                               
                 if (items.length != 17) {
                     invalidLine++;
                     continue;
@@ -82,22 +84,21 @@ public class CsvReader implements FileReader {
                             continue;
                         }
                     }
-                    Date m_strEndDate = parseDate(items[6]);
-                    int m_Delay = Integer.parseInt(items[7]);
-                    String m_strWorkQualityDescription = items[8];
 
                     //creates paymentTransaction
-                    PaymentTransaction payTransaction = m_paymentTransactionList.newPaymentTransaction1(transactionId, task,
-                            free, m_strEndDate, m_Delay, m_strWorkQualityDescription);
-                    if (m_paymentTransactionList.paymentTransactionRegister(payTransaction)) {;
+                    PaymentTransaction payTransaction = m_paymentTransactionList.newPaymentTransaction1(transactionId,
+                            task,free, parseDate(items[6]), Integer.parseInt(items[7]), items[8]);
+                    if (m_paymentTransactionList.validatePaymentTransaction(payTransaction)) {
 //m_paymentTransactionList.validatePaymentTransaction(payTransaction)) {
+                        m_paymentTransactionList.paymentTransactionRegister(payTransaction);
                         validLine++;
-                        return true;// m_paymentTransactionList.paymentTransactionRegister(payTransaction);
+//                        return true;// m_paymentTransactionList.paymentTransactionRegister(payTransaction);
                         //validLine++;
                     }
-
+                    
                 } catch (IllegalArgumentException | ArrayIndexOutOfBoundsException ex) {
                     ex.printStackTrace();
+                    continue;
                 }
             }
             return !fileExists;
@@ -105,27 +106,13 @@ public class CsvReader implements FileReader {
     }
 
     private Task newTask(String taskId, String[] items) {
-        String briefDescription;
-        int timeDuration;
-        double costPerHour;
-        String category;
-        briefDescription = items[2];
-        timeDuration = Integer.parseInt(items[3]);
-        costPerHour = Double.parseDouble(items[4]);
-        category = items[5];
-        return m_taskList.newTask(taskId, briefDescription, timeDuration, costPerHour,
-                category);
+        return m_taskList.newTask(taskId, items[2], Integer.parseInt(items[3]),
+                Double.parseDouble(items[4]),items[5]);
     }
 
     private Freelancer newFreelancer(String freeNIF, String[] items) {
-        String id = items[9];
-        String name = items[10];
-        String lvlExp = items[11];
-        String email = items[12];
-        String iban = items[14];
-        String country = items[16];
-        String adress = items[15];
-        return m_freelancerRecord.newFreelancer(name, lvlExp, email, freeNIF, iban, country, adress);
+        return m_freelancerRecord.newFreelancer1(items[9],items[10], items[11],
+                items[12], freeNIF, items[14], items[16], items[15]);
     }
 
     private Date parseDate(String date) {

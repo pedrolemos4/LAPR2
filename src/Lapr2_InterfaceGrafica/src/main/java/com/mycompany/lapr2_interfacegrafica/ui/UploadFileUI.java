@@ -66,9 +66,8 @@ public class UploadFileUI implements Initializable {
         File file = flChooser.showOpenDialog(lstPaymentTransactions.getScene().getWindow());
         if (file != null) {
             lstPaymentTransactions.getItems().clear();
-//            if (controller.getFileTxt(file)) {
-                addTransactions();
-//            }
+            controller.getFileTxt(file);
+            addTransactions();
         }
     }
 
@@ -78,9 +77,8 @@ public class UploadFileUI implements Initializable {
         File file = flChooser.showOpenDialog(lstPaymentTransactions.getScene().getWindow());
         if (file != null) {
             lstPaymentTransactions.getItems().clear();
-//            if (controller.getFileCsv(file)) {
-                addTransactions();
-//            }
+            controller.getFileCsv(file);
+            addTransactions();
         }
     }
     

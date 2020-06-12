@@ -11,7 +11,8 @@ public class FileChooserUI {
 
     private FileChooserUI() {
         fileChooser = new FileChooser();
-        associarFiltro("File Transactions", "*.txt");
+        extensionFilter("File Transactions", "*.csv");
+        extensionFilter("File Transactions", "*.txt");
     }
 
     public static FileChooser criarFileChooser() {
@@ -19,8 +20,8 @@ public class FileChooserUI {
         return listTransactions.fileChooser;
     }
 
-    private void associarFiltro(String description, String extension) {
-        FileChooser.ExtensionFilter filtro = new FileChooser.ExtensionFilter(description, extension);
-        fileChooser.getExtensionFilters().add(filtro);
+    private void extensionFilter(String description, String extension) {
+        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter(description, extension);
+        fileChooser.getExtensionFilters().add(filter);
     }
 }

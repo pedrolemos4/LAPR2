@@ -27,6 +27,10 @@ public class FreelancersRecord implements Serializable {
     public Freelancer newFreelancer(String name, String lvlExp, String email, String nif, String iban, String country, String adress) {
         return new Freelancer(name, lvlExp, email, nif, iban, country, adress);
     }
+    
+    public Freelancer newFreelancer1(String id, String name, String lvlExp, String email, String nif, String iban, String country, String adress) {
+        return new Freelancer(id,name, lvlExp, email, nif, iban, country, adress);
+    }
 
     public Freelancer getFreelancer() {
         return this.frl;
@@ -113,7 +117,8 @@ public class FreelancersRecord implements Serializable {
                 return freelancer;
             }
         }
-        throw new IllegalArgumentException("Invalid " + freelancerNIF);
+//        throw new IllegalArgumentException("Invalid " + freelancerNIF);
+        return null;
     }
 
     public Freelancer getFreelancerByStringValue(String freelancerString) {

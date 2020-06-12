@@ -23,19 +23,19 @@ public class Freelancer implements Serializable{
         setNif(nif);
     }
     
-//    public Freelancer(String id,String name, String lvlExp, String email, String nif, String iban, String country, String adress) {
+    public Freelancer(String id,String name, String lvlExp, String email, String nif, String iban, String country, String adress) {
 //        if (id==null || adress == null || country == null || email == null || iban == null || lvlExp == null || name == null || nif == null) {
 //            throw new IllegalArgumentException("None of the arguments can be null or empty.");
 //        }
-//        setAddress(adress);
-//        setCountry(country);
-//        setEmail(email);
-//        setIBAN(iban);
-//        setExpertise(lvlExp);
-//        setName(name);
-//        setNif(nif);
-//        setId(id);
-//    }
+        setAddress(adress);
+        setCountry(country);
+        setEmail(email);
+        setIBAN(iban);
+        setExpertise(lvlExp);
+        setName(name);
+        setNif(nif);
+        setId(id);
+    }
     
         public void setName(String name) {
         if(name ==null || name.trim().isEmpty()) throw new IllegalArgumentException("Invalid name!");
