@@ -5,6 +5,7 @@ import lapr2.pot.ui.console.utils.Date;
 
 public class PaymentTransaction implements Serializable {
 
+    private Organization org;
     private String id;
     private Task task;
     private Freelancer freelancer;
@@ -13,7 +14,20 @@ public class PaymentTransaction implements Serializable {
     private String workQualityDescription;
     private double dPayAmount;
 
-    public PaymentTransaction(String payTId, Task task, Freelancer free, Date endDate, int delay, String workQualityDescription) {
+    public PaymentTransaction(Organization org, String payTId, Task task,
+            Freelancer free, Date endDate, int delay, String workQualityDescription) {
+        this.org = org;
+        setId(payTId);
+        setTask(task);
+        setFreelancer(free);
+        setEndDate(endDate);
+        setDelay(delay);
+        setWorkQualityDescription(workQualityDescription);
+        this.dPayAmount = generatePayAmount(this.task, this.freelancer);
+    }
+
+    public PaymentTransaction(String payTId, Task task,
+            Freelancer free, Date endDate, int delay, String workQualityDescription) {
         setId(payTId);
         setTask(task);
         setFreelancer(free);

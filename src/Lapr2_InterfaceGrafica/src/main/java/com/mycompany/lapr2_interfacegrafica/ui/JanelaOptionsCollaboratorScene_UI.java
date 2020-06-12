@@ -81,9 +81,13 @@ public class JanelaOptionsCollaboratorScene_UI implements Initializable {
 
     @FXML
     private void btnCreatePaymentAction(ActionEvent event) throws IOException {
-        if(paymentTransactionUI==null){
+      //  if(paymentTransactionUI==null){
            paymentTransactionUI=new PaymentTransactionScene_1_UI(); 
+        //}
+        if(paymentTransactionUI==null){
+            System.out.println("ui = null");
         }
+        paymentTransactionUI.goToSceneAlt(this);
         paymentTransactionUI.goToScene(event, "/fxml/PaymentTransaction_1.fxml");
     }
 

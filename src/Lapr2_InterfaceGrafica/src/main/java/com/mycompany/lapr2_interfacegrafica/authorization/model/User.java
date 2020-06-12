@@ -38,6 +38,9 @@ public class User implements Serializable {
     }
 
     public String getEmail() {
+        if(this.m_strEmail==null){
+            System.out.println("falhou no user");
+        }
         return this.m_strEmail;
     }
 

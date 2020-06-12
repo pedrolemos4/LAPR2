@@ -111,46 +111,7 @@ public class MainApp extends Application {
         
         
     }
-//    
-//    public Stage getStage() {
-//        return this.stage;
-//    }
-//
-//    public void toMainScene() {
-//        try {
-//            JanelaLogin_1_UI loginUI = (JanelaLogin_1_UI) replaceSceneContent("/fxml/JanelaLogin.fxml");
-//            loginUI.setMainApp(this);
-//        } catch (Exception ex) {
-//            Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
-//
-//    public Initializable replaceSceneContent(String fxml) throws Exception {
-//        FXMLLoader loader = new FXMLLoader();
-//        InputStream in = MainApp.class.getResourceAsStream(fxml);
-//        loader.setBuilderFactory(new JavaFXBuilderFactory());
-//        loader.setLocation(MainApp.class.getResource(fxml));
-//        Pane page;
-//        try {
-//            page = (Pane) loader.load(in);
-//        } finally {
-//            in.close();
-//        }
-//        Scene scene = new Scene(page, SCENE_WIDTH, SCENE_HEIGHT);
-//        scene.getStylesheets().add("/styles/Styles.css");
-//        this.stage.setScene(scene);
-//        this.stage.sizeToScene();
-//        return (Initializable) loader.getController();
-//    }
-//
-////    public void toMainScene() {
-////        try {
-//            MainUI mainUI = (MainUI) replaceSceneContent("/fxml/Main.fxml");
-//            mainUI.setMainApp(this);
-//        } catch (Exception ex) {
-//            Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
+    
     /**
      * The main() method is ignored in correctly deployed JavaFX application.
      * main() serves only as fallback in case the application can not be

@@ -20,12 +20,14 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class PaymentTransactionScene_1_UI implements Initializable {
 
-    private JanelaOptionsAdminScene_UI optionsAdminUI;
+    private JanelaOptionsCollaboratorScene_UI optionCollabUI;
     private CreatePaymentTransactionController controller;
+    private Stage transactionStage;
 
     @FXML
     private Button btnNext;
@@ -48,13 +50,13 @@ public class PaymentTransactionScene_1_UI implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.controller = new CreatePaymentTransactionController();
-        for (Freelancer frl : controller.getFreelancers()) {
-           cmbFreelancer.getItems().add(frl);
-        }
-        for (Task task : controller.getTasks()) {
-            cmbTask.getItems().add(task);
-        }
+        // setComboBox();
+//        for (Freelancer frl : controller.getFreelancers()) {
+//           cmbFreelancer.getItems().add(frl);
+//        }
+//        for (Task task : controller.getTasks()) {
+//            cmbTask.getItems().add(task);
+//        }
     }
 
 //    public void setPaymentTransactionUI(CreatePaymentTransactionUI createPaymentTransactionUI) {
@@ -80,9 +82,24 @@ public class PaymentTransactionScene_1_UI implements Initializable {
 //        this.cmbFreelancer.setValue(this.controller.getFreelancer());
     }
 
+    public void setComboBox() {
+        this.controller = new CreatePaymentTransactionController();
+        cmbFreelancer.getItems().addAll(controller.getFreelancers());
+        cmbTask.getItems().addAll(controller.getTasks());
+//        for (Freelancer frl : controller.getFreelancers()) {
+//            System.out.println("Lista de freelancers" + frl);
+//            cmbFreelancer.getItems().add(frl);
+//        }
+        for (Task task : controller.getTasks()) {
+            cmbTask.getItems().add(task);
+            System.out.println("Lista de tarefas: " + cmbTask.getItems());
+        }
+    }
+
     @FXML
     private void btnNextAction(ActionEvent event) throws IOException {
         try {
+
             String payTId = this.txtTransactionID.getText();
             String endDate = this.txtTaskEndDate.getText();
             int taskDelay = Integer.parseInt(this.txtTaskDelay.getText());
@@ -146,10 +163,31 @@ public class PaymentTransactionScene_1_UI implements Initializable {
 
     public void goToScene(ActionEvent event, String fxml) throws IOException {
         Parent button = FXMLLoader.load(getClass().getResource(fxml));
+        System.out.println("Será que mostrou?");
         Scene buttonScene = new Scene(button);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(buttonScene);
+        System.out.println("Vais Mostrar?");
         window.show();
+    }
+
+    public void goToSceneAlt(JanelaOptionsCollaboratorScene_UI menuCollaboratorUI) throws IOException {
+        this.optionCollabUI = menuCollaboratorUI;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PaymentTransaction_1.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        transactionStage = new Stage();
+        transactionStage.initModality(Modality.APPLICATION_MODAL);
+        transactionStage.setScene(scene);
+        System.out.println("Será que mostrou?");
+        loader.setController(this);
+        transactionStage.show();
+        setComboBox();
+        //Scene buttonScene = new Scene(button);
+//        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//        window.setScene(buttonScene);
+//        System.out.println("Vais Mostrar?");
+//        window.show();
     }
 
 }

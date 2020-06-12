@@ -1,12 +1,16 @@
 package com.mycompany.lapr2_interfacegrafica.authorization.model;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UsersRecord implements Serializable {
 
-    private Set<User> m_lstUsers = new HashSet<>();
+    private List<User> m_lstUsers;
+
+    public UsersRecord() {
+        this.m_lstUsers = new ArrayList<>();
+    }
 
     public User newUser(String strNome, String strEmail, String strPassword) {
         return new User(strNome, strEmail, strPassword);

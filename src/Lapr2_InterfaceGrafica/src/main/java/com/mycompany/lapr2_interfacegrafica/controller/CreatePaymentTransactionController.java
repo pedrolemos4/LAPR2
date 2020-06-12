@@ -1,5 +1,6 @@
 package com.mycompany.lapr2_interfacegrafica.controller;
 
+import com.mycompany.lapr2_interfacegrafica.authorization.FacadeAuthorization;
 import com.mycompany.lapr2_interfacegrafica.model.TaskList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,9 +26,15 @@ public class CreatePaymentTransactionController {
     private PaymentTransactionList ptL;
     private PaymentTransaction payT;
     private Date date;
+    private FacadeAuthorization facade;
+    private FreelancersRecord regFreel;
+    private OrganizationsRecord orgRec;
 
     public CreatePaymentTransactionController() {
         this.plat = POTApplication.getPlatform();
+        this.facade = new FacadeAuthorization();
+        this.orgRec = this.plat.getOrganizationsRecord();
+        this.ptL = new PaymentTransactionList();
     }
 
     public PaymentTransaction newPaymentTransaction(String payTId, Task taskString,
@@ -41,7 +48,7 @@ public class CreatePaymentTransactionController {
 //        Freelancer free = frlR.getFreelancerByStringValue(freelancerString);
         Date endDate = date.convertStringToDate(eDate);
         this.ptL = org.getPaymentTransactionList();
-        this.payT = ptL.newPaymentTransaction(payTId, taskString, freelancerString,
+        this.payT = ptL.newPaymentTransaction(org,payTId, taskString, freelancerString,
                 endDate, delay, workQualityDescription);
         if (this.ptL.validatePaymentTransaction(this.payT)) {
             return this.payT;
@@ -58,6 +65,9 @@ public class CreatePaymentTransactionController {
     }
 
     public List<Task> getTasks() {
+        String email = facade.getCurrentSession().getUserEmail();
+        OrganizationsRecord orgRec = this.plat.getOrganizationsRecord();
+        this.org = orgRec.getOrganizationByUserEmail(email);
         return this.org.getTaskList().getTasks();
     }
 

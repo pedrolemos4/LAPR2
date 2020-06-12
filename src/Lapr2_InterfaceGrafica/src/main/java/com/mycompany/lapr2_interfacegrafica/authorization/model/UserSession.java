@@ -4,10 +4,10 @@ import java.io.Serializable;
 
 public class UserSession implements Serializable {
 
-    private User m_oUser ;
+    private User m_oUser;
 
     public UserSession() {
-        this.m_oUser=null;
+        this.m_oUser = null;
     }
 
     public UserSession(User oUser) {
@@ -31,7 +31,6 @@ public class UserSession implements Serializable {
 //        }
 //        return false;
 //    }
-
     public String getUserName() {
         if (isLoggedIn()) {
             this.m_oUser.getName();
@@ -49,7 +48,9 @@ public class UserSession implements Serializable {
     public String getUserEmail() {
         if (isLoggedIn()) {
             this.m_oUser.getEmail();
+            System.out.println(this.m_oUser.getEmail());
         }
+        System.out.println("está null na user session outra vez");
         return null;
     }
 

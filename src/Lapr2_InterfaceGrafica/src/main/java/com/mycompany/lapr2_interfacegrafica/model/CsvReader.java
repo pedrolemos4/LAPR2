@@ -86,7 +86,7 @@ public class CsvReader implements FileReader {
             String m_strWorkQualityDescription = items[8];
             
             //creates paymentTransaction
-            PaymentTransaction payTransaction = m_paymentTransactionList.newPaymentTransaction(transactionId, task,
+            PaymentTransaction payTransaction = m_paymentTransactionList.newPaymentTransaction1(transactionId, task,
                     free, m_strEndDate, m_Delay, m_strWorkQualityDescription);
             if(m_paymentTransactionList.validatePaymentTransaction(payTransaction)){
                 m_paymentTransactionList.paymentTransactionRegister(payTransaction);

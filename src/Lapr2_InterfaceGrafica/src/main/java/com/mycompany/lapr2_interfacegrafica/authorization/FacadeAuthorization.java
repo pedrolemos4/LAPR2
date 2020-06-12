@@ -2,7 +2,7 @@ package com.mycompany.lapr2_interfacegrafica.authorization;
 
 import com.mycompany.lapr2_interfacegrafica.authorization.model.User;
 import com.mycompany.lapr2_interfacegrafica.authorization.model.UserRole;
-import com.mycompany.lapr2_interfacegrafica.authorization.model.UserRolesRecord;
+//import com.mycompany.lapr2_interfacegrafica.authorization.model.UserRolesRecord;
 import com.mycompany.lapr2_interfacegrafica.authorization.model.UserSession;
 import com.mycompany.lapr2_interfacegrafica.authorization.model.UsersRecord;
 import com.mycompany.lapr2_interfacegrafica.model.ExternalAlgorithm1API;
@@ -18,23 +18,25 @@ public class FacadeAuthorization implements Serializable {
     private Platform plat;
 
     private UsersRecord usersRecord;
+    
+  //  private UserRole role;
 
     public FacadeAuthorization() {
         this.usersRecord = new UsersRecord();
         this.m_oSession = new UserSession();
     }
-    private final UserRolesRecord m_oRoles = new UserRolesRecord();
+   // private final UserRolesRecord m_oRoles = new UserRolesRecord();
     private final UsersRecord m_oUsers = new UsersRecord();
 
-    public boolean registesUserRole(String strRole) {
-        UserRole papel = this.m_oRoles.newUserRole(strRole);
-        return this.m_oRoles.addRole(papel);
-    }
-
-    public boolean registesUserRole(String strRole, String strDescription) {
-        UserRole role = this.m_oRoles.newUserRole(strRole, strDescription);
-        return this.m_oRoles.addRole(role);
-    }
+//    public boolean registesUserRole(String strRole) {
+//        UserRole papel = this.m_oRoles.newUserRole(strRole);
+//        return this.m_oRoles.addRole(papel);
+//    }
+//
+//    public boolean registesUserRole(String strRole, String strDescription) {
+//        UserRole role = this.m_oRoles.newUserRole(strRole, strDescription);
+//        return this.m_oRoles.addRole(role);
+//    }
 
     public boolean registesUser(String strName, String strEmail, String strPassword) {
         User user = this.m_oUsers.newUser(strName, strEmail, strPassword);
@@ -48,7 +50,7 @@ public class FacadeAuthorization implements Serializable {
 
         //String password = exAlgApi.generatePassword(strName, strEmail);
         System.out.println("password");
-        UserRole papel = this.m_oRoles.searchRole(strRole);
+       // UserRole papel = this..searchRole(strRole);
         User utlz = this.m_oUsers.newUser(strName, strEmail, pwdM);
         utlz.setRole(strRole);
         return this.m_oUsers.addUser(utlz);
@@ -56,7 +58,7 @@ public class FacadeAuthorization implements Serializable {
 
     public boolean registesUserWithRole(String strName, String strEmail, String strPassword, String role) {
         User user = this.m_oUsers.newUser(strName, strEmail, strPassword);
-        UserRole papel = this.m_oRoles.searchRole(role);
+       // UserRole papel = this.m_oRoles.searchRole(role);
         user.setRole(role);
         return this.m_oUsers.addUser(user);
     }
@@ -80,6 +82,9 @@ public class FacadeAuthorization implements Serializable {
     }
 
     public UserSession getCurrentSession() {
+        if(this.m_oSession==null){
+            System.out.println("falhou na facade.");
+        }
         return this.m_oSession;
     }
 

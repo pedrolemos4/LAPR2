@@ -13,11 +13,20 @@ public class PaymentTransactionList implements Serializable {
         this.m_lstPaymentTransactions = new ArrayList<>();
     }
 
-    public PaymentTransaction newPaymentTransaction(String payTId, Task task, Freelancer free, Date endDate, int delay, String workQualityDescription) {
+    public PaymentTransaction newPaymentTransaction1(String payTId,
+            Task task, Freelancer free, Date endDate, int delay, String workQualityDescription){
         if (this.exists(payTId)) {
             throw new IllegalArgumentException("There is already a transaction with the same ID as the one entered!");
         }
         return new PaymentTransaction(payTId, task, free, endDate, delay, workQualityDescription);
+    }
+    
+    public PaymentTransaction newPaymentTransaction(Organization org,String payTId,
+            Task task, Freelancer free, Date endDate, int delay, String workQualityDescription) {
+        if (this.exists(payTId)) {
+            throw new IllegalArgumentException("There is already a transaction with the same ID as the one entered!");
+        }
+        return new PaymentTransaction(org,payTId, task, free, endDate, delay, workQualityDescription);
     }
 
     public boolean validatePaymentTransaction(PaymentTransaction payT) {

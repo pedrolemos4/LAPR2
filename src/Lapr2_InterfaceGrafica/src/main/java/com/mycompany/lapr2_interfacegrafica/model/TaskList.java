@@ -53,14 +53,14 @@ public class TaskList implements Serializable{
         return findById(taskId) != null;
     }
 
-    public Task getTaskById(String taskId) {
-        for (Task task : tasks) {
-            if (task.toString().equals(taskId)) {
-                return task;
-            }
-        }
-        throw new IllegalArgumentException("Invalid " + taskId);
-    }
+//    public Task getTaskById(String taskId) {
+//        for (Task task : tasks) {
+//            if (task.toString().equals(taskId)) {
+//                return task;
+//            }
+//        }
+//        throw new IllegalArgumentException("Invalid " + taskId);
+//    }
 
     public Task getTaskByStringValue(String taskString) {
         for (Task task : tasks) {
