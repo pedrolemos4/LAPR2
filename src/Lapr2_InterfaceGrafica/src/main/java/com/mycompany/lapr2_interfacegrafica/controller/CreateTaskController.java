@@ -41,15 +41,26 @@ public class CreateTaskController {
         this.taskRecord = m_oPlatform.getTaskList();
     }
 
-    public boolean newTask(String id, String briefDescription, int timeDuration, double costPerHour, String category) {
-        try {
-            task = taskRecord.newTask(id, briefDescription, timeDuration, costPerHour, category);
-
-            return true;
-        } catch (Exception e) {
-            return false;
+    public Task newTask(String id, String briefDescription, int timeDuration, double costPerHour, String category){
+        Task task1 = this.taskRecord.newTask(id, briefDescription, timeDuration, costPerHour, category);
+        this.task = task1;
+        if(this.taskRecord.validateTask(task)){
+            System.out.println("Validou Controller");
+            this.taskRecord.addTask(this.task);
+            return this.task;
         }
+        return null;
     }
+    
+//    public boolean newTask(String id, String briefDescription, int timeDuration, double costPerHour, String category) {
+//        try {
+//            task = taskRecord.newTask(id, briefDescription, timeDuration, costPerHour, category);
+//
+//            return true;
+//        } catch (Exception e) {
+//            return false;
+//        }
+//    }
 
     public boolean registerTask() throws IOException{
         TaskList taskList = m_oPlatform.getTaskList();

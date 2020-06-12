@@ -44,6 +44,7 @@ public class SetDayOfPaymentScene_1_UI implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        this.controller = new SetDayOfPaymentController();
     }
 
     public void setSetDayOfPaymentUI(SetDayOfPaymentUI setDayOfPaymentUI) {
@@ -56,10 +57,12 @@ public class SetDayOfPaymentScene_1_UI implements Initializable {
 
     @FXML
     private void btnConfirmAction(ActionEvent event) {
+        controller.setProcessPaymentsDay(Integer.parseInt(this.txtDate.getText()));
     }
 
     @FXML
-    private void btnCancelAction(ActionEvent event) {
+    private void btnCancelAction(ActionEvent event) throws IOException {
+        goToScene(event,"/fxml/OptionsManager.fxml");
     }
 
     public void goToScene(ActionEvent event, String fxml) throws IOException {

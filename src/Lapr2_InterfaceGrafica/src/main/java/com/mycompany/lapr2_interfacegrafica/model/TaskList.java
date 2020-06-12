@@ -10,7 +10,7 @@ public class TaskList implements Serializable {
     private Task task;
 
     public TaskList() {
-        tasks = new ArrayList<>();
+        this.tasks = new ArrayList<>();
     }
 
     public Task newTask(String id, String briefDescription, int timeDuration, double costPerHour, String category) {
@@ -32,7 +32,18 @@ public class TaskList implements Serializable {
 
     }
 
-//    public boolean validateTask(Task task) {
+    public boolean validateTask(Task task) {
+        for(int i =0; i<tasks.size();i++){
+            if(tasks.get(i).equals(task)){
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public boolean addTask(Task task){
+        return tasks.add(task);
+    }
 //        try {
 //            task.validate();
 //            return true;

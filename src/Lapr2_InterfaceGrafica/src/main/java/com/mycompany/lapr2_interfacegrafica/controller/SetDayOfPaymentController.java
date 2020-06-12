@@ -41,7 +41,7 @@ public class SetDayOfPaymentController {
      * inicia um timer e agenda o primeiro pagamento para o proximo dia 
      * @param paymentDay dia do mes pretendido, por exemplo dia 10
      */
-    void setProcessPaymentsDay(int paymentDay){    
+    public void setProcessPaymentsDay(int paymentDay){    
             
         //date de hoje
         Calendar cal = Calendar.getInstance();

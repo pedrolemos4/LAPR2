@@ -14,7 +14,7 @@ public class OrganizationRecordController {
         this.m_oPlatform = POTApplication.getPlatform();
         this.or = m_oPlatform.getOrganizationsRecord();
     }
-
+    
     public Organization newOrganization(String name, String NIF, String nameM, String emailM, String nameC, String emailC) {
         Organization org1 = this.or.newOrganization(name, NIF, nameM, emailM, nameC, emailC);
         this.org = org1;

@@ -56,9 +56,9 @@ public class CreateTaskScene_2_UI implements Initializable {
 
     @FXML
     private void btnConfirmAction(ActionEvent event) throws IOException {
-        if(this.createTaskController==null){
-           
-        }
+//        if(this.createTaskController==null){
+//           
+//        }
         boolean registered = this.createTaskController.registerTask();
         if (registered) {
             AlertUI.createAlert(Alert.AlertType.INFORMATION, "Success", "T4J-PAYMENTS", "Task created successfully.").show();

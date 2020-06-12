@@ -31,6 +31,8 @@ public class PaymentTransactionScene_1_UI implements Initializable {
     private JanelaOptionsCollaboratorScene_UI optionCollabUI;
     private CreatePaymentTransactionController controller;
     private Stage transactionStage;
+    private static Freelancer frl;
+    private static String task;
 
     @FXML
     private Button btnNext;
@@ -53,27 +55,6 @@ public class PaymentTransactionScene_1_UI implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // setComboBox();
-//        for (Freelancer frl : controller.getFreelancers()) {
-//           cmbFreelancer.getItems().add(frl);
-//        }
-//        for (Task task : controller.getTasks()) {
-//            cmbTask.getItems().add(task);
-//        }
-    }
-
-//    public void setPaymentTransactionUI(CreatePaymentTransactionUI createPaymentTransactionUI) {
-//        this.createPaymentTransactionUI = createPaymentTransactionUI;
-//    }
-    public void initComboBox() {
-//        CreatePaymentTransactionController controller = this.createPaymentTransactionUI.
-//                getCreatePaymentTransactionController();
-//        ObservableList<String> tasksne
-//                = FXCollections.observableArrayList(controller.getTasks());
-//        this.cmbTask.setItems(tasks);
-//        ObservableList<String> freelancers
-//                = FXCollections.observableArrayList(controller.getFreelancers());
-//        this.cmbFreelancer.setItems(freelancers);
     }
 
     public void showTransaction() {
@@ -85,65 +66,47 @@ public class PaymentTransactionScene_1_UI implements Initializable {
 //        this.cmbFreelancer.setValue(this.controller.getFreelancer());
     }
 
-    public void setComboBox() {
-        controller = new CreatePaymentTransactionController();
-        if (controller == null) {
-            System.out.println("controller ta null(UI)");
-        }
+    public void setComboBoxFreelancer(Stage stage, Scene scene) {
+        this.controller = new CreatePaymentTransactionController();
+        
 
-        //ObservableList<String> tasks = FXCollections.observableArrayList(controller.getTasks());
         List<Task> tasks = controller.getTasks();
         System.out.println("ANTES DO FOR");
-        for(Task task : tasks){
+        System.out.println("Task: " + tasks);
+        for (Task task : tasks) {
             System.out.println("Task: " + task);
         }
         this.cmbTask = new ComboBox(FXCollections.observableArrayList(controller.getTasks()));
-  //      this.cmbTask.show();
-  //ObservableList<Freelancer> freelancers
-    //            = ;
-
         this.cmbFreelancer = new ComboBox(FXCollections.observableArrayList(controller.getFreelancers()));
-        TilePane tile_pane = new TilePane(cmbTask); 
-        TilePane tile_pane2 = new TilePane(cmbFreelancer);
-        // Create a scene 
-        Scene scene = new Scene(tile_pane, 200, 200); 
-       //Scene scene1 = new Scene(tile_pane2,200,200);
         
-  
-        // Set the scene 
-        transactionStage.setScene(scene); 
-  
+        TilePane tile_pane = new TilePane(cmbTask);
+        TilePane tile_pane2 = new TilePane(cmbFreelancer);
+        
+        Scene scene1 = new Scene(tile_pane2, 200, 200);
+        Scene scene2 = new Scene(tile_pane,200,200);
+
+        transactionStage.setScene(scene1);
+
+        transactionStage.showAndWait();
+        frl = cmbFreelancer.getSelectionModel().getSelectedItem();
+        System.out.println("Freelancer: " + frl);
+        
+        transactionStage.setScene(scene2);
+        transactionStage.showAndWait();
+        task = cmbTask.getSelectionModel().getSelectedItem();
+        System.out.println("Task: "+ task);
+        
+        transactionStage.setScene(scene);
         transactionStage.show();
         
-        //transactionStage.setScene(scene1);
-        //transactionStage.show();
-//        if (tasks == null) {
-//            System.out.println("TA NULL (UI)");
-//        }
-//        for (Task task : tasks) {
-//            System.out.println("Print da task na ui: " + task.toString());
-//        for (Iterator<String> it = tasks.iterator(); it.hasNext();) {
-//            String task = it.next();
-//            System.out.println("TaskString: ");
-//        }
-//        this.cmbTask.getItems().addAll(tasks);// = new ComboBox(tasks);//.setItems(tasks);
-//        ComboBox petList = new JComboBox(tasks);
-//        petList
-//        //this.cmbTask = new ComboBox(tasks);//.setItems(tasks);
-        
-        //this.cmbFreelancer.show();
-        //this.cmbFreelancer.setItems(freelancers);
-        //cmbFreelancer.getItems().addAll(controller.getFreelancers());
-        //cmbFreelancer.show();
-        // cmbTask.getItems().addAll(controller.getTasks());
-//        for (Freelancer frl : controller.getFreelancers()) {
-//            System.out.println("Lista de freelancers" + frl);
-//            cmbFreelancer.getItems().add(frl);
-//        }
-//        for (Task task : controller.getTasks()) {
-//            cmbTask.getItems().add(task);
-//            System.out.println("Lista de tarefas: " + cmbTask.getItems());
-//        }
+    }
+
+    public void setComboBoxTask() {
+        this.cmbTask = new ComboBox(FXCollections.observableArrayList(controller.getTasks()));
+        TilePane tile_pane = new TilePane(cmbTask);
+        Scene scene = new Scene(tile_pane, 200, 200);
+        transactionStage.setScene(scene);
+        transactionStage.show();
     }
 
     @FXML
@@ -154,9 +117,11 @@ public class PaymentTransactionScene_1_UI implements Initializable {
             String endDate = this.txtTaskEndDate.getText();
             int taskDelay = Integer.parseInt(this.txtTaskDelay.getText());
             String workDescription = this.txtWorkDescription.getText();
-            String task = this.cmbTask.getSelectionModel().getSelectedItem();
-            Freelancer freelancer = this.cmbFreelancer.getSelectionModel().getSelectedItem();
-            controller.newPaymentTransaction(payTId, task, endDate, taskDelay, workDescription, freelancer);
+           // String task = this.cmbTask.getSelectionModel().getSelectedItem();
+            // Freelancer freelancer = cmbFreelancer.getSelectionModel().getSelectedItem();
+            System.out.println("bblabal" + frl);
+            System.out.println("Blelek " + task);
+            controller.newPaymentTransaction(payTId, task, endDate, taskDelay, workDescription, frl);
             goToScene(event, "/fxml/PaymentTransaction_2.fxml");
 //            this.createPaymentTransactionUI.getCreatePaymentTransactionController().newPaymentTransaction(payTId, task, endDate,
 //                    taskDelay, workDescription, freelancer);
@@ -231,14 +196,9 @@ public class PaymentTransactionScene_1_UI implements Initializable {
         transactionStage.setScene(scene);
         System.out.println("Será que mostrou?");
         loader.setController(this);
-        setComboBox();
-        transactionStage.show();
-        // setComboBox();
-        //Scene buttonScene = new Scene(button);
-//        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        window.setScene(buttonScene);
-//        System.out.println("Vais Mostrar?");
-//        window.show();
+        setComboBoxFreelancer(transactionStage, scene);
+//        transactionStage.setScene(scene);
+//        transactionStage.show();
     }
 
 }
