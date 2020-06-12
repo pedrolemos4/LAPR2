@@ -3,7 +3,6 @@ package com.mycompany.lapr2_interfacegrafica.controller;
 import com.mycompany.lapr2_interfacegrafica.model.Organization;
 import com.mycompany.lapr2_interfacegrafica.model.OrganizationsRecord;
 import com.mycompany.lapr2_interfacegrafica.model.Platform;
-import java.io.IOException;
 
 public class OrganizationRecordController {
 
@@ -27,7 +26,7 @@ public class OrganizationRecordController {
         return null;
     }
 
-    public boolean registerOrganization() throws IOException {
+    public boolean registerOrganization() {
         OrganizationsRecord g = m_oPlatform.getOrganizationsRecord();
         Organization y = g.getOrganization();
         return g.organizationRegister(y);

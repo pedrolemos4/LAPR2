@@ -2,15 +2,12 @@ package com.mycompany.lapr2_interfacegrafica.model;
 
 import com.mycompany.lapr2_interfacegrafica.authorization.FacadeAuthorization;
 import com.mycompany.lapr2_interfacegrafica.controller.POTApplication;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 import java.util.TreeMap;
 import org.apache.commons.math3.distribution.NormalDistribution;
 
@@ -93,7 +90,7 @@ public class OrganizationsRecord implements Serializable {
         return org.toString();
     }
 
-    public boolean organizationRegister(Organization org) throws IOException {
+    public boolean organizationRegister(Organization org) {
         String orgName = org.getOrgName();
         Manager manager = org.getManager();
         String nameM = manager.getName();
@@ -114,12 +111,12 @@ public class OrganizationsRecord implements Serializable {
         return false;
     }
 
-    public void sendEmail(String orgName, String email, String pwd, String role) throws IOException {
+    public void sendEmail(String orgName, String email, String pwd, String role) {
         try (FileWriter writer = new FileWriter("email.txt", true)) {
             writer.write("Organization: " + orgName + "\nRole: " + role + "\nEmail: " + email + "\nPassword: " + pwd + "\n");
             writer.close();
-        } catch (FileNotFoundException ex) {
-            System.out.println("File to save emails not found!");
+        } catch (IOException ex) {
+            System.out.println("Error in sending email!");
         }
     }
 
