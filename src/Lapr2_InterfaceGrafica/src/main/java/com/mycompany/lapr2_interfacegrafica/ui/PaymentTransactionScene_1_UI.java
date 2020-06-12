@@ -6,6 +6,7 @@ import com.mycompany.lapr2_interfacegrafica.model.Task;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Iterator;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,6 +22,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.TilePane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -66,7 +68,7 @@ public class PaymentTransactionScene_1_UI implements Initializable {
     public void initComboBox() {
 //        CreatePaymentTransactionController controller = this.createPaymentTransactionUI.
 //                getCreatePaymentTransactionController();
-//        ObservableList<String> tasks
+//        ObservableList<String> tasksne
 //                = FXCollections.observableArrayList(controller.getTasks());
 //        this.cmbTask.setItems(tasks);
 //        ObservableList<String> freelancers
@@ -89,24 +91,47 @@ public class PaymentTransactionScene_1_UI implements Initializable {
             System.out.println("controller ta null(UI)");
         }
 
-        ObservableList<String> tasks = FXCollections.observableArrayList(controller.getTasks());
-        if (tasks == null) {
-            System.out.println("TA NULL (UI)");
+        //ObservableList<String> tasks = FXCollections.observableArrayList(controller.getTasks());
+        List<Task> tasks = controller.getTasks();
+        System.out.println("ANTES DO FOR");
+        for(Task task : tasks){
+            System.out.println("Task: " + task);
         }
+        this.cmbTask = new ComboBox(FXCollections.observableArrayList(controller.getTasks()));
+  //      this.cmbTask.show();
+  //ObservableList<Freelancer> freelancers
+    //            = ;
+
+        this.cmbFreelancer = new ComboBox(FXCollections.observableArrayList(controller.getFreelancers()));
+        TilePane tile_pane = new TilePane(cmbTask); 
+        TilePane tile_pane2 = new TilePane(cmbFreelancer);
+        // Create a scene 
+        Scene scene = new Scene(tile_pane, 200, 200); 
+       //Scene scene1 = new Scene(tile_pane2,200,200);
+        
+  
+        // Set the scene 
+        transactionStage.setScene(scene); 
+  
+        transactionStage.show();
+        
+        //transactionStage.setScene(scene1);
+        //transactionStage.show();
+//        if (tasks == null) {
+//            System.out.println("TA NULL (UI)");
+//        }
 //        for (Task task : tasks) {
 //            System.out.println("Print da task na ui: " + task.toString());
-        for (Iterator<String> it = tasks.iterator(); it.hasNext();) {
-            String task = it.next();
-            System.out.println("TaskString: ");
-        }
-        this.cmbTask.getItems().addAll(tasks);// = new ComboBox(tasks);//.setItems(tasks);
+//        for (Iterator<String> it = tasks.iterator(); it.hasNext();) {
+//            String task = it.next();
+//            System.out.println("TaskString: ");
+//        }
+//        this.cmbTask.getItems().addAll(tasks);// = new ComboBox(tasks);//.setItems(tasks);
 //        ComboBox petList = new JComboBox(tasks);
 //        petList
 //        //this.cmbTask = new ComboBox(tasks);//.setItems(tasks);
-        ObservableList<Freelancer> freelancers
-                = FXCollections.observableArrayList(controller.getFreelancers());
-
-        this.cmbFreelancer = new ComboBox(freelancers);
+        
+        //this.cmbFreelancer.show();
         //this.cmbFreelancer.setItems(freelancers);
         //cmbFreelancer.getItems().addAll(controller.getFreelancers());
         //cmbFreelancer.show();
@@ -206,8 +231,9 @@ public class PaymentTransactionScene_1_UI implements Initializable {
         transactionStage.setScene(scene);
         System.out.println("Será que mostrou?");
         loader.setController(this);
-        transactionStage.show();
         setComboBox();
+        transactionStage.show();
+        // setComboBox();
         //Scene buttonScene = new Scene(button);
 //        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 //        window.setScene(buttonScene);

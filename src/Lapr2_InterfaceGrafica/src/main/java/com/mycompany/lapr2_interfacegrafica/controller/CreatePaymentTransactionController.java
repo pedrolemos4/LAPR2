@@ -67,14 +67,14 @@ public class CreatePaymentTransactionController {
         return this.payT.toString();
     }
 
-    public List<String> getTasks() {
+    public List<Task> getTasks() {
        // UserSession session = facade.getCurrentSession();
         User user = this.m_oSessao.getUser();
         String email = user.getEmail();
         OrganizationsRecord orgRec = this.plat.getOrganizationsRecord();
         this.org = orgRec.getOrganizationByUserEmail(email);
         TaskList taskList = this.org.getTaskList();
-        return taskList.getTasksAsStringList();//.getTasks();
+        return taskList.getTasks();
                 //this.org.getTaskList().getTasks();
     }
 
