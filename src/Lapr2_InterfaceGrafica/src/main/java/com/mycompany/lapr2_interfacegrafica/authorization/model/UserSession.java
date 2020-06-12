@@ -55,6 +55,9 @@ public class UserSession implements Serializable {
     }
 
     public User getUser() {
+        if(this.m_oUser==null){
+            System.out.println("Erro no método getUser(UserSession)");
+        } 
         return this.m_oUser;
     }
 }

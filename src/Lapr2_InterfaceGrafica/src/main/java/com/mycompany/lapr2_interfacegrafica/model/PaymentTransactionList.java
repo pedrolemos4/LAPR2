@@ -14,19 +14,19 @@ public class PaymentTransactionList implements Serializable {
     }
 
     public PaymentTransaction newPaymentTransaction1(String payTId,
-            Task task, Freelancer free, Date endDate, int delay, String workQualityDescription){
+            Task task, Freelancer free, Date endDate, int delay, String workQualityDescription) {
         if (this.exists(payTId)) {
             throw new IllegalArgumentException("There is already a transaction with the same ID as the one entered!");
         }
         return new PaymentTransaction(payTId, task, free, endDate, delay, workQualityDescription);
     }
-    
-    public PaymentTransaction newPaymentTransaction(Organization org,String payTId,
+
+    public PaymentTransaction newPaymentTransaction(Organization org, String payTId,
             Task task, Freelancer free, Date endDate, int delay, String workQualityDescription) {
         if (this.exists(payTId)) {
             throw new IllegalArgumentException("There is already a transaction with the same ID as the one entered!");
         }
-        return new PaymentTransaction(org,payTId, task, free, endDate, delay, workQualityDescription);
+        return new PaymentTransaction(org, payTId, task, free, endDate, delay, workQualityDescription);
     }
 
     public boolean validatePaymentTransaction(PaymentTransaction payT) {
@@ -37,7 +37,6 @@ public class PaymentTransactionList implements Serializable {
         }
         return true;
     }
-
     public List<PaymentTransaction> getPaymentTransactions() {
         return this.m_lstPaymentTransactions;
     }
@@ -47,10 +46,10 @@ public class PaymentTransactionList implements Serializable {
     }
 
     public boolean paymentTransactionRegister(PaymentTransaction payT) {
-        if (this.validatePaymentTransaction(payT)) {
-            return addPaymentTransaction(payT);
-        }
-        return false;
+        //if (this.validatePaymentTransaction(payT)) {
+        return addPaymentTransaction(payT);
+
+        //return false;
     }
 
     public boolean exists(String transactionId) {

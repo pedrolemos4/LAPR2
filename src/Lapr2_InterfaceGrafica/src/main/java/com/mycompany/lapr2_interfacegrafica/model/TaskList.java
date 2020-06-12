@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TaskList implements Serializable{
+public class TaskList implements Serializable {
 
     private List<Task> tasks;
     private Task task;
@@ -14,31 +14,32 @@ public class TaskList implements Serializable{
     }
 
     public Task newTask(String id, String briefDescription, int timeDuration, double costPerHour, String category) {
-        this.task= new Task(id, briefDescription, timeDuration, costPerHour, category);
+        this.task = new Task(id, briefDescription, timeDuration, costPerHour, category);
         return this.task;
     }
 
-    public Task getTask(){
-        System.out.println("To String: " +this.task.toString());
+    public Task getTask() {
+        System.out.println("To String: " + this.task.toString());
         return this.task;
     }
+
     public boolean registerTask(Task task) {
-        if (validateTask(task)) {
+        if (task!=null) {
             tasks.add(task);
             return true;
-        } else {
-            return false;
         }
+        return false;
+
     }
 
-    public boolean validateTask(Task task) {
-        try {
-            task.validate();
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
+//    public boolean validateTask(Task task) {
+//        try {
+//            task.validate();
+//            return true;
+//        } catch (Exception e) {
+//            return false;
+//        }
+//    }
 
     public Task findById(String taskId) {
         for (Task task : tasks) {
@@ -61,7 +62,6 @@ public class TaskList implements Serializable{
 //        }
 //        throw new IllegalArgumentException("Invalid " + taskId);
 //    }
-
     public Task getTaskByStringValue(String taskString) {
         for (Task task : tasks) {
             if (task.toString().equals(taskString)) {
@@ -72,6 +72,9 @@ public class TaskList implements Serializable{
     }
 
     public List<Task> getTasks() {
+        if (this.tasks == null) {
+            System.out.println("Lista null (TASK LIST)");
+        }
         return this.tasks;
     }
 
@@ -79,6 +82,9 @@ public class TaskList implements Serializable{
         List<String> setTasksAsString = new ArrayList<>();
         for (Task task : tasks) {
             setTasksAsString.add(task.toString());
+        }
+        if(setTasksAsString == null){
+            System.out.println("LIST NUll (taskList)");
         }
         return setTasksAsString;
     }

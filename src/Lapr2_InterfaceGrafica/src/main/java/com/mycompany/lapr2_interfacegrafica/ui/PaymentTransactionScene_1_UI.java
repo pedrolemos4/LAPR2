@@ -5,6 +5,7 @@ import com.mycompany.lapr2_interfacegrafica.model.Freelancer;
 import com.mycompany.lapr2_interfacegrafica.model.Task;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Iterator;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -42,7 +43,7 @@ public class PaymentTransactionScene_1_UI implements Initializable {
     @FXML
     private TextField txtWorkDescription;
     @FXML
-    private ComboBox<Task> cmbTask;
+    private ComboBox<String> cmbTask;
     @FXML
     private ComboBox<Freelancer> cmbFreelancer;
     @FXML
@@ -83,17 +84,41 @@ public class PaymentTransactionScene_1_UI implements Initializable {
     }
 
     public void setComboBox() {
-        this.controller = new CreatePaymentTransactionController();
-        cmbFreelancer.getItems().addAll(controller.getFreelancers());
-        cmbTask.getItems().addAll(controller.getTasks());
+        controller = new CreatePaymentTransactionController();
+        if (controller == null) {
+            System.out.println("controller ta null(UI)");
+        }
+
+        ObservableList<String> tasks = FXCollections.observableArrayList(controller.getTasks());
+        if (tasks == null) {
+            System.out.println("TA NULL (UI)");
+        }
+//        for (Task task : tasks) {
+//            System.out.println("Print da task na ui: " + task.toString());
+        for (Iterator<String> it = tasks.iterator(); it.hasNext();) {
+            String task = it.next();
+            System.out.println("TaskString: ");
+        }
+        this.cmbTask.getItems().addAll(tasks);// = new ComboBox(tasks);//.setItems(tasks);
+//        ComboBox petList = new JComboBox(tasks);
+//        petList
+//        //this.cmbTask = new ComboBox(tasks);//.setItems(tasks);
+        ObservableList<Freelancer> freelancers
+                = FXCollections.observableArrayList(controller.getFreelancers());
+
+        this.cmbFreelancer = new ComboBox(freelancers);
+        //this.cmbFreelancer.setItems(freelancers);
+        //cmbFreelancer.getItems().addAll(controller.getFreelancers());
+        //cmbFreelancer.show();
+        // cmbTask.getItems().addAll(controller.getTasks());
 //        for (Freelancer frl : controller.getFreelancers()) {
 //            System.out.println("Lista de freelancers" + frl);
 //            cmbFreelancer.getItems().add(frl);
 //        }
-        for (Task task : controller.getTasks()) {
-            cmbTask.getItems().add(task);
-            System.out.println("Lista de tarefas: " + cmbTask.getItems());
-        }
+//        for (Task task : controller.getTasks()) {
+//            cmbTask.getItems().add(task);
+//            System.out.println("Lista de tarefas: " + cmbTask.getItems());
+//        }
     }
 
     @FXML
@@ -104,7 +129,7 @@ public class PaymentTransactionScene_1_UI implements Initializable {
             String endDate = this.txtTaskEndDate.getText();
             int taskDelay = Integer.parseInt(this.txtTaskDelay.getText());
             String workDescription = this.txtWorkDescription.getText();
-            Task task = this.cmbTask.getSelectionModel().getSelectedItem();
+            String task = this.cmbTask.getSelectionModel().getSelectedItem();
             Freelancer freelancer = this.cmbFreelancer.getSelectionModel().getSelectedItem();
             controller.newPaymentTransaction(payTId, task, endDate, taskDelay, workDescription, freelancer);
             goToScene(event, "/fxml/PaymentTransaction_2.fxml");
@@ -163,11 +188,11 @@ public class PaymentTransactionScene_1_UI implements Initializable {
 
     public void goToScene(ActionEvent event, String fxml) throws IOException {
         Parent button = FXMLLoader.load(getClass().getResource(fxml));
-        System.out.println("Será que mostrou?");
+        //  System.out.println("Será que mostrou?");
         Scene buttonScene = new Scene(button);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(buttonScene);
-        System.out.println("Vais Mostrar?");
+        //System.out.println("Vais Mostrar?");
         window.show();
     }
 

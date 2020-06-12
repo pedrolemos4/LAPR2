@@ -1,6 +1,7 @@
 package com.mycompany.lapr2_interfacegrafica.controller;
 
 import com.mycompany.lapr2_interfacegrafica.authorization.FacadeAuthorization;
+import com.mycompany.lapr2_interfacegrafica.authorization.model.User;
 import com.mycompany.lapr2_interfacegrafica.model.TaskList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,20 +36,22 @@ public class CreatePaymentTransactionController {
         this.facade = new FacadeAuthorization();
         this.orgRec = this.plat.getOrganizationsRecord();
         this.ptL = new PaymentTransactionList();
+        this.regFreel = this.plat.getFreelancersRecord();
+        this.m_oSessao = new UserSession(POTApplication.getFacadeAuthorization().getCurrentSession().getUser());
     }
 
-    public PaymentTransaction newPaymentTransaction(String payTId, Task taskString,
+    public PaymentTransaction newPaymentTransaction(String payTId, String taskString,
             String eDate, int delay, String workQualityDescription, Freelancer freelancerString) {
         String email = m_oSessao.getUserEmail();
         OrganizationsRecord orgR = plat.getOrganizationsRecord();
         this.org = orgR.getOrganizationByUserEmail(email);
-//        TaskList tLst = org.getTaskList();
-//        Task task = tLst.getTaskByStringValue(taskString);
+        TaskList tLst = org.getTaskList();
+        Task task = tLst.getTaskByStringValue(taskString);
 //        FreelancersRecord frlR = plat.getFreelancersRecord();
 //        Freelancer free = frlR.getFreelancerByStringValue(freelancerString);
         Date endDate = date.convertStringToDate(eDate);
         this.ptL = org.getPaymentTransactionList();
-        this.payT = ptL.newPaymentTransaction(org,payTId, taskString, freelancerString,
+        this.payT = ptL.newPaymentTransaction(org, payTId, task, freelancerString,
                 endDate, delay, workQualityDescription);
         if (this.ptL.validatePaymentTransaction(this.payT)) {
             return this.payT;
@@ -64,15 +67,25 @@ public class CreatePaymentTransactionController {
         return this.payT.toString();
     }
 
-    public List<Task> getTasks() {
-        String email = facade.getCurrentSession().getUserEmail();
+    public List<String> getTasks() {
+       // UserSession session = facade.getCurrentSession();
+        User user = this.m_oSessao.getUser();
+        String email = user.getEmail();
         OrganizationsRecord orgRec = this.plat.getOrganizationsRecord();
         this.org = orgRec.getOrganizationByUserEmail(email);
-        return this.org.getTaskList().getTasks();
+        TaskList taskList = this.org.getTaskList();
+        return taskList.getTasksAsStringList();//.getTasks();
+                //this.org.getTaskList().getTasks();
     }
 
     public List<Freelancer> getFreelancers() {
-        return this.plat.getFreelancersRecord().getListFreelancers();
+        this.regFreel = this.plat.getFreelancersRecord();
+        if(this.regFreel==null){
+            System.out.println("O regFreel(controller) tá null");
+        }
+        
+        //return this.plat.getFreelancersRecord().getListFreelancers();
+        return this.regFreel.getListFreelancers();
     }
 
     public String getTask() {

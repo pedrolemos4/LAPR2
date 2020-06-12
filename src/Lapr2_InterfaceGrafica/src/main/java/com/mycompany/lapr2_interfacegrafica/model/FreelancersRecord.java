@@ -84,6 +84,9 @@ public class FreelancersRecord implements Serializable {
     }
 
     public List<Freelancer> getListFreelancers() {
+        if(arrayFreelancers == null){
+            System.out.println("O array Ta null (freelancersrecord)");
+        }
         return arrayFreelancers;
     }
 

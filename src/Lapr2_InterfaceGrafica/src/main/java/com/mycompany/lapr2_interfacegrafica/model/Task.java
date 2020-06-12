@@ -17,7 +17,7 @@ public class Task implements Serializable {
         this.costPerHour = costPerHour;
         this.category = category;
         
-        validate();
+      //  validate();
     }
 
     public String getId() {

@@ -88,7 +88,7 @@ public class JanelaOptionsCollaboratorScene_UI implements Initializable {
             System.out.println("ui = null");
         }
         paymentTransactionUI.goToSceneAlt(this);
-        paymentTransactionUI.goToScene(event, "/fxml/PaymentTransaction_1.fxml");
+        //paymentTransactionUI.goToScene(event, "/fxml/PaymentTransaction_1.fxml");
     }
 
     @FXML

@@ -20,9 +20,13 @@ public class Organization implements Serializable {
         setNIF(NIF);
         this.m_oManager = new Manager(nomeM, emailM);
         this.m_oCollaborator = new Collaborator(nomeC, emailC);
+        this.taskList = new TaskList();
     }
 
     public TaskList getTaskList() {
+        if(this.taskList==null){
+            System.out.println("TaskList null (Organization)");
+        }
         return this.taskList;
     }
 

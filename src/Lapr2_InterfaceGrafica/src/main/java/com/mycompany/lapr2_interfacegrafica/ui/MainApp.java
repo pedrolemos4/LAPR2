@@ -86,20 +86,28 @@ public class MainApp extends Application {
 //        stage.show();
     }
 
-    private void readFromBinaryFile() throws FileNotFoundException, IOException, ClassNotFoundException {
+    private void readFromBinaryFile() throws FileNotFoundException {
         File platformData = new File("PlatformData.bin");
         if (platformData.length() != 0) {
+            try{
             ObjectInputStream in = new ObjectInputStream(new FileInputStream("PlatformData.bin"));
             Platform plat = (Platform) in.readObject();
             POTApplication.setPlatform(plat);
+            } catch ( IOException | ClassNotFoundException e){
+                e.printStackTrace();
+            }
         }
         File loginData = new File("LoginData.bin");
         if(loginData.length()==0){
             POTApplication.getFacadeAuthorization().registesUserWithRole("Rui", "ruiadmin@t4j.com", Constants.ADMINISTRATOR_ROLE);
         } else{
+            try{
             ObjectInputStream in = new ObjectInputStream(new FileInputStream("LoginData.bin"));
             FacadeAuthorization facadeAuthorization = (FacadeAuthorization) in.readObject();
             POTApplication.setAuthorizationFacade(facadeAuthorization);
+            } catch( IOException | ClassNotFoundException e ){
+                e.printStackTrace();
+            }
         }
     }
 
