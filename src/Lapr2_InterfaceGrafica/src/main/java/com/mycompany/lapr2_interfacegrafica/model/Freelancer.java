@@ -128,7 +128,7 @@ public class Freelancer implements Serializable{
     @Override
     public String toString() {
         return String.format("The freelancer is called: %s. Lives in: %s, %s. "
-                + "Email: %s. Iban: %s. Nif: %s. Level of Experience: %s.", name, address, country, email, iban, nif, lvlExp);
+                + "Email: %s. Iban: %s. Nif: %s. Level of Experience: %s. \nId: %s", name, address, country, email, iban, nif, lvlExp, id);
     }
 
     public boolean validatesFreelancer(Freelancer freel) {

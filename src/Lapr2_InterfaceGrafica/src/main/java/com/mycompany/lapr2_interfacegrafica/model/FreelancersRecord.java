@@ -33,21 +33,15 @@ public class FreelancersRecord implements Serializable {
     }
 
     public boolean registerFreelancer(Freelancer freel) {
-        System.out.println("register no freelancersRecord.");
-        String name = freel.getName();
-       // generateId(freel);
-        if (this.validatesFreelancer(freel)) {
-            return arrayFreelancers.add(freel);
-        } else {
-            System.out.println("eduardo");
+        if (this.arrayFreelancers.add(freel)) {
+            generateId(freel);
+            return true;
         }
         return false;
     }
 
     public void generateId(Freelancer freel1) {
-        System.out.println("Free lancer nome candido" + freel1.getName());
         String array = freel1.getName();
-        System.out.println("array: " + array);
         String[] arrayaux = array.split(" ");
         String nome1 = arrayaux[0];
         String nome2 = arrayaux[1];

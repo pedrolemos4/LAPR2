@@ -17,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -50,67 +51,27 @@ public class CreateFreelancerScene_1_UI implements Initializable {
     private Button btnNext;
     @FXML
     private Label invalidLbl;
-    
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.controller = new CreateFreelancerController();
     }
 
-    // Get methods
-    // <editor-fold defaultstate="collapsed">
-    public TextField getNome() {
-        return this.txtNome;
-    }
-
-    public TextField getLvlExp() {
-        return this.txtLevelOfExpertise;
-    }
-
-    public TextField getEmail() {
-        return this.txtEmail;
-    }
-
-    public TextField getNif() {
-        return this.txtNIF;
-    }
-
-    public TextField getIban() {
-        return this.txtIBAN;
-    }
-
-    public TextField getAdress() {
-        return this.txtAddress;
-    }
-
-    public TextField getCountry() {
-        return this.txtCountry;
-    }
-
-    // </editor-fold> 
-//    public void setFreelancer(CreateFreelancerUI freel) {
-//        this.freel = freel;
-//    }
-
-//    public void showFreelancer() {
-//        controller.freel.toString();
-//    }
-
     @FXML
     private void btnCancelAction(ActionEvent event) throws IOException {
-        goToScene(event, "/fxml/JanelaLogin.fxml");
-        //this.freel.getMainApp().toMainScene();
+        goToScene(event, "/fxml/OptionsCollaborator.fxml");
     }
 
     @FXML
     private void btnNextAction(ActionEvent event) throws IOException {
         try {
-                    controller.newFreelancer(this.txtNome.getText(), this.txtLevelOfExpertise.getText(),
-                    this.txtEmail.getText(), this.txtNIF.getText(), this.txtIBAN.getText(), 
+            Freelancer frl = controller.newFreelancer(this.txtNome.getText(), this.txtLevelOfExpertise.getText(),
+                    this.txtEmail.getText(), this.txtNIF.getText(), this.txtIBAN.getText(),
                     this.txtCountry.getText(), this.txtAddress.getText());
-            //System.out.println("Apos newFreelancer na scene. "+fre.toString());
-            //controller.registerFreelancer();
-            goToScene(event, "/fxml/CreateFreelancer_2.fxml");
-            //this.freel.toCreateFreelancerScene2UI();
+            if (controller.registerFreelancer(frl)) {
+                AlertUI.createAlert(Alert.AlertType.INFORMATION, "Success", "T4J-Payments", "Freelancer created successfully.").show();
+                goToScene(event, "/fxml/CreateFreelancer_1.fxml");
+            }
         } catch (IllegalArgumentException e) {
             invalidLbl.setText(e.getMessage());
         }

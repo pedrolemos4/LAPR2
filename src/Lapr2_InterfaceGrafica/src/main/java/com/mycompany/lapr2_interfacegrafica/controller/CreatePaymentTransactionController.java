@@ -30,17 +30,19 @@ public class CreatePaymentTransactionController {
         this.plat = POTApplication.getPlatform();
     }
 
-    public PaymentTransaction newPaymentTransaction(String payTId, String taskString, String eDate, int delay, String workQualityDescription, String freelancerString) {
+    public PaymentTransaction newPaymentTransaction(String payTId, Task taskString,
+            String eDate, int delay, String workQualityDescription, Freelancer freelancerString) {
         String email = m_oSessao.getUserEmail();
         OrganizationsRecord orgR = plat.getOrganizationsRecord();
         this.org = orgR.getOrganizationByUserEmail(email);
-        TaskList tLst = org.getTaskList();
-        Task task = tLst.getTaskByStringValue(taskString);
-        FreelancersRecord frlR = plat.getFreelancersRecord();
-        Freelancer free = frlR.getFreelancerByStringValue(freelancerString);
+//        TaskList tLst = org.getTaskList();
+//        Task task = tLst.getTaskByStringValue(taskString);
+//        FreelancersRecord frlR = plat.getFreelancersRecord();
+//        Freelancer free = frlR.getFreelancerByStringValue(freelancerString);
         Date endDate = date.convertStringToDate(eDate);
         this.ptL = org.getPaymentTransactionList();
-        this.payT = ptL.newPaymentTransaction(payTId, task, free, endDate, delay, workQualityDescription);
+        this.payT = ptL.newPaymentTransaction(payTId, taskString, freelancerString,
+                endDate, delay, workQualityDescription);
         if (this.ptL.validatePaymentTransaction(this.payT)) {
             return this.payT;
         }
@@ -55,12 +57,12 @@ public class CreatePaymentTransactionController {
         return this.payT.toString();
     }
 
-    public List<String> getTasks() {
-        return this.org.getTaskList().getTasksAsStringList();
+    public List<Task> getTasks() {
+        return this.org.getTaskList().getTasks();
     }
 
-    public List<String> getFreelancers() {
-        return this.plat.getFreelancersRecord().getFreelancersAsStringList();
+    public List<Freelancer> getFreelancers() {
+        return this.plat.getFreelancersRecord().getListFreelancers();
     }
 
     public String getTask() {

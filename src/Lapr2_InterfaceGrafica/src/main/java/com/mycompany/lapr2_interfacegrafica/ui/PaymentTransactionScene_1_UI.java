@@ -1,6 +1,8 @@
 package com.mycompany.lapr2_interfacegrafica.ui;
 
 import com.mycompany.lapr2_interfacegrafica.controller.CreatePaymentTransactionController;
+import com.mycompany.lapr2_interfacegrafica.model.Freelancer;
+import com.mycompany.lapr2_interfacegrafica.model.Task;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -38,39 +40,44 @@ public class PaymentTransactionScene_1_UI implements Initializable {
     @FXML
     private TextField txtWorkDescription;
     @FXML
-    private ComboBox<String> cmbTask;
+    private ComboBox<Task> cmbTask;
     @FXML
-    private ComboBox<String> cmbFreelancer;
+    private ComboBox<Freelancer> cmbFreelancer;
     @FXML
     private TextField txtTransactionID;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.controller = new CreatePaymentTransactionController();
+        for (Freelancer frl : controller.getFreelancers()) {
+           cmbFreelancer.getItems().add(frl);
+        }
+        for (Task task : controller.getTasks()) {
+            cmbTask.getItems().add(task);
+        }
     }
 
 //    public void setPaymentTransactionUI(CreatePaymentTransactionUI createPaymentTransactionUI) {
 //        this.createPaymentTransactionUI = createPaymentTransactionUI;
 //    }
-
     public void initComboBox() {
 //        CreatePaymentTransactionController controller = this.createPaymentTransactionUI.
 //                getCreatePaymentTransactionController();
-        ObservableList<String> tasks
-                = FXCollections.observableArrayList(controller.getTasks());
-        this.cmbTask.setItems(tasks);
-        ObservableList<String> freelancers
-                = FXCollections.observableArrayList(controller.getFreelancers());
-        this.cmbFreelancer.setItems(freelancers);
+//        ObservableList<String> tasks
+//                = FXCollections.observableArrayList(controller.getTasks());
+//        this.cmbTask.setItems(tasks);
+//        ObservableList<String> freelancers
+//                = FXCollections.observableArrayList(controller.getFreelancers());
+//        this.cmbFreelancer.setItems(freelancers);
     }
 
     public void showTransaction() {
-        this.txtTransactionID.setText(this.controller.getPayTId());
-        this.cmbTask.setValue(this.controller.getTask());
-        this.txtTaskDelay.setText(this.controller.getTaskDelay());
-        this.txtTaskEndDate.setText(this.controller.getEndDate());
-        this.txtWorkDescription.setText(this.controller.getWorkDescription());
-        this.cmbFreelancer.setValue(this.controller.getFreelancer());
+//        this.txtTransactionID.setText(this.controller.getPayTId());
+//        this.cmbTask.setValue(this.controller.getTask());
+//        this.txtTaskDelay.setText(this.controller.getTaskDelay());
+//        this.txtTaskEndDate.setText(this.controller.getEndDate());
+//        this.txtWorkDescription.setText(this.controller.getWorkDescription());
+//        this.cmbFreelancer.setValue(this.controller.getFreelancer());
     }
 
     @FXML
@@ -80,10 +87,10 @@ public class PaymentTransactionScene_1_UI implements Initializable {
             String endDate = this.txtTaskEndDate.getText();
             int taskDelay = Integer.parseInt(this.txtTaskDelay.getText());
             String workDescription = this.txtWorkDescription.getText();
-            String task = this.cmbTask.getSelectionModel().getSelectedItem();
-            String freelancer = this.cmbFreelancer.getSelectionModel().getSelectedItem();
+            Task task = this.cmbTask.getSelectionModel().getSelectedItem();
+            Freelancer freelancer = this.cmbFreelancer.getSelectionModel().getSelectedItem();
             controller.newPaymentTransaction(payTId, task, endDate, taskDelay, workDescription, freelancer);
-            goToScene(event,"/fxml/PaymentTransaction_1.fxml");
+            goToScene(event, "/fxml/PaymentTransaction_2.fxml");
 //            this.createPaymentTransactionUI.getCreatePaymentTransactionController().newPaymentTransaction(payTId, task, endDate,
 //                    taskDelay, workDescription, freelancer);
 //            this.createPaymentTransactionUI.toPaymentTransactionScene2UI();
@@ -104,7 +111,7 @@ public class PaymentTransactionScene_1_UI implements Initializable {
 
     @FXML
     private void btnCancelAction(ActionEvent event) throws IOException {
-        goToScene(event,"/fxml/OptionsCollaborator.fxml");
+        goToScene(event, "/fxml/OptionsCollaborator.fxml");
         //this.createPaymentTransactionUI.getMainApp().toMainScene();
     }
 

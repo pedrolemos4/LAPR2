@@ -57,7 +57,7 @@ public class CreateTaskScene_2_UI implements Initializable {
     @FXML
     private void btnConfirmAction(ActionEvent event) throws IOException {
         if(this.createTaskController==null){
-            System.out.println("Fodeu na UI");
+           
         }
         boolean registered = this.createTaskController.registerTask();
         if (registered) {

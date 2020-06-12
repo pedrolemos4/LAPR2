@@ -92,7 +92,7 @@ public class JanelaOptionsCollaboratorScene_UI implements Initializable {
         if(uploadFileUI==null){
            uploadFileUI= new UploadFileUI(); 
         }
-        uploadFileUI.goToScene(event, "/fxml/UploadFIle.fxml");
+        uploadFileUI.goToScene(event, "/fxml/UploadFile.fxml");
     }
 
     @FXML

@@ -71,6 +71,7 @@ public class AddNewOrganizationScene_2_UI implements Initializable {
 
     @FXML
     private void btnReturnAction(ActionEvent event) throws IOException {
+
         goToScene(event, "/fxml/AddNewOrganization_1_.fxml");
        // this.addNewOrganizationUI.toAddNewOrganizationScene1UI();
     }
