@@ -44,6 +44,9 @@ class TaskExecution {
 }
 
 class PaymentTransaction{
+  -Date endDate
+  -Double delay
+  -String workQualityDescription
 }
 
 class ManagerOfOrganization {
@@ -64,20 +67,13 @@ Organization "1" -- "*" Task: has >
 Organization "1" -- "*" PaymentTransaction: has >
 
 Collaborator "1" -- "1..*" PaymentTransaction: sees statistics about >
-Collaborator "1" -- "1..*" TaskExecution : sees statistics about >
 
 ManagerOfOrganization "1" -- "1..*" PaymentTransaction: sees statistics about >
-ManagerOfOrganization "1" -- "1..*" TaskExecution : sees statistics about >
 
 PaymentTransaction "1" -- "1" Freelancer: is related to >
 PaymentTransaction "1" -- "1" Task: is related to >
-PaymentTransaction "1" -- "1" TaskExecution: is related to >
 
-TaskExecution "1..*" -- "1..*" Freelancer : is related to >
-
-Task "1" -- "1" TaskExecution: has >
 
 PaymentDay "1" -- "0..*" PaymentTransaction : is related to
 
 @enduml
-
