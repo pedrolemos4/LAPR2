@@ -17,10 +17,9 @@ class Collaborator {
   -String email
 }
 
-
-class User {
+class Manager {
+  -String name
   -String email
-  -String password
 }
 
 class Freelancer {
@@ -32,7 +31,12 @@ class Freelancer {
   -String IBAN
   -String address
   -String country
-  }
+}
+
+class User {
+  -String email
+  -String password
+}
 
 class Task {
  -String id
@@ -42,42 +46,39 @@ class Task {
  -String taskCategory
 }
 
-class TaskExecution {
- -Date endDate
- -Double delay
- -String workQualityDescription
-}
-
 class PaymentTransaction{
+  -String id
+  -Date endDate
+  -Integer delay
+  -String workQualityDescription
 }
 
-class ManagerOfOrganization {
-  -String name
-  -String email
+class ExternalPwdGeneratorAlgorithm {
 }
 
-class PaymentDay {
-  -Date timeOfDay
-  -Date dayOfMonth
-}
-
-Organization "1" -- "1" ManagerOfOrganization : has >
-ManagerOfOrganization "1" -- "1" PaymentDay : sets >
 Platform "1" -- "*" Organization : has registered >
+Platform "1" -- "1" ExternalPwdGeneratorAlgorithm : resort to >
 Platform "1" -- "*" Freelancer : has/uses >
+
 Organization "1" -- "1" Collaborator: has >
+Organization "1" -- "1" Manager: has >
 Organization "1" -- "*" Task: has >
 Organization "1" -- "*" PaymentTransaction: has >
+
 Collaborator "0..1" -- "1" User: acts like >
-Freelancer "0..1" -- "1" User: acts like >
 Collaborator "1" -- "*" Freelancer: create >
 Collaborator "1" -- "*" Task: create >
 Collaborator "1" -- "*" PaymentTransaction: create >
-PaymentTransaction "1" -- "1" Freelancer: related to >
-PaymentTransaction "1" -- "1" Task: relates to >
-PaymentTransaction "1" -- "1" TaskExecution: related to >
-Task "1" -- "1" TaskExecution: has >
+
+Manager "0..1" -- "1" User: acts like >
+
+Freelancer "0..1" -- "1" User: acts like >
+
 Task "1..*" -- "1" Freelancer: is assigned to >
-PaymentDay "1" -- "0..*" PaymentTransaction : is related to
+
+PaymentTransaction "1" -- "1" Freelancer: relates to >
+PaymentTransaction "1" -- "1" Task: relates to >
+
+ExternalPwdGeneratorAlgorithm "1" -- "*" User : generate password >
 
 @enduml
