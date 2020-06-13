@@ -1,8 +1,8 @@
-Organization: adsadada
+Organization: Isep
 Role: ORGANIZATION_MANAGER
-Email: s@g.com
-Password: UWXoFg2
-Organization: adsadada
+Email: m@m.com
+Password: xadsCs1
+Organization: Isep
 Role: ORGANIZATION_COLLABORATOR
-Email: a@p.com
-Password: mDHLbXo
+Email: c@c.com
+Password: MdXSLIR
