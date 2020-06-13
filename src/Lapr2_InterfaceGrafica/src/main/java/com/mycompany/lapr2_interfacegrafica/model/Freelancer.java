@@ -2,7 +2,7 @@ package com.mycompany.lapr2_interfacegrafica.model;
 
 import java.io.Serializable;
 
-public class Freelancer implements Serializable{
+public class Freelancer implements Serializable {
 
     private String id;
     private String name;
@@ -22,8 +22,8 @@ public class Freelancer implements Serializable{
         setName(name1);
         setNif(nif);
     }
-    
-    public Freelancer(String id,String name, String lvlExp, String email, String nif, String iban, String country, String adress) {
+
+    public Freelancer(String id, String name, String lvlExp, String email, String nif, String iban, String country, String adress) {
 //        if (id==null || adress == null || country == null || email == null || iban == null || lvlExp == null || name == null || nif == null) {
 //            throw new IllegalArgumentException("None of the arguments can be null or empty.");
 //        }
@@ -36,20 +36,24 @@ public class Freelancer implements Serializable{
         setNif(nif);
         setId(id);
     }
-    
-        public void setName(String name) {
-        if(name ==null || name.trim().isEmpty()) throw new IllegalArgumentException("Invalid name!");
+
+    public void setName(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Invalid name!");
+        }
         this.name = name;
     }
 
     public void setEmail(String email) {
-        if(email ==null|| email.trim().isEmpty()) throw new IllegalArgumentException("Invalid Email!");
+        if (email == null || email.trim().isEmpty() || !email.contains("@") || !email.endsWith(".com")) {
+            throw new IllegalArgumentException("Invalid Collaborator Email!");
+        }
         this.email = email;
     }
 
     public void setNif(String nif) {
         try {
-            if (nif.trim().isEmpty()|| Long.parseLong(nif) >= 1000000000 || Long.parseLong(nif) <= 99999999) {
+            if (nif.trim().isEmpty() || Long.parseLong(nif) >= 1000000000 || Long.parseLong(nif) <= 99999999) {
                 throw new IllegalArgumentException("Invalid NIF ! (A valid has 9 numbers)");
             }
         } catch (NumberFormatException e) {
@@ -59,7 +63,7 @@ public class Freelancer implements Serializable{
     }
 
     public void setIBAN(String IBAN) {
-        if (IBAN.trim().isEmpty() ) {
+        if (IBAN.trim().isEmpty()) {
             throw new IllegalArgumentException("Empty Bank Account !");
         }
         this.iban = IBAN;
@@ -80,15 +84,15 @@ public class Freelancer implements Serializable{
     }
 
     public void setExpertise(String expertise) {
-        if(expertise ==null){
+        if (expertise == null) {
             throw new IllegalArgumentException("Empty Expertise !");
         }
         this.lvlExp = expertise;
     }
 
     public void setId(String id) {
-        if(id ==null){
-           throw new IllegalArgumentException("ID Freelancer is Empty");
+        if (id == null) {
+            throw new IllegalArgumentException("ID Freelancer is Empty");
         }
         this.id = id;
     }
