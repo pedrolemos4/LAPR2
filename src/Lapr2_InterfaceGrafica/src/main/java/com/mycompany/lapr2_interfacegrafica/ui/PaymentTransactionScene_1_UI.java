@@ -121,7 +121,7 @@ public class PaymentTransactionScene_1_UI implements Initializable {
             // Freelancer freelancer = cmbFreelancer.getSelectionModel().getSelectedItem();
             System.out.println("bblabal" + frl);
             System.out.println("Blelek " + task);
-            controller.newPaymentTransaction(payTId, task, endDate, taskDelay, workDescription, frl);
+//            controller.newPaymentTransaction(payTId, task, endDate, taskDelay, workDescription, frl);
             goToScene(event, "/fxml/PaymentTransaction_2.fxml");
 //            this.createPaymentTransactionUI.getCreatePaymentTransactionController().newPaymentTransaction(payTId, task, endDate,
 //                    taskDelay, workDescription, freelancer);

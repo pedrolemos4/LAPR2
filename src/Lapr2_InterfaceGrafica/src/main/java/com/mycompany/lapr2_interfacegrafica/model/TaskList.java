@@ -41,8 +41,8 @@ public class TaskList implements Serializable {
         return true;
     }
     
-    public boolean addTask(Task task){
-        return tasks.add(task);
+    public void addTask(Task task){
+         tasks.add(task);
     }
 //        try {
 //            task.validate();
@@ -83,10 +83,10 @@ public class TaskList implements Serializable {
     }
 
     public List<Task> getTasks() {
-        if (this.tasks == null) {
-            System.out.println("Lista null (TASK LIST)");
-        }
-        return this.tasks;
+//        if (this.tasks == null) {
+//            System.out.println("Lista null (TASK LIST)");
+//        }
+        return tasks;
     }
 
     public List<String> getTasksAsStringList() {

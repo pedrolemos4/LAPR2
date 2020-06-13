@@ -30,6 +30,7 @@ public class CreatePaymentTransactionController {
     private FacadeAuthorization facade;
     private FreelancersRecord regFreel;
     private OrganizationsRecord orgRec;
+    private TaskList taskList;
 
     public CreatePaymentTransactionController() {
         this.plat = POTApplication.getPlatform();
@@ -37,53 +38,61 @@ public class CreatePaymentTransactionController {
         this.orgRec = this.plat.getOrganizationsRecord();
         this.ptL = new PaymentTransactionList();
         this.regFreel = this.plat.getFreelancersRecord();
+        this.taskList=this.plat.getTaskList();
         this.m_oSessao = new UserSession(POTApplication.getFacadeAuthorization().getCurrentSession().getUser());
     }
 
-    public PaymentTransaction newPaymentTransaction(String payTId, String taskString,
-            String eDate, int delay, String workQualityDescription, Freelancer freelancerString) {
-        String email = m_oSessao.getUserEmail();
-        OrganizationsRecord orgR = plat.getOrganizationsRecord();
-        this.org = orgR.getOrganizationByUserEmail(email);
-        TaskList tLst = org.getTaskList();
-        Task task = tLst.getTaskByStringValue(taskString);
+//    public PaymentTransaction newPaymentTransaction(String payTId, String taskString,
+//            String eDate, int delay, String workQualityDescription, Freelancer freelancerString) {
+//        String email = m_oSessao.getUserEmail();
+//        OrganizationsRecord orgR = plat.getOrganizationsRecord();
+//        this.org = orgR.getOrganizationByUserEmail(email);
+//        TaskList tLst = org.getTaskList();
+//        System.out.println("tLst no newPaymentTrans: "+tLst);
+//        Task task = tLst.getTaskByStringValue(taskString);
 //        FreelancersRecord frlR = plat.getFreelancersRecord();
 //        Freelancer free = frlR.getFreelancerByStringValue(freelancerString);
-        Date endDate = date.convertStringToDate(eDate);
-        this.ptL = org.getPaymentTransactionList();
-        this.payT = ptL.newPaymentTransaction(org, payTId, task, freelancerString,
-                endDate, delay, workQualityDescription);
-        if (this.ptL.validatePaymentTransaction(this.payT)) {
-            return this.payT;
-        }
-        return null;
-    }
-
-    public boolean paymentTransactionRegister() {
-        return this.ptL.paymentTransactionRegister(this.payT);
-    }
+//        Date endDate = date.convertStringToDate(eDate);
+//        this.ptL = org.getPaymentTransactionList();
+//        this.payT = ptL.newPaymentTransaction(org, payTId, task, freelancerString,
+//                endDate, delay, workQualityDescription);
+//        if (this.ptL.validatePaymentTransaction(this.payT)) {
+//            return this.payT;
+//        }
+//        return null;
+//    }
+//
+//    public boolean paymentTransactionRegister() {
+//        return this.ptL.paymentTransactionRegister(this.payT);
+//    }
 
     public String getPaymentTransactionToString() {
         return this.payT.toString();
     }
 
     public List<Task> getTasks() {
-       // UserSession session = facade.getCurrentSession();
+        // UserSession session = facade.getCurrentSession();
         User user = this.m_oSessao.getUser();
+        System.out.println("User no getTask(): " + user);
         String email = user.getEmail();
-        OrganizationsRecord orgRec = this.plat.getOrganizationsRecord();
-        this.org = orgRec.getOrganizationByUserEmail(email);
-        TaskList taskList = this.org.getTaskList();
-        return taskList.getTasks();
-                //this.org.getTaskList().getTasks();
+        System.out.println("Email do user: "+email);
+        //OrganizationsRecord orgRec1 = this.plat.getOrganizationsRecord();
+        System.out.println("OrgRec no getTask: " + this.orgRec);
+        Organization org1 = this.orgRec.getOrganizationByUserEmail(email);
+        System.out.println("this.org: "+org1);
+        List<Task> taskList1 = this.taskList.getTasks(); //Isto nao faz nada o TaskList taskList = org1.getTaskList(); 
+        System.out.println("taskList: "+taskList1);
+////        System.out.println("taskList.getTasks(): "+taskList.getTasks());
+        return taskList1;
+        //this.org.getTaskList().getTasks();
     }
 
     public List<Freelancer> getFreelancers() {
         this.regFreel = this.plat.getFreelancersRecord();
-        if(this.regFreel==null){
+        if (this.regFreel == null) {
             System.out.println("O regFreel(controller) tá null");
         }
-        
+
         //return this.plat.getFreelancersRecord().getListFreelancers();
         return this.regFreel.getListFreelancers();
     }
