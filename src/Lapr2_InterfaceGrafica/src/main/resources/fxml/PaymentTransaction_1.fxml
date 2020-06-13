@@ -86,8 +86,8 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
                   </TextField>
-                  <ComboBox fx:id="cmbTask" onAction="#cmbTaskAction" prefHeight="35.0" prefWidth="219.0" visibleRowCount="1000" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" />
-                  <ComboBox fx:id="cmbFreelancer" onAction="#cmbFreelancerAction" prefHeight="35.0" prefWidth="219.0" visibleRowCount="1000" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <ComboBox fx:id="cmbTask" disable="true" onAction="#cmbTaskAction" prefHeight="35.0" prefWidth="219.0" visibleRowCount="1000" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" />
+                  <ComboBox fx:id="cmbFreelancer" disable="true" onAction="#cmbFreelancerAction" prefHeight="35.0" prefWidth="219.0" visibleRowCount="1000" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                   <Label alignment="CENTER_RIGHT" prefHeight="21.0" prefWidth="101.0" text="Transaction's ID:">
                      <font>
                         <Font size="14.0" />
