@@ -48,10 +48,8 @@ public class CreatePaymentTransactionController {
         OrganizationsRecord orgR = plat.getOrganizationsRecord();
         this.org = orgR.getOrganizationByUserEmail(email);
         TaskList tLst = org.getTaskList();
-        System.out.println("tLst no newPaymentTrans: "+tLst);
         Task task = tLst.getTaskByStringValue(taskString);
         FreelancersRecord frlR = plat.getFreelancersRecord();
-        //Freelancer free = frlR.getFreelancerByStringValue(freelancerString);
         Date endDate = date.convertStringToDate(eDate);
         this.ptL = org.getPaymentTransactionList();
         this.payT = ptL.newPaymentTransaction(org, payTId, task, freelancerString,
