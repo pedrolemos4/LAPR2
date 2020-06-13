@@ -51,12 +51,12 @@ public class JanelaOptionsAdminScene_UI implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        try {
-//            sendEmailController = new SendEmailController();
-//            lstFreelApt = sendEmailController.getListFreelancersAdapt();
-//        } catch (FileNotFoundException ex) {
-//            Logger.getLogger(JanelaOptionsAdminScene_UI.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        try {
+            sendEmailController = new SendEmailController();
+            lstFreelApt = sendEmailController.getListFreelancersAdapt();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(JanelaOptionsAdminScene_UI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void setNewOptionsAdminUI(JanelaLogin_1_UI janelaLoginUI) {

@@ -1,5 +1,6 @@
 package com.mycompany.lapr2_interfacegrafica.model;
 
+import com.mycompany.lapr2_interfacegrafica.authorization.FacadeAuthorization;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -27,9 +28,9 @@ public class FreelancersRecord implements Serializable {
     public Freelancer newFreelancer(String name, String lvlExp, String email, String nif, String iban, String country, String adress) {
         return new Freelancer(name, lvlExp, email, nif, iban, country, adress);
     }
-    
+
     public Freelancer newFreelancer1(String id, String name, String lvlExp, String email, String nif, String iban, String country, String adress) {
-        return new Freelancer(id,name, lvlExp, email, nif, iban, country, adress);
+        return new Freelancer(id, name, lvlExp, email, nif, iban, country, adress);
     }
 
     public Freelancer getFreelancer() {
@@ -39,6 +40,13 @@ public class FreelancersRecord implements Serializable {
     public boolean registerFreelancer(Freelancer freel) {
         if (this.arrayFreelancers.add(freel)) {
             generateId(freel);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean registerFreelancer1(Freelancer freel) {
+        if (this.arrayFreelancers.add(freel)) {
             return true;
         }
         return false;
@@ -75,10 +83,8 @@ public class FreelancersRecord implements Serializable {
 
     public boolean validatesFreelancer(Freelancer freel) {
         if (freel.getAdress() == null || freel.getCountry() == null || freel.getEmail() == null || freel.getIban() == null || freel.getLvlExp() == null || freel.getName() == null || freel.getNif() == null) {
-            System.out.println("Eduardo2");
             return false;
         } else {
-            System.out.println("Eduardo 3");
             return true;
         }
     }
@@ -88,8 +94,7 @@ public class FreelancersRecord implements Serializable {
     }
 
     public List<Freelancer> getListFreelancers() {
-        if(arrayFreelancers == null){
-            System.out.println("O array Ta null (freelancersrecord)");
+        if (arrayFreelancers == null) {
         }
         return arrayFreelancers;
     }
@@ -149,9 +154,12 @@ public class FreelancersRecord implements Serializable {
 
     public int getDelay(Freelancer freel3) {
         int delay = 0;
-        List<Freelancer> freelApt = new ArrayList<>();
-        payemntTransList = plat.getPaymentTransactionList();
-        List<PaymentTransaction> payemntTransList1 = payemntTransList.getPaymentTransactions();
+        FacadeAuthorization facade = plat.getFacadeAuthorization();
+        String email = facade.getCurrentSession().getUser().getEmail();
+        OrganizationsRecord orgRec = plat.getOrganizationsRecord();
+        Organization m_Organization = orgRec.getOrganizationByUserEmail(email);
+        PaymentTransactionList payTL = m_Organization.getPaymentTransactionList();
+        List<PaymentTransaction> payemntTransList1 = payTL.getPaymentTransactions();
         for (int k = 0; k < payemntTransList1.size(); k++) {
             Freelancer frel = payemntTransList1.get(k).getFreelancer();
             if (frel.equals(freel3)) {
@@ -165,9 +173,12 @@ public class FreelancersRecord implements Serializable {
 
     public int getPercentageDelay(Freelancer freel1) {
         int numberTrans = 0, delay = 0;
-        List<Freelancer> freelApt = new ArrayList<>();
-        payemntTransList = plat.getPaymentTransactionList();
-        List<PaymentTransaction> payemntTransList1 = payemntTransList.getPaymentTransactions();
+        FacadeAuthorization facade = plat.getFacadeAuthorization();
+        String email = facade.getCurrentSession().getUser().getEmail();
+        OrganizationsRecord orgRec = plat.getOrganizationsRecord();
+        Organization m_Organization = orgRec.getOrganizationByUserEmail(email);
+        PaymentTransactionList payTL = m_Organization.getPaymentTransactionList();
+        List<PaymentTransaction> payemntTransList1 = payTL.getPaymentTransactions();
         for (int k = 0; k < payemntTransList1.size(); k++) {
             Freelancer frel = payemntTransList1.get(k).getFreelancer();
             if (frel.equals(freel1)) {
@@ -182,8 +193,6 @@ public class FreelancersRecord implements Serializable {
 
     public List<Freelancer> getFreelancersAdapt() throws FileNotFoundException {
         List<Freelancer> freelApt = new ArrayList<>();
-        payemntTransList = plat.getPaymentTransactionList();
-        List<PaymentTransaction> payemntTransList1 = payemntTransList.getPaymentTransactions();
         for (int i = 0; i < arrayFreelancers.size(); i++) {
             Freelancer freel = arrayFreelancers.get(i);
             int delay = getDelay(freel);
@@ -192,7 +201,6 @@ public class FreelancersRecord implements Serializable {
             if (delay > 3 && perDelay > averageDelay) {
                 freelApt.add(freel);
             }
-
         }
         return freelApt;
     }

@@ -10,10 +10,10 @@ public class Platform implements Serializable {
     private final FacadeAuthorization m_oAutorizacao;
     public FreelancersRecord freelRec;
     public OrganizationsRecord orgRec;
-    public PaymentTransactionList paymentTransList;
+    //public PaymentTransactionList paymentTransList;
     public Organization org;
     public ExternalAlgorithm1API alg;
-    public TaskList taskList;
+    //public TaskList taskList;
 
     public Platform() {
 //        if ((strDesignacao == null)
@@ -24,7 +24,7 @@ public class Platform implements Serializable {
         this.m_oAutorizacao = new FacadeAuthorization();
         this.orgRec = new OrganizationsRecord();
         this.freelRec = new FreelancersRecord();
-        this.taskList = new TaskList();
+       // this.taskList = new TaskList();
     }
 
     public FacadeAuthorization getFacadeAuthorization() {
@@ -35,9 +35,9 @@ public class Platform implements Serializable {
         return this.freelRec;
     }
 
-    public TaskList getTaskList() {
-        return this.taskList;
-    }
+//    public TaskList getTaskList() {
+//        return this.taskList;
+//    }
 
     public Organization getOrganization() {
         return this.org;
@@ -47,9 +47,9 @@ public class Platform implements Serializable {
         return this.orgRec;
     }
 
-    public PaymentTransactionList getPaymentTransactionList() {
-        return this.paymentTransList;
-    }
+//    public PaymentTransactionList getPaymentTransactionList() {
+//        return this.paymentTransList;
+//    }
 
     public ExternalAlgorithm1API getPasswordGeneratorAlgorithm() {
         return this.alg;

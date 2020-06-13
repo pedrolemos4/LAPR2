@@ -26,7 +26,7 @@
                <children>
                   <Button fx:id="btnImportTxt" mnemonicParsing="false" onAction="#importTxtAction" text="Import File (txt)">
                      <HBox.margin>
-                        <Insets left="120.0" top="10.0" />
+                        <Insets left="70.0" top="10.0" />
                      </HBox.margin>
                   </Button>
                   <Button fx:id="btnImportCsv" mnemonicParsing="false" onAction="#importCsvAction" text="Import File (csv)">
@@ -35,6 +35,11 @@
                      </HBox.margin>
                   </Button>
                   <Button fx:id="btnClean" mnemonicParsing="false" onAction="#cleanAction" text="Clean">
+                     <HBox.margin>
+                        <Insets left="30.0" top="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="btnReturn" mnemonicParsing="false" onAction="#returnAction" text="Return">
                      <HBox.margin>
                         <Insets left="30.0" top="10.0" />
                      </HBox.margin>

@@ -39,7 +39,7 @@ public class PaymentTransaction implements Serializable {
 
     @Override
     public String toString() {
-        String str = String.format("ID: %s - %s - End Date: %s - Delay: %d hours - Work Quality Description: %s - %s - %.2f", this.id, this.task.toString(), this.endDate.toAnoMesDiaString(), this.delay, this.workQualityDescription, this.freelancer.toString(), this.dPayAmount);
+        String str = String.format("ID: %s - %s - End Date: %s - Delay: %d hours - Work Quality Description: %s - %s - %.2f", this.id, this.task.toString(), this.endDate.toYearMonthDayString(), this.delay, this.workQualityDescription, this.freelancer.toString(), this.dPayAmount);
         return str;
     }
 
@@ -104,7 +104,7 @@ public class PaymentTransaction implements Serializable {
     }
 
     public void setEndDate(Date eDate) {
-        if (eDate == null || eDate.toString().trim().isEmpty() || eDate.toAnoMesDiaString().trim().isEmpty()) {
+        if (eDate == null || eDate.toString().trim().isEmpty() || eDate.toYearMonthDayString().trim().isEmpty()) {
             throw new IllegalArgumentException("Invalid Date!");
         }
         this.endDate = eDate;

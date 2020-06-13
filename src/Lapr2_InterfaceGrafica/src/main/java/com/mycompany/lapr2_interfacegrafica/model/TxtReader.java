@@ -66,8 +66,8 @@ public class TxtReader implements FileReader {
                     task = m_taskList.findById(taskId);
                     if (task == null) {
                         task = newTask(taskId, items);
-                        if (m_taskList.registerTask(task)) {
-                            return true;//m_taskList.registerTask(task);
+                        if (m_taskList.validateTask(task)) {
+                            m_taskList.registerTask(task);
                         } else {
                             invalidLine++;
                             continue;
@@ -78,7 +78,7 @@ public class TxtReader implements FileReader {
                     if (free == null) {
                         free = newFreelancer(freeNIF, items);
                         if (m_freelancerRecord.validatesFreelancer(free)) {
-                            m_freelancerRecord.registerFreelancer(free);
+                            m_freelancerRecord.registerFreelancer1(free);
                         } else {
                             invalidLine++;
                             continue;
@@ -121,7 +121,7 @@ public class TxtReader implements FileReader {
         day = Integer.parseInt(arrayDate[0]);
         month = Integer.parseInt(arrayDate[1]);
         year = Integer.parseInt(arrayDate[2]);
-        return new Date(year, month, day);
+        return new Date(day, month, year);
     }
 
 }

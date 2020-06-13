@@ -24,25 +24,25 @@ public class TaskList implements Serializable {
     }
 
     public boolean registerTask(Task task) {
-        if (task!=null) {
-            tasks.add(task);
-            return true;
-        }
-        return false;
+        //if (task!=null) {
+        return tasks.add(task);
+        //   return true;
+        // }
+        //   return false;
 
     }
 
     public boolean validateTask(Task task) {
-        for(int i =0; i<tasks.size();i++){
-            if(tasks.get(i).equals(task)){
+        for (int i = 0; i < tasks.size(); i++) {
+            if (tasks.get(i).equals(task)) {
                 return false;
             }
         }
         return true;
     }
-    
-    public void addTask(Task task){
-         tasks.add(task);
+
+    public void addTask(Task task) {
+        tasks.add(task);
     }
 //        try {
 //            task.validate();
@@ -94,7 +94,7 @@ public class TaskList implements Serializable {
         for (Task task : tasks) {
             setTasksAsString.add(task.toString());
         }
-        if(setTasksAsString == null){
+        if (setTasksAsString == null) {
             System.out.println("LIST NUll (taskList)");
         }
         return setTasksAsString;

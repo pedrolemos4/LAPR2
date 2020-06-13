@@ -5,6 +5,7 @@
  */
 package com.mycompany.lapr2_interfacegrafica.controller;
 
+import com.mycompany.lapr2_interfacegrafica.authorization.FacadeAuthorization;
 import com.mycompany.lapr2_interfacegrafica.model.Freelancer;
 import com.mycompany.lapr2_interfacegrafica.model.Organization;
 import com.mycompany.lapr2_interfacegrafica.model.OrganizationsRecord;
@@ -30,41 +31,42 @@ import lapr2.pot.ui.console.utils.Date;
  * @author Tiago
  */
 public class SetDayOfPaymentController {
-    Timer timer;
-    
-    
-    
 
+    Timer timer;
 
     /**
-     * define um dia para execucao dos pagamentos
-     * inicia um timer e agenda o primeiro pagamento para o proximo dia 
+     * define um dia para execucao dos pagamentos inicia um timer e agenda o
+     * primeiro pagamento para o proximo dia
+     *
      * @param paymentDay dia do mes pretendido, por exemplo dia 10
      */
-    public void setProcessPaymentsDay(int paymentDay){    
-            
+    public void setProcessPaymentsDay(int paymentDay) {
+
         //date de hoje
         Calendar cal = Calendar.getInstance();
         cal.setTime(new java.util.Date());
-        
+
         cal.set(Calendar.DAY_OF_MONTH, paymentDay);
-        
+
         timer = new Timer();
 
         setNextProcessment(cal);
     }
-    
+
     /**
-     * processar todos os payments entre o dia de pagamento anterior INCLUSIVE 
+     * processar todos os payments entre o dia de pagamento anterior INCLUSIVE
      * ate ao dia de pagamento atual EXCLUSIVE
-     * 
+     *
      * Assume que nenhum deles esta pago
-    */    
+     */
     private void processPayments() {
         Platform plat = POTApplication.getPlatform();
-        
-        PaymentTransactionList payments = plat.getPaymentTransactionList();
-        
+        FacadeAuthorization facade = plat.getFacadeAuthorization();
+        String email = facade.getCurrentSession().getUser().getEmail();
+        OrganizationsRecord orgRec = plat.getOrganizationsRecord();
+        Organization m_Organization = orgRec.getOrganizationByUserEmail(email);
+        PaymentTransactionList payTL = m_Organization.getPaymentTransactionList();
+
         //data de hoje que é um dia de pagamento
         Calendar calToday = Calendar.getInstance();
         calToday.setTime(new java.util.Date());
@@ -72,54 +74,55 @@ public class SetDayOfPaymentController {
         calToday.set(Calendar.MINUTE, 0);
         calToday.set(Calendar.SECOND, 0);
         calToday.set(Calendar.MILLISECOND, 0);
-        
+
         Calendar calLastMonth = (Calendar) calToday.clone();
         calLastMonth.add(Calendar.MONTH, -1);
-        
+
         //paga-se as transacoes cuja endDate PERTENCA a [calLastMonth, calToday[
         //percorre-se a lista uma primeira vz para colecionar todos os freelancers que tenham pagamentos
         List<Freelancer> freelancers = new ArrayList<>();
-        for(PaymentTransaction payment: payments.getPaymentTransactions()){
+        for (PaymentTransaction payment : payTL.getPaymentTransactions()) {
             Calendar endDate = Calendar.getInstance();
             Date dataPagamento = payment.getEndDate();
-            endDate.set(Calendar.YEAR, dataPagamento.getAno());
-            endDate.set(Calendar.MONTH, dataPagamento.getMes());
-            endDate.set(Calendar.DAY_OF_MONTH, dataPagamento.getDia());
+            endDate.set(Calendar.YEAR, dataPagamento.getYear());
+            endDate.set(Calendar.MONTH, dataPagamento.getMonth());
+            endDate.set(Calendar.DAY_OF_MONTH, dataPagamento.getDay());
 
             //se estiver entre data do ultimo mes INCLUSIVE e ate data de hoje EXCLUSIVE
             //primeiro obtem-se uma lista dos freelancers que vao ser pagos
-            if (endDate.equals(calLastMonth) || endDate.after(calLastMonth) && endDate.before(calToday)){
-                if (!freelancers.contains(payment.getFreelancer()))
+            if (endDate.equals(calLastMonth) || endDate.after(calLastMonth) && endDate.before(calToday)) {
+                if (!freelancers.contains(payment.getFreelancer())) {
                     freelancers.add(payment.getFreelancer());
+                }
             }
         }
         double totalPayment;
         String emailReport;
         //percorre-se todos os freelancers
-        for(Freelancer freelancer:freelancers){
-            totalPayment=0;
+        for (Freelancer freelancer : freelancers) {
+            totalPayment = 0;
             emailReport = "";
-            for(PaymentTransaction payment: payments.getPaymentTransactions()){
-                if (payment.getFreelancer().equals(freelancer)){
+            for (PaymentTransaction payment : payTL.getPaymentTransactions()) {
+                if (payment.getFreelancer().equals(freelancer)) {
 
                     Calendar endDate = Calendar.getInstance();
                     Date dataPagamento = payment.getEndDate();
-                    endDate.set(Calendar.YEAR, dataPagamento.getAno());
-                    endDate.set(Calendar.MONTH, dataPagamento.getMes());
-                    endDate.set(Calendar.DAY_OF_MONTH, dataPagamento.getDia());
+                    endDate.set(Calendar.YEAR, dataPagamento.getYear());
+                    endDate.set(Calendar.MONTH, dataPagamento.getMonth());
+                    endDate.set(Calendar.DAY_OF_MONTH, dataPagamento.getDay());
 
                     //se estiver entre data do ultimo mes INCLUSIVE e ate data de hoje EXCLUSIVE
-                    if (endDate.equals(calLastMonth) || endDate.after(calLastMonth) && endDate.before(calToday)){
+                    if (endDate.equals(calLastMonth) || endDate.after(calLastMonth) && endDate.before(calToday)) {
                         //processar pagamento
-                        totalPayment+=payment.getPayAmount();
-                        
-                        emailReport+="Tarefa: " + payment.getTask().getBriefDescription() + "\n" +
-                                     "    Amount in Euros: " + payment.getPayAmount() + "\n";
+                        totalPayment += payment.getPayAmount();
+
+                        emailReport += "Tarefa: " + payment.getTask().getBriefDescription() + "\n"
+                                + "    Amount in Euros: " + payment.getPayAmount() + "\n";
                     }
                 }
             }
-                
-            emailReport+="Total Amount in Euros: " + totalPayment + "\n\n";
+
+            emailReport += "Total Amount in Euros: " + totalPayment + "\n\n";
             //executeTransferOrder(payment.getFreelancer().getIban(), payment.getPayAmount());
             sendEmail(freelancer.getEmail(), emailReport);
         }
@@ -127,9 +130,10 @@ public class SetDayOfPaymentController {
 
     /**
      * define o timer e agenda o proximo dia de pagamento
-     * @param cal 
+     *
+     * @param cal
      */
-    private void setNextProcessment(final Calendar cal) {        
+    private void setNextProcessment(final Calendar cal) {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -137,15 +141,14 @@ public class SetDayOfPaymentController {
                 processPayments();
                 //agenda para o proximo mes                
                 //adiciona um mes ao momento atual
-                cal.add(Calendar.MONTH,1);
+                cal.add(Calendar.MONTH, 1);
                 setNextProcessment(cal);
             }
 
         }, new java.util.Date(cal.getTimeInMillis()));
     }
-    
-    
-    public void sendEmail(String email, String report)  {
+
+    public void sendEmail(String email, String report) {
         PrintWriter out = null;
         try {
             out = new PrintWriter(new File("email.txt"));
@@ -153,11 +156,10 @@ public class SetDayOfPaymentController {
             out.printf(fileContent);
             out.close();
         } catch (FileNotFoundException ex) {
-            
+
         } finally {
             out.close();
         }
-    }    
-    
-    
+    }
+
 }

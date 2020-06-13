@@ -38,6 +38,8 @@ public class UploadFileUI implements Initializable {
     private Button btnClean;
     @FXML
     private ListView<PaymentTransaction> lstPaymentTransactions;
+    @FXML
+    private Button btnReturn;
 
     /**
      * Initializes the controller class.
@@ -97,5 +99,10 @@ public class UploadFileUI implements Initializable {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(buttonScene);
         window.show();
+    }
+
+    @FXML
+    private void returnAction(ActionEvent event) throws IOException {
+        goToScene(event, "/fxml/OptionsCollaborator.fxml");
     }
 }

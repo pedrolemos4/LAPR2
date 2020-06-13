@@ -25,7 +25,7 @@ public class Organization implements Serializable {
     }
 
     public TaskList getTaskList() { //Provavelmente temos que mudar porque este metodo nao da return de nada. Foi o problema na lista de task
-        if(this.taskList==null){
+        if (this.taskList == null) {
             System.out.println("TaskList null (Organization)");
         }
         return this.taskList;

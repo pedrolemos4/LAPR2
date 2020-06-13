@@ -45,8 +45,8 @@ public class Freelancer implements Serializable {
     }
 
     public void setEmail(String email) {
-        if (email == null || email.trim().isEmpty() || !email.contains("@") || !email.endsWith(".com")) {
-            throw new IllegalArgumentException("Invalid Collaborator Email!");
+        if (email == null || email.trim().isEmpty() || !email.contains("@")){ 
+            throw new IllegalArgumentException("Invalid Freelancer Email!");
         }
         this.email = email;
     }

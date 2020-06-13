@@ -1,5 +1,6 @@
 package com.mycompany.lapr2_interfacegrafica.controller;
 
+import com.mycompany.lapr2_interfacegrafica.authorization.FacadeAuthorization;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import com.mycompany.lapr2_interfacegrafica.authorization.model.UserSession;
@@ -25,33 +26,36 @@ public class CreateTaskController {
     private FreelancersRecord frlR;
     private PaymentTransactionList ptL;
     private PaymentTransaction payT;
-    private TaskList taskRecord;
+    private TaskList taskList;
+    private FacadeAuthorization facade;
 
     private Task task;
 
     public CreateTaskController() {
-       // this.m_oApp = POTApplication.getInstance();
+        // this.m_oApp = POTApplication.getInstance();
 //        this.m_oSessao = m_oApp.getCurrentSession();
 
 //        if (!m_oApp.getCurrentSession().isLoggedInWithRole(Constants.ADMINISTRATOR_ROLE)) {
 //            throw new IllegalStateException("Utilizador não Autorizado");
 //        }
-
         this.m_oPlatform = POTApplication.getPlatform();
-        this.taskRecord = m_oPlatform.getTaskList();
+        this.facade = POTApplication.getFacadeAuthorization();
+        this.or = m_oPlatform.getOrganizationsRecord();
+        this.org = or.getOrganization();
+        this.taskList = org.getTaskList();
     }
 
-    public Task newTask(String id, String briefDescription, int timeDuration, double costPerHour, String category){
-        Task task1 = this.taskRecord.newTask(id, briefDescription, timeDuration, costPerHour, category);
+    public Task newTask(String id, String briefDescription, int timeDuration, double costPerHour, String category) {
+        Task task1 = this.taskList.newTask(id, briefDescription, timeDuration, costPerHour, category);
         this.task = task1;
-        if(this.taskRecord.validateTask(task)){
+        if (this.taskList.validateTask(task)) {
             System.out.println("Validou Controller");
-            this.taskRecord.addTask(this.task);
+//            this.taskList.addTask(this.task);
             return this.task;
         }
         return null;
     }
-    
+
 //    public boolean newTask(String id, String briefDescription, int timeDuration, double costPerHour, String category) {
 //        try {
 //            task = taskRecord.newTask(id, briefDescription, timeDuration, costPerHour, category);
@@ -61,11 +65,12 @@ public class CreateTaskController {
 //            return false;
 //        }
 //    }
-
-    public boolean registerTask() throws IOException{
-        TaskList taskList = m_oPlatform.getTaskList();
-        Task task1 = taskList.getTask();
-        return taskList.registerTask(task1);
+    public boolean registerTask() throws IOException {
+        String email = facade.getCurrentSession().getUser().getEmail();
+        Organization m_Organization = this.or.getOrganizationByUserEmail(email);
+        TaskList taskList1 = m_Organization.getTaskList();
+        Task task1 = taskList1.getTask();
+        return taskList1.registerTask(task1);
     }
 
     public String getTaskAsString() {

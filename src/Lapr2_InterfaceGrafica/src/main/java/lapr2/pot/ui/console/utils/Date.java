@@ -1,285 +1,286 @@
 package lapr2.pot.ui.console.utils;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
-public class Date implements Comparable<Date> {
+public class Date implements Comparable<Date>, Serializable {
 
-    private int ano;
+    private int year;
 
-    private Mes mes;
+    private Month month;
 
-    private int dia;
+    private int day;
 
-    private static final int ANO_POR_OMISSAO = 1;
+    private static final int YEAR_BY_OMISSION = 1;
 
-    private static final Mes MES_POR_OMISSAO = Mes.JANEIRO;
+    private static final Month MONTH_BY_OMISSION = Month.JANUARY;
 
-    private static final int DIA_POR_OMISSAO = 1;
+    private static final int DAY_BY_OMISSION = 1;
 
-    private static enum DiaDaSemana {
+    private static enum DayOfWeek {
 
-        DOMINGO {
+        SUNDAY {
             @Override
             public String toString() {
-                return "Domingo";
+                return "Sunday";
             }
         },
-        SEGUNDA {
+        MONDAY {
             @Override
             public String toString() {
-                return "Segunda-Feira";
+                return "Monday";
             }
         },
-        TERCA {
+        TUESDAY {
             @Override
             public String toString() {
-                return "Terça-Feira";
+                return "Tuesday";
             }
         },
-        QUARTA {
+        WEDNESDAY {
             @Override
             public String toString() {
-                return "Quarta-Feira";
+                return "Wednesday";
             }
         },
-        QUINTA {
+        THURSDAY {
             @Override
             public String toString() {
-                return "Quinta-Feira";
+                return "Thursday";
             }
         },
-        SEXTA {
+        FRIDAY {
             @Override
             public String toString() {
-                return "Sexta-Feira";
+                return "Friday";
             }
         },
-        SABADO {
+        SATURDAY {
             @Override
             public String toString() {
-                return "Sábado";
+                return "Saturday";
             }
         };
 
-        public static String designacaoDiaDaSemana(int ordemDiaDaSemana) {
-            return DiaDaSemana.values()[ordemDiaDaSemana].toString();
+        public static String designationDayOfWeek(int orderDayDaSemana) {
+            return DayOfWeek.values()[orderDayDaSemana].toString();
         }
     }
 
-    private static enum Mes {
+    private static enum Month {
 
-        JANEIRO(31) {
+        JANUARY(31) {
             @Override
             public String toString() {
-                return "Janeiro";
+                return "January";
             }
         },
-        FEVEREIRO(28) {
+        FEBRUARY(28) {
             @Override
             public String toString() {
-                return "Fevereiro";
+                return "February";
             }
         },
-        MARCO(31) {
+        MARCH(31) {
             @Override
             public String toString() {
-                return "Março";
+                return "March";
             }
         },
-        ABRIL(30) {
+        APRIL(30) {
             @Override
             public String toString() {
-                return "Abril";
+                return "April";
             }
         },
-        MAIO(31) {
+        MAY(31) {
             @Override
             public String toString() {
-                return "Maio";
+                return "May";
             }
         },
-        JUNHO(30) {
+        JUNE(30) {
             @Override
             public String toString() {
-                return "Junho";
+                return "June";
             }
         },
-        JULHO(31) {
+        JULY(31) {
             @Override
             public String toString() {
-                return "Julho";
+                return "July";
             }
         },
-        AGOSTO(31) {
+        AUGUST(31) {
             @Override
             public String toString() {
-                return "Agosto";
+                return "august";
             }
         },
-        SETEMBRO(30) {
+        SEPTEMBER(30) {
             @Override
             public String toString() {
-                return "Setembro";
+                return "September";
             }
         },
-        OUTUBRO(31) {
+        October(31) {
             @Override
             public String toString() {
-                return "Outubro";
+                return "October";
             }
         },
-        NOVEMBRO(30) {
+        NOVEMBER(30) {
             @Override
             public String toString() {
-                return "Novembro";
+                return "November";
             }
         },
-        DEZEMBRO(31) {
+        DECEMBER(31) {
             @Override
             public String toString() {
-                return "Dezembro";
+                return "December";
             }
         };
 
-        private int numeroDeDias;
+        private int numberOfDays;
 
-        private Mes(int numeroDeDias) {
-            this.numeroDeDias = numeroDeDias;
+        private Month(int numberOfDays) {
+            this.numberOfDays = numberOfDays;
         }
 
-        public int numeroDeDias(int ano) {
-            if (ordinal() == 1 && Date.isAnoBissexto(ano)) {
-                return numeroDeDias + 1;
+        public int numberOfDays(int year) {
+            if (ordinal() == 1 && Date.isLeapYear(year)) {
+                return numberOfDays + 1;
             }
-            return numeroDeDias;
+            return numberOfDays;
         }
 
-        public static Mes obterMes(int ordemDoMes) {
-            return Mes.values()[ordemDoMes - 1];
+        public static Month getMonth(int orderOfMonth) {
+            return Month.values()[orderOfMonth - 1];
         }
     }
 
-    public Date(int ano, int mes, int dia) {
-        setData(ano, mes, dia);
+    public Date(int year, int month, int day) {
+        setData(year, month, day);
     }
 
     public Date() {
-        ano = ANO_POR_OMISSAO;
-        mes = MES_POR_OMISSAO;
-        dia = DIA_POR_OMISSAO;
+        year = YEAR_BY_OMISSION;
+        month = MONTH_BY_OMISSION;
+        day = DAY_BY_OMISSION;
     }
 
-    public Date(Date outraData) {
-        ano = outraData.ano;
-        mes = outraData.mes;
-        dia = outraData.dia;
+    public Date(Date anotherData) {
+        year = anotherData.year;
+        month = anotherData.month;
+        day = anotherData.day;
     }
 
-    public int getAno() {
-        return ano;
+    public int getYear() {
+        return year;
     }
 
-    public int getMes() {
-        return mes.ordinal() + 1;
+    public int getMonth() {
+        return month.ordinal() + 1;
     }
 
-    public int getDia() {
-        return dia;
+    public int getDay() {
+        return day;
     }
 
-    public final void setData(int ano, int mes, int dia) {
-        if (mes < 1 || mes > 12) {
-            throw new InvalidMonthException("Mês " + mes + " é inválido!!");
+    public final void setData(int year, int month, int day) {
+        if (month < 1 || month > 12) {
+            throw new InvalidMonthException("Month " + month + " is invalid!!");
         }
-        if (dia < 1 || dia > Mes.obterMes(mes).numeroDeDias(ano)) {
-            throw new InvalidDayException("Dia " + ano + "/" + mes + "/" + dia
-                    + " é inválido!!");
+        if (day < 1 || day > Month.getMonth(month).numberOfDays(year)) {
+            throw new InvalidDayException("Day " + year + "/" + month + "/" + day
+                    + " is invalid!!");
         }
-        this.ano = ano;
-        this.mes = Mes.obterMes(mes);
-        this.dia = dia;
+        this.year = year;
+        this.month = Month.getMonth(month);
+        this.day = day;
     }
 
     @Override
     public String toString() {
-        return String.format("%s, %d de %s de %d", diaDaSemana(), dia, mes, ano);
+        return String.format("%s, %d de %s de %d", dayOfWeek(), day, month, year);
     }
 
-    public String toAnoMesDiaString() {
-        return String.format("%04d/%02d/%02d", ano, mes.ordinal() + 1, dia);
+    public String toYearMonthDayString() {
+        return String.format("%02d/%02d/%02d", year, month.ordinal() + 1, day);
     }
 
     @Override
-    public boolean equals(Object outroObjeto) {
-        if (this == outroObjeto) {
+    public boolean equals(Object anotherObjeto) {
+        if (this == anotherObjeto) {
             return true;
         }
-        if (outroObjeto == null || getClass() != outroObjeto.getClass()) {
+        if (anotherObjeto == null || getClass() != anotherObjeto.getClass()) {
             return false;
         }
-        Date outraData = (Date) outroObjeto;
-        return ano == outraData.ano && mes.equals(outraData.mes)
-                && dia == outraData.dia;
+        Date anotherData = (Date) anotherObjeto;
+        return year == anotherData.year && month.equals(anotherData.month)
+                && day == anotherData.day;
     }
 
     @Override
-    public int compareTo(Date outraData) {
-        return (outraData.isMaior(this)) ? -1 : (isMaior(outraData)) ? 1 : 0;
+    public int compareTo(Date anotherData) {
+        return (anotherData.isMaior(this)) ? -1 : (isMaior(anotherData)) ? 1 : 0;
     }
 
-    public String diaDaSemana() {
-        int totalDias = contaDias();
-        totalDias = totalDias % 7;
+    public String dayOfWeek() {
+        int totalDays = counterDays();
+        totalDays = totalDays % 7;
 
-        return DiaDaSemana.designacaoDiaDaSemana(totalDias);
+        return DayOfWeek.designationDayOfWeek(totalDays);
     }
 
-    public boolean isMaior(Date outraData) {
-        int totalDias = contaDias();
-        int totalDias1 = outraData.contaDias();
+    public boolean isMaior(Date anotherData) {
+        int totalDays = counterDays();
+        int totalDays1 = anotherData.counterDays();
 
-        return totalDias > totalDias1;
+        return totalDays > totalDays1;
     }
 
-    public int diferenca(Date outraData) {
-        int totalDias = contaDias();
-        int totalDias1 = outraData.contaDias();
+    public int diference(Date anotherData) {
+        int totalDays = counterDays();
+        int totalDays1 = anotherData.counterDays();
 
-        return Math.abs(totalDias - totalDias1);
+        return Math.abs(totalDays - totalDays1);
     }
 
-    public int diferenca(int ano, int mes, int dia) {
-        int totalDias = contaDias();
-        Date outraData = new Date(ano, mes, dia);
-        int totalDias1 = outraData.contaDias();
+    public int diference(int year, int month, int day) {
+        int totalDays = counterDays();
+        Date anotherData = new Date(year, month, day);
+        int totalDays1 = anotherData.counterDays();
 
-        return Math.abs(totalDias - totalDias1);
+        return Math.abs(totalDays - totalDays1);
     }
 
-    public static boolean isAnoBissexto(int ano) {
-        return ano % 4 == 0 && ano % 100 != 0 || ano % 400 == 0;
+    public static boolean isLeapYear(int year) {
+        return year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
     }
 
     public static Date dataAtual() {
-        Calendar hoje = Calendar.getInstance();
-        int ano = hoje.get(Calendar.YEAR);
-        int mes = hoje.get(Calendar.MONTH) + 1;    // janeiro é representado por 0.
-        int dia = hoje.get(Calendar.DAY_OF_MONTH);
-        return new Date(ano, mes, dia);
+        Calendar today = Calendar.getInstance();
+        int year = today.get(Calendar.YEAR);
+        int month = today.get(Calendar.MONTH) + 1;    // janeiro é representado por 0.
+        int dia = today.get(Calendar.DAY_OF_MONTH);
+        return new Date(year, month, dia);
     }
 
-    private int contaDias() {
-        int totalDias = 0;
+    private int counterDays() {
+        int totalDays = 0;
 
-        for (int i = 1; i < ano; i++) {
-            totalDias += isAnoBissexto(i) ? 366 : 365;
+        for (int i = 1; i < year; i++) {
+            totalDays += isLeapYear(i) ? 366 : 365;
         }
-        for (int i = 1; i < mes.ordinal() + 1; i++) {
-            totalDias += Mes.obterMes(i).numeroDeDias(ano);
+        for (int i = 1; i < month.ordinal() + 1; i++) {
+            totalDays += Month.getMonth(i).numberOfDays(year);
         }
-        totalDias += dia;
+        totalDays += day;
 
-        return totalDias;
+        return totalDays;
     }
 
     public Date convertStringToDate(String stringDate) {

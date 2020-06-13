@@ -34,27 +34,38 @@ public class CreatePaymentTransactionController {
 
     public CreatePaymentTransactionController() {
         this.plat = POTApplication.getPlatform();
-        this.facade = new FacadeAuthorization();
+        this.facade = POTApplication.getFacadeAuthorization();//new FacadeAuthorization();
         this.orgRec = this.plat.getOrganizationsRecord();
+        this.org = this.orgRec.getOrganization();
         this.ptL = new PaymentTransactionList();
         this.regFreel = this.plat.getFreelancersRecord();
-        this.taskList=this.plat.getTaskList();
-        this.m_oSessao = new UserSession(POTApplication.getFacadeAuthorization().getCurrentSession().getUser());
+        this.taskList = this.org.getTaskList();
+        this.date = new Date();
+        // this.m_oSessao = new UserSession(POTApplic
+
     }
 
-    public PaymentTransaction newPaymentTransaction(String payTId, String taskString,
+    public PaymentTransaction newPaymentTransaction(String payTId, Task taskString,
             String eDate, int delay, String workQualityDescription, Freelancer freelancerString) {
-        String email = m_oSessao.getUserEmail();
+        String email = facade.getCurrentSession().getUser().getEmail();
+        Organization m_Organization = this.orgRec.getOrganizationByUserEmail(email);
+        PaymentTransactionList payTL = m_Organization.getPaymentTransactionList();
+        FreelancersRecord frR = plat.getFreelancersRecord();
+        TaskList taskL = m_Organization.getTaskList();
         OrganizationsRecord orgR = plat.getOrganizationsRecord();
         this.org = orgR.getOrganizationByUserEmail(email);
-        TaskList tLst = org.getTaskList();
-        Task task = tLst.getTaskByStringValue(taskString);
-        FreelancersRecord frlR = plat.getFreelancersRecord();
+//        TaskList tLst = org.getTaskList();
+//        Task task = tLst.getTaskByStringValue(taskString);
+        System.out.println("Será que escreve a data?!" + eDate);
         Date endDate = date.convertStringToDate(eDate);
-        this.ptL = org.getPaymentTransactionList();
-        this.payT = ptL.newPaymentTransaction(org, payTId, task, freelancerString,
+        System.out.println("Data: " + endDate.toString());
+        // this.ptL = org.getPaymentTransactionList();
+        PaymentTransaction payT1 = payTL.newPaymentTransaction(org, payTId, taskString, freelancerString,
                 endDate, delay, workQualityDescription);
-        if (this.ptL.validatePaymentTransaction(this.payT)) {
+        this.payT = payT1;
+        //this.payT = payTL.newPaymentTransaction(org, payTId, taskString, freelancerString,
+        //endDate, delay, workQualityDescription);
+        if (payTL.validatePaymentTransaction(this.payT)) {
             return this.payT;
         }
         return null;
@@ -69,17 +80,20 @@ public class CreatePaymentTransactionController {
     }
 
     public List<Task> getTasks() {
-        // UserSession session = facade.getCurrentSession();
-        User user = this.m_oSessao.getUser();
+        //UserSession session = facade.getCurrentSession();
+        //User user = this.m_oSessao.getUser();
 //        System.out.println("User no getTask(): " + user);
-        String email = user.getEmail();
+        String email = facade.getCurrentSession().getUser().getEmail();//user.getEmail();
+        System.out.println("Existe email" + email);
 //        System.out.println("Email do user: "+email);
-        //OrganizationsRecord orgRec1 = this.plat.getOrganizationsRecord();
+        OrganizationsRecord orgRec1 = plat.getOrganizationsRecord();
+        System.out.println("Existe org record" + orgRec1.getClass().getSimpleName());
 //        System.out.println("OrgRec no getTask: " + this.orgRec);
-        Organization org1 = this.orgRec.getOrganizationByUserEmail(email);
+        Organization org1 = orgRec1.getOrganizationByUserEmail(email);
+        System.out.println("Existe org" + org.toString());
 //        System.out.println("this.org: "+org1);
-        List<Task> taskList1 = this.taskList.getTasks();
-        System.out.println("taskList: "+taskList1);
+        List<Task> taskList1 = org1.getTaskList().getTasks();
+        System.out.println("taskList: " + taskList1);
         return taskList1;
     }
 
