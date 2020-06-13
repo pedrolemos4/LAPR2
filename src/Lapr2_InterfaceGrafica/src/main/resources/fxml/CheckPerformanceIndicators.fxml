@@ -15,7 +15,7 @@
          <center>
             <BorderPane prefHeight="500.0" prefWidth="800.0" BorderPane.alignment="CENTER">
                <center>
-                  <HBox prefHeight="340.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+                  <HBox prefHeight="295.0" prefWidth="800.0" BorderPane.alignment="CENTER">
                      <children>
                         <ListView fx:id="lstFreelancerAndInfo" prefHeight="250.0" prefWidth="400.0" />
                         <BarChart fx:id="barChartHistograms" prefHeight="250.0" prefWidth="400.0">
@@ -30,16 +30,13 @@
                   </HBox>
                </center>
                <bottom>
-                  <HBox prefHeight="59.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+                  <HBox prefHeight="92.0" prefWidth="800.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Label fx:id="lblProbability" prefHeight="33.0" prefWidth="713.0">
+                        <TextField fx:id="txtProbability" prefHeight="58.0" prefWidth="674.0">
                            <HBox.margin>
-                              <Insets left="42.0" top="13.0" />
+                              <Insets left="55.0" top="20.0" />
                            </HBox.margin>
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
+                        </TextField>
                      </children>
                   </HBox>
                </bottom>
@@ -56,31 +53,26 @@
             </Label>
          </top>
          <bottom>
-            <HBox prefHeight="60.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+            <HBox prefHeight="57.0" prefWidth="800.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="btnMeanDelay" mnemonicParsing="false" onAction="#meanDelay" text="Mean Delay">
+                  <Button fx:id="btnShowHdelays" mnemonicParsing="false" onAction="#showHdelays" text="Show Histograms Delays">
                      <HBox.margin>
-                        <Insets left="42.0" top="13.0" />
+                        <Insets left="55.0" top="13.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="btnDeviationDelay" mnemonicParsing="false" onAction="#deviationDelay" text="Deviation Delay">
+                  <Button fx:id="btnDeviationDelay" mnemonicParsing="false" onAction="#showHpayments" text="Show Histograms Payments">
                      <HBox.margin>
-                        <Insets left="42.0" top="13.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button fx:id="btnMeanPayment" mnemonicParsing="false" onAction="#meanPayment" text="Mean Payment">
-                     <HBox.margin>
-                        <Insets left="42.0" top="13.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button fx:id="btnDeviationPayment" mnemonicParsing="false" onAction="#deviationPayment" text="Deviation Payment">
-                     <HBox.margin>
-                        <Insets left="42.0" top="13.0" />
+                        <Insets left="55.0" top="13.0" />
                      </HBox.margin>
                   </Button>
                   <Button fx:id="btnClean" mnemonicParsing="false" onAction="#cleanAll" text="Clean">
                      <HBox.margin>
-                        <Insets left="42.0" top="13.0" />
+                        <Insets left="55.0" top="13.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="btnReturn" mnemonicParsing="false" onAction="#returnAction" text="Return">
+                     <HBox.margin>
+                        <Insets left="55.0" top="13.0" />
                      </HBox.margin>
                   </Button>
                </children>

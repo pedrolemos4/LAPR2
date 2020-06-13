@@ -140,11 +140,11 @@ public class Organization implements Serializable {
         for (PaymentTransaction transaction : transactionList) {
             Freelancer free = transaction.getFreelancer();
             String freeId = free.getId();
-            double transactionAmount = transaction.getPayAmount();
-            if (mapOrgDelay.get(freeId) == null) {
+            double delay = transaction.getDelay();
+            if (mapOrgDelay.get(freeId) == null ) {
                 mapOrgDelay.put(freeId, new ArrayList<Double>());
             }
-            mapOrgDelay.get(freeId).add(transactionAmount);
+            mapOrgDelay.get(freeId).add(delay);
         }
         return mapOrgDelay;
     }

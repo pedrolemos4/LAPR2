@@ -241,7 +241,7 @@ public class OrganizationsRecord implements Serializable {
         for (Organization org : m_lstOrganizations) {
             counter += org.calcCounterDelays();
         }
-        NormalDistribution normalD = new NormalDistribution(m, deviation / counter);
+        NormalDistribution normalD = new NormalDistribution(m,Math.sqrt(deviation / counter));
         return 1 - normalD.cumulativeProbability(x);
     }
 }
