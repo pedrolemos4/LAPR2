@@ -29,6 +29,8 @@ public class JanelaOptionsManagerScene_UI implements Initializable {
     private Button btnCheckStatistics;
     @FXML
     private Button btnSetDayOfPayment;
+    @FXML
+    private Button btnLogout;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -52,6 +54,15 @@ public class JanelaOptionsManagerScene_UI implements Initializable {
             statisticsUI = new JanelaCheckStatisticsUI();
         }
         statisticsUI.goToScene(event, "/fxml/JanelaCheckStatistics.fxml");
+    }
+
+    @FXML
+    private void btnLogoutAction(ActionEvent event) throws IOException {
+        if (janelaLoginUI == null) {
+            janelaLoginUI = new JanelaLogin_1_UI();
+        }
+        janelaLoginUI.goToScene(event, "/fxml/LoginWindow.fxml");
+
     }
 
 }

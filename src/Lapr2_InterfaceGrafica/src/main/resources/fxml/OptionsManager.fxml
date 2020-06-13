@@ -28,7 +28,7 @@
             </Label>
             <Button fx:id="btnSetDayOfPayment" mnemonicParsing="false" onAction="#btnSetDayOfPaymentAction" text="Set Day of Payment" translateX="23.0" GridPane.rowIndex="1" />
             <Button fx:id="btnCheckStatistics" mnemonicParsing="false" onAction="#btnCheckStatisticsAction" text="Check Statistics" translateX="20.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" text="Back" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button fx:id="btnLogout" mnemonicParsing="false" onAction="#btnLogoutAction" text="Logout" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </center>
