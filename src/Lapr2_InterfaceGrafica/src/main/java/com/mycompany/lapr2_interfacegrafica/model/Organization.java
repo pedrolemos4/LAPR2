@@ -20,6 +20,9 @@ public class Organization implements Serializable {
         setNIF(NIF);
         this.m_oManager = new Manager(nomeM, emailM);
         this.m_oCollaborator = new Collaborator(nomeC, emailC);
+        if (emailM != null && emailC != null && emailM.equals(emailC)) {
+            throw new IllegalArgumentException("Manager email and Collaborator email are the same!");
+        }
         this.taskList = new TaskList();
         this.m_oPaymentTransactionList = new PaymentTransactionList();
     }
@@ -69,20 +72,19 @@ public class Organization implements Serializable {
         this.m_strNIF = nif;
     }
 
-    public void setManager(Manager m) {
-        if (m == null) {
-            throw new IllegalArgumentException("Invalid Manager!");
-        }
-        this.m_oManager = m;
-    }
-
-    public void setCollaborator(Collaborator c) {
-        if (c == null) {
-            throw new IllegalArgumentException("Invalid Collaborator!");
-        }
-        this.m_oCollaborator = c;
-    }
-
+//    public void setManager(Manager m) {
+//        if (m == null) {
+//            throw new IllegalArgumentException("Invalid Manager!");
+//        }
+//        this.m_oManager = m;
+//    }
+//
+//    public void setCollaborator(Collaborator c) {
+//        if (c == null) {
+//            throw new IllegalArgumentException("Invalid Collaborator!");
+//        }
+//        this.m_oCollaborator = c;
+//    }
     @Override
     public int hashCode() {
         int hash = 7;

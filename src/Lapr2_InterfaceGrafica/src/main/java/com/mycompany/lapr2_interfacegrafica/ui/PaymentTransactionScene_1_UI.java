@@ -172,9 +172,9 @@ public class PaymentTransactionScene_1_UI implements Initializable {
 //            this.createPaymentTransactionUI.getCreatePaymentTransactionController().newPaymentTransaction(payTId, task, endDate,
 //                    taskDelay, workDescription, freelancer);
 //            this.createPaymentTransactionUI.toPaymentTransactionScene2UI();
-        } catch (NumberFormatException ex) {
-            this.lblAlert.setText("Invalid number!");
-            this.txtTaskDelay.requestFocus();
+//        } catch (NumberFormatException ex) {
+//            this.lblAlert.setText("Invalid number!");
+//            this.txtTaskDelay.requestFocus();
         } catch (IllegalArgumentException ex) {
             this.lblAlert.setText(ex.getMessage());
             if (ex.getMessage().toLowerCase().contains("work")) {

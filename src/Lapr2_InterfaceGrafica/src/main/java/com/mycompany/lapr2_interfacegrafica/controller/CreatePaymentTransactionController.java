@@ -34,37 +34,27 @@ public class CreatePaymentTransactionController {
 
     public CreatePaymentTransactionController() {
         this.plat = POTApplication.getPlatform();
-        this.facade = POTApplication.getFacadeAuthorization();//new FacadeAuthorization();
+        this.facade = POTApplication.getFacadeAuthorization();
         this.orgRec = this.plat.getOrganizationsRecord();
         this.org = this.orgRec.getOrganization();
         this.ptL = new PaymentTransactionList();
         this.regFreel = this.plat.getFreelancersRecord();
         this.taskList = this.org.getTaskList();
         this.date = new Date();
-        // this.m_oSessao = new UserSession(POTApplic
-
     }
 
-    public PaymentTransaction newPaymentTransaction(String payTId, Task taskString,
-            String eDate, int delay, String workQualityDescription, Freelancer freelancerString) {
+    public PaymentTransaction newPaymentTransaction(String payTId, Task task,
+            String eDate, int delay, String workQualityDescription, Freelancer freelancer) {
         String email = facade.getCurrentSession().getUser().getEmail();
         Organization m_Organization = this.orgRec.getOrganizationByUserEmail(email);
         PaymentTransactionList payTL = m_Organization.getPaymentTransactionList();
-        FreelancersRecord frR = plat.getFreelancersRecord();
-        TaskList taskL = m_Organization.getTaskList();
         OrganizationsRecord orgR = plat.getOrganizationsRecord();
         this.org = orgR.getOrganizationByUserEmail(email);
-//        TaskList tLst = org.getTaskList();
-//        Task task = tLst.getTaskByStringValue(taskString);
-        System.out.println("Será que escreve a data?!" + eDate);
         Date endDate = date.convertStringToDate(eDate);
-        System.out.println("Data: " + endDate.toString());
-        // this.ptL = org.getPaymentTransactionList();
-        PaymentTransaction payT1 = payTL.newPaymentTransaction(org, payTId, taskString, freelancerString,
+//        PaymentTransaction payT1 = payTL.newPaymentTransaction(org, payTId, taskString, freelancerString,
+//                endDate, delay, workQualityDescription);
+        this.payT = payTL.newPaymentTransaction(org, payTId, task, freelancer,
                 endDate, delay, workQualityDescription);
-        this.payT = payT1;
-        //this.payT = payTL.newPaymentTransaction(org, payTId, taskString, freelancerString,
-        //endDate, delay, workQualityDescription);
         if (payTL.validatePaymentTransaction(this.payT)) {
             return this.payT;
         }
@@ -80,18 +70,12 @@ public class CreatePaymentTransactionController {
     }
 
     public List<Task> getTasks() {
-        //UserSession session = facade.getCurrentSession();
-        //User user = this.m_oSessao.getUser();
-//        System.out.println("User no getTask(): " + user);
-        String email = facade.getCurrentSession().getUser().getEmail();//user.getEmail();
+        String email = facade.getCurrentSession().getUser().getEmail();
         System.out.println("Existe email" + email);
-//        System.out.println("Email do user: "+email);
         OrganizationsRecord orgRec1 = plat.getOrganizationsRecord();
         System.out.println("Existe org record" + orgRec1.getClass().getSimpleName());
-//        System.out.println("OrgRec no getTask: " + this.orgRec);
         Organization org1 = orgRec1.getOrganizationByUserEmail(email);
         System.out.println("Existe org" + org.toString());
-//        System.out.println("this.org: "+org1);
         List<Task> taskList1 = org1.getTaskList().getTasks();
         System.out.println("taskList: " + taskList1);
         return taskList1;
@@ -102,8 +86,6 @@ public class CreatePaymentTransactionController {
         if (this.regFreel == null) {
             System.out.println("O regFreel(controller) tá null");
         }
-
-        //return this.plat.getFreelancersRecord().getListFreelancers();
         return this.regFreel.getListFreelancers();
     }
 

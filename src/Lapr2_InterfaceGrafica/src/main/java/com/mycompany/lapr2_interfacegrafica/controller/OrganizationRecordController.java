@@ -14,9 +14,12 @@ public class OrganizationRecordController {
         this.m_oPlatform = POTApplication.getPlatform();
         this.or = m_oPlatform.getOrganizationsRecord();
     }
-    
+
     public Organization newOrganization(String name, String NIF, String nameM, String emailM, String nameC, String emailC) {
         Organization org1 = this.or.newOrganization(name, NIF, nameM, emailM, nameC, emailC);
+        if (org1 == null) {
+            throw new IllegalArgumentException("Error!\nCould not create a organization!");
+        }
         this.org = org1;
         if (this.or.validateOrganization(this.org)) {
             System.out.println("Validou Controller");

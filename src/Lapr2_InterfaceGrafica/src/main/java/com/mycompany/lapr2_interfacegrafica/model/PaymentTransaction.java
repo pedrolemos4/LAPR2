@@ -16,7 +16,7 @@ public class PaymentTransaction implements Serializable {
 
     public PaymentTransaction(Organization org, String payTId, Task task,
             Freelancer free, Date endDate, int delay, String workQualityDescription) {
-        this.org = org;
+        setOrg(org);
         setId(payTId);
         setTask(task);
         setFreelancer(free);
@@ -39,7 +39,7 @@ public class PaymentTransaction implements Serializable {
 
     @Override
     public String toString() {
-        String str = String.format("ID: %s - %s - End Date: %s - Delay: %d hours - Work Quality Description: %s - %s - %.2f", this.id, this.task.toString(), this.endDate.toYearMonthDayString(), this.delay, this.workQualityDescription, this.freelancer.toString(), this.dPayAmount);
+        String str = String.format("ID: %s - %s - End Date: %s - Delay: %d hours - Work Quality Description: %s - %s - Payment Amount: %.2f", this.id, this.task.toString(), this.endDate.toYearMonthDayString(), this.delay, this.workQualityDescription, this.freelancer.toString(), this.dPayAmount);
         return str;
     }
 
@@ -52,6 +52,10 @@ public class PaymentTransaction implements Serializable {
             payAmount = (task.getTimeDuration() * task.getCostPerHour()) * 2;
         }
         return payAmount;
+    }
+
+    public Organization getOrg() {
+        return this.org;
     }
 
     public String getId() {
@@ -80,6 +84,13 @@ public class PaymentTransaction implements Serializable {
 
     public double getPayAmount() {
         return this.dPayAmount;
+    }
+
+    public void setOrg(Organization org) {
+        if (org == null) {
+            throw new IllegalArgumentException("Invalid Organization!");
+        }
+        this.org = org;
     }
 
     public void setId(String id) {

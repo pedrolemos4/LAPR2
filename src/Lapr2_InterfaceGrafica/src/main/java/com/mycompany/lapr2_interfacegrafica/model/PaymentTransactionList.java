@@ -26,6 +26,12 @@ public class PaymentTransactionList implements Serializable {
         if (this.exists(payTId)) {
             throw new IllegalArgumentException("There is already a transaction with the same ID as the one entered!");
         }
+        if (task == null) {
+            throw new IllegalArgumentException("A task has not been selected");
+        }
+        if (free == null) {
+            throw new IllegalArgumentException("A freelancer has not been selected");
+        }
         return new PaymentTransaction(org, payTId, task, free, endDate, delay, workQualityDescription);
     }
 
@@ -37,6 +43,7 @@ public class PaymentTransactionList implements Serializable {
         }
         return true;
     }
+
     public List<PaymentTransaction> getPaymentTransactions() {
         return this.m_lstPaymentTransactions;
     }

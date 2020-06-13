@@ -1,8 +1,0 @@
-Organization: Isep
-Role: ORGANIZATION_MANAGER
-Email: m@m.com
-Password: xadsCs1
-Organization: Isep
-Role: ORGANIZATION_COLLABORATOR
-Email: c@c.com
-Password: MdXSLIR

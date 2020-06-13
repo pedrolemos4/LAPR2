@@ -31,9 +31,6 @@ public class OrganizationsRecord implements Serializable {
         if (!this.validateCollaboratorEmail(emailC)) {
             throw new IllegalArgumentException("Collaborator email already exists in the system!");
         }
-        if (emailM.equals(emailC)) {
-            throw new IllegalArgumentException("Manager email and Collaborator email are the same!");
-        }
         this.org = new Organization(name, NIF, nameM, emailM, nameC, emailC);
         return this.org;
     }
