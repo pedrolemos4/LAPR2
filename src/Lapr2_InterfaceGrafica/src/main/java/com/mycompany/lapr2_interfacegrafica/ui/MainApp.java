@@ -54,7 +54,6 @@ public class MainApp extends Application {
             @Override
             public void handle(WindowEvent event) {
                 Alert alert = AlertUI.createAlert(Alert.AlertType.CONFIRMATION, TITULO_APLICACAO, "Exit Confirmation", "Are you sure you want to leave the app?");
-
                 if (alert.showAndWait().get() == ButtonType.CANCEL) {
                     event.consume();
                 } else {

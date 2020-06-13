@@ -71,17 +71,17 @@ public class JanelaLogin_1_UI implements Initializable {
             menuAdminStage.setScene(scene);
             optionsAdminUI = loader.getController();
             optionsAdminUI.setNewOptionsAdminUI(this);
-            menuAdminStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-                @Override
-                public void handle(WindowEvent event) {
-                    try {
-                        logout();
-                    } catch (IOException ex) {
-                        Logger.getLogger(JanelaLogin_1_UI.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-
-            });
+//            menuAdminStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+//                @Override
+//                public void handle(WindowEvent event) {
+//                    try {
+//                        logout();
+//                    } catch (IOException ex) {
+//                        Logger.getLogger(JanelaLogin_1_UI.class.getName()).log(Level.SEVERE, null, ex);
+//                    }
+//                }
+//
+//            });
 
             scene.getStylesheets().add("/styles/Styles.css");
 
@@ -100,17 +100,17 @@ public class JanelaLogin_1_UI implements Initializable {
             menuCollaboratorStage.setScene(scene);
             optionsCollaboratorUI = loader.getController();
             optionsCollaboratorUI.setNewOptionsCollaboratorUI(this);
-            menuCollaboratorStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-                @Override
-                public void handle(WindowEvent event) {
-                    try {
-                        logout();
-                    } catch (IOException ex) {
-                        Logger.getLogger(JanelaLogin_1_UI.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-
-            });
+//            menuCollaboratorStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+//                @Override
+//                public void handle(WindowEvent event) {
+//                    try {
+//                        logout();
+//                    } catch (IOException ex) {
+//                        Logger.getLogger(JanelaLogin_1_UI.class.getName()).log(Level.SEVERE, null, ex);
+//                    }
+//                }
+//
+//            });
 
         } catch (IOException ex) {
             AlertUI.createAlert(Alert.AlertType.ERROR, "Error", "T4J-Payments", ex.getMessage());
@@ -127,17 +127,17 @@ public class JanelaLogin_1_UI implements Initializable {
             menuManagerStage.setScene(scene);
             optionsManagerUI = loader.getController();
             optionsManagerUI.setNewOptionsManagerUI(this);
-            menuManagerStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-                @Override
-                public void handle(WindowEvent event) {
-                    try {
-                        logout();
-                    } catch (IOException ex) {
-                        Logger.getLogger(JanelaLogin_1_UI.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-
-            });
+//            menuManagerStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+//                @Override
+//                public void handle(WindowEvent event) {
+//                    try {
+//                        logout();
+//                    } catch (IOException ex) {
+//                        Logger.getLogger(JanelaLogin_1_UI.class.getName()).log(Level.SEVERE, null, ex);
+//                    }
+//                }
+//
+//            });
         } catch (IOException ex) {
             AlertUI.createAlert(Alert.AlertType.ERROR, "Error", "T4J-PAYMENTS", ex.getMessage());
         } finally {
@@ -210,7 +210,7 @@ public class JanelaLogin_1_UI implements Initializable {
     ) {
     }
 
-    private void goToScene(ActionEvent event, String fxml) throws IOException {
+    public void goToScene(ActionEvent event, String fxml) throws IOException {
         Parent button = FXMLLoader.load(getClass().getResource(fxml));
         Scene buttonScene = new Scene(button);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

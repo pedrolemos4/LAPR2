@@ -169,28 +169,29 @@ public class PaymentTransactionScene_1_UI implements Initializable {
             }
             controller.newPaymentTransaction(payTId, task, endDate, taskDelay, workDescription, frl);
             goToScene(event, "/fxml/PaymentTransaction_2.fxml");
+
 //            this.createPaymentTransactionUI.getCreatePaymentTransactionController().newPaymentTransaction(payTId, task, endDate,
 //                    taskDelay, workDescription, freelancer);
 //            this.createPaymentTransactionUI.toPaymentTransactionScene2UI();
-//        } catch (NumberFormatException ex) {
-//            this.lblAlert.setText("Invalid number!");
-//            this.txtTaskDelay.requestFocus();
-        } catch (IllegalArgumentException ex) {
-            this.lblAlert.setText(ex.getMessage());
-            if (ex.getMessage().toLowerCase().contains("work")) {
-                this.txtWorkDescription.requestFocus();
-            } else if (ex.getMessage().toLowerCase().contains("task")) {
-                this.cmbTask.requestFocus();
-            } else {
-                this.cmbFreelancer.requestFocus();
-            }
+        } catch (NumberFormatException ex) {
+            this.lblAlert.setText("Invalid delay!");
+            this.txtTaskDelay.requestFocus();
+//        } catch (IllegalArgumentException ex) {
+//            ///this.lblAlert.setText(ex.getMessage());
+//            if (ex.getMessage().toLowerCase().contains("work")) {
+//                this.txtWorkDescription.requestFocus();
+//            } else if (ex.getMessage().toLowerCase().contains("task")) {
+//                this.cmbTask.requestFocus();
+//            } else {
+//                this.cmbFreelancer.requestFocus();
+//            }
+//        }
         }
     }
 
     @FXML
     private void btnCancelAction(ActionEvent event) throws IOException {
         goToScene(event, "/fxml/OptionsCollaborator.fxml");
-        //this.createPaymentTransactionUI.getMainApp().toMainScene();
     }
 
     @FXML

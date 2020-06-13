@@ -51,12 +51,12 @@ public class JanelaOptionsAdminScene_UI implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        try {
-            sendEmailController = new SendEmailController();
-            lstFreelApt = sendEmailController.getListFreelancersAdapt();
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(JanelaOptionsAdminScene_UI.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            sendEmailController = new SendEmailController();
+//            lstFreelApt = sendEmailController.getListFreelancersAdapt();
+//        } catch (FileNotFoundException ex) {
+//            Logger.getLogger(JanelaOptionsAdminScene_UI.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     public void setNewOptionsAdminUI(JanelaLogin_1_UI janelaLoginUI) {
@@ -96,8 +96,9 @@ public class JanelaOptionsAdminScene_UI implements Initializable {
         if (janelaLoginUI == null) {
             janelaLoginUI = new JanelaLogin_1_UI();
         }
-        janelaLoginUI.logout();
-        ((Node) event.getSource()).getScene().getWindow().hide();
+        janelaLoginUI.goToScene(event,"/fxml/LoginWindow.fxml");
+//        janelaLoginUI.logout();
+//        ((Node) event.getSource()).getScene().getWindow().hide();
 //        Parent logout = FXMLLoader.load(getClass().getResource("/fxml/JanelaLogin.fxml"));
 //        Scene logoutScene = new Scene(logout);
 //        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
