@@ -47,15 +47,15 @@ public class PaymentTransactionScene_2_UI implements Initializable {
 
     @FXML
     private void btnConfirmAction(ActionEvent event) throws IOException {
-//        boolean registered = this.controller.paymentTransactionRegister();
-//        if (registered) {
-//            AlertUI.createAlert(Alert.AlertType.INFORMATION, "Success", "T4J-PAYMENTS",
-//                    "Payment Transaction registered successfully").show();
-//            goToScene(event, "/fxml/OptionsAdmin.fxml");
-//        } else {
-//            AlertUI.createAlert(Alert.AlertType.ERROR, "Error", "T4J-PAYMENTS", "Organization was not registered.").show();
-//            goToScene(event, "/fxml/PaymentTransaction_1.fxml");
-//        }
+        boolean registered = this.controller.paymentTransactionRegister();
+        if (registered) {
+            AlertUI.createAlert(Alert.AlertType.INFORMATION, "Success", "T4J-PAYMENTS",
+                    "Payment Transaction registered successfully").show();
+            goToScene(event, "/fxml/OptionsAdmin.fxml");
+        } else {
+            AlertUI.createAlert(Alert.AlertType.ERROR, "Error", "T4J-PAYMENTS", "Organization was not registered.").show();
+            goToScene(event, "/fxml/PaymentTransaction_1.fxml");
+        }
     }
 
     @FXML
