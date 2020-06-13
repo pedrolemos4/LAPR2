@@ -41,26 +41,20 @@ class Task {
  -String taskCategory
 }
 
-class TaskExecution {
+
+class PaymentTransaction{
  -Date endDate
  -Double delay
  -String workQualityDescription
 }
 
-class PaymentTransaction{
-}
-
 Platform "1" -- "*" Organization : has registered >
 Platform "1" -- "*" Freelancer : has/uses >
 Organization "1" -- "1" Collaborator: has >
-Organization "1" -- "*" Task: has >
 Organization "1" -- "*" PaymentTransaction: has >
 Collaborator "0..1" -- "1" User: acts like >
-Freelancer "0..1" -- "1" User: acts like >
 Collaborator "1" -- "*" PaymentTransaction: loads file of >
 PaymentTransaction "1" -- "1" Freelancer: related to >
 PaymentTransaction "1" -- "1" Task: related to >
-PaymentTransaction "1" -- "1" TaskExecution: related to >
-Task "1" -- "1" TaskExecution: has >
 
 @enduml
