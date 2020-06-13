@@ -103,7 +103,7 @@ public class JanelaOptionsCollaboratorScene_UI implements Initializable {
         if (checkStatisticsUI == null) {
             checkStatisticsUI = new JanelaCheckStatisticsUI();
         }
-        checkStatisticsUI.goToScene(event, "/fxml/JanelaCheckStatistics.fxml");
+        checkStatisticsUI.goToSceneAlt(this);
     }
 
     @FXML
