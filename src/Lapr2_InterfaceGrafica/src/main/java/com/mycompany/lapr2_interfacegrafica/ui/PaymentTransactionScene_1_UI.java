@@ -82,8 +82,8 @@ public class PaymentTransactionScene_1_UI implements Initializable {
         TilePane tile_pane = new TilePane(cmbTask);
         TilePane tile_pane2 = new TilePane(cmbFreelancer);
         
-        Scene scene1 = new Scene(tile_pane2, 200, 200);
-        Scene scene2 = new Scene(tile_pane,200,200);
+        Scene scene1 = new Scene(tile_pane2, 400, 400);
+        Scene scene2 = new Scene(tile_pane,400,400);
 
         transactionStage.setScene(scene1);
 
@@ -93,8 +93,8 @@ public class PaymentTransactionScene_1_UI implements Initializable {
         
         transactionStage.setScene(scene2);
         transactionStage.showAndWait();
-        task = cmbTask.getSelectionModel().getSelectedItem();
-        System.out.println("Task: "+ task);
+/*task=*/cmbTask.getSelectionModel().getSelectedItem(); //retirei porque dava um erro de java.ClassCast porque nao podia ir para String
+//        System.out.println("Task: "+ cmbTask.getSelectionModel().getSelectedItem());
         
         transactionStage.setScene(scene);
         transactionStage.show();
@@ -104,7 +104,7 @@ public class PaymentTransactionScene_1_UI implements Initializable {
     public void setComboBoxTask() {
         this.cmbTask = new ComboBox(FXCollections.observableArrayList(controller.getTasks()));
         TilePane tile_pane = new TilePane(cmbTask);
-        Scene scene = new Scene(tile_pane, 200, 200);
+        Scene scene = new Scene(tile_pane, 400, 400);
         transactionStage.setScene(scene);
         transactionStage.show();
     }
