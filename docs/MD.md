@@ -97,5 +97,5 @@ For the identification of domain classes, the list of categories of TP classes (
 
 ## Domain Model
 
-![MD.png](MD.png)
+![MD.svg](MD.svg)
 

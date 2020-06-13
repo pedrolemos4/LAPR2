@@ -53,6 +53,11 @@ class PaymentTransaction{
   -String workQualityDescription
 }
 
+class PaymentDay {
+  -Date timeOfDay
+  -Date dayOfMonth
+}
+
 class ExternalPwdGeneratorAlgorithm {
 }
 
@@ -69,8 +74,12 @@ Collaborator "0..1" -- "1" User: acts like >
 Collaborator "1" -- "*" Freelancer: create >
 Collaborator "1" -- "*" Task: create >
 Collaborator "1" -- "*" PaymentTransaction: create >
+Collaborator "1" -- "*" PaymentTransaction: loads file of >
+Collaborator "1" -- "1..*" PaymentTransaction: sees statistics about >
 
 Manager "0..1" -- "1" User: acts like >
+Manager "1" -- "1" PaymentDay : sets >
+Manager "1" -- "1..*" PaymentTransaction: sees statistics about >
 
 Freelancer "0..1" -- "1" User: acts like >
 
@@ -78,6 +87,8 @@ Task "1..*" -- "1" Freelancer: is assigned to >
 
 PaymentTransaction "1" -- "1" Freelancer: relates to >
 PaymentTransaction "1" -- "1" Task: relates to >
+
+PaymentDay "1" -- "0..*" PaymentTransaction : is related to >
 
 ExternalPwdGeneratorAlgorithm "1" -- "*" User : generate password >
 
