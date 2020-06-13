@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.mycompany.lapr2_interfacegrafica.controller;
 
 import com.mycompany.lapr2_interfacegrafica.authorization.FacadeAuthorization;
@@ -28,14 +24,14 @@ import lapr2.pot.ui.console.utils.Date;
 
 /**
  *
- * @author Tiago
+ * @author Joao Mata
  */
 public class SetDayOfPaymentController {
 
     Timer timer;
 
     /**
-     * define um dia para execucao dos pagamentos inicia um timer e agenda o
+     * Define um dia para execucao dos pagamentos inicia um timer e agenda o
      * primeiro pagamento para o proximo dia
      *
      * @param paymentDay dia do mes pretendido, por exemplo dia 10
@@ -54,10 +50,12 @@ public class SetDayOfPaymentController {
     }
 
     /**
-     * processar todos os payments entre o dia de pagamento anterior INCLUSIVE
+     * Processar todos os payments entre o dia de pagamento anterior INCLUSIVE
      * ate ao dia de pagamento atual EXCLUSIVE
      *
      * Assume que nenhum deles esta pago
+     * 
+     * @param
      */
     private void processPayments() {
         Platform plat = POTApplication.getPlatform();
@@ -129,7 +127,7 @@ public class SetDayOfPaymentController {
     }
 
     /**
-     * define o timer e agenda o proximo dia de pagamento
+     * Define o timer e agenda o proximo dia de pagamento
      *
      * @param cal
      */
