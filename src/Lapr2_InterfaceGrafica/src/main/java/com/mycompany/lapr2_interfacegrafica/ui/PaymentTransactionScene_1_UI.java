@@ -8,9 +8,12 @@ import java.net.URL;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -66,7 +69,7 @@ public class PaymentTransactionScene_1_UI implements Initializable {
 //        this.cmbFreelancer.setValue(this.controller.getFreelancer());
     }
 
-    public void setComboBoxFreelancer(Stage stage, Scene scene) {
+    public void setComboBoxFreelancer(Stage stage, Scene scene) throws IOException {
         this.controller = new CreatePaymentTransactionController();
         
 
@@ -78,16 +81,28 @@ public class PaymentTransactionScene_1_UI implements Initializable {
         }
         this.cmbTask = new ComboBox(FXCollections.observableArrayList(controller.getTasks()));
         this.cmbFreelancer = new ComboBox(FXCollections.observableArrayList(controller.getFreelancers()));
+        Button btnGo = new Button("Confirm.");
+//        btnGo = FXMLLoader.load(getClass().getResource("PaymentTransaction_2.fxml"));
+        //Tentar criar tudo numa scene com um botao.
+        btnGo.setOnAction(new EventHandler<ActionEvent>(){
+          @Override public void handle(ActionEvent e){
+              try {
+                  goToScene(e,"/fxml/PaymentTransaction_1.fxml");
+              } catch (IOException ex) {
+                  Logger.getLogger(PaymentTransactionScene_1_UI.class.getName()).log(Level.SEVERE, null, ex);
+              }
+          }
+    });
         
-        TilePane tile_pane = new TilePane(cmbTask);
-        TilePane tile_pane2 = new TilePane(cmbFreelancer);
+        TilePane tile_pane = new TilePane(cmbTask,cmbFreelancer,btnGo);
+        //TilePane tile_pane2 = new TilePane(cmbFreelancer);
         
-        Scene scene1 = new Scene(tile_pane2, 400, 400);
+        //Scene scene1 = new Scene(tile_pane2, 400, 400);
         Scene scene2 = new Scene(tile_pane,400,400);
 
-        transactionStage.setScene(scene1);
+        //transactionStage.setScene(scene1);
 
-        transactionStage.showAndWait();
+        //transactionStage.showAndWait();
         frl = cmbFreelancer.getSelectionModel().getSelectedItem();
         System.out.println("Freelancer: " + frl);
         
@@ -185,6 +200,8 @@ public class PaymentTransactionScene_1_UI implements Initializable {
         //System.out.println("Vais Mostrar?");
         window.show();
     }
+    
+    
 
     public void goToSceneAlt(JanelaOptionsCollaboratorScene_UI menuCollaboratorUI) throws IOException {
         this.optionCollabUI = menuCollaboratorUI;
