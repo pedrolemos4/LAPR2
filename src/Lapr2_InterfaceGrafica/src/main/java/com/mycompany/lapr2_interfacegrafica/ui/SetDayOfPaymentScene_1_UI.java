@@ -27,7 +27,7 @@ import javafx.stage.Stage;
  */
 public class SetDayOfPaymentScene_1_UI implements Initializable {
 
-    private SetDayOfPaymentUI setDayOfPaymentUI;
+   // private SetDayOfPaymentUI setDayOfPaymentUI;
     private SetDayOfPaymentController controller;
 
     @FXML
@@ -47,9 +47,9 @@ public class SetDayOfPaymentScene_1_UI implements Initializable {
         this.controller = new SetDayOfPaymentController();
     }
 
-    public void setSetDayOfPaymentUI(SetDayOfPaymentUI setDayOfPaymentUI) {
-        this.setDayOfPaymentUI = setDayOfPaymentUI;
-    }
+//    public void setSetDayOfPaymentUI(SetDayOfPaymentUI setDayOfPaymentUI) {
+//        this.setDayOfPaymentUI = setDayOfPaymentUI;
+//    }
 
     public TextField getTxtDate() {
         return this.txtDate;
