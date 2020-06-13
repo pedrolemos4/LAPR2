@@ -12,6 +12,7 @@ class Organization {
 }
 
 class Freelancer {
+  -String id
   -String name
   -String expertiseLevel
   -String email

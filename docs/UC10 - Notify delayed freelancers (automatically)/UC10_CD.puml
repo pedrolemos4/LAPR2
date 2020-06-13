@@ -12,8 +12,9 @@ class FreelancersRecord{
   +int numberTransactions
   +int delay
   +int amountForHourDelay
-  +percentageDelayFreel
-  +averageDelay
+  +percentageDelayFreel()
+  +averageDelay()
+  +getDelay()
   +scheduleAutomaticEmail()
 }
 
@@ -29,6 +30,7 @@ class NotifyFreelancerTask {
 }
 
 class Freelancer {
+  -String id
   -String name
   -String expertiseLevel
   -String email
