@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.chart.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -30,4 +31,29 @@
          </children>
       </GridPane>
    </center>
+   <bottom>
+      <FlowPane alignment="CENTER" hgap="10.0" prefHeight="31.0" prefWidth="320.0" vgap="5.0" BorderPane.alignment="CENTER">
+         <opaqueInsets>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </opaqueInsets>
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
+         <children>
+            <Button fx:id="btnMeanDelay" mnemonicParsing="false" onAction="#meanDelayAction" text="Mean Delay">
+               <FlowPane.margin>
+                  <Insets />
+               </FlowPane.margin>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="btnDeviationDelay" mnemonicParsing="false" onAction="#btnDeviationDelayAction" text="Deviation Delay" />
+            <Button fx:id="btnMeanPayment" mnemonicParsing="false" onAction="#btnDeviationPaymentAction" text="Mean Payment" />
+            <Button fx:id="btnDeviationPayment" mnemonicParsing="false" onAction="#btnDeviationPaymentAction" text="Deviation Payment" />
+            <Button fx:id="btnClean" mnemonicParsing="false" onAction="#btnCleanAction" text="Clean" />
+            <Button fx:id="btnBack" mnemonicParsing="false" onAction="#btnBackAction" text="Back" />
+         </children>
+      </FlowPane>
+   </bottom>
 </BorderPane>
