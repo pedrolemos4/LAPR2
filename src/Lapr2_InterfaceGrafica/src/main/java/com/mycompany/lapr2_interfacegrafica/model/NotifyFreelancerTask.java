@@ -10,10 +10,6 @@ import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author pedro
- */
 public class NotifyFreelancerTask extends TimerTask {
 
     private FreelancersRecord freelRec;

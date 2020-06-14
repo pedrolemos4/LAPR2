@@ -27,10 +27,7 @@ public class Organization implements Serializable {
         this.m_oPaymentTransactionList = new PaymentTransactionList();
     }
 
-    public TaskList getTaskList() { //Provavelmente temos que mudar porque este metodo nao da return de nada. Foi o problema na lista de task
-        if (this.taskList == null) {
-            System.out.println("TaskList null (Organization)");
-        }
+    public TaskList getTaskList() { 
         return this.taskList;
     }
 
@@ -72,19 +69,6 @@ public class Organization implements Serializable {
         this.m_strNIF = nif;
     }
 
-//    public void setManager(Manager m) {
-//        if (m == null) {
-//            throw new IllegalArgumentException("Invalid Manager!");
-//        }
-//        this.m_oManager = m;
-//    }
-//
-//    public void setCollaborator(Collaborator c) {
-//        if (c == null) {
-//            throw new IllegalArgumentException("Invalid Collaborator!");
-//        }
-//        this.m_oCollaborator = c;
-//    }
     @Override
     public int hashCode() {
         int hash = 7;

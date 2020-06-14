@@ -1,9 +1,6 @@
 package com.mycompany.lapr2_interfacegrafica.model;
 
 import java.io.Serializable;
-import java.text.NumberFormat;
-import java.util.Currency;
-import java.util.Locale;
 import lapr2.pot.ui.console.utils.Date;
 
 public class PaymentTransaction implements Serializable {

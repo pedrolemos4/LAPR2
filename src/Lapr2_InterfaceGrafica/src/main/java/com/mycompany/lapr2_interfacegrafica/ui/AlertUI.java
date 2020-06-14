@@ -9,10 +9,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 
-/**
- *
- * @author Tiago
- */
 public class AlertUI {
     
     public static Alert createAlert(Alert.AlertType alertType, String title, String header, String message){

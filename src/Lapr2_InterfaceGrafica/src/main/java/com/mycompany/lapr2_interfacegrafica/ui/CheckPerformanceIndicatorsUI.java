@@ -23,17 +23,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author beatr
- */
 public class CheckPerformanceIndicatorsUI implements Initializable {
-    //private final MainApp mainApp;
     private  CheckPerformanceIndicatorsController controller;
     
     @FXML

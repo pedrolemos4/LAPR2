@@ -2,7 +2,6 @@ package com.mycompany.lapr2_interfacegrafica.model;
 
 import com.mycompany.lapr2_interfacegrafica.authorization.FacadeAuthorization;
 import java.io.Serializable;
-import java.util.List;
 
 public class Platform implements Serializable {
 
@@ -10,21 +9,13 @@ public class Platform implements Serializable {
     private final FacadeAuthorization m_oAutorizacao;
     public FreelancersRecord freelRec;
     public OrganizationsRecord orgRec;
-    //public PaymentTransactionList paymentTransList;
     public Organization org;
     public ExternalAlgorithm1API alg;
-    //public TaskList taskList;
 
     public Platform() {
-//        if ((strDesignacao == null)
-//                || (strDesignacao.isEmpty())) {
-//            throw new IllegalArgumentException("Nenhum dos argumentos pode ser nulo ou vazio.");
-//        }
-//        this.m_strDesignacao = strDesignacao;
         this.m_oAutorizacao = new FacadeAuthorization();
         this.orgRec = new OrganizationsRecord();
         this.freelRec = new FreelancersRecord();
-       // this.taskList = new TaskList();
     }
 
     public FacadeAuthorization getFacadeAuthorization() {
@@ -35,10 +26,6 @@ public class Platform implements Serializable {
         return this.freelRec;
     }
 
-//    public TaskList getTaskList() {
-//        return this.taskList;
-//    }
-
     public Organization getOrganization() {
         return this.org;
     }
@@ -47,15 +34,8 @@ public class Platform implements Serializable {
         return this.orgRec;
     }
 
-//    public PaymentTransactionList getPaymentTransactionList() {
-//        return this.paymentTransList;
-//    }
-
     public ExternalAlgorithm1API getPasswordGeneratorAlgorithm() {
         return this.alg;
     }
 
-    public void agendNotification() {
-
-    }
-}
+  }

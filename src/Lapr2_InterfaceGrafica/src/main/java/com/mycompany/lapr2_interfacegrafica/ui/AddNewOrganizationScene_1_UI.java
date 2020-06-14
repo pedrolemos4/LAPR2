@@ -53,31 +53,11 @@ public class AddNewOrganizationScene_1_UI implements Initializable {
         return this.txtName;
     }
 
-    public void showOrganization() {
-        this.txtName.setText(this.controller.getOrganizationName());
-        this.txtNIF.setText(this.controller.getOrganizationNIF());
-        this.txtManagerName.setText(this.controller.getOrganization().getManager().getName());
-        this.txtManagerEmail.setText(this.controller.getOrganization().getManager().getEmail());
-        this.txtCollaboratorName.setText(this.controller.getOrganization().getCollaborator().getName());
-        this.txtCollaboratorEmail.setText(this.controller.getOrganization().getCollaborator().getEmail());
-    }
-
     @FXML
     private void btnNextAction(ActionEvent event) throws IOException {
-//        if(addNewOrganization==null){
-//            addNewOrganization= new AddNewOrganizationUI();
-//        }
         try {
-            System.out.println("1 UI - ManagerName: " + txtManagerName.getText());
-            System.out.println("1 UI - ManagerEmail: " + txtManagerEmail.getText());
-            System.out.println("1 UI - ColabName: " + txtCollaboratorName.getText());
-            System.out.println("1 UI - ColabEmail: " + txtCollaboratorEmail.getText());
             Organization org = controller.newOrganization(txtName.getText(), txtNIF.getText(), txtManagerName.getText(),
                     txtManagerEmail.getText(), txtCollaboratorName.getText(), txtCollaboratorEmail.getText());
-//            this.addNewOrganization.getOrganizationRecordController().newOrganization(this.txtName.getText(),
-//                    this.txtNIF.getText(), this.txtManagerName.getText(),
-//                    this.txtManagerEmail.getText(), this.txtCollaboratorName.getText(),
-//                    this.txtCollaboratorEmail.getText());
             boolean registered = this.controller.registerOrganization(org);
             if (registered) {
                 AlertUI.createAlert(Alert.AlertType.INFORMATION,"T4J-PAYMENTS" ,
@@ -88,7 +68,6 @@ public class AddNewOrganizationScene_1_UI implements Initializable {
                         "Organization was not registered.").show();
                 goToScene(event, "/fxml/AddNewOrganization_1_.fxml");
             }
-           // goToScene(event, "/fxml/AddNewOrganization_2.fxml");
         } catch (IllegalArgumentException ex) {
             lblAlert.setText(ex.getMessage());
             if (ex.getMessage().toLowerCase().contains("name")) {
@@ -110,7 +89,6 @@ public class AddNewOrganizationScene_1_UI implements Initializable {
     @FXML
     private void btnCancelAction(ActionEvent event) throws IOException {
         goToScene(event, "/fxml/OptionsAdmin.fxml");
-        //this.addNewOrganization.getMainApp().toMainScene();
     }
 
     @FXML
@@ -149,7 +127,6 @@ public class AddNewOrganizationScene_1_UI implements Initializable {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(buttonScene);
         window.show();
-        // setController();
     }
 
     public void setController() {

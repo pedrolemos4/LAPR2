@@ -53,10 +53,7 @@ public class PaymentTransactionList implements Serializable {
     }
 
     public boolean paymentTransactionRegister(PaymentTransaction payT) {
-        //if (this.validatePaymentTransaction(payT)) {
         return addPaymentTransaction(payT);
-
-        //return false;
     }
 
     public boolean exists(String transactionId) {

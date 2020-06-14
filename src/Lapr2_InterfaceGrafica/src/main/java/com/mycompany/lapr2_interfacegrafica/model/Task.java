@@ -17,7 +17,6 @@ public class Task implements Serializable {
         this.costPerHour = costPerHour;
         this.category = category;
         
-      //  validate();
     }
 
     public String getId() {
@@ -87,11 +86,9 @@ public class Task implements Serializable {
 
     @Override
     public String toString() {
-        return "Task{" + "id=" + id + ", briefDescription=" + briefDescription + ", timeDuration=" + timeDuration + ", costPerHour=" + costPerHour + ", category=" + category + '}';
-    }
-
-    public void validate() throws IllegalArgumentException{
-        //TODO validade fields
+        return "Task{" + "id=" + id + ", briefDescription=" + briefDescription + 
+                ", timeDuration=" + timeDuration + ", costPerHour=" + costPerHour + 
+                ", category=" + category + '}';
     }
 
     public boolean hasId(String taskId) {
