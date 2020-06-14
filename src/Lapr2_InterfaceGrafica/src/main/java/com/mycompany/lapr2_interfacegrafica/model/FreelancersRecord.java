@@ -174,6 +174,7 @@ public class FreelancersRecord implements Serializable {
             List<PaymentTransaction> payemntTransList1 = payTL.getPaymentTransactions();
             for (int k = 0; k < payemntTransList1.size(); k++) {
                 Freelancer frel = payemntTransList1.get(k).getFreelancer();
+                System.out.println("Freel: " + frel);
                 if (frel.equals(freel3)) {
                     if (payemntTransList1.get(k).getDelay() > 0) {
                         delay = delay + payemntTransList1.get(k).getDelay();
@@ -256,8 +257,8 @@ public class FreelancersRecord implements Serializable {
 //        out.printf(fileContent);
 //        out.close();
         try (FileWriter writer = new FileWriter("email.txt", true)) {
-            writer.write("O freelancer com o email: " + getAverageDelay() + "tem"
-                    + " um delay de: " + getDelay(freel) + " e uma percentagem de delay: " + getPercentageDelay(freel));
+            writer.write("The freelancer with the email: " + freel.getEmail() + "With an average delay of: " + getAverageDelay() + "has"
+                    + " with a delay of: " + getDelay(freel) + " and a delay percentage of: " + getPercentageDelay(freel) + "\n");
             writer.close();
         } catch (IOException ex) {
             System.out.println("Error in sending email!");
