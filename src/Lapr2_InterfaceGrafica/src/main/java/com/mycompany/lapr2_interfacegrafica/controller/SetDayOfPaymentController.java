@@ -10,6 +10,7 @@ import com.mycompany.lapr2_interfacegrafica.model.PaymentTransactionList;
 import com.mycompany.lapr2_interfacegrafica.model.Platform;
 import com.mycompany.lapr2_interfacegrafica.model.Task;
 import com.mycompany.lapr2_interfacegrafica.model.TaskList;
+import com.mycompany.lapr2_interfacegrafica.ui.AlertUI;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -22,12 +23,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.control.Alert;
 import lapr2.pot.ui.console.utils.Date;
 
-/**
- *
- * @author Joao Mata
- */
 public class SetDayOfPaymentController {
 
     Timer timer;
@@ -151,7 +149,8 @@ public class SetDayOfPaymentController {
             writer.write("Email: " + email + "\nValue: " + report + "\n");
             writer.close();
         } catch (IOException ex) {
-            System.out.println("Error in sending email!");
+            AlertUI.createAlert(Alert.AlertType.ERROR, "T4J-PAYMENTS", "Unsuccess",
+                    "Error sending email!").show();
         }
     }
 }

@@ -62,15 +62,6 @@ public class PaymentTransactionScene_1_UI implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
     }
 
-    public void showTransaction() {
-//        this.txtTransactionID.setText(this.controller.getPayTId());
-//        this.cmbTask.setValue(this.controller.getTask());
-//        this.txtTaskDelay.setText(this.controller.getTaskDelay());
-//        this.txtTaskEndDate.setText(this.controller.getEndDate());
-//        this.txtWorkDescription.setText(this.controller.getWorkDescription());
-//        this.cmbFreelancer.setValue(this.controller.getFreelancer());
-    }
-
     public void setComboBoxFreelancer(Stage stage, Scene scene) throws IOException {
         this.controller = new CreatePaymentTransactionController();
 
@@ -102,48 +93,6 @@ public class PaymentTransactionScene_1_UI implements Initializable {
 
         transactionStage.setScene(scene);
         transactionStage.show();
-//        this.controller = new CreatePaymentTransactionController();
-//
-//        List<Task> tasks = controller.getTasks();
-//        System.out.println("ANTES DO FOR");
-//        System.out.println("Task: " + tasks);
-//        for (Task task : tasks) {
-//            System.out.println("Task: " + task);
-//        }
-//        this.cmbTask = new ComboBox(FXCollections.observableArrayList(controller.getTasks()));
-//        this.cmbFreelancer = new ComboBox(FXCollections.observableArrayList(controller.getFreelancers()));
-//        Button btnGo = new Button("Confirm.");
-////        btnGo = FXMLLoader.load(getClass().getResource("PaymentTransaction_2.fxml"));
-//        //Tentar criar tudo numa scene com um botao.
-//        btnGo.setOnAction(new EventHandler<ActionEvent>() {
-//            @Override
-//            public void handle(ActionEvent e) {
-//                try {
-//                    goToScene(e, "/fxml/PaymentTransaction_1.fxml");
-//                } catch (IOException ex) {
-//                    Logger.getLogger(PaymentTransactionScene_1_UI.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//            }
-//        });
-//
-//        TilePane tile_pane = new TilePane(cmbTask, cmbFreelancer, btnGo);
-//        //TilePane tile_pane2 = new TilePane(cmbFreelancer);
-//
-//        //Scene scene1 = new Scene(tile_pane2, 400, 400);
-//        Scene scene2 = new Scene(tile_pane, 400, 400);
-//
-//        //transactionStage.setScene(scene1);
-//        //transactionStage.showAndWait();
-//        transactionStage.setScene(scene2);
-//        transactionStage.showAndWait();
-//        frl = cmbFreelancer.getSelectionModel().getSelectedItem();
-//        System.out.println("Freelancer: " + frl);
-//        task = cmbTask.getSelectionModel().getSelectedItem(); //retirei porque dava um erro de java.ClassCast porque nao podia ir para String
-//        System.out.println("Task: " + task);
-//
-//        transactionStage.setScene(scene);
-//        transactionStage.show();
-
     }
 
     public void setComboBoxTask() {
@@ -162,8 +111,6 @@ public class PaymentTransactionScene_1_UI implements Initializable {
             String endDate = this.txtTaskEndDate.getText();
             int taskDelay = Integer.parseInt(this.txtTaskDelay.getText());
             String workDescription = this.txtWorkDescription.getText();
-            // String task = this.cmbTask.getSelectionModel().getSelectedItem();
-            // Freelancer freelancer = cmbFreelancer.getSelectionModel().getSelectedItem();
             System.out.println("bblabal" + frl);
             System.out.println("Blelek " + task);
             if (controller == null) {
@@ -181,24 +128,9 @@ public class PaymentTransactionScene_1_UI implements Initializable {
                     "Payment Transaction was not registered.").show();
             goToScene(event, "/fxml/PaymentTransaction_1.fxml");
         }
-            //goToScene(event, "/fxml/PaymentTransaction_2.fxml");
-
-//            this.createPaymentTransactionUI.getCreatePaymentTransactionController().newPaymentTransaction(payTId, task, endDate,
-//                    taskDelay, workDescription, freelancer);
-//            this.createPaymentTransactionUI.toPaymentTransactionScene2UI();
         } catch (NumberFormatException ex) {
             this.lblAlert.setText("Invalid delay!");
             this.txtTaskDelay.requestFocus();
-//        } catch (IllegalArgumentException ex) {
-//            ///this.lblAlert.setText(ex.getMessage());
-//            if (ex.getMessage().toLowerCase().contains("work")) {
-//                this.txtWorkDescription.requestFocus();
-//            } else if (ex.getMessage().toLowerCase().contains("task")) {
-//                this.cmbTask.requestFocus();
-//            } else {
-//                this.cmbFreelancer.requestFocus();
-//            }
-//        }
         }
     }
 
@@ -238,11 +170,9 @@ public class PaymentTransactionScene_1_UI implements Initializable {
 
     public void goToScene(ActionEvent event, String fxml) throws IOException {
         Parent button = FXMLLoader.load(getClass().getResource(fxml));
-        //  System.out.println("Será que mostrou?");
         Scene buttonScene = new Scene(button);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(buttonScene);
-        //System.out.println("Vais Mostrar?");
         window.show();
     }
 
@@ -257,8 +187,6 @@ public class PaymentTransactionScene_1_UI implements Initializable {
         System.out.println("Será que mostrou?");
         loader.setController(this);
         setComboBoxFreelancer(transactionStage, scene);
-//        transactionStage.setScene(scene);
-//        transactionStage.show();
     }
 
 }

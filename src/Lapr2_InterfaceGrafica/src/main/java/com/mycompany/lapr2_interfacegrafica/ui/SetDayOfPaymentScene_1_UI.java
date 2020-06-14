@@ -59,11 +59,11 @@ public class SetDayOfPaymentScene_1_UI implements Initializable {
     private void btnConfirmAction(ActionEvent event) throws IOException {
         try {
             controller.setProcessPaymentsDay(Integer.parseInt(this.txtDate.getText()));
-            AlertUI.createAlert(Alert.AlertType.INFORMATION, "T4J-PAYMENTS", "Sucess",
+            AlertUI.createAlert(Alert.AlertType.INFORMATION, "T4J-PAYMENTS", "Success",
                     "Wait for the day and time of payment and check the e-mail.txt file").show();
             goToScene(event, "/fxml/OptionsManager.fxml");
         } catch (IllegalArgumentException ex) {
-            AlertUI.createAlert(Alert.AlertType.ERROR, "T4J-PAYMENTS", "Insucess",
+            AlertUI.createAlert(Alert.AlertType.ERROR, "T4J-PAYMENTS", "Unsuccess",
                     "Pay attention to the writen information").show();
             goToScene(event, "/fxml/SetDayOfPaymentScene.fxml");
         }

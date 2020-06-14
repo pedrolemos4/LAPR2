@@ -13,13 +13,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-/**
- *
- * @author pedro
- */
 public class JanelaOptionsCollaboratorScene_UI implements Initializable {
 
-    //private MainApp mainApp;
     private JanelaLogin_1_UI janelaLoginUI;
     private CreateTaskScene_1_UI createTaskUI;
     private CreateFreelancerScene_1_UI createFreelancerUI;
@@ -54,13 +49,6 @@ public class JanelaOptionsCollaboratorScene_UI implements Initializable {
             createFreelancerUI = new CreateFreelancerScene_1_UI();
         }
         createFreelancerUI.goToScene(event, "/fxml/CreateFreelancer_1.fxml");
-//        Parent createFreelancer = FXMLLoader.load(getClass().getResource("/fxml/CreateFreelancer_1.fxml"));
-//        Scene createFreelancerScene = new Scene(createFreelancer);
-//        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        window.setScene(createFreelancerScene);
-//        window.show();
-//        //CreateFreelancerUI createFreelancerUI = new CreateFreelancerUI(this.mainApp);
-        //createFreelancerUI.toCreateFreelancerScene1UI();
     }
 
     @FXML
@@ -69,25 +57,15 @@ public class JanelaOptionsCollaboratorScene_UI implements Initializable {
             createTaskUI = new CreateTaskScene_1_UI();
         }
         createTaskUI.goToScene(event, "/fxml/CreateTask_1_.fxml");
-//        Parent createTask = FXMLLoader.load(getClass().getResource("/fxml/CreateTask_1_.fxml"));
-//        Scene createTaskScene = new Scene(createTask);
-//        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        window.setScene(createTaskScene);
-//        window.show();
-//        // CreateTaskUI createTaskUI = new CreateTaskUI(this.mainApp);
-        // createTaskUI.toCreateTaskScene1UI();
     }
 
     @FXML
     private void btnCreatePaymentAction(ActionEvent event) throws IOException {
-        //  if(paymentTransactionUI==null){
         paymentTransactionUI = new PaymentTransactionScene_1_UI();
-        //}
         if (paymentTransactionUI == null) {
             System.out.println("ui = null");
         }
         paymentTransactionUI.goToSceneAlt(this);
-        //paymentTransactionUI.goToScene(event, "/fxml/PaymentTransaction_1.fxml");
     }
 
     @FXML
@@ -112,11 +90,6 @@ public class JanelaOptionsCollaboratorScene_UI implements Initializable {
             janelaLoginUI = new JanelaLogin_1_UI();
         }
         janelaLoginUI.goToScene(event, "/fxml/LoginWindow.fxml");
-//        janelaLoginUI.logout();
-//        ((Node)event.getSource()).getScene().getWindow().hide();
-//        janelaLoginUI.logout();
-//        ((Node)event.getSource()).getScene().getWindow();
-        //goToScene(event, "/fxml/JanelaLogin.fxml");
     }
 
     private void goToScene(ActionEvent event, String fxml) throws IOException {

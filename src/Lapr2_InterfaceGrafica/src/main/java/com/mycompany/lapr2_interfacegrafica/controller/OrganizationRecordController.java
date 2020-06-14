@@ -31,7 +31,6 @@ public class OrganizationRecordController {
 
     public boolean registerOrganization(Organization org) {
         OrganizationsRecord g = m_oPlatform.getOrganizationsRecord();
-        //Organization y = g.getOrganization();
         return g.organizationRegister(org);
     }
 

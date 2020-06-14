@@ -7,10 +7,6 @@ import com.mycompany.lapr2_interfacegrafica.model.Platform;
 import java.util.List;
 import java.util.TreeMap;
 
-/**
- *
- * @author beatr
- */
 public class CheckPerformanceIndicatorsController {
     private FacadeAuthorization facade;
     private Platform m_Platform;

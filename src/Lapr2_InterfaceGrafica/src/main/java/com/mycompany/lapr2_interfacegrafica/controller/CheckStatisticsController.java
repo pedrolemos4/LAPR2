@@ -12,10 +12,6 @@ import com.mycompany.lapr2_interfacegrafica.model.Platform;
 import java.util.List;
 import java.util.TreeMap;
 
-/**
- *
- * @author pedro
- */
 public class CheckStatisticsController {
 
     private FacadeAuthorization facade;
@@ -39,8 +35,6 @@ public class CheckStatisticsController {
     }
 
     public TreeMap<String, Double> calcDeviationPayment() {
-//        String email = facade.getCurrentSession().getUser().getEmail();
-//        Organization m_Organization = this.orgRec.getOrganizationByUserEmail(email);
         return this.orgRec.calcDeviationPayment(determinatePayOrganization(),
                 calcMeanPayment());
     }

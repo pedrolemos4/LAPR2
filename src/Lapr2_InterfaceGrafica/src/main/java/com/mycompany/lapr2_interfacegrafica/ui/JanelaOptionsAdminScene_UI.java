@@ -25,14 +25,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-/**
- *
- * @author Tiago
- */
+
 public class JanelaOptionsAdminScene_UI implements Initializable {
 
-//    private MainApp mainApp;
-//    private JanelaOptionsAdminUI janelaOptionsAdminUI;
     private AddNewOrganizationScene_1_UI addNewOrganizationUI;
     private JanelaLogin_1_UI janelaLoginUI;
     private CheckPerformanceIndicatorsUI checkPerformanceIndicatorsUI;
@@ -51,12 +46,6 @@ public class JanelaOptionsAdminScene_UI implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        try {
-//            sendEmailController = new SendEmailController();
-//            lstFreelApt = sendEmailController.getListFreelancersAdapt();
-//        } catch (FileNotFoundException ex) {
-//            Logger.getLogger(JanelaOptionsAdminScene_UI.class.getName()).log(Level.SEVERE, null, ex);
-//        }
     }
 
     public void setNewOptionsAdminUI(JanelaLogin_1_UI janelaLoginUI) {
@@ -69,11 +58,6 @@ public class JanelaOptionsAdminScene_UI implements Initializable {
             checkPerformanceIndicatorsUI = new CheckPerformanceIndicatorsUI();
         }
         checkPerformanceIndicatorsUI.goToScene(event, "/fxml/CheckPerformanceIndicators.fxml");
-//        Parent checkPerformance = FXMLLoader.load(getClass().getResource("/fxml/CheckPerformanceIndicators.fxml"));
-//        Scene checkPerfomanceScene = new Scene(checkPerformance);
-//        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-//        window.setScene(checkPerfomanceScene);
-//        window.show();
     }
 
     @FXML
@@ -82,13 +66,6 @@ public class JanelaOptionsAdminScene_UI implements Initializable {
             addNewOrganizationUI = new AddNewOrganizationScene_1_UI();
         }
         addNewOrganizationUI.goToScene(event, "/fxml/AddNewOrganization_1_.fxml");
-//        Parent addOrganization = FXMLLoader.load(getClass().getResource("/fxml/AddNewOrganization_1_.fxml"));
-//        Scene addOrganizationScene = new Scene(addOrganization);
-//        Stage window= (Stage)((Node)event.getSource()).getScene().getWindow();
-//        window.setScene(addOrganizationScene);
-//        window.show();
-//       // AddNewOrganizationUI addNewOrganizationUI = new AddNewOrganizationUI(this.mainApp);
-        //addNewOrganizationUI.toAddNewOrganizationScene1UI();
     }
 
     @FXML
@@ -97,13 +74,6 @@ public class JanelaOptionsAdminScene_UI implements Initializable {
             janelaLoginUI = new JanelaLogin_1_UI();
         }
         janelaLoginUI.goToScene(event, "/fxml/LoginWindow.fxml");
-//        janelaLoginUI.logout();
-//        ((Node) event.getSource()).getScene().getWindow().hide();
-//        Parent logout = FXMLLoader.load(getClass().getResource("/fxml/JanelaLogin.fxml"));
-//        Scene logoutScene = new Scene(logout);
-//        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-//        window.setScene(logoutScene);
-//        window.show();
     }
 
     @FXML
@@ -121,11 +91,6 @@ public class JanelaOptionsAdminScene_UI implements Initializable {
                 sendEmailController.sendEmail(freel);
                 System.out.println("entra no for");
                 AlertUI.createAlert(Alert.AlertType.INFORMATION, "Sucess", "T4J", "Check the email.txt file").show();
-            }
-       // } catch (NullPointerException e) {
-       //     AlertUI.createAlert(Alert.AlertType.ERROR, "Error", "T4J", "You need to select a freelancer").show();
-       // } catch (Exception e) {
-       //     AlertUI.createAlert(Alert.AlertType.ERROR, "Error", "T4J", "Unsuccessful").show();
+            }  
         }
     }
-//}

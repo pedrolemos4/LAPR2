@@ -51,8 +51,6 @@ public class CreatePaymentTransactionController {
         OrganizationsRecord orgR = plat.getOrganizationsRecord();
         this.org = orgR.getOrganizationByUserEmail(email);
         Date endDate = date.convertStringToDate(eDate);
-//        PaymentTransaction payT1 = payTL.newPaymentTransaction(org, payTId, taskString, freelancerString,
-//                endDate, delay, workQualityDescription);
         this.payT = payTL.newPaymentTransaction(org, payTId, task, freelancer,
                 endDate, delay, workQualityDescription);
         if (payTL.validatePaymentTransaction(this.payT)) {
@@ -71,21 +69,14 @@ public class CreatePaymentTransactionController {
 
     public List<Task> getTasks() {
         String email = facade.getCurrentSession().getUser().getEmail();
-        System.out.println("Existe email" + email);
         OrganizationsRecord orgRec1 = plat.getOrganizationsRecord();
-        System.out.println("Existe org record" + orgRec1.getClass().getSimpleName());
         Organization org1 = orgRec1.getOrganizationByUserEmail(email);
-        System.out.println("Existe org" + org.toString());
         List<Task> taskList1 = org1.getTaskList().getTasks();
-        System.out.println("taskList: " + taskList1);
         return taskList1;
     }
 
     public List<Freelancer> getFreelancers() {
         this.regFreel = this.plat.getFreelancersRecord();
-        if (this.regFreel == null) {
-            System.out.println("O regFreel(controller) tá null");
-        }
         return this.regFreel.getListFreelancers();
     }
 

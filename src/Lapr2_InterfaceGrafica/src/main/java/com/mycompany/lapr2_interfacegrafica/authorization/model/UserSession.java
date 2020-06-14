@@ -25,12 +25,6 @@ public class UserSession implements Serializable {
         return this.m_oUser != null;
     }
 
-//    public boolean isLoggedInWithRole(String strPapel) {
-//        if (isLoggedIn()) {
-//            return this.m_oUser.hasRole(strPapel);
-//        }
-//        return false;
-//    }
     public String getUserName() {
         if (isLoggedIn()) {
             this.m_oUser.getName();

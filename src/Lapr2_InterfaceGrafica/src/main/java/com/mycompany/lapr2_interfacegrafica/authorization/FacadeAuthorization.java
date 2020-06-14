@@ -13,28 +13,16 @@ public class FacadeAuthorization implements Serializable {
 
     private UserSession m_oSession;
 
-    //  private ExternalAlgorithm1API exAlgApi;
     private Platform plat;
 
     private UsersRecord usersRecord;
 
-    //  private UserRole role;
     public FacadeAuthorization() {
         this.usersRecord = new UsersRecord();
         this.m_oSession = new UserSession();
     }
-    // private final UserRolesRecord m_oRoles = new UserRolesRecord();
     private final UsersRecord m_oUsers = new UsersRecord();
 
-//    public boolean registesUserRole(String strRole) {
-//        UserRole papel = this.m_oRoles.newUserRole(strRole);
-//        return this.m_oRoles.addRole(papel);
-//    }
-//
-//    public boolean registesUserRole(String strRole, String strDescription) {
-//        UserRole role = this.m_oRoles.newUserRole(strRole, strDescription);
-//        return this.m_oRoles.addRole(role);
-//    }
     public boolean registesUser(String strName, String strEmail, String strPassword) {
         User user = this.m_oUsers.newUser(strName, strEmail, strPassword);
         return this.m_oUsers.addUser(user);
@@ -61,7 +49,6 @@ public class FacadeAuthorization implements Serializable {
 
     public boolean registesUserWithRole(String strName, String strEmail, String strPassword, String role) {
         User user = this.m_oUsers.newUser(strName, strEmail, strPassword);
-        // UserRole papel = this.m_oRoles.searchRole(role);
         user.setRole(role);
         return this.m_oUsers.addUser(user);
     }
@@ -95,7 +82,6 @@ public class FacadeAuthorization implements Serializable {
         if (this.m_oSession != null) {
             this.m_oSession.doLogout();
         }
-        //this.m_oSession = null;
     }
 
 }

@@ -19,13 +19,7 @@ import javafx.scene.control.ListView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author beatr
- */
 public class UploadFileUI implements Initializable {
-  //  private final MainApp mainApp;
    private  UploadFileController controller;
     
     @FXML
@@ -49,19 +43,6 @@ public class UploadFileUI implements Initializable {
         this.controller = new UploadFileController();
     }
     
-//    public UploadFileUI(MainApp mainApp) {
-//        this.mainApp = mainApp;
-//        this.controller = new UploadFileController();
-//    }
-
-//    public MainApp getMainApp() {
-//        return this.mainApp;
-//    }
-//
-//    public UploadFileController getOrganizationRecordController() {
-//        return this.controller;
-//    }
-
     @FXML
     private void importTxtAction(ActionEvent event) {
         FileChooser flChooser = FileChooserUI.criarFileChooser();

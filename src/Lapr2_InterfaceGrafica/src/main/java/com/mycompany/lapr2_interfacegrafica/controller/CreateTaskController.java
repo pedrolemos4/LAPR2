@@ -32,12 +32,6 @@ public class CreateTaskController {
     private Task task;
 
     public CreateTaskController() {
-        // this.m_oApp = POTApplication.getInstance();
-//        this.m_oSessao = m_oApp.getCurrentSession();
-
-//        if (!m_oApp.getCurrentSession().isLoggedInWithRole(Constants.ADMINISTRATOR_ROLE)) {
-//            throw new IllegalStateException("Utilizador não Autorizado");
-//        }
         this.m_oPlatform = POTApplication.getPlatform();
         this.facade = POTApplication.getFacadeAuthorization();
         this.or = m_oPlatform.getOrganizationsRecord();
@@ -49,21 +43,11 @@ public class CreateTaskController {
         Task task1 = this.taskList.newTask(id, briefDescription, timeDuration, costPerHour, category);
         this.task = task1;
         if (this.taskList.validateTask(task)) {
-//            this.taskList.addTask(this.task);
             return this.task;
         }
         return null;
     }
 
-//    public boolean newTask(String id, String briefDescription, int timeDuration, double costPerHour, String category) {
-//        try {
-//            task = taskRecord.newTask(id, briefDescription, timeDuration, costPerHour, category);
-//
-//            return true;
-//        } catch (Exception e) {
-//            return false;
-//        }
-//    }
     public boolean registerTask(Task task) throws IOException {
         String email = facade.getCurrentSession().getUser().getEmail();
         Organization m_Organization = this.or.getOrganizationByUserEmail(email);

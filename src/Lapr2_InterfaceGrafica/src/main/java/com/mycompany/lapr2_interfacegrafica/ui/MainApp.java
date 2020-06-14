@@ -69,20 +69,7 @@ public class MainApp extends Application {
         JanelaLogin_1_UI loginUI = loader.getController();
         loginUI.setStage(stage);
         stage.show();
-//        this.stage = stage;
-//        stage.setTitle("Demo Maven and JavaFX Application");
-//        stage.setMinWidth(MINIMUM_WINDOW_WIDTH);
-//        stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
-//        toMainScene();
-//        this.stage.show();
-//        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
-//
-//        Scene scene = new Scene(root);
-//        scene.getStylesheets().add("/styles/Styles.css");
-//
-//        stage.setTitle("JavaFX and Maven");
-//        stage.setScene(scene);
-//        stage.show();
+
     }
 
     private void readFromBinaryFile() throws FileNotFoundException {

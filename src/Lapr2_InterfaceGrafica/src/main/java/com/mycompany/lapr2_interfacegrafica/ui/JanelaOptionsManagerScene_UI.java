@@ -13,10 +13,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
-/**
- *
- * @author Tiago
- */
 public class JanelaOptionsManagerScene_UI implements Initializable {
 
     private MainApp mainApp;
