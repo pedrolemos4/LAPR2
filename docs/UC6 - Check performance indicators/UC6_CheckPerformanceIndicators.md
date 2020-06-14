@@ -83,6 +83,7 @@ The T4J administrator is able to see statistics describing the performance of al
 ||...knows the freelancer for calculating the payment?|PaymentTransaction| IE: has its own data|
 ||...knows the payment?|PaymentTransaction| IE: has its own data|
 ||...knows all payments and delays made by an organization to a freelancer?|PaymentTransactionList|By IE it would be the Organization but, by the HC + LC standard, the Organization delegates this responsibility to the PaymentTransactionList|
+||...is responsable for calculating the normal distribution?| OrganizationsRecord|By IE it would be the Platform but, by the HC + LC standard, the Platform delegates this responsibility to the OrganizationsRecord|
 |5. The administrator confirms. ||||
 |6. The system informs the administrator of the success of the operation.|...informs the administrator?|CheckPerformanceIndicatorsUI|Pure Fabrication|
 

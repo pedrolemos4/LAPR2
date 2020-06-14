@@ -22,9 +22,41 @@ activate RO
 deactivate RO
 deactivate CTL
 
-UI -> CTL : determinatePayOrg()
+UI -> CTL : determinateDelayPlatform()
 activate CTL
+CTL -> O : determinateDelayOrg(mapOrgDelay)
+activate O
+ref over O
+SD_determinateDelayOrg
+end ref
+CTL <-- O : mapOrgDelay
+deactivate O
+CTL -> RO : determinateDelayPlatform()
+activate RO
+ref over RO
+SD_determinateDelayPlatform
+end ref
+CTL <-- RO : mapTotalDelays
+deactivate RO
+deactivate CTL
 
+UI -> CTL : calcMeanDelay()
+activate CTL
+CTL -> RO : calcMeanDelay(mapTotalDelays)
+activate RO
+deactivate RO
+deactivate CTL
+
+UI -> CTL : calcDeviationDelay()
+activate CTL
+CTL -> RO : calcDeviationDelay(mapTotalDelays,mapMeanDelays)
+activate RO
+deactivate RO
+deactivate CTL
+
+
+UI -> CTL : determinatePayPlatform()
+activate CTL
 CTL -> O : determinatePayOrg(mapOrgPayment)
 activate O
 ref over O
@@ -32,10 +64,6 @@ SD_determinatePayOrg
 end ref
 CTL <-- O : mapOrgPayment
 deactivate O
-deactivate CTL
-
-UI -> CTL : determinatePayPlatform()
-activate CTL
 CTL -> RO : determinatePayPlatform()
 activate RO
 ref over RO
@@ -59,41 +87,6 @@ activate RO
 deactivate RO
 deactivate CTL
 
-UI -> CTL : determinateDelayOrg()
-activate CTL
-CTL -> O : determinateDelayOrg(mapOrgDelay)
-activate O
-ref over O
-SD_determinateDelayOrg
-end ref
-CTL <-- O : mapOrgDelay
-deactivate O
-deactivate CTL
-
-UI -> CTL : determinateDelayPlatform()
-activate CTL
-CTL -> RO : determinateDelayPlatform()
-activate RO
-ref over RO
-SD_determinateDelayPlatform
-end ref
-CTL <-- RO : mapTotalDelays
-deactivate RO
-deactivate CTL
-
-UI -> CTL : calcMeanDelay()
-activate CTL
-CTL -> RO : calcMeanDelay(mapTotalDelays)
-activate RO
-deactivate RO
-deactivate CTL
-
-UI -> CTL : calcDeviationDelay()
-activate CTL
-CTL -> RO : calcDeviationDelay(mapTotalDelays,mapMeanDelays)
-activate RO
-deactivate RO
-deactivate CTL
 
 UI -> CTL : determinateNormalDistribution()
 activate CTL
