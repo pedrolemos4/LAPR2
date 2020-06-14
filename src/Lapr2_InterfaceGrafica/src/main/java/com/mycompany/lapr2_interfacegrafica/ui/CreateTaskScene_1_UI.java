@@ -1,6 +1,7 @@
 package com.mycompany.lapr2_interfacegrafica.ui;
 
 import com.mycompany.lapr2_interfacegrafica.controller.CreateTaskController;
+import com.mycompany.lapr2_interfacegrafica.model.Task;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -11,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -74,10 +76,20 @@ public class CreateTaskScene_1_UI implements Initializable {
     @FXML
     private void btnNextAction(ActionEvent event) throws IOException {
         try {
-            createTaskController.newTask(txtTaskID.getText(), txtTaskDescription.getText(),
+            Task task = createTaskController.newTask(txtTaskID.getText(), txtTaskDescription.getText(),
                     Integer.parseInt(txtTimeDuration.getText()), Double.parseDouble(txtCostPerHour.getText()),
-                     txtTaskCategory.getText());
-            goToScene(event,"/fxml/CreateTask_2.fxml");
+                    txtTaskCategory.getText());
+            boolean registered = this.createTaskController.registerTask(task);
+            if (registered) {
+                AlertUI.createAlert(Alert.AlertType.INFORMATION,"T4J-PAYMENTS", 
+                        "Success", "Task created successfully.").show();
+                goToScene(event, "/fxml/OptionsCollaborator.fxml");
+            } else {
+                AlertUI.createAlert(Alert.AlertType.ERROR, "T4J-PAYMENTS" ,"Error",
+                        "Task was not registered").show();
+                goToScene(event, "/fxml/CreateTask_1_.fxml");
+            }
+            //goToScene(event,"/fxml/CreateTask_2.fxml");
 //            this.createTaskUI.getController().newTask(txtTaskID.getText(), txtTaskDescription.getText(),
 //                    txtTimeDuration.getText(), txtCostPerHour.getText(), txtTaskCategory.getText());
 //            this.createTaskUI.toCreateTaskScene2();

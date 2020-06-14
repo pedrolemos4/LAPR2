@@ -69,7 +69,8 @@ public class CreateFreelancerScene_1_UI implements Initializable {
                     this.txtEmail.getText(), this.txtNIF.getText(), this.txtIBAN.getText(),
                     this.txtCountry.getText(), this.txtAddress.getText());
             if (controller.registerFreelancer(frl)) {
-                AlertUI.createAlert(Alert.AlertType.INFORMATION, "Success", "T4J-Payments", "Freelancer created successfully.").show();
+                AlertUI.createAlert(Alert.AlertType.INFORMATION, "T4J-Payments",
+                        "Success", "Freelancer created successfully.").show();
                 goToScene(event, "/fxml/CreateFreelancer_1.fxml");
             }
         } catch (IllegalArgumentException e) {

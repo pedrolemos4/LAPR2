@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -27,7 +28,7 @@ import javafx.stage.Stage;
  */
 public class SetDayOfPaymentScene_1_UI implements Initializable {
 
-   // private SetDayOfPaymentUI setDayOfPaymentUI;
+    // private SetDayOfPaymentUI setDayOfPaymentUI;
     private SetDayOfPaymentController controller;
 
     @FXML
@@ -50,19 +51,27 @@ public class SetDayOfPaymentScene_1_UI implements Initializable {
 //    public void setSetDayOfPaymentUI(SetDayOfPaymentUI setDayOfPaymentUI) {
 //        this.setDayOfPaymentUI = setDayOfPaymentUI;
 //    }
-
     public TextField getTxtDate() {
         return this.txtDate;
     }
 
     @FXML
-    private void btnConfirmAction(ActionEvent event) {
-        controller.setProcessPaymentsDay(Integer.parseInt(this.txtDate.getText()));
+    private void btnConfirmAction(ActionEvent event) throws IOException {
+        try {
+            controller.setProcessPaymentsDay(Integer.parseInt(this.txtDate.getText()));
+            AlertUI.createAlert(Alert.AlertType.INFORMATION, "T4J-PAYMENTS", "Sucess",
+                    "Wait for the day and time of payment and check the e-mail.txt file").show();
+            goToScene(event, "/fxml/OptionsManager.fxml");
+        } catch (IllegalArgumentException ex) {
+            AlertUI.createAlert(Alert.AlertType.ERROR, "T4J-PAYMENTS", "Insucess",
+                    "Pay attention to the writen information").show();
+            goToScene(event, "/fxml/SetDayOfPaymentScene.fxml");
+        }
     }
 
     @FXML
     private void btnCancelAction(ActionEvent event) throws IOException {
-        goToScene(event,"/fxml/OptionsManager.fxml");
+        goToScene(event, "/fxml/OptionsManager.fxml");
     }
 
     public void goToScene(ActionEvent event, String fxml) throws IOException {

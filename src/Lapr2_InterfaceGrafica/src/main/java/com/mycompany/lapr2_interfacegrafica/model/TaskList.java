@@ -23,6 +23,13 @@ public class TaskList implements Serializable {
         return this.task;
     }
 
+    public Task getOtherTask(Task task1){
+        if(this.task== task1){
+            return this.task;
+        }
+        return null;
+    }
+    
     public boolean registerTask(Task task) {
         //if (task!=null) {
         return tasks.add(task);

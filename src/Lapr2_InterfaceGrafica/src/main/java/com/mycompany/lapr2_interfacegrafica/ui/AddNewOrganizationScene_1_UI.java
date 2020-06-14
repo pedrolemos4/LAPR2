@@ -1,6 +1,7 @@
 package com.mycompany.lapr2_interfacegrafica.ui;
 
 import com.mycompany.lapr2_interfacegrafica.controller.OrganizationRecordController;
+import com.mycompany.lapr2_interfacegrafica.model.Organization;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -11,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -70,13 +72,23 @@ public class AddNewOrganizationScene_1_UI implements Initializable {
             System.out.println("1 UI - ManagerEmail: " + txtManagerEmail.getText());
             System.out.println("1 UI - ColabName: " + txtCollaboratorName.getText());
             System.out.println("1 UI - ColabEmail: " + txtCollaboratorEmail.getText());
-            controller.newOrganization(txtName.getText(), txtNIF.getText(), txtManagerName.getText(),
+            Organization org = controller.newOrganization(txtName.getText(), txtNIF.getText(), txtManagerName.getText(),
                     txtManagerEmail.getText(), txtCollaboratorName.getText(), txtCollaboratorEmail.getText());
 //            this.addNewOrganization.getOrganizationRecordController().newOrganization(this.txtName.getText(),
 //                    this.txtNIF.getText(), this.txtManagerName.getText(),
 //                    this.txtManagerEmail.getText(), this.txtCollaboratorName.getText(),
 //                    this.txtCollaboratorEmail.getText());
-            goToScene(event, "/fxml/AddNewOrganization_2.fxml");
+            boolean registered = this.controller.registerOrganization(org);
+            if (registered) {
+                AlertUI.createAlert(Alert.AlertType.INFORMATION,"T4J-PAYMENTS" ,
+                        "Success" , "Organization registered successfully").show();
+                goToScene(event, "/fxml/OptionsAdmin.fxml");
+            } else {
+                AlertUI.createAlert(Alert.AlertType.ERROR,"T4J-PAYMENTS" ,"Error" ,
+                        "Organization was not registered.").show();
+                goToScene(event, "/fxml/AddNewOrganization_1_.fxml");
+            }
+           // goToScene(event, "/fxml/AddNewOrganization_2.fxml");
         } catch (IllegalArgumentException ex) {
             lblAlert.setText(ex.getMessage());
             if (ex.getMessage().toLowerCase().contains("name")) {
@@ -137,7 +149,7 @@ public class AddNewOrganizationScene_1_UI implements Initializable {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(buttonScene);
         window.show();
-       // setController();
+        // setController();
     }
 
     public void setController() {

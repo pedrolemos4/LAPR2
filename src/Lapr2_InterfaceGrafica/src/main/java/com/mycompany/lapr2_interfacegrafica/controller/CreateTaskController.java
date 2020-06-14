@@ -65,11 +65,11 @@ public class CreateTaskController {
 //            return false;
 //        }
 //    }
-    public boolean registerTask() throws IOException {
+    public boolean registerTask(Task task) throws IOException {
         String email = facade.getCurrentSession().getUser().getEmail();
         Organization m_Organization = this.or.getOrganizationByUserEmail(email);
         TaskList taskList1 = m_Organization.getTaskList();
-        Task task1 = taskList1.getTask();
+        Task task1 = taskList1.getOtherTask(task);
         return taskList1.registerTask(task1);
     }
 
