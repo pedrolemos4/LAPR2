@@ -75,10 +75,10 @@ The freelancer stays informed.
 
 | Main Flow | Question: Which class... | Answer | Justification |
 |:--------------  |:---------------------- |:----------|:---------------------------- |
-| 1. The system initializes the process of notifying the freelancers. | ...coordinates the UC? | NotifyFreelancersTask | Task |
-|                                                        | ...starts the process of notification? | Timer | Timer |
-|                                                        | ...creates the instance Timer? | Platform | Creator: Plataform as knowledge of the time to start the notifications. |
-| 2. The system identifies the freelancers that have mean task delay higher than 3 hours and have a percentage of delays higher than the overall percentage of delays. After that, starts the notification of the freelancers. | ...knows FreelancerRecord? | Plataform | IE: Plataform contains RecordFreelancer (HC + LC) |
+| 1. The administrator sends the email to the freelancers. | ...coordinates the UC? | NotifyFreelancersTask | Task |
+|                                                          | ...starts the process of notification? | Timer | Timer |
+|                                                          | ...creates the instance Timer? | Platform | Creator: Plataform as knowledge of the time to start the notifications. |
+| 2. The system makes the validation of the freelancers and ends the process. | ...knows FreelancerRecord? | Plataform | IE: Plataform contains RecordFreelancer (HC + LC) |
 |  | ...knows the PaymentTransactionList? | Platform | IE : in the MD Platform has Organization |
 |  | ...knows the each payment transaction? | PaymentTransactionList | IE: Owns the class PaymentTransaction (HC + LC) |
 |  | ...knows the task delay? | PaymentTransaction | IE: Knows its own information |  
