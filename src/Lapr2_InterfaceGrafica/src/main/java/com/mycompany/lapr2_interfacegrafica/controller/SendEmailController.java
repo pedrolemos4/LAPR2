@@ -24,14 +24,19 @@ public class SendEmailController {
 
     public SendEmailController() {
         this.platform = POTApplication.getPlatform();
-        this.regFreel = platform.getFreelancersRecord();
+        this.regFreel = this.platform.getFreelancersRecord();
     }
-    
-    public List<Freelancer> getListFreelancersAdapt() throws FileNotFoundException{
-        return regFreel.getFreelancersAdapt();
+
+    public List<Freelancer> getListFreelancersAdapt() throws FileNotFoundException {
+        this.regFreel = this.platform.getFreelancersRecord();
+        if (this.regFreel == null) {
+            System.out.println("O regFreel(controller) tá null");
+        }
+        return this.regFreel.getFreelancersAdapt();
     }
 
     public void sendEmail(Freelancer freel) throws FileNotFoundException {
-        regFreel.sendEmail(freel);
+        this.regFreel = this.platform.getFreelancersRecord();
+        this.regFreel.sendEmail(freel);
     }
 }

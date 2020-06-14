@@ -1,8 +1,10 @@
 package com.mycompany.lapr2_interfacegrafica.model;
 
 import com.mycompany.lapr2_interfacegrafica.authorization.FacadeAuthorization;
-import java.io.File;
+import com.mycompany.lapr2_interfacegrafica.controller.POTApplication;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -154,53 +156,83 @@ public class FreelancersRecord implements Serializable {
 
     public int getDelay(Freelancer freel3) {
         int delay = 0;
-        FacadeAuthorization facade = plat.getFacadeAuthorization();
-        String email = facade.getCurrentSession().getUser().getEmail();
-        OrganizationsRecord orgRec = plat.getOrganizationsRecord();
-        Organization m_Organization = orgRec.getOrganizationByUserEmail(email);
-        PaymentTransactionList payTL = m_Organization.getPaymentTransactionList();
-        List<PaymentTransaction> payemntTransList1 = payTL.getPaymentTransactions();
-        for (int k = 0; k < payemntTransList1.size(); k++) {
-            Freelancer frel = payemntTransList1.get(k).getFreelancer();
-            if (frel.equals(freel3)) {
-                if (payemntTransList1.get(k).getDelay() > 0) {
-                    delay = delay + payemntTransList1.get(k).getDelay();
+        Platform plat1 = POTApplication.getPlatform();
+//        FacadeAuthorization facade = POTApplication.getFacadeAuthorization();
+//        String email = facade.getCurrentSession().getUser().getEmail();
+//        OrganizationsRecord orgRec = plat.getOrganizationsRecord();
+//        Organization m_Organization = orgRec.getOrganizationByUserEmail(email);
+//        PaymentTransactionList payTL = m_Organization.getPaymentTransactionList();
+
+        FacadeAuthorization facade = POTApplication.getFacadeAuthorization();
+//        String email = facade.getCurrentSession().getUser().getEmail();
+        OrganizationsRecord orgRec = plat1.getOrganizationsRecord();
+//        Organization m_Organization = orgRec.getOrganizationByUserEmail(email);
+        List<Organization> listOrg = orgRec.getOrganizations();
+        for (Organization org : listOrg) {
+            System.out.println("getPaymentTransList: " + org);
+            PaymentTransactionList payTL = org.getPaymentTransactionList();
+            List<PaymentTransaction> payemntTransList1 = payTL.getPaymentTransactions();
+            for (int k = 0; k < payemntTransList1.size(); k++) {
+                Freelancer frel = payemntTransList1.get(k).getFreelancer();
+                if (frel.equals(freel3)) {
+                    if (payemntTransList1.get(k).getDelay() > 0) {
+                        delay = delay + payemntTransList1.get(k).getDelay();
+                    }
                 }
             }
         }
         return delay;
     }
 
-    public int getPercentageDelay(Freelancer freel1) {
-        int numberTrans = 0, delay = 0;
-        FacadeAuthorization facade = plat.getFacadeAuthorization();
-        String email = facade.getCurrentSession().getUser().getEmail();
-        OrganizationsRecord orgRec = plat.getOrganizationsRecord();
-        Organization m_Organization = orgRec.getOrganizationByUserEmail(email);
-        PaymentTransactionList payTL = m_Organization.getPaymentTransactionList();
-        List<PaymentTransaction> payemntTransList1 = payTL.getPaymentTransactions();
-        for (int k = 0; k < payemntTransList1.size(); k++) {
-            Freelancer frel = payemntTransList1.get(k).getFreelancer();
-            if (frel.equals(freel1)) {
-                numberTrans++;
-                if (payemntTransList1.get(k).getDelay() > 0) {
-                    delay++;
+    public double getPercentageDelay(Freelancer freel1) {
+        int numberTrans = 0;
+        int delay = 0;
+        Platform plat1 = POTApplication.getPlatform();
+//        FacadeAuthorization facade = POTApplication.getFacadeAuthorization();
+//        String email = facade.getCurrentSession().getUser().getEmail();
+//        OrganizationsRecord orgRec = plat.getOrganizationsRecord();
+//        Organization m_Organization = orgRec.getOrganizationByUserEmail(email);
+//        PaymentTransactionList payTL = m_Organization.getPaymentTransactionList();
+
+        FacadeAuthorization facade = POTApplication.getFacadeAuthorization();
+//        String email = facade.getCurrentSession().getUser().getEmail();
+        OrganizationsRecord orgRec = plat1.getOrganizationsRecord();
+//        Organization m_Organization = orgRec.getOrganizationByUserEmail(email);
+        List<Organization> listOrg = orgRec.getOrganizations();
+        for (Organization org : listOrg) {
+            PaymentTransactionList payTL = org.getPaymentTransactionList();
+            List<PaymentTransaction> payemntTransList1 = payTL.getPaymentTransactions();
+            for (int k = 0; k < payemntTransList1.size(); k++) {
+                Freelancer frel = payemntTransList1.get(k).getFreelancer();
+
+                if (frel.equals(freel1)) {
+                    numberTrans++;
+                    if (payemntTransList1.get(k).getDelay() > 0) {
+                        delay++;
+                    }
                 }
             }
         }
-        return delay / numberTrans;
+        return (delay / numberTrans) * 100;
     }
 
     public List<Freelancer> getFreelancersAdapt() throws FileNotFoundException {
         List<Freelancer> freelApt = new ArrayList<>();
-        for (int i = 0; i < arrayFreelancers.size(); i++) {
-            Freelancer freel = arrayFreelancers.get(i);
-            int delay = getDelay(freel);
-            int perDelay = getPercentageDelay(freel);
+        for (int i = 0; i < getListFreelancers().size(); i++) {
+            Freelancer freel = getListFreelancers().get(i);
+            System.out.println("freelancer: " + freel.toString());
+            double delay = getDelay(freel);
+            System.out.println("delay : " + delay);
+            double perDelay = getPercentageDelay(freel);
             double averageDelay = getAverageDelay();
             if (delay > 3 && perDelay > averageDelay) {
+                System.out.println("dentro do if");
                 freelApt.add(freel);
             }
+
+        }
+        if (freelApt.isEmpty()) {
+            System.out.println("O PUTO DO ARRAY TA NULL");
         }
         return freelApt;
     }
@@ -211,28 +243,51 @@ public class FreelancersRecord implements Serializable {
      * @throws FileNotFoundException
      */
     public void sendEmail(Freelancer freel) throws FileNotFoundException {
-        Scanner in = new Scanner("email.txt");
-        while (in.hasNextLine()) {
-            String line = in.nextLine();
-            if (line.trim() == null) {
-                continue;
-            }
+//        Scanner in = new Scanner("email.txt");
+//        while (in.hasNextLine()) {
+//            String line = in.nextLine();
+//            if (line.trim() == null) {
+//                continue;
+//            }
+//        }
+//        in.close();
+//        PrintWriter out = new PrintWriter("email.txt");
+//        String fileContent = String.format("O freelancer com o email: %n, tem um delay de %d e uma percentagem de delay de %d.", getAverageDelay(), getDelay(freel), getPercentageDelay(freel));
+//        out.printf(fileContent);
+//        out.close();
+        try (FileWriter writer = new FileWriter("email.txt", true)) {
+            writer.write("O freelancer com o email: " + getAverageDelay() + "tem"
+                    + " um delay de: " + getDelay(freel) + " e uma percentagem de delay: " + getPercentageDelay(freel));
+            writer.close();
+        } catch (IOException ex) {
+            System.out.println("Error in sending email!");
         }
-        in.close();
-        PrintWriter out = new PrintWriter("email.txt");
-        String fileContent = String.format("O freelancer com o email: %n, tem um delay de %d e uma percentagem de delay de %d.", getAverageDelay(), getDelay(freel), getPercentageDelay(freel));
-        out.printf(fileContent);
-        out.close();
     }
 
     public double getAverageDelay() {
-        int totalDelay = 0, n = 0;
-        List<PaymentTransaction> payemntTransList1 = payemntTransList.getPaymentTransactions();
-        for (int k = 0; k < payemntTransList1.size(); k++) {
-            PaymentTransaction trans = payemntTransList1.get(k);
-            int delayTrans = trans.getDelay();
-            totalDelay = totalDelay + delayTrans;
-            n++;
+        double totalDelay = 0;
+        int n = 0;
+        Platform plat1 = POTApplication.getPlatform();
+//        FacadeAuthorization facade = POTApplication.getFacadeAuthorization();
+//        String email = facade.getCurrentSession().getUser().getEmail();
+//        OrganizationsRecord orgRec = plat.getOrganizationsRecord();
+//        Organization m_Organization = orgRec.getOrganizationByUserEmail(email);
+//        PaymentTransactionList payTL = m_Organization.getPaymentTransactionList();
+
+        FacadeAuthorization facade = POTApplication.getFacadeAuthorization();
+//        String email = facade.getCurrentSession().getUser().getEmail();
+        OrganizationsRecord orgRec = plat1.getOrganizationsRecord();
+//        Organization m_Organization = orgRec.getOrganizationByUserEmail(email);
+        List<Organization> listOrg = orgRec.getOrganizations();
+        for (Organization org : listOrg) {
+            PaymentTransactionList payTL = org.getPaymentTransactionList();
+            List<PaymentTransaction> payemntTransList1 = payTL.getPaymentTransactions();
+            for (int k = 0; k < payemntTransList1.size(); k++) {
+                PaymentTransaction trans = payemntTransList1.get(k);
+                int delayTrans = trans.getDelay();
+                totalDelay = totalDelay + delayTrans;
+                n++;
+            }
         }
         return totalDelay / n;
     }
