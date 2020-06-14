@@ -96,7 +96,7 @@ public class JanelaOptionsAdminScene_UI implements Initializable {
         if (janelaLoginUI == null) {
             janelaLoginUI = new JanelaLogin_1_UI();
         }
-        janelaLoginUI.goToScene(event,"/fxml/LoginWindow.fxml");
+        janelaLoginUI.goToScene(event, "/fxml/LoginWindow.fxml");
 //        janelaLoginUI.logout();
 //        ((Node) event.getSource()).getScene().getWindow().hide();
 //        Parent logout = FXMLLoader.load(getClass().getResource("/fxml/JanelaLogin.fxml"));
@@ -108,18 +108,24 @@ public class JanelaOptionsAdminScene_UI implements Initializable {
 
     @FXML
     private void btnSendEmailAction(ActionEvent event) throws FileNotFoundException {
-        try {
-            if (sendEmailController == null) {
-                sendEmailController = new SendEmailController();
+      //  try {
+            System.out.println("entra no try");
+            sendEmailController = new SendEmailController();
+            System.out.println("linha 114");
+            /*this.lstFreelApt =*/ sendEmailController.getListFreelancersAdapt();
+            System.out.println("lstFreelApt: " + sendEmailController.getListFreelancersAdapt());
+            if (sendEmailController.getListFreelancersAdapt() == null) {
+                System.out.println("lstFreelApt=null");
             }
-            for (Freelancer freel : lstFreelApt) {
+            for (Freelancer freel : sendEmailController.getListFreelancersAdapt()) {
                 sendEmailController.sendEmail(freel);
-                AlertUI.createAlert(Alert.AlertType.ERROR, "Error", "T4J", "Successful").show();
+                System.out.println("entra no for");
+                AlertUI.createAlert(Alert.AlertType.INFORMATION, "Sucess", "T4J", "Check the email.txt file").show();
             }
-        } catch (NullPointerException e) {
-            AlertUI.createAlert(Alert.AlertType.ERROR, "Error", "T4J", "You need to select a freelancer").show();
-        } catch (Exception e) {
-            AlertUI.createAlert(Alert.AlertType.ERROR, "Error", "T4J", "Unsuccessful").show();
+       // } catch (NullPointerException e) {
+       //     AlertUI.createAlert(Alert.AlertType.ERROR, "Error", "T4J", "You need to select a freelancer").show();
+       // } catch (Exception e) {
+       //     AlertUI.createAlert(Alert.AlertType.ERROR, "Error", "T4J", "Unsuccessful").show();
         }
     }
-}
+//}
