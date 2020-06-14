@@ -8,7 +8,7 @@ UC2 - Create Task
 The collaborator starts to create a new Task.
 The system asks needed information (i.e. id, brief description, time duration, cost per hour, category).
 The collaborator inputs the information.
-The system validates and displays the information to the collaborater, asking for confirmation.
+The system validates and displays the information to the collaborator, asking for confirmation.
 The collaborator confirms.
 The system regists the information and informs the collaborator about the success of the operation.
 
@@ -39,7 +39,7 @@ The tasks stays in the system.
 1. The collaborator starts the creation of a new task.
 2. The system asks the needed information (i.e. id, brief description, time duration, cost per hour, category).
 3. The collaborator inputs the information.
-4.The system validates and displays the information to the collaborater, asking for confirmation.
+4.The system validates and displays the information to the collaborator, asking for confirmation.
 5. The collaborator confirms.
 6. The system regists the information and informs the collaborator about the success of the operation.
 
@@ -88,7 +88,7 @@ The tasks stays in the system.
 
 ## 2. OO Analysis
 
-### Excerto do Modelo de Domínio Relevante para o UC
+### Relevant section of MD to this UC
 
 ![UC2_MD.png](UC2_MD.png)
 
@@ -105,10 +105,10 @@ The tasks stays in the system.
 |                                                        | ...knows RegisterTask? | Platform | HC+LC |
 | 2. The system asks needed information (i.e. id, brief description, time duration, cost per hour, category). |  |  |  |  
 | 3. The collaborator introduces the information. | ...keeps the information? | Task | IE: Knows his own information |
-| 4. The system validates and displays the information to the collaborater, asking for confirmation. | ...validates the information?(local)? | Task  | IE: Knows his own information |  
+| 4. The system validates and displays the information to the collaborator, asking for confirmation. | ...validates the information?(local)? | Task  | IE: Knows his own information |  
 |                                                                                                    | ...validates the information(global)? | RegisterTask | HC+LC |                                        
 | 5. The collaborator confirms. |  |  |  |
-| 6. The system regists the information and informs the collaborator about the sucess of the operation. | ...keeps the task created? | Registertask | HC+LC: Platform delegated functions  |
+| 6. The system regists the information and informs the collaborator about the success of the operation. | ...keeps the task created? | Registertask | HC+LC: Platform delegated functions  |
 |                                                                                                       | ...informs the collaborator? | CreaterTaskUI | Pure Fabrication |
 
 
