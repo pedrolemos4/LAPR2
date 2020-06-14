@@ -47,6 +47,7 @@ class PaymentTransaction{
   -Date endDate
   -Integer delay
   -String workQualityDescription
+  -Double payAmount
 }
 
 Platform "1" -- "*" Organization : has registered >
@@ -55,7 +56,6 @@ Organization "1" -- "1" Collaborator: has >
 Organization "1" -- "*" Task: has >
 Organization "1" -- "*" PaymentTransaction: has >
 Collaborator "0..1" -- "1" User: acts like >
-Freelancer "0..1" -- "1" User: acts like >
 Collaborator "1" -- "*" Freelancer: create >
 Collaborator "1" -- "*" Task: create >
 Collaborator "1" -- "*" PaymentTransaction: create >

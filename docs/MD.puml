@@ -51,6 +51,7 @@ class PaymentTransaction{
   -Date endDate
   -Integer delay
   -String workQualityDescription
+  -Double payAmount
 }
 
 class PaymentDay {
@@ -80,8 +81,6 @@ Collaborator "1" -- "1..*" PaymentTransaction: sees statistics about >
 Manager "0..1" -- "1" User: acts like >
 Manager "1" -- "1" PaymentDay : sets >
 Manager "1" -- "1..*" PaymentTransaction: sees statistics about >
-
-Freelancer "0..1" -- "1" User: acts like >
 
 Task "1..*" -- "1" Freelancer: is assigned to >
 

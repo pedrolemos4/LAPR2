@@ -10,9 +10,6 @@ participant "session\n:UserSession" as SESSAO
 participant ":Platform" as PLAT
 participant "orgR:\nOrganizationsRecord" as ORGR
 participant "org:\nOrganization" as ORG
-participant "tLst:\nTaskList" as TL
-participant "task:\nTask" as TA
-participant ":frlR\nFreelancersRecord" as FR
 participant ":Date" as DA
 participant "ptL:\nPaymentTransactionList" as ptL
 participant "payT:\nPaymentTransaction" as PA
@@ -50,22 +47,6 @@ CTRL -> ORGR: org = getOrganizationByUserEmail(email)
 activate ORGR
 deactivate ORGR
 
-CTRL -> ORG: tLst = getTaskList()
-activate ORG
-deactivate ORG
-
-CTRL -> TL: task = getTaskByStringValue(taskString)
-activate TL
-deactivate TL
-
-CTRL -> PLAT: frlR = getFreelancersRecord()
-activate PLAT
-deactivate PLAT
-
-CTRL -> FR: free = getFreelancerByStringValue(freelancerString)
-activate FR
-deactivate FR
-
 CTRL -> DA : endDate = convertStringToDate(eDate)
 activate DA
 deactivate DA
@@ -74,9 +55,13 @@ CTRL -> ORG: ptL = getPaymentTransactionList()
 activate ORG
 deactivate ORG
 
-CTRL -> ptL : payT = newPaymentTransaction(payTId, task, free, endDate, delay, workQualityDescription)
+CTRL -> ptL : payT = newPaymentTransaction(org, payTId, task, free, endDate, delay, workQualityDescription)
 activate ptL
-ptL --> PA**: create(payTId, task, free, endDate, delay, workQualityDescription)
+ptL -> PA**: create(org, payTId, task, free, endDate, delay, workQualityDescription)
+
+activate PA
+PA -> PA: payAmount = generatePayAmount(task,free)
+deactivate PA
 deactivate ptL
 
 CTRL -> ptL : validatePaymentTransaction(payT)

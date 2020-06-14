@@ -34,23 +34,18 @@ class Freelancer {
 class Organization {
   -String name
   -String NIF
-  +getTaskList()
   +getPaymentTransactionList()
-  
 }
 
 class TaskList {
-  +getTaskByStringValue(taskString)
 }
 
 class Platform {
   -String designation
   +OrganizationsRecord getOrganizationsRecord()
-  +FreelancersRecord getFreelancersRecord()
 }
 
 class FreelancersRecord {
-  +getFreelancerByStringValue(freelancerString)
 }
 
 class OrganizationsRecord {
@@ -70,12 +65,13 @@ class PaymentTransaction{
   -Date endDate
   -Integer delay
   -String workQualityDescription
+  -Double payAmount
   +generatePayAmount(task, free)
-  +PaymentTransaction(payTId, task, free, endDate, delay, workQualityDescription)
+  +PaymentTransaction(org, payTId, task, free, endDate, delay, workQualityDescription)
 }
 
 class PaymentTransactionList{
-  +newPaymentTransaction(payTId, task, free, endDate, delay, workQualityDescription)
+  +newPaymentTransaction(org, payTId, task, free, endDate, delay, workQualityDescription)
   +validatePaymentTransaction(payT)
   +paymentTransactionRegister(payT)
   +addPaymentTransaction(payT)
