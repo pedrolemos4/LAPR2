@@ -126,7 +126,6 @@ public class JanelaLogin_1_UI implements Initializable {
         if (POTApplication.getFacadeAuthorization().doLogin(email, password)) {
             switch (POTApplication.getFacadeAuthorization().getCurrentSession().getUser().getRole()) {
                 case "ADMINISTRATOR":
-                    System.out.println("Admin");
                     goToScene(event, "/fxml/OptionsAdmin.fxml");
                     break;
                 case "ORGANIZATION_COLLABORATOR":
