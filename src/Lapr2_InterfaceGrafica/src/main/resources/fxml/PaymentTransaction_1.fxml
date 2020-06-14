@@ -119,7 +119,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </BorderPane.margin>
          <children>
-            <Button fx:id="btnNext" mnemonicParsing="false" onAction="#btnNextAction" text="Next" />
+            <Button fx:id="btnNext" mnemonicParsing="false" onAction="#btnNextAction" text="Create" />
             <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#btnCancelAction" text="Cancel" />
          </children>
       </FlowPane>

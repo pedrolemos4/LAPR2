@@ -84,7 +84,7 @@
                   <Insets right="70.0" />
                </GridPane.margin>
             </TextField>
-            <Button fx:id="btnNext" defaultButton="true" mnemonicParsing="false" onAction="#btnNextAction" text="Next" translateX="232.0" GridPane.rowIndex="11">
+            <Button fx:id="btnNext" defaultButton="true" mnemonicParsing="false" onAction="#btnNextAction" text="Create" translateX="232.0" GridPane.rowIndex="11">
                <GridPane.margin>
                   <Insets bottom="20.0" />
                </GridPane.margin>

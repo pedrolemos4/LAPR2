@@ -27,9 +27,9 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label text="Date" translateX="90.0" translateY="-30.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Day" translateX="90.0" translateY="-30.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Time of the Day" translateX="18.0" translateY="30.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="txtDate" promptText="dd/mm/yyyy" translateY="-30.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <TextField fx:id="txtDate" translateY="-30.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <TextField fx:id="txtTimeOfTheDay" promptText="hh:mm" translateY="30.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Button fx:id="btnConfirm" defaultButton="true" mnemonicParsing="false" onAction="#btnConfirmAction" text="Confirm" translateX="50.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#btnCancelAction" text="Cancel" translateX="20.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
