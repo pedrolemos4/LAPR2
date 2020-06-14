@@ -49,7 +49,6 @@ public class CreateTaskController {
         Task task1 = this.taskList.newTask(id, briefDescription, timeDuration, costPerHour, category);
         this.task = task1;
         if (this.taskList.validateTask(task)) {
-            System.out.println("Validou Controller");
 //            this.taskList.addTask(this.task);
             return this.task;
         }

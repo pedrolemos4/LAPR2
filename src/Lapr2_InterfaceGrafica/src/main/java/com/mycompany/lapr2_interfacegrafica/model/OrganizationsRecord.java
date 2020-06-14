@@ -135,6 +135,13 @@ public class OrganizationsRecord implements Serializable {
         return mapTotalPayments;
     }
 
+    //UC8
+    public TreeMap<String, List<Double>> determinatePayOrg(Organization org) {
+        TreeMap<String, List<Double>> mapTotalPayments = new TreeMap<>();
+        org.determinatePayOrg(mapTotalPayments);
+        return mapTotalPayments;
+    }
+
     public TreeMap<String, Double> calcMeanPayment(TreeMap<String, List<Double>> mapTotalPayments) {
         TreeMap<String, Double> mapMeanPayments = new TreeMap<>();
         double sum = 0, mean = 0;
@@ -174,6 +181,13 @@ public class OrganizationsRecord implements Serializable {
             o.determinateDelayOrg(mapTotalDelays);
         }
         return mapTotalDelays;
+    }
+
+    //UC8
+    public TreeMap<String, List<Double>> determinateDelayOrg(Organization org) {
+        TreeMap<String, List<Double>> mapTotalPayments = new TreeMap<>();
+        org.determinateDelayOrg(mapTotalPayments);
+        return mapTotalPayments;
     }
 
     public TreeMap<String, Double> calcMeanDelay(TreeMap<String, List<Double>> mapTotalDelays) {
@@ -241,7 +255,7 @@ public class OrganizationsRecord implements Serializable {
         for (Organization org : m_lstOrganizations) {
             counter += org.calcCounterDelays();
         }
-        NormalDistribution normalD = new NormalDistribution(m,Math.sqrt(deviation / counter));
+        NormalDistribution normalD = new NormalDistribution(m, Math.sqrt(deviation / counter));
         return 1 - normalD.cumulativeProbability(x);
     }
 }
