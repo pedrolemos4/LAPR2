@@ -1,0 +1,37 @@
+@startuml
+autonumber
+
+actor "Administrator" as ADM
+participant ":JanelaOptionsAdminScene_UI" as UI
+participant ":SendEmailController" as CTRL
+participant ":FreelancersRecord" as REC
+
+activate ADM
+ADM -> UI : starts the process of sending the email to the freelancers
+activate UI
+
+UI -> CTRL : sendEmail()
+activate CTRL
+
+CTRL -> REC : sendEmail()
+activate REC
+
+ref OVER REC
+SD_sendEmail
+end REF
+
+REC -> CTRL : sendEmail(percentageDelayFreel,amountForHourDelay)
+
+
+deactivate REC
+
+CTRL -> UI : sendEmail(percentageDelayFreel,amountForHourDelay)
+
+deactivate CTRL
+
+deactivate UI
+
+deactivate ADM
+
+
+@enduml
