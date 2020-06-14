@@ -12,7 +12,6 @@ public class ExternalAlgorithm1API implements PasswordGeneratorAlgorithm {
             int character = (int) (Math.random() * ALPHA_NUMERIC_STRING.length());
             builder.append(ALPHA_NUMERIC_STRING.charAt(character));
         }
-        System.out.println("Olá + " + builder.toString());
         return builder.toString();
     }
 

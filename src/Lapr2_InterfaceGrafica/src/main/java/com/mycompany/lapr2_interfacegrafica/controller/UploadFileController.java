@@ -1,8 +1,6 @@
 package com.mycompany.lapr2_interfacegrafica.controller;
 
 import com.mycompany.lapr2_interfacegrafica.authorization.FacadeAuthorization;
-import com.mycompany.lapr2_interfacegrafica.authorization.model.User;
-import com.mycompany.lapr2_interfacegrafica.authorization.model.UserSession;
 import com.mycompany.lapr2_interfacegrafica.model.CsvReader;
 import com.mycompany.lapr2_interfacegrafica.model.FileReader;
 import com.mycompany.lapr2_interfacegrafica.model.FreelancersRecord;
@@ -16,10 +14,6 @@ import com.mycompany.lapr2_interfacegrafica.model.TxtReader;
 import java.io.File;
 import java.util.List;
 
-/**
- *
- * @author beatr
- */
 public class UploadFileController {
     private OrganizationsRecord orgRec;
     private Platform m_Platform;

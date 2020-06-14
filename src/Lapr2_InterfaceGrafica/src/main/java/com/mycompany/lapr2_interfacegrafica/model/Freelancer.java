@@ -24,9 +24,6 @@ public class Freelancer implements Serializable {
     }
 
     public Freelancer(String id, String name, String lvlExp, String email, String nif, String iban, String country, String adress) {
-//        if (id==null || adress == null || country == null || email == null || iban == null || lvlExp == null || name == null || nif == null) {
-//            throw new IllegalArgumentException("None of the arguments can be null or empty.");
-//        }
         setAddress(adress);
         setCountry(country);
         setEmail(email);

@@ -2,17 +2,17 @@ package com.mycompany.lapr2_interfacegrafica.model;
 
 import com.mycompany.lapr2_interfacegrafica.authorization.FacadeAuthorization;
 import com.mycompany.lapr2_interfacegrafica.controller.POTApplication;
+import com.mycompany.lapr2_interfacegrafica.ui.AlertUI;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Scanner;
 import java.util.Timer;
+import javafx.scene.control.Alert;
 
 public class FreelancersRecord implements Serializable {
 
@@ -124,7 +124,6 @@ public class FreelancersRecord implements Serializable {
                 return freelancer;
             }
         }
-//        throw new IllegalArgumentException("Invalid " + freelancerNIF);
         return null;
     }
 
@@ -157,24 +156,14 @@ public class FreelancersRecord implements Serializable {
     public int getDelay(Freelancer freel3) {
         int delay = 0;
         Platform plat1 = POTApplication.getPlatform();
-//        FacadeAuthorization facade = POTApplication.getFacadeAuthorization();
-//        String email = facade.getCurrentSession().getUser().getEmail();
-//        OrganizationsRecord orgRec = plat.getOrganizationsRecord();
-//        Organization m_Organization = orgRec.getOrganizationByUserEmail(email);
-//        PaymentTransactionList payTL = m_Organization.getPaymentTransactionList();
-
         FacadeAuthorization facade = POTApplication.getFacadeAuthorization();
-//        String email = facade.getCurrentSession().getUser().getEmail();
         OrganizationsRecord orgRec = plat1.getOrganizationsRecord();
-//        Organization m_Organization = orgRec.getOrganizationByUserEmail(email);
         List<Organization> listOrg = orgRec.getOrganizations();
-        for (Organization org : listOrg) {
-            System.out.println("getPaymentTransList: " + org);
-            PaymentTransactionList payTL = org.getPaymentTransactionList();
+        for (Organization org1 : listOrg) {
+            PaymentTransactionList payTL = org1.getPaymentTransactionList();
             List<PaymentTransaction> payemntTransList1 = payTL.getPaymentTransactions();
             for (int k = 0; k < payemntTransList1.size(); k++) {
                 Freelancer frel = payemntTransList1.get(k).getFreelancer();
-                System.out.println("Freel: " + frel);
                 if (frel.equals(freel3)) {
                     if (payemntTransList1.get(k).getDelay() > 0) {
                         delay = delay + payemntTransList1.get(k).getDelay();
@@ -189,19 +178,11 @@ public class FreelancersRecord implements Serializable {
         int numberTrans = 0;
         int delay = 0;
         Platform plat1 = POTApplication.getPlatform();
-//        FacadeAuthorization facade = POTApplication.getFacadeAuthorization();
-//        String email = facade.getCurrentSession().getUser().getEmail();
-//        OrganizationsRecord orgRec = plat.getOrganizationsRecord();
-//        Organization m_Organization = orgRec.getOrganizationByUserEmail(email);
-//        PaymentTransactionList payTL = m_Organization.getPaymentTransactionList();
-
         FacadeAuthorization facade = POTApplication.getFacadeAuthorization();
-//        String email = facade.getCurrentSession().getUser().getEmail();
         OrganizationsRecord orgRec = plat1.getOrganizationsRecord();
-//        Organization m_Organization = orgRec.getOrganizationByUserEmail(email);
         List<Organization> listOrg = orgRec.getOrganizations();
-        for (Organization org : listOrg) {
-            PaymentTransactionList payTL = org.getPaymentTransactionList();
+        for (Organization org1 : listOrg) {
+            PaymentTransactionList payTL = org1.getPaymentTransactionList();
             List<PaymentTransaction> payemntTransList1 = payTL.getPaymentTransactions();
             for (int k = 0; k < payemntTransList1.size(); k++) {
                 Freelancer frel = payemntTransList1.get(k).getFreelancer();
@@ -221,19 +202,13 @@ public class FreelancersRecord implements Serializable {
         List<Freelancer> freelApt = new ArrayList<>();
         for (int i = 0; i < getListFreelancers().size(); i++) {
             Freelancer freel = getListFreelancers().get(i);
-            System.out.println("freelancer: " + freel.toString());
             double delay = getDelay(freel);
-            System.out.println("delay : " + delay);
             double perDelay = getPercentageDelay(freel);
             double averageDelay = getAverageDelay();
             if (delay > 3 && perDelay > averageDelay) {
-                System.out.println("dentro do if");
                 freelApt.add(freel);
             }
 
-        }
-        if (freelApt.isEmpty()) {
-            System.out.println("O PUTO DO ARRAY TA NULL");
         }
         return freelApt;
     }
@@ -244,24 +219,13 @@ public class FreelancersRecord implements Serializable {
      * @throws FileNotFoundException
      */
     public void sendEmail(Freelancer freel) throws FileNotFoundException {
-//        Scanner in = new Scanner("email.txt");
-//        while (in.hasNextLine()) {
-//            String line = in.nextLine();
-//            if (line.trim() == null) {
-//                continue;
-//            }
-//        }
-//        in.close();
-//        PrintWriter out = new PrintWriter("email.txt");
-//        String fileContent = String.format("O freelancer com o email: %n, tem um delay de %d e uma percentagem de delay de %d.", getAverageDelay(), getDelay(freel), getPercentageDelay(freel));
-//        out.printf(fileContent);
-//        out.close();
         try (FileWriter writer = new FileWriter("email.txt", true)) {
-            writer.write("The freelancer with the email: " + freel.getEmail() + "With an average delay of: " + getAverageDelay() + "has"
-                    + " with a delay of: " + getDelay(freel) + " and a delay percentage of: " + getPercentageDelay(freel) + "\n");
+            writer.write("The freelancer with the email: " + freel.getEmail() + 
+                    "With an average delay of: " + getAverageDelay() + "has"
+                            + " with a delay of: " + getDelay(freel) + " and a delay percentage of: " + getPercentageDelay(freel) + "\n");
             writer.close();
         } catch (IOException ex) {
-            System.out.println("Error in sending email!");
+            AlertUI.createAlert(Alert.AlertType.ERROR, "T4J-PAYMENTS", "Error", "Error in sending email!").show();
         }
     }
 
@@ -269,19 +233,12 @@ public class FreelancersRecord implements Serializable {
         double totalDelay = 0;
         int n = 0;
         Platform plat1 = POTApplication.getPlatform();
-//        FacadeAuthorization facade = POTApplication.getFacadeAuthorization();
-//        String email = facade.getCurrentSession().getUser().getEmail();
-//        OrganizationsRecord orgRec = plat.getOrganizationsRecord();
-//        Organization m_Organization = orgRec.getOrganizationByUserEmail(email);
-//        PaymentTransactionList payTL = m_Organization.getPaymentTransactionList();
 
         FacadeAuthorization facade = POTApplication.getFacadeAuthorization();
-//        String email = facade.getCurrentSession().getUser().getEmail();
         OrganizationsRecord orgRec = plat1.getOrganizationsRecord();
-//        Organization m_Organization = orgRec.getOrganizationByUserEmail(email);
         List<Organization> listOrg = orgRec.getOrganizations();
-        for (Organization org : listOrg) {
-            PaymentTransactionList payTL = org.getPaymentTransactionList();
+        for (Organization org1 : listOrg) {
+            PaymentTransactionList payTL = org1.getPaymentTransactionList();
             List<PaymentTransaction> payemntTransList1 = payTL.getPaymentTransactions();
             for (int k = 0; k < payemntTransList1.size(); k++) {
                 PaymentTransaction trans = payemntTransList1.get(k);

@@ -8,21 +8,13 @@ import com.mycompany.lapr2_interfacegrafica.model.OrganizationsRecord;
 import com.mycompany.lapr2_interfacegrafica.model.PaymentTransaction;
 import com.mycompany.lapr2_interfacegrafica.model.PaymentTransactionList;
 import com.mycompany.lapr2_interfacegrafica.model.Platform;
-import com.mycompany.lapr2_interfacegrafica.model.Task;
-import com.mycompany.lapr2_interfacegrafica.model.TaskList;
 import com.mycompany.lapr2_interfacegrafica.ui.AlertUI;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.scene.control.Alert;
 import lapr2.pot.ui.console.utils.Date;
 
@@ -63,7 +55,6 @@ public class SetDayOfPaymentController {
         Organization m_Organization = orgRec.getOrganizationByUserEmail(email);
         PaymentTransactionList payTL = m_Organization.getPaymentTransactionList();
 
-        //data de hoje que é um dia de pagamento
         Calendar calToday = Calendar.getInstance();
         calToday.setTime(new java.util.Date());
         calToday.set(Calendar.HOUR_OF_DAY, 0);
@@ -74,8 +65,6 @@ public class SetDayOfPaymentController {
         Calendar calLastMonth = (Calendar) calToday.clone();
         calLastMonth.add(Calendar.MONTH, -1);
 
-        //paga-se as transacoes cuja endDate PERTENCA a [calLastMonth, calToday[
-        //percorre-se a lista uma primeira vz para colecionar todos os freelancers que tenham pagamentos
         FreelancersRecord frelRec = plat.getFreelancersRecord();
         List<Freelancer> freelancers = frelRec.getListFreelancers();
         for (PaymentTransaction payment : payTL.getPaymentTransactions()) {
@@ -84,8 +73,6 @@ public class SetDayOfPaymentController {
             endDate.set(Calendar.YEAR, dataPagamento.getYear());
             endDate.set(Calendar.MONTH, dataPagamento.getMonth());
             endDate.set(Calendar.DAY_OF_MONTH, dataPagamento.getDay());
-            //se estiver entre data do ultimo mes INCLUSIVE e ate data de hoje EXCLUSIVE
-            //primeiro obtem-se uma lista dos freelancers que vao ser pagos
             if (endDate.equals(calLastMonth) || endDate.after(calLastMonth) && endDate.before(calToday)) {
                 if (!freelancers.contains(payment.getFreelancer())) {
                     freelancers.add(payment.getFreelancer());
@@ -94,7 +81,6 @@ public class SetDayOfPaymentController {
         }
         double totalPayment;
         String emailReport;
-        //percorre-se todos os freelancers
         for (Freelancer freelancer : freelancers) {
             totalPayment = 0;
             emailReport = "";
@@ -107,9 +93,7 @@ public class SetDayOfPaymentController {
                     endDate.set(Calendar.MONTH, dataPagamento.getMonth());
                     endDate.set(Calendar.DAY_OF_MONTH, dataPagamento.getDay());
 
-                    //se estiver entre data do ultimo mes INCLUSIVE e ate data de hoje EXCLUSIVE
                     if (endDate.equals(calLastMonth) || endDate.after(calLastMonth) || endDate.before(calToday)) {
-                        //processar pagamento
                         totalPayment += payment.getPayAmount();
 
                         emailReport += "Tarefa: " + payment.getTask().getBriefDescription() + "\n"
@@ -119,7 +103,6 @@ public class SetDayOfPaymentController {
             }
 
             emailReport += "Total Amount in Euros: " + totalPayment + "\n\n";
-            //executeTransferOrder(payment.getFreelancer().getIban(), payment.getPayAmount());
             sendEmail(freelancer.getEmail(), emailReport);
         }
     }
@@ -133,10 +116,7 @@ public class SetDayOfPaymentController {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                //processa os pagamentos
                 processPayments();
-                //agenda para o proximo mes                
-                //adiciona um mes ao momento atual
                 cal.add(Calendar.MONTH, 1);
                 setNextProcessment(cal);
             }

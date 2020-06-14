@@ -5,10 +5,6 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import lapr2.pot.ui.console.utils.Date;
 
-/**
- *
- * @author beatr
- */
 public class CsvReader implements FileReader {
 
     private PaymentTransactionList m_paymentTransactionList;
@@ -34,7 +30,6 @@ public class CsvReader implements FileReader {
             readFile(ler);
         } catch (FileNotFoundException ex) {
             fileExists = false;
-            System.out.println("File Not Found!");
         }
     }
 
@@ -85,15 +80,11 @@ public class CsvReader implements FileReader {
                         }
                     }
 
-                    //creates paymentTransaction
                     PaymentTransaction payTransaction = m_paymentTransactionList.newPaymentTransaction1(transactionId,
                             task,free, parseDate(items[6]), Integer.parseInt(items[7]), items[8]);
                     if (m_paymentTransactionList.validatePaymentTransaction(payTransaction)) {
-//m_paymentTransactionList.validatePaymentTransaction(payTransaction)) {
                         m_paymentTransactionList.paymentTransactionRegister(payTransaction);
                         validLine++;
-//                        return true;// m_paymentTransactionList.paymentTransactionRegister(payTransaction);
-                        //validLine++;
                     }
                     
                 } catch (IllegalArgumentException | ArrayIndexOutOfBoundsException ex) {
