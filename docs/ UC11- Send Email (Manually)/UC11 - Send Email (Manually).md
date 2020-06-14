@@ -8,7 +8,7 @@ The administrator sends the email to the freelancers. The system makes the valid
 
 
 ### SSD
-![UC10_SSD.png](UC10_SSD.png)
+![UC11_SSD.png](UC11_SSD.png)
 
 
 ### Full Format
