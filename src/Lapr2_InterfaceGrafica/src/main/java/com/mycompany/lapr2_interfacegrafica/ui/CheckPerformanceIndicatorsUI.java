@@ -24,6 +24,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -42,8 +43,6 @@ public class CheckPerformanceIndicatorsUI implements Initializable {
     @FXML
     private Button btnClean;
     @FXML
-    private ListView< TreeMap<String, Double> > lstFreelancerAndInfo;
-    @FXML
     private BarChart<?, ?> barChartHistograms;
     @FXML
     private CategoryAxis intervals;
@@ -54,7 +53,31 @@ public class CheckPerformanceIndicatorsUI implements Initializable {
     @FXML
     private TextField txtProbability;
     @FXML
-    private NumberAxis numberOfFreelancers;
+    private Label lblMpayments;
+    @FXML
+    private Label lblMdelays;
+    @FXML
+    private TextField txtMpayments;
+    @FXML
+    private TextField txtMdelays;
+    @FXML
+    private Label lblDpayments;
+    @FXML
+    private Label lblDdelays;
+    @FXML
+    private TextField txtDpayments;
+    @FXML
+    private TextField txtDdelays;
+    @FXML
+    private NumberAxis numberOfTasks;
+    @FXML
+    private Label lblListMean;
+    @FXML
+    private ListView< TreeMap<String, Double> > lstMean;
+    @FXML
+    private Label lblListDeviation;
+    @FXML
+    private ListView< TreeMap<String, Double> > lstDeviation;
 
     /**
      * Initializes the controller class.
@@ -62,17 +85,20 @@ public class CheckPerformanceIndicatorsUI implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.controller = new CheckPerformanceIndicatorsController();
-        txtProbability.setText(String.format("The probability of the execution delay time of the freelancers that higher than 3 hours is %.4f\n"
-                + "All Freelancers: Mean Delay is %.2f , Deviation Delay is %.2f\n"
-                + "Mean Payment is %.2f , Deviation Payment is %.2f", controller.determinateNormalDistribution(),
-                controller.determinateIntervalsMean(controller.determinateDelayPlatform()),controller.determinateIntervalsDeviation(controller.determinateDelayPlatform())
-                ,controller.determinateIntervalsMean(controller.determinatePayPlatform()),controller.determinateIntervalsDeviation(controller.determinatePayPlatform())));
+        txtProbability.setText(String.format("The probability of the execution delay time of the freelancers that higher than 3 hours is %.4f"
+                , controller.determinateNormalDistribution()));
+        txtMpayments.setText(String.format("%.2f", controller.determinateIntervalsMean(controller.determinatePayPlatform())));
+        txtMdelays.setText(String.format("%.2f", controller.determinateIntervalsMean(controller.determinateDelayPlatform())));
+        txtDpayments.setText(String.format("%.2f", controller.determinateIntervalsDeviation(controller.determinatePayPlatform())));
+        txtDdelays.setText(String.format("%.2f", controller.determinateIntervalsDeviation(controller.determinateDelayPlatform())));
+        
     }
     
     @FXML
     private void cleanAll(ActionEvent event) {
         barChartHistograms.getData().clear();
-        lstFreelancerAndInfo.getItems().clear();
+        lstDeviation.getItems().clear();
+        lstMean.getItems().clear();
     }
 
     
@@ -249,13 +275,15 @@ public class CheckPerformanceIndicatorsUI implements Initializable {
     @FXML
     private void showHdelays(ActionEvent event) {
         barChartHistograms.getData().clear();
-        lstFreelancerAndInfo.getItems().clear();
+        lstDeviation.getItems().clear();
+        lstMean.getItems().clear();
         
         TreeMap<String, Double> lstMeanDelay;
         lstMeanDelay = this.controller.calcMeanDelay();
+        lstMean.getItems().addAll(lstMeanDelay);
         TreeMap<String, Double> lstDeviationDelay;
         lstDeviationDelay = this.controller.calcDeviationDelay();
-        lstFreelancerAndInfo.getItems().addAll(lstMeanDelay,lstDeviationDelay);
+        lstDeviation.getItems().addAll(lstDeviationDelay);
         
         XYChart.Series barDeviationDelay = new XYChart.Series<>();
         barChartHistograms.setTitle("Delays");
@@ -267,7 +295,6 @@ public class CheckPerformanceIndicatorsUI implements Initializable {
         barDeviationDelay.getData().add(new XYChart.Data(calcThirdIntervalDelay(),
                 valuesThirdIntervalDelay(controller.determinateDelayPlatform())));
         
-        System.out.println(valuesFirstIntervalDelay(controller.determinateDelayPlatform()));
         
         barChartHistograms.getData().add(barDeviationDelay);
     }
@@ -275,13 +302,15 @@ public class CheckPerformanceIndicatorsUI implements Initializable {
     @FXML
     private void showHpayments(ActionEvent event) {
         barChartHistograms.getData().clear();
-        lstFreelancerAndInfo.getItems().clear();
+        lstDeviation.getItems().clear();
+        lstMean.getItems().clear();
         
         TreeMap<String, Double> lstMeanPayments;
         lstMeanPayments = this.controller.calcMeanPayment();
+        lstMean.getItems().addAll(lstMeanPayments);
         TreeMap<String, Double> lstDeviationPayments;
         lstDeviationPayments = this.controller.calcDeviationPayment();
-        lstFreelancerAndInfo.getItems().addAll(lstMeanPayments,lstDeviationPayments);
+        lstDeviation.getItems().addAll(lstDeviationPayments);
 
         XYChart.Series barDeviationPayment = new XYChart.Series<>();
         barChartHistograms.setTitle("Payments");
@@ -293,7 +322,6 @@ public class CheckPerformanceIndicatorsUI implements Initializable {
         barDeviationPayment.getData().add(new XYChart.Data(calcThirdIntervalPayment(),
                 valuesThirdIntervalPayment(controller.determinatePayPlatform())));        
         
-        System.out.println(valuesFirstIntervalPayment(controller.determinatePayPlatform()));
         
         barChartHistograms.getData().add(barDeviationPayment);
         
