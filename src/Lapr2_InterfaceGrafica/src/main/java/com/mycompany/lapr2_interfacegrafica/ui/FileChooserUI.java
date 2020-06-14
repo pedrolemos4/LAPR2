@@ -2,10 +2,6 @@ package com.mycompany.lapr2_interfacegrafica.ui;
 
 import javafx.stage.FileChooser;
 
-/**
- *
- * @author beatr
- */
 public class FileChooserUI {
     private FileChooser fileChooser;
 

@@ -19,17 +19,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
-/**
- *
- * @author Tiago
- */
 public class CreateTaskScene_1_UI implements Initializable {
 
     private JanelaOptionsCollaboratorScene_UI optionsCollaboratorUI;
 
     private CreateTaskController createTaskController;
 
-    //  private CreateTaskUI createTaskUI;
     @FXML
     private TextField txtTaskID;
     @FXML
@@ -56,21 +51,9 @@ public class CreateTaskScene_1_UI implements Initializable {
         return this.txtTaskID;
     }
 
-//    public void setCreateTask(CreateTaskUI createTaskUI) {
-//        this.createTaskUI = createTaskUI;
-//    }
-    public void showTask() {
-//        this.txtTaskID.setText(this.createTaskController.getTaskId());
-//        this.txtTaskDescription.setText(this.createTaskController.getTaskDescription);
-//        this.txtTimeDuration.setText(this.createTaskController.getTimeDuration);
-//        this.txtCostPerHour.setText(this.createTaskController.getCostPerHour);
-//        this.txtTaskCategory.setText(this.createTaskController.getTaskCategory);
-    }
-
     @FXML
     private void btnCancelAction(ActionEvent event) throws IOException {
         goToScene(event, "/fxml/OptionsCollaborator.fxml");
-        //     this.createTaskUI.getMainApp().toMainScene();
     }
 
     @FXML
@@ -89,10 +72,6 @@ public class CreateTaskScene_1_UI implements Initializable {
                         "Task was not registered").show();
                 goToScene(event, "/fxml/CreateTask_1_.fxml");
             }
-            //goToScene(event,"/fxml/CreateTask_2.fxml");
-//            this.createTaskUI.getController().newTask(txtTaskID.getText(), txtTaskDescription.getText(),
-//                    txtTimeDuration.getText(), txtCostPerHour.getText(), txtTaskCategory.getText());
-//            this.createTaskUI.toCreateTaskScene2();
         } catch (IllegalArgumentException ex) {
             lblAlert.setText(ex.getMessage());
             if (ex.getMessage().toLowerCase().contains(" id")) {

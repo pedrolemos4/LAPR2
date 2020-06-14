@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.mycompany.lapr2_interfacegrafica.ui;
 
 import com.mycompany.lapr2_interfacegrafica.controller.CheckStatisticsController;
@@ -32,10 +28,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-/**
- *
- * @author Tiago
- */
 public class JanelaCheckStatisticsUI implements Initializable {
 
     private JanelaOptionsCollaboratorScene_UI optionCollabUI;
@@ -107,12 +99,8 @@ public class JanelaCheckStatisticsUI implements Initializable {
         statisticsStage = new Stage();
         statisticsStage.initModality(Modality.APPLICATION_MODAL);
         statisticsStage.setScene(scene);
-        System.out.println("Será que mostrou?");
         loader.setController(this);
         statisticsStage.show();
-        //setComboBoxFreelancer(transactionStage, scene);
-//        transactionStage.setScene(scene);
-//        transactionStage.show();
     }
 
     private double getInferiorLimitPayment() {
@@ -282,12 +270,8 @@ public class JanelaCheckStatisticsUI implements Initializable {
         statisticsStage = new Stage();
         statisticsStage.initModality(Modality.APPLICATION_MODAL);
         statisticsStage.setScene(scene);
-        System.out.println("Será que mostrou?");
         loader.setController(this);
         statisticsStage.show();
-        //setComboBoxFreelancer(transactionStage, scene);
-//        transactionStage.setScene(scene);
-//        transactionStage.show();
     }
 
     public void setController() {
@@ -296,11 +280,9 @@ public class JanelaCheckStatisticsUI implements Initializable {
 
     public void goToScene(ActionEvent event, String fxml) throws IOException {
         Parent button = FXMLLoader.load(getClass().getResource(fxml));
-        //  System.out.println("Será que mostrou?");
         Scene buttonScene = new Scene(button);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(buttonScene);
-        //System.out.println("Vais Mostrar?");
         window.show();
     }
 

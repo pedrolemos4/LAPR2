@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.mycompany.lapr2_interfacegrafica.ui;
 
 import com.mycompany.lapr2_interfacegrafica.controller.SetDayOfPaymentController;
@@ -22,13 +18,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-/**
- *
- * @author Tiago
- */
 public class SetDayOfPaymentScene_1_UI implements Initializable {
 
-    // private SetDayOfPaymentUI setDayOfPaymentUI;
     private SetDayOfPaymentController controller;
 
     @FXML
@@ -48,9 +39,6 @@ public class SetDayOfPaymentScene_1_UI implements Initializable {
         this.controller = new SetDayOfPaymentController();
     }
 
-//    public void setSetDayOfPaymentUI(SetDayOfPaymentUI setDayOfPaymentUI) {
-//        this.setDayOfPaymentUI = setDayOfPaymentUI;
-//    }
     public TextField getTxtDate() {
         return this.txtDate;
     }

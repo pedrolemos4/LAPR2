@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.lapr2_interfacegrafica.ui;
 
 import com.mycompany.lapr2_interfacegrafica.controller.SendEmailController;
@@ -12,19 +7,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
-
 
 public class JanelaOptionsAdminScene_UI implements Initializable {
 
@@ -78,19 +65,12 @@ public class JanelaOptionsAdminScene_UI implements Initializable {
 
     @FXML
     private void btnSendEmailAction(ActionEvent event) throws FileNotFoundException {
-      //  try {
-            System.out.println("entra no try");
-            sendEmailController = new SendEmailController();
-            System.out.println("linha 114");
-            /*this.lstFreelApt =*/ sendEmailController.getListFreelancersAdapt();
-            System.out.println("lstFreelApt: " + sendEmailController.getListFreelancersAdapt());
-            if (sendEmailController.getListFreelancersAdapt() == null) {
-                System.out.println("lstFreelApt=null");
-            }
-            for (Freelancer freel : sendEmailController.getListFreelancersAdapt()) {
-                sendEmailController.sendEmail(freel);
-                System.out.println("entra no for");
-                AlertUI.createAlert(Alert.AlertType.INFORMATION, "Sucess", "T4J", "Check the email.txt file").show();
-            }  
+        sendEmailController = new SendEmailController();
+        sendEmailController.getListFreelancersAdapt();
+        for (Freelancer freel : sendEmailController.getListFreelancersAdapt()) {
+            sendEmailController.sendEmail(freel);
+            AlertUI.createAlert(Alert.AlertType.INFORMATION,"T4J-PAYMENTS" ,
+                    "Success" , "Check the email.txt file").show();
         }
     }
+}

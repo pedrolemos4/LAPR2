@@ -9,30 +9,24 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 public class MainApp extends Application {
 
-    public static final String TITULO_APLICACAO = "  ";
+    public static final String TITULO_APLICACAO = "T4J-PAYMENTS";
 
     private Stage stage;
     private final double MINIMUM_WINDOW_WIDTH = 400.0;
@@ -53,7 +47,8 @@ public class MainApp extends Application {
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
-                Alert alert = AlertUI.createAlert(Alert.AlertType.CONFIRMATION, TITULO_APLICACAO, "Exit Confirmation", "Are you sure you want to leave the app?");
+                Alert alert = AlertUI.createAlert(Alert.AlertType.CONFIRMATION, 
+                        TITULO_APLICACAO, "Exit Confirmation", "Are you sure you want to leave the app?");
                 if (alert.showAndWait().get() == ButtonType.CANCEL) {
                     event.consume();
                 } else {

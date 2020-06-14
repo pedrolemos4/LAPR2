@@ -1,24 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.mycompany.lapr2_interfacegrafica.ui;
 
 import com.mycompany.lapr2_interfacegrafica.authorization.FacadeAuthorization;
 import com.mycompany.lapr2_interfacegrafica.controller.POTApplication;
-import com.mycompany.lapr2_interfacegrafica.model.Constants;
-import static com.mycompany.lapr2_interfacegrafica.model.Constants.ADMINISTRATOR_ROLE;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -32,7 +23,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 public class JanelaLogin_1_UI implements Initializable {
 
@@ -69,7 +59,7 @@ public class JanelaLogin_1_UI implements Initializable {
             scene.getStylesheets().add("/styles/Styles.css");
 
         } catch (IOException ex) {
-            AlertUI.createAlert(Alert.AlertType.ERROR, "Error", "T4J-PAYMENTS", ex.getMessage());
+            AlertUI.createAlert(Alert.AlertType.ERROR, "T4J-PAYMENTS", "Error", ex.getMessage());
         }
 
         try {
@@ -84,7 +74,7 @@ public class JanelaLogin_1_UI implements Initializable {
             optionsCollaboratorUI = loader.getController();
             optionsCollaboratorUI.setNewOptionsCollaboratorUI(this);
         } catch (IOException ex) {
-            AlertUI.createAlert(Alert.AlertType.ERROR, "Error", "T4J-Payments", ex.getMessage());
+            AlertUI.createAlert(Alert.AlertType.ERROR, "T4J-PAYMENTS", "Error", ex.getMessage());
         }
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/OptionsManager.fxml"));
@@ -99,7 +89,7 @@ public class JanelaLogin_1_UI implements Initializable {
             optionsManagerUI = loader.getController();
             optionsManagerUI.setNewOptionsManagerUI(this);
         } catch (IOException ex) {
-            AlertUI.createAlert(Alert.AlertType.ERROR, "Error", "T4J-PAYMENTS", ex.getMessage());
+            AlertUI.createAlert(Alert.AlertType.ERROR, "T4J-PAYMENTS", "Error", ex.getMessage());
         } finally {
         }
     }
@@ -125,7 +115,7 @@ public class JanelaLogin_1_UI implements Initializable {
             loginUI.setNewLoginUI(this);
             loginStage.show();
         } catch (IOException ex) {
-            AlertUI.createAlert(Alert.AlertType.ERROR, "Error", "T4J-Payments", ex.getMessage());
+            AlertUI.createAlert(Alert.AlertType.ERROR, "T4J-Payments", "Error", ex.getMessage());
         }
     }
 
@@ -134,7 +124,6 @@ public class JanelaLogin_1_UI implements Initializable {
         String email = this.txtEmail.getText();
         String password = this.txtPassword.getText();
         if (POTApplication.getFacadeAuthorization().doLogin(email, password)) {
-            System.out.println("Login");
             switch (POTApplication.getFacadeAuthorization().getCurrentSession().getUser().getRole()) {
                 case "ADMINISTRATOR":
                     System.out.println("Admin");

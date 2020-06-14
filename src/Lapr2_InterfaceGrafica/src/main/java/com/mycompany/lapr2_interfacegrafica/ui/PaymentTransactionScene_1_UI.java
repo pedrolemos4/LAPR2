@@ -2,19 +2,13 @@ package com.mycompany.lapr2_interfacegrafica.ui;
 
 import com.mycompany.lapr2_interfacegrafica.controller.CreatePaymentTransactionController;
 import com.mycompany.lapr2_interfacegrafica.model.Freelancer;
-import com.mycompany.lapr2_interfacegrafica.model.PaymentTransaction;
 import com.mycompany.lapr2_interfacegrafica.model.Task;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -66,31 +60,15 @@ public class PaymentTransactionScene_1_UI implements Initializable {
         this.controller = new CreatePaymentTransactionController();
 
         List<Task> tasks = controller.getTasks();
-        System.out.println("ANTES DO FOR");
-        System.out.println("Task: " + tasks);
-        for (Task task : tasks) {
-            System.out.println("Task: " + task);
-        }
         this.cmbTask = new ComboBox(FXCollections.observableArrayList(controller.getTasks()));
         this.cmbFreelancer = new ComboBox(FXCollections.observableArrayList(controller.getFreelancers()));
 
         TilePane tile_pane = new TilePane(cmbTask, cmbFreelancer);
-        //TilePane tile_pane2 = new TilePane(cmbFreelancer);
-
-        //Scene scene1 = new Scene(tile_pane2, 200, 200);
         Scene scene2 = new Scene(tile_pane, 400, 400);
-
         transactionStage.setScene(scene2);
-
         transactionStage.showAndWait();
         frl = cmbFreelancer.getSelectionModel().getSelectedItem();
-        System.out.println("Freelancer: " + frl);
-
-        //transactionStage.setScene(scene2);
-        //transactionStage.showAndWait();
         task = cmbTask.getSelectionModel().getSelectedItem();
-        System.out.println("Task: " + task);
-
         transactionStage.setScene(scene);
         transactionStage.show();
     }
@@ -111,23 +89,18 @@ public class PaymentTransactionScene_1_UI implements Initializable {
             String endDate = this.txtTaskEndDate.getText();
             int taskDelay = Integer.parseInt(this.txtTaskDelay.getText());
             String workDescription = this.txtWorkDescription.getText();
-            System.out.println("bblabal" + frl);
-            System.out.println("Blelek " + task);
-            if (controller == null) {
-                System.out.println("Controller null");
-            }
-           /* PaymentTransaction payT =*/ controller.newPaymentTransaction(payTId, task,
+            controller.newPaymentTransaction(payTId, task,
                     endDate, taskDelay, workDescription, frl);
             boolean registered = this.controller.paymentTransactionRegister();
-        if (registered) {
-            AlertUI.createAlert(Alert.AlertType.INFORMATION, "T4J-PAYMENTS" ,"Success",
-                    "Payment Transaction registered successfully").show();
-            goToScene(event, "/fxml/OptionsCollaborator.fxml");
-        } else {
-            AlertUI.createAlert(Alert.AlertType.ERROR,"T4J-PAYMENTS" , "Error",
-                    "Payment Transaction was not registered.").show();
-            goToScene(event, "/fxml/PaymentTransaction_1.fxml");
-        }
+            if (registered) {
+                AlertUI.createAlert(Alert.AlertType.INFORMATION, "T4J-PAYMENTS", "Success",
+                        "Payment Transaction registered successfully").show();
+                goToScene(event, "/fxml/OptionsCollaborator.fxml");
+            } else {
+                AlertUI.createAlert(Alert.AlertType.ERROR, "T4J-PAYMENTS", "Error",
+                        "Payment Transaction was not registered.").show();
+                goToScene(event, "/fxml/PaymentTransaction_1.fxml");
+            }
         } catch (NumberFormatException ex) {
             this.lblAlert.setText("Invalid delay!");
             this.txtTaskDelay.requestFocus();
@@ -184,7 +157,6 @@ public class PaymentTransactionScene_1_UI implements Initializable {
         transactionStage = new Stage();
         transactionStage.initModality(Modality.APPLICATION_MODAL);
         transactionStage.setScene(scene);
-        System.out.println("Será que mostrou?");
         loader.setController(this);
         setComboBoxFreelancer(transactionStage, scene);
     }
