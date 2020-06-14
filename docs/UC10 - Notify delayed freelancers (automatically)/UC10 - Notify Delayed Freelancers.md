@@ -76,14 +76,14 @@ The freelancer stays informed.
 |:--------------  |:---------------------- |:----------|:---------------------------- |
 | 1. The collaborator starts to create a new Freelancer. | ...coordinates the UC? | NotifyFreelancersTask | Task |
 |                                                        | ...starts the process of notification? | Timer | Timer |
-|                                                        | ...creates the instance Timer? | Plataform | Creator: Plataform as knowledge of the time to start the notifications. |
+|                                                        | ...creates the instance Timer? | Platform | Creator: Plataform as knowledge of the time to start the notifications. |
 | 2. The system identifies the freelancers that have mean task delay higher than 3 hours and have a percentage of delays higher than the overall percentage of delays. After that, starts the notification of the freelancers. | ...knows FreelancerRecord? | Plataform | IE: Plataform contains RecordFreelancer (HC + LC) |
 |  | ...knows the PaymentTransactionList? | Platform | IE : in the MD Platform has Organization |
 |  | ...knows the each payment transaction? | PaymentTransactionList | IE: Owns the class PaymentTransaction (HC + LC) |
 |  | ...knows the task delay? | PaymentTransaction | IE: Knows its own information |  
 |  | ...knows the percentage of delays? | PaymentTransaction | IE: knows its own information  |
-|  | ...know the freelancers? | ListFreelancers | IE: Owns the class ListFreelancers (HC + LC) |
-|  |                          | PaymentTransactionList | IE : In the MD PaymentTransactionList has Freealancer |
+|  | ...know the freelancers? | FreelancersRecord | IE: Owns the class Freelancers (HC + LC) |
+|  | ...knows all the payments | PaymentTransactionList | IE : In the MD PaymentTransactionList has Freealancer |
 |  | ...knows the freelancer´s email? | Freelancer | IE: Owns his data |
 |  | ...schedules the next year´s notification? | FreelacerRecord | IE |
 
@@ -95,7 +95,7 @@ The freelancer stays informed.
 
  From the racional results the conceptual classes promoted to software classes are : 
  
- * Plataform
+ * Platform
  * PaymentTransaction
  * Organization
  * Freelancer
@@ -104,7 +104,6 @@ The freelancer stays informed.
 
  * NotifyFreelancersTask
  * Timer
- * ListFreelancers
  * FreelancerRecord
  * PaymentTransactionList
 
