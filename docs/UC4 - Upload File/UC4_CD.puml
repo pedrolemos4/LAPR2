@@ -6,7 +6,7 @@ class AplicacaoPOT{
   +getCurrentSession()
 }
 
-class SessaoUtilizador{
+class UserSession{
   +getUserEmail()
 }
 
@@ -31,59 +31,62 @@ class Freelancer {
 
 class Organization {
   -String name
-  +PaymentTransactionRecord getPaymentTransactionRecord()
+  -String NIF
+  +getPaymentTransactionRecord()
+  +getTaskList()
 }
 
 
 class Platform {
   -String designation
-  +OrganizationRecord getOrganizationRecord()
+  +getOrganizationRecord()
+  +getFreelancerRecord()
 }
 
 
-class OrganizationRecord  {
+class OrganizationsRecord  {
   +getOrganizationByUserEmail(email)
 }
 
 class UploadFileController {
-  +readFile(filename)
-  +uploadFileRegister()
+  +getFileCsv(filename)
+  +getTransactions()
 }
 
 class UploadFileUI {
 }
 
 class PaymentTransaction{
-}
-
-class PaymentTransactionRecord{
-    +readFile(filename)
-    +uploadFileRegister(par)
-    +validateUploadFile(par)
-}
-
-class TaskExecution {
  -Date endDate
  -Double delay
  -String workQualityDescription
 }
 
+class PaymentTransactionList{
+    +getPaymentTransactions()
+}
+
+interface FileReader{
+    +readNewFile(filename)
+}
+
+
 UploadFileUI ..> UploadFileController
 UploadFileController ..> Platform
 UploadFileController ..> Organization
 UploadFileController ..> AplicacaoPOT
-UploadFileController ..> SessaoUtilizador
-UploadFileController ..> PaymentTransactionRecord
-UploadFileController ..> OrganizationRecord
-Platform "1" --> "1" OrganizationRecord : has
+UploadFileController ..> UserSession
+UploadFileController ..> PaymentTransactionList
+UploadFileController ..> OrganizationsRecord
+UploadFileController ..> FileReader
+Platform "1" --> "1" OrganizationsRecord : has
 
-OrganizationRecord "1" --> "*" Organization : has
-Organization "1" --> "*" PaymentTransactionRecord : has
-PaymentTransactionRecord "1" --> "*" PaymentTransaction : has
-Task "1" --> "1" TaskExecution : has
+
+OrganizationsRecord "1" --> "*" Organization : has
+Organization "1" --> "*" PaymentTransactionList : has
+PaymentTransactionList "1" --> "*" PaymentTransaction : has
 
 PaymentTransaction "1" --> "1" Freelancer : related to
 PaymentTransaction "1" --> "1" Task : related to
-PaymentTransaction "1" --> "1" TaskExecution : related to
 
 @enduml

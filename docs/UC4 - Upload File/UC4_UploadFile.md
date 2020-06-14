@@ -84,14 +84,16 @@ The file is read and the transaction information is available.
 |:--------------  |:---------------------- |:----------|:---------------------------- |
 |1. The collaborator begins to load a file (txt or csv).|... interacts with the user?| UploadFileUI |Pure Fabrication|
 | |... coordinates the UC?| UploadFileController |Controller|
-| |... knows the user/manager using the system?|UserSession|IE: cf. user management component documentation.|
+| |... knows the user/collaborator using the system?|UserSession|IE: cf. user management component documentation.|
 |2. The system requests the file that registers a set of transitions (filename).||||
-|3. The collaborator enters the name of the file. |... saves the entered data?|PaymentTransactionRecord|IE: In MD, Organization has PaymentTransaction. By application of HC+LC delegates the PaymentTransactionRecord.|
-|||PaymentTransactionRecord|IE: Knows his own information.|
+|3. The collaborator enters the name of the file. |... saves the entered data?|FileReader||
+||...knows PaymentTransactionList?|Organization|IE: has its own data|
+||...knows FreelancerRecord?|Platform|IE: has its own data|
+||...knows TaskList?|Organization|IE: has its own data|
+||...knows PaymentTransaction?|PaymentTransactionList|IE: In MD, Organization has PaymentTransaction. By application of HC+LC delegates the PaymentTransactionList.
 |4. The system displays the file, asking for confirmation. ||||
 |5. The collaborator confirms. ||||
-|6. The system records the file and informs the manager of organization of the success of the operation.|... saves the information?| PaymentTransactionRecord |IE: In MD, Organization has PaymentTransaction. By application of HC+LC delegates the PaymentTransactionRecord.|
-||...informs the manager?| UploadFileUI|Pure Fabrication|
+|6. The system records the file and informs the manager of organization of the success of the operation.|...informs the collaborator?| UploadFileUI|Pure Fabrication|
 
 
              
@@ -102,7 +104,8 @@ The file is read and the transaction information is available.
 
  * Platform
  * Organization
- * PaymentTransactionRecord
+ * PaymentTransactionList
+ * FileReader
 
 
 Other software classes (i.e. Pure Fabrication) identified:  
