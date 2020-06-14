@@ -1,6 +1,9 @@
 package com.mycompany.lapr2_interfacegrafica.model;
 
 import java.io.Serializable;
+import java.text.NumberFormat;
+import java.util.Currency;
+import java.util.Locale;
 import lapr2.pot.ui.console.utils.Date;
 
 public class PaymentTransaction implements Serializable {
@@ -134,5 +137,25 @@ public class PaymentTransaction implements Serializable {
             throw new IllegalArgumentException("Invalid Work Quality Description!");
         }
         this.workQualityDescription = workQualityDescription;
+    }
+
+    public double convertPayAmount(PaymentTransaction payT) {
+        double payAmount = payT.getPayAmount();
+        if (payT.getFreelancer().getCountry().equalsIgnoreCase("USA")) {
+            payAmount = payT.getPayAmount() * 1.13;
+        }
+        if (payT.getFreelancer().getCountry().equalsIgnoreCase("UK")) {
+            payAmount = payT.getPayAmount() * 0.90;
+        }
+        if (payT.getFreelancer().getCountry().equalsIgnoreCase("Brasil")) {
+            payAmount = payT.getPayAmount() * 5.68;
+        }
+        if (payT.getFreelancer().getCountry().equalsIgnoreCase("Japan")) {
+            payAmount = payT.getPayAmount() * 120.83;
+        }
+        if (payT.getFreelancer().getCountry().equalsIgnoreCase("China")) {
+            payAmount = payT.getPayAmount() * 7.97;
+        }
+        return payAmount;
     }
 }
