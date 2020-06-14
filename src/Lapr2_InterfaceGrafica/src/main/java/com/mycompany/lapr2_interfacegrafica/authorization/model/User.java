@@ -1,11 +1,7 @@
 package com.mycompany.lapr2_interfacegrafica.authorization.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 public class User implements Serializable {
 
@@ -15,10 +11,8 @@ public class User implements Serializable {
     private String role;
 
     public User(String strName, String strEmail, String strPassword) {
-        if ((strName == null) || (strEmail == null) || (strPassword == null) || (strName.isEmpty()) || (strEmail.isEmpty()) || (strPassword.isEmpty())) {
-            System.out.println("Name: " + strName);
-            System.out.println("Email: " + strEmail);
-            System.out.println("Password: " + strPassword);
+        if ((strName == null) || (strEmail == null) || (strPassword == null) ||
+                (strName.isEmpty()) || (strEmail.isEmpty()) || (strPassword.isEmpty())) {
             throw new IllegalArgumentException("None of the arguments can be null or empty.");
         }
 
@@ -36,9 +30,6 @@ public class User implements Serializable {
     }
 
     public String getEmail() {
-        if(this.m_strEmail==null){
-            System.out.println("falhou no user");
-        }
         return this.m_strEmail;
     }
 

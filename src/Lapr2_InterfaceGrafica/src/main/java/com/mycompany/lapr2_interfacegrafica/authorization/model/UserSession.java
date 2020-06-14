@@ -21,37 +21,7 @@ public class UserSession implements Serializable {
         this.m_oUser = null;
     }
 
-    public boolean isLoggedIn() {
-        return this.m_oUser != null;
-    }
-
-    public String getUserName() {
-        if (isLoggedIn()) {
-            this.m_oUser.getName();
-        }
-        return null;
-    }
-
-    public String getUserId() {
-        if (isLoggedIn()) {
-            this.m_oUser.getId();
-        }
-        return null;
-    }
-
-    public String getUserEmail() {
-        if (isLoggedIn()) {
-            this.m_oUser.getEmail();
-            System.out.println(this.m_oUser.getEmail());
-        }
-        System.out.println("está null na user session outra vez");
-        return null;
-    }
-
     public User getUser() {
-        if(this.m_oUser==null){
-            System.out.println("Erro no método getUser(UserSession)");
-        } 
         return this.m_oUser;
     }
 }

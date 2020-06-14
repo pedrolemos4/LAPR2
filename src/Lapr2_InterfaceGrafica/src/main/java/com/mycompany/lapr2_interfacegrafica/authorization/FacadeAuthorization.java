@@ -5,9 +5,11 @@ import com.mycompany.lapr2_interfacegrafica.authorization.model.UserSession;
 import com.mycompany.lapr2_interfacegrafica.authorization.model.UsersRecord;
 import com.mycompany.lapr2_interfacegrafica.model.ExternalAlgorithm1API;
 import com.mycompany.lapr2_interfacegrafica.model.Platform;
+import com.mycompany.lapr2_interfacegrafica.ui.AlertUI;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Serializable;
+import javafx.scene.control.Alert;
 
 public class FacadeAuthorization implements Serializable {
 
@@ -16,22 +18,17 @@ public class FacadeAuthorization implements Serializable {
     private Platform plat;
 
     private UsersRecord usersRecord;
+    
+    private final UsersRecord m_oUsers = new UsersRecord();
 
     public FacadeAuthorization() {
         this.usersRecord = new UsersRecord();
         this.m_oSession = new UserSession();
     }
-    private final UsersRecord m_oUsers = new UsersRecord();
-
-    public boolean registesUser(String strName, String strEmail, String strPassword) {
-        User user = this.m_oUsers.newUser(strName, strEmail, strPassword);
-        return this.m_oUsers.addUser(user);
-    }
 
     public boolean registesUserWithRole(String strName, String strEmail, String strRole) {
         ExternalAlgorithm1API exAlgApi = new ExternalAlgorithm1API();
         String pwdA = exAlgApi.generatePassword(strName, strEmail);
-        System.out.println("password");
         User utlz = this.m_oUsers.newUser(strName, strEmail, pwdA);
         utlz.setRole(strRole);
         sendEmail(strEmail, pwdA, strRole);
@@ -43,7 +40,8 @@ public class FacadeAuthorization implements Serializable {
             writer.write("Role: " + role + "\nEmail: " + email + "\nPassword: " + pwd + "\n");
             writer.close();
         } catch (IOException ex) {
-            System.out.println("Error in sending email!");
+            AlertUI.createAlert(Alert.AlertType.ERROR, "T4J-PAYMENTS", "Unsuccess",
+                    "Error sending email!").show();
         }
     }
 
@@ -51,10 +49,6 @@ public class FacadeAuthorization implements Serializable {
         User user = this.m_oUsers.newUser(strName, strEmail, strPassword);
         user.setRole(role);
         return this.m_oUsers.addUser(user);
-    }
-
-    public boolean UserExists(String strId) {
-        return this.m_oUsers.hasUser(strId);
     }
 
     public boolean doLogin(String strId, String strPwd) {
@@ -72,9 +66,6 @@ public class FacadeAuthorization implements Serializable {
     }
 
     public UserSession getCurrentSession() {
-        if (this.m_oSession == null) {
-            System.out.println("falhou na facade.");
-        }
         return this.m_oSession;
     }
 

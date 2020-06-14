@@ -22,7 +22,6 @@ public class OrganizationRecordController {
         }
         this.org = org1;
         if (this.or.validateOrganization(this.org)) {
-            System.out.println("Validou Controller");
             this.or.addOrganization(this.org);
             return this.org;
         }

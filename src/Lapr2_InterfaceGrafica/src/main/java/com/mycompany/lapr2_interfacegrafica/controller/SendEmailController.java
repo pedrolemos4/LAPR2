@@ -25,9 +25,6 @@ public class SendEmailController {
 
     public List<Freelancer> getListFreelancersAdapt() throws FileNotFoundException {
         this.regFreel = this.platform.getFreelancersRecord();
-        /*if (this.regFreel == null) {
-            System.out.println("O regFreel(controller) tá null");
-        }*/
         return this.regFreel.getFreelancersAdapt();
     }
 

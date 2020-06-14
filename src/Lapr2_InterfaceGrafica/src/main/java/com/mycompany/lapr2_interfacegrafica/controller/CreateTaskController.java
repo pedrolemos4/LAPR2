@@ -1,12 +1,8 @@
 package com.mycompany.lapr2_interfacegrafica.controller;
 
 import com.mycompany.lapr2_interfacegrafica.authorization.FacadeAuthorization;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import com.mycompany.lapr2_interfacegrafica.authorization.model.UserSession;
 import com.mycompany.lapr2_interfacegrafica.model.TaskList;
-import com.mycompany.lapr2_interfacegrafica.model.Constants;
-import com.mycompany.lapr2_interfacegrafica.model.Freelancer;
 import com.mycompany.lapr2_interfacegrafica.model.FreelancersRecord;
 import com.mycompany.lapr2_interfacegrafica.model.Organization;
 import com.mycompany.lapr2_interfacegrafica.model.OrganizationsRecord;
@@ -15,7 +11,6 @@ import com.mycompany.lapr2_interfacegrafica.model.PaymentTransactionList;
 import com.mycompany.lapr2_interfacegrafica.model.Platform;
 import com.mycompany.lapr2_interfacegrafica.model.Task;
 import java.io.IOException;
-import lapr2.pot.ui.console.utils.Utils;
 
 public class CreateTaskController {
 

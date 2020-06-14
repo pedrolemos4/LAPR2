@@ -24,13 +24,6 @@ public class UsersRecord implements Serializable {
         }
     }
 
-    public boolean removeUser(User user) {
-        if (user != null) {
-            return this.m_lstUsers.remove(user);
-        }
-        return false;
-    }
-
     public User searchUser(String strId) {
         for (User utlz : this.m_lstUsers) {
             if (utlz.hasId(strId)) {
@@ -38,14 +31,6 @@ public class UsersRecord implements Serializable {
             }
         }
         return null;
-    }
-
-    public boolean hasUser(String strId) {
-        User user = searchUser(strId);
-        if (user != null) {
-            return this.m_lstUsers.contains(user);
-        }
-        return false;
     }
 
     public boolean hasUser(User user) {
