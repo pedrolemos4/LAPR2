@@ -61,16 +61,17 @@ public class OrganizationTest {
         PaymentTransaction payT3 = new PaymentTransaction("101", task3, free3, s3.convertStringToDate("24/01/2020"), 1, "High Quality Work");
         Organization org = new Organization("isep", "123456789", "manager", "m@o.com", "collab", "c@o.com");
         TreeMap<String, List<Double>> mapOrgPayment = new TreeMap<>();
+        TreeMap<String, List<Double>> mapOrgPaymentResult = new TreeMap<>();
         String key = "JW1";
         List<Double> value = new ArrayList<>();
         value.add(payT1.getPayAmount());
         value.add(payT2.getPayAmount());
         value.add(payT3.getPayAmount());
-        mapOrgPayment.put(key, value);
+        mapOrgPaymentResult.put(key, value);
         org.getPaymentTransactionList().addPaymentTransaction(payT1);
         org.getPaymentTransactionList().addPaymentTransaction(payT2);
         org.getPaymentTransactionList().addPaymentTransaction(payT3);
-        TreeMap<String, List<Double>> expResult = mapOrgPayment;
+        TreeMap<String, List<Double>> expResult = mapOrgPaymentResult;
         TreeMap<String, List<Double>> result = org.determinatePayOrg(mapOrgPayment);
         assertEquals(expResult, result);
     }
@@ -95,6 +96,7 @@ public class OrganizationTest {
         PaymentTransaction payT3 = new PaymentTransaction("101", task3, free3, s3.convertStringToDate("24/01/2020"), 1, "High Quality Work");
         Organization org = new Organization("isep", "123456789", "manager", "m@o.com", "collab", "c@o.com");
         TreeMap<String, List<Double>> mapOrgDelay = new TreeMap<>();
+        TreeMap<String, List<Double>> mapOrgDelayResult = new TreeMap<>();
         String key = "JW1";
         List<Double> value = new ArrayList<>();
         double delay1 = payT1.getDelay();
@@ -103,11 +105,11 @@ public class OrganizationTest {
         value.add(delay1);
         value.add(delay2);
         value.add(delay3);
-        mapOrgDelay.put(key, value);
+        mapOrgDelayResult.put(key, value);
         org.getPaymentTransactionList().addPaymentTransaction(payT1);
         org.getPaymentTransactionList().addPaymentTransaction(payT2);
         org.getPaymentTransactionList().addPaymentTransaction(payT3);
-        TreeMap<String, List<Double>> expResult = mapOrgDelay;
+        TreeMap<String, List<Double>> expResult = mapOrgDelayResult;
         TreeMap<String, List<Double>> result = org.determinateDelayOrg(mapOrgDelay);
         assertEquals(expResult, result);
     }

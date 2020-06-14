@@ -158,17 +158,17 @@ public class OrganizationsRecord implements Serializable {
 
     public TreeMap<String, Double> calcDeviationPayment(TreeMap<String, List<Double>> mapTotalPayments, TreeMap<String, Double> mapMeanPayments) {
         TreeMap<String, Double> mapDeviationPayments = new TreeMap<>();
-        double x = 0, mean = 0, subtraction = 0, deviation = 0;
+        double x = 0, mean = 0, sum = 0, deviation = 0;
         for (Map.Entry<String, List<Double>> entry : mapTotalPayments.entrySet()) {
             for (int i = 0; i < entry.getValue().size(); i++) {
                 x = entry.getValue().get(i);
                 for (Map.Entry<String, Double> entry1 : mapMeanPayments.entrySet()) {
                     if (entry.getKey().equalsIgnoreCase(entry1.getKey())) {
                         mean = entry1.getValue();
-                        subtraction += Math.pow(x - mean, 2);
+                        sum += Math.pow(x - mean, 2);
                     }
                 }
-                deviation = Math.sqrt(subtraction / entry.getValue().size());
+                deviation = Math.sqrt(sum / entry.getValue().size());
                 mapDeviationPayments.put(entry.getKey(), deviation);
             }
         }
