@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.chart.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -8,52 +9,143 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lapr2_interfacegrafica.ui.JanelaCheckStatisticsUI">
-   <center>
-      <GridPane BorderPane.alignment="CENTER">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <ListView fx:id="lstFreelancers" prefHeight="200.0" prefWidth="200.0" />
-            <BarChart GridPane.columnIndex="1">
-              <xAxis>
-                <CategoryAxis side="BOTTOM" />
-              </xAxis>
-              <yAxis>
-                <NumberAxis side="LEFT" />
-              </yAxis>
-            </BarChart>
-         </children>
-      </GridPane>
-   </center>
-   <bottom>
-      <FlowPane alignment="CENTER" hgap="10.0" prefHeight="31.0" prefWidth="320.0" vgap="5.0" BorderPane.alignment="CENTER">
-         <opaqueInsets>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </opaqueInsets>
-         <BorderPane.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </BorderPane.margin>
-         <children>
-            <Button fx:id="btnMeanDelay" mnemonicParsing="false" onAction="#meanDelayAction" text="Mean Delay">
-               <FlowPane.margin>
-                  <Insets />
-               </FlowPane.margin>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </Button>
-            <Button fx:id="btnDeviationDelay" mnemonicParsing="false" onAction="#btnDeviationDelayAction" text="Deviation Delay" />
-            <Button fx:id="btnMeanPayment" mnemonicParsing="false" onAction="#btnDeviationPaymentAction" text="Mean Payment" />
-            <Button fx:id="btnDeviationPayment" mnemonicParsing="false" onAction="#btnDeviationPaymentAction" text="Deviation Payment" />
-            <Button fx:id="btnClean" mnemonicParsing="false" onAction="#btnCleanAction" text="Clean" />
-            <Button fx:id="btnBack" mnemonicParsing="false" onAction="#btnBackAction" text="Back" />
-         </children>
-      </FlowPane>
-   </bottom>
-</BorderPane>
+<AnchorPane id="AnchorPane" prefHeight="529.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lapr2_interfacegrafica.ui.JanelaCheckStatisticsUI">
+   <children>
+      <BorderPane prefHeight="530.0" prefWidth="800.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <BorderPane prefHeight="500.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+               <center>
+                  <HBox prefHeight="295.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <VBox prefHeight="260.0" prefWidth="400.0">
+                           <children>
+                              <Label fx:id="lblListMean" prefHeight="21.0" prefWidth="70.0" text="List Mean">
+                                 <VBox.margin>
+                                    <Insets left="160.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <ListView fx:id="lstMean" prefHeight="315.0" prefWidth="400.0" />
+                              <Label fx:id="lblListDeviation" text="List Deviation">
+                                 <VBox.margin>
+                                    <Insets left="150.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <ListView fx:id="lstDeviation" prefHeight="315.0" prefWidth="400.0" />
+                           </children>
+                        </VBox>
+                        <BarChart fx:id="barChartHistograms" prefHeight="250.0" prefWidth="400.0">
+                          <xAxis>
+                            <CategoryAxis fx:id="intervals" label="Intervals" side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis fx:id="numberOfTasks" label="Number of Tasks" side="LEFT" />
+                          </yAxis>
+                        </BarChart>
+                     </children>
+                  </HBox>
+               </center>
+               <bottom>
+                  <VBox prefHeight="151.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <TextField fx:id="txtProbability" prefHeight="31.0" prefWidth="660.0">
+                           <VBox.margin>
+                              <Insets left="55.0" right="70.0" top="20.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <GridPane>
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label fx:id="lblMpayments" text="Mean Payment of All Freelancers :" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="30.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label fx:id="lblMdelays" text="Mean Delay of All Freelancers :" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets left="30.0" top="10.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <TextField fx:id="txtMpayments" prefHeight="16.0" prefWidth="110.0" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="280.0" right="20.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <TextField fx:id="txtMdelays" prefHeight="19.0" prefWidth="145.0" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets left="245.0" right="20.0" top="10.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <Label fx:id="lblDpayments" text="Deviation Payment of All Freelancers :" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="20.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label fx:id="lblDdelays" text="Deviation Delay of All Freelancers :" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets left="20.0" top="10.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <TextField fx:id="txtDpayments" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="280.0" right="30.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <TextField fx:id="txtDdelays" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets left="260.0" right="30.0" top="10.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                           </children>
+                        </GridPane>
+                     </children>
+                  </VBox>
+               </bottom>
+            </BorderPane>
+         </center>
+         <top>
+            <Label fx:id="lblOverallStatistics" prefHeight="55.0" prefWidth="338.0" text="Overall Statistics" translateX="70.0" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+            </Label>
+         </top>
+         <bottom>
+            <HBox prefHeight="57.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="btnShowHdelays" mnemonicParsing="false" onAction="#showHdelays" text="Show Histograms Delays">
+                     <HBox.margin>
+                        <Insets left="55.0" top="13.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="btnDeviationDelay" mnemonicParsing="false" onAction="#showHpayments" text="Show Histograms Payments">
+                     <HBox.margin>
+                        <Insets left="55.0" top="13.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="btnClean" mnemonicParsing="false" onAction="#cleanAll" text="Clean">
+                     <HBox.margin>
+                        <Insets left="55.0" top="13.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="btnReturn" mnemonicParsing="false" onAction="#returnAction" text="Return">
+                     <HBox.margin>
+                        <Insets left="55.0" top="13.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>
