@@ -85,7 +85,7 @@ The freelancer stays informed.
 |  | ...know the freelancers? | FreelancersRecord | IE: Owns the class Freelancers (HC + LC) |
 |  | ...knows all the payments | PaymentTransactionList | IE : In the MD PaymentTransactionList has Freelancer |
 |  | ...knows the freelancer´s email? | Freelancer | IE: Owns his data |
-|  | ...schedules the next year´s notification? | FreelaNcerRecord | IE: Owns his information |
+|  | ...schedules the next year´s notification? | FreelancerRecord | IE: Owns his information |
 
 
 
