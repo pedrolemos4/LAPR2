@@ -45,7 +45,7 @@ public class Freelancer implements Serializable {
     }
 
     public void setEmail(String email) {
-        if (email == null || email.trim().isEmpty() || !email.contains("@")){ 
+        if (email == null || email.trim().isEmpty() || !email.contains("@")) {
             throw new IllegalArgumentException("Invalid Freelancer Email!");
         }
         this.email = email;
@@ -87,7 +87,11 @@ public class Freelancer implements Serializable {
         if (expertise == null) {
             throw new IllegalArgumentException("Empty Expertise !");
         }
-        this.lvlExp = expertise;
+        if (expertise.equalsIgnoreCase("Junior") || expertise.equalsIgnoreCase("Senior")) {
+            this.lvlExp = expertise;
+        }else{
+            throw new IllegalArgumentException("Invalid Expertise !");
+        }
     }
 
     public void setId(String id) {
