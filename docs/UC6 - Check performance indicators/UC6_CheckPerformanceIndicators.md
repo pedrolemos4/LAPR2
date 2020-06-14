@@ -62,7 +62,7 @@ The T4J administrator is able to see statistics describing the performance of al
 
 ## 2. OO Analysis
 
-### Excerto do Modelo de DomÃ­nio Relevante para o UC
+### Excerto do Modelo de Domínio Relevante para o UC
 
 ![UC6_MD.svg](UC6_MD.svg)
 
@@ -75,10 +75,14 @@ The T4J administrator is able to see statistics describing the performance of al
 |:--------------  |:---------------------- |:----------|:---------------------------- |
 |1. The administrator begins to analyze the statistics describing the performance of all freelancers.|... interacts with the user?| CheckPerformanceIndicatorsUI |Pure Fabrication|
 | |... coordinates the UC?| CheckPerformanceIndicatorsController |Controller|
-| |... knows the user/administrator using the system?|UserSession|IE: cf. user management component documentation.|
-|2. The system aks for one option (see the statistics of one freelancer or of all freelancers).||||
-|3. The administrator chooses one option. ||||
-|4. The system calculates and presents the statistics describing the performance of the freelancer and asks for confirmation.|...knows the statistics about task execution times ?|TaskExecution|IE:has it own data|
+|2. The system calculates and presents the statistics describing the performance of all freelancers and asks for confirmation.|...is responsable for calculating the statistics?|OrganizationsRecord|By IE it would be the Platform but, by the HC + LC standard, the Platform delegates this responsibility to the OrganizationsRecord|
+||...knows OrganizationsRecord?|Platform|IE: According to the MD the Platform has Organization|
+||...is responsable for calculating the statistics in an Organization?|Organization|IE:has its own data|
+||...knows the delay?|PaymentTransaction| IE: has its own data|
+||...knows the task for calculating the payment?|PaymentTransaction| IE: has its own data|
+||...knows the freelancer for calculating the payment?|PaymentTransaction| IE: has its own data|
+||...knows the payment?|PaymentTransaction| IE: has its own data|
+||...knows all payments and delays made by an organization to a freelancer?|PaymentTransactionList|By IE it would be the Organization but, by the HC + LC standard, the Organization delegates this responsibility to the PaymentTransactionList|
 |5. The administrator confirms. ||||
 |6. The system informs the administrator of the success of the operation.|...informs the administrator?|CheckPerformanceIndicatorsUI|Pure Fabrication|
 
@@ -90,7 +94,9 @@ The T4J administrator is able to see statistics describing the performance of al
 
  * Platform
  * Organization
- * PaymentTransactionRecord
+ * PaymentTransactionList
+ * PaymentTransaction
+ * OrganizationsRecord
 
 
 Other software classes (i.e. Pure Fabrication) identified:  
