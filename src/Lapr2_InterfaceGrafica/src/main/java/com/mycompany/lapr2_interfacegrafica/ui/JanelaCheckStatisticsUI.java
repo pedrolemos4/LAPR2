@@ -6,6 +6,7 @@
 package com.mycompany.lapr2_interfacegrafica.ui;
 
 import com.mycompany.lapr2_interfacegrafica.controller.CheckStatisticsController;
+import com.mycompany.lapr2_interfacegrafica.controller.POTApplication;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
@@ -90,7 +91,7 @@ public class JanelaCheckStatisticsUI implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         this.controller = new CheckStatisticsController();
         txtProbability.setText(String.format("The probability of the execution delay time of the freelancers that higher than 3 hours is %.4f",
-                 controller.determinateNormalDistribution()));
+                controller.determinateNormalDistribution()));
         txtMpayments.setText(String.format("%.2f", controller.determinateIntervalsMean(controller.determinatePayOrganization())));
         txtMdelays.setText(String.format("%.2f", controller.determinateIntervalsMean(controller.determinateDelayOrganization())));
         txtDpayments.setText(String.format("%.2f", controller.determinateIntervalsDeviation(controller.determinatePayOrganization())));
@@ -308,25 +309,24 @@ public class JanelaCheckStatisticsUI implements Initializable {
         barChartHistograms.getData().clear();
         lstDeviation.getItems().clear();
         lstMean.getItems().clear();
-        
+
         TreeMap<String, Double> lstMeanDelay;
         lstMeanDelay = this.controller.calcMeanDelay();
         lstMean.getItems().addAll(lstMeanDelay);
         TreeMap<String, Double> lstDeviationDelay;
         lstDeviationDelay = this.controller.calcDeviationDelay();
         lstDeviation.getItems().addAll(lstDeviationDelay);
-        
+
         XYChart.Series barDeviationDelay = new XYChart.Series<>();
         barChartHistograms.setTitle("Delays");
-        
+
         barDeviationDelay.getData().add(new XYChart.Data(calcFirstIntervalDelay(),
                 valuesFirstIntervalDelay(controller.determinateDelayOrganization())));
         barDeviationDelay.getData().add(new XYChart.Data(calcSecondIntervalDelay(),
                 valuesSecondIntervalDelay(controller.determinateDelayOrganization())));
         barDeviationDelay.getData().add(new XYChart.Data(calcThirdIntervalDelay(),
                 valuesThirdIntervalDelay(controller.determinateDelayOrganization())));
-        
-        
+
         barChartHistograms.getData().add(barDeviationDelay);
     }
 
@@ -335,7 +335,7 @@ public class JanelaCheckStatisticsUI implements Initializable {
         barChartHistograms.getData().clear();
         lstDeviation.getItems().clear();
         lstMean.getItems().clear();
-        
+
         TreeMap<String, Double> lstMeanPayments;
         lstMeanPayments = this.controller.calcMeanPayment();
         lstMean.getItems().addAll(lstMeanPayments);
@@ -345,17 +345,16 @@ public class JanelaCheckStatisticsUI implements Initializable {
 
         XYChart.Series barDeviationPayment = new XYChart.Series<>();
         barChartHistograms.setTitle("Payments");
-        
+
         barDeviationPayment.getData().add(new XYChart.Data(calcFirstIntervalPayment(),
                 valuesFirstIntervalPayment(controller.determinatePayOrganization())));
         barDeviationPayment.getData().add(new XYChart.Data(calcSecondIntervalPayment(),
                 valuesSecondIntervalPayment(controller.determinatePayOrganization())));
         barDeviationPayment.getData().add(new XYChart.Data(calcThirdIntervalPayment(),
-                valuesThirdIntervalPayment(controller.determinatePayOrganization())));        
-        
-        
+                valuesThirdIntervalPayment(controller.determinatePayOrganization())));
+
         barChartHistograms.getData().add(barDeviationPayment);
-        
+
     }
 
     @FXML
@@ -368,7 +367,14 @@ public class JanelaCheckStatisticsUI implements Initializable {
 
     @FXML
     private void returnAction(ActionEvent event) throws IOException {
-        goToScene(event, "/fxml/OptionsCollaborator.fxml");
+        switch (POTApplication.getFacadeAuthorization().getCurrentSession().getUser().getRole()) {
+            case "ORGANIZATION_COLLABORATOR":
+                goToScene(event, "/fxml/OptionsCollaborator.fxml");
+                break;
+            case "ORGANIZATION_MANAGER":
+                goToScene(event, "/fxml/OptionsManager.fxml");
+                break;
+        }
     }
 
 }

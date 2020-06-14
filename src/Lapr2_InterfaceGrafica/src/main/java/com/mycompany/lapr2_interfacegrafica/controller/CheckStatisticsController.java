@@ -6,6 +6,7 @@
 package com.mycompany.lapr2_interfacegrafica.controller;
 
 import com.mycompany.lapr2_interfacegrafica.authorization.FacadeAuthorization;
+import com.mycompany.lapr2_interfacegrafica.authorization.model.User;
 import com.mycompany.lapr2_interfacegrafica.model.Organization;
 import com.mycompany.lapr2_interfacegrafica.model.OrganizationsRecord;
 import com.mycompany.lapr2_interfacegrafica.model.Platform;
