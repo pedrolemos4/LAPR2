@@ -83,9 +83,9 @@ The freelancer stays informed.
 |  | ...knows the task delay? | PaymentTransaction | IE: Knows its own information |  
 |  | ...knows the percentage of delays? | PaymentTransaction | IE: knows its own information  |
 |  | ...know the freelancers? | FreelancersRecord | IE: Owns the class Freelancers (HC + LC) |
-|  | ...knows all the payments | PaymentTransactionList | IE : In the MD PaymentTransactionList has Freealancer |
+|  | ...knows all the payments | PaymentTransactionList | IE : In the MD PaymentTransactionList has Freelancer |
 |  | ...knows the freelancer´s email? | Freelancer | IE: Owns his data |
-|  | ...schedules the next year´s notification? | FreelacerRecord | IE |
+|  | ...schedules the next year´s notification? | FreelaNcerRecord | IE: Owns his information |
 
 
 
